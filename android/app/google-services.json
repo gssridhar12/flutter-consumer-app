@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "102836287134",
+    "project_id": "megmo-47094",
+    "storage_bucket": "megmo-47094.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:102836287134:android:a1106d01da4b84b6992d8f",
+        "android_client_info": {
+          "package_name": "com.megmo.consumer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "102836287134-75clns1r3h79u2sapg9a5pl5dtg84mrf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.megmo.consumer",
+            "certificate_hash": "350f7428ebeb870c3a1085f60fc1c2c919140e70"
+          }
+        },
+        {
+          "client_id": "102836287134-ba6rd2j8esvn1g3567hvissphimgvf76.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu5826huc5cTdFljvA_2pczD7n2TFtYoI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "102836287134-ba6rd2j8esvn1g3567hvissphimgvf76.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "102836287134-0t41h1h1791l43dos0lf0buu2fvh8d8m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterConsumerApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
