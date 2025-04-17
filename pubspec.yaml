@@ -5,57 +5,61 @@ version: 0.1.1
 
 environment:
   sdk: '>=3.0.6 <4.0.0'
+  flutter: ">=3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   flutter_otp_text_field: ^1.1.1
   # keyboard_dismisser: ^3.0.0
-  firebase_core: ^2.15.1
-  firebase_auth: ^4.9.0
+  firebase_core: ^3.13.0
+  firebase_auth: 5.5.2
   google_sign_in: ^6.1.5
   flutter_facebook_auth: ^6.0.1
   email_validator: ^2.1.17
-  flutter_bloc: ^8.1.3
+  flutter_bloc: ^9.1.0
   # dio: ^5.3.2
   http: ^1.1.0
   equatable: ^2.0.5
+
   shared_preferences: ^2.2.1
   geocoding: ^2.1.0
-  geolocator: ^10.0.1
-  intl: ^0.18.1
+  geolocator: ^13.0.4
+  intl: ^0.19.0
   # chips_choice: ^3.0.1
   image_picker: ^1.0.4
-  multi_image_picker: ^4.7.14
-  file_picker: ^5.5.0
+  multi_image_picker_plus: ^0.0.6
+  file_picker: ^9.0.2
+
+
   share_whatsapp: ^1.0.2
   # share: ^2.0.1
   carousel_slider: ^4.2.1
-  google_maps_flutter: ^2.1.0
+  google_maps_flutter: ^2.12.1
   # flutter_polyline_points: ^2.0.0
   # location: ^5.0.3
   flutter_svg: ^2.0.9
   # typicons_flutter: ^0.5.0
   circular_countdown_timer: ^0.2.3
-  mixpanel_flutter: ^2.1.1
+  mixpanel_flutter: ^2.3.4
   card_swiper: ^3.0.1
-  json_annotation:
-  device_info_plus: ^9.1.0
+
+  device_info_plus: ^11.3.3
   # flutter_swiper_view: ^1.1.8f
   either_dart: ^1.0.0
   get_it: ^7.6.4
   # redacted: ^1.0.11
   # network_info_plus: ^4.1.0
-  connectivity_plus: ^3.0.3
+  connectivity_plus: ^4.0.1
   internet_connection_checker: ^1.0.0+1
   simple_gradient_text: ^1.3.0
   meta: ^1.9.1
-  bloc: ^8.1.2
+  bloc: ^9.0.0
   buttons_tabbar: ^1.3.8
   readmore: ^2.2.0
   flutter_rating_bar: ^4.0.1
   # booking_calendar: ^1.1.10
-  table_calendar: ^3.0.9
+  table_calendar: ^3.1.3
   flutter_staggered_grid_view: ^0.4.0
   # dots_indicator: ^3.0.0
   # visibility_detector: ^0.4.0+2
@@ -64,10 +68,10 @@ dependencies:
   flutter_story_view: ^0.0.3
   # toggle_switch: ^2.1.0
   # chatview: ^1.3.1
-  razorpay_flutter: ^1.3.5
-  maps_launcher: ^2.2.0
-  add_2_calendar: ^3.0.1
-  # fluttertoast: ^8.2.4
+  razorpay_flutter: ^1.4.0
+  maps_launcher: ^3.0.0+1
+  add_2_calendar: ^2.2.3
+  fluttertoast: ^8.2.4
   story_view: ^0.16.0
   after_layout: ^1.2.0
   # emoji_picker_flutter: ^1.6.3
@@ -77,11 +81,11 @@ dependencies:
   sizer: ^2.0.15
   percent_indicator: ^4.2.3
   # flutter_profile_picture: ^2.0.0
-  firebase_messaging: ^14.7.10
-  flutter_local_notifications: ^16.3.2
+  firebase_messaging: 15.2.5
+  flutter_local_notifications: ^19.0.0
   flutter_initicon: ^3.0.0+1
-  flutter_widget_from_html: ^0.14.11
-  freezed_annotation: ^2.4.1
+  flutter_widget_from_html: ^0.16.0
+
   page_transition: ^2.1.0
   flutter_screenutil: ^5.9.3
   hive_flutter: ^1.1.0
@@ -95,21 +99,24 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^2.0.0
   json_serializable: ^6.7.1
-  build_runner: ^2.4.7
+  build_runner: ^2.4.8
   flutter_launcher_icons: ^0.13.1
-  freezed: ^2.4.6
+  freezed: ^2.4.1
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.8.1
+
 flutter_icons:
-  image_path: "icons/megmologo.png"
+  image_path: "images/woofurs_logo.png"
   android: true
   ios: true
 
 flutter:
   uses-material-design: true
-
   assets:
     - assets/images/
     - assets/images/tier_images/
     - assets/images/cities/
+    - assets/images/services/
   fonts:
     - family: JosefinSans
       fonts:

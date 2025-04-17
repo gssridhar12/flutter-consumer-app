@@ -14,6 +14,7 @@ import 'package:flutter_consumer_app/features/home_section/presentation/pages/us
 
 List<String> titlesMainMenu = [
   'My Location',
+  'My Pets',
   'My Bookings',
   'My Notifications',
   'My Chats',

@@ -41,8 +41,10 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mixpanel_flutter/mixpanel_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
+
 import 'features/home_section/presentation/bloc/user_bloc/user_bloc.dart';
 import 'injection_container.dart' as di;
+
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -142,7 +144,7 @@ class MainApp extends StatelessWidget {
                 fontFamily: 'JosefinSans',
               ),
               debugShowCheckedModeBanner: false,
-              home: const SplashPage(),
+              home: const SplashScreen(),
               routes: {'/chatHome': (context) => const ChatHomePage()},
             ),
           ),

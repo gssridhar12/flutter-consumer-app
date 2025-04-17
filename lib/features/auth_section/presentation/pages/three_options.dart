@@ -28,7 +28,7 @@ class ThreeOptionsPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const TitleAndSubtitleWidget(
-                titile: 'Join Megmo',
+                titile: 'Join Woofurs',
                 subtitle:
                     'Create an account and discover thousands of relevant services, connect with creative professionals, discuss your requirements, and book their services',
               ),
@@ -58,7 +58,7 @@ class ThreeOptionsPage extends StatelessWidget {
                   child: Padding(
                 padding: EdgeInsets.all(padding),
                 child: Text(
-                    'By signing up, you agree to Megmo s Terms of service'),
+                    'By signing up, you agree to Woofurs s Terms of service'),
               ))
               //TODO add rich text to make terms of service red
 

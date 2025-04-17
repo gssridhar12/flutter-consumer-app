@@ -96,7 +96,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     trailingButton: false,
                     textColor: colorred),
                 HeadingTextWidget(
-                  text: 'Welcome to Megmo!',
+                  text: 'Welcome to WigglyPet!',
                   trailingButton: false,
                   size: 18,
                   textColor: colorblack.withOpacity(0.7),
@@ -108,67 +108,72 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   text: 'Who are you looking for?',
                   trailingButton: false,
                 ),
-                BlocBuilder<CategoryBloc, CategoryState>(
-                  builder: (context, state) {
-                    if (state is GetCategoryLoading) {
-                      return SizedBox(
-                        height: 30.h,
-                        child: const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                      );
-                    }
-                    if (state is GetCategoryFailed) {
-                      return const ShowErrorWidget();
-                    }
-                    if (state is GetCategorySuccess) {
-                      final category =
-                          state.categoryEntity.data!.parentCategories;
-                      return ConstrainedBox(
-                        constraints: BoxConstraints(
-                          minHeight: MediaQuery.of(context).size.height * 0.02,
-                          maxHeight: MediaQuery.of(context).size.height * 0.25,
-                        ),
-                        child: SizedBox(
-                          // height: 22.h,
-                          width: 100.w,
-                          child: GridView.builder(
-                            padding: EdgeInsets.zero,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2),
-                            physics: const BouncingScrollPhysics(),
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            itemCount: category!.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Column(
-                                children: [
-                                  CategoryTileWidget(
-                                      onTap: () {
-                                        AppNavigation.pushNavigation(
-                                          context,
-                                          SpecificCategoryPage(
-                                            categoryTitle: category[index]
-                                                    .parentCategoryName ??
-                                                "",
-                                            isGuestUser: isGuestUser,
-                                          ),
-                                        );
-                                      },
-                                      width: 100.w,
-                                      category: category[index]),
-                                ],
-                              );
-                            },
+
+
+
+BlocBuilder<CategoryBloc, CategoryState>(
+  builder: (context, state) {
+    if (state is GetCategoryLoading) {
+      return SizedBox(
+        height: 30.h,
+        child: const Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+    if (state is GetCategoryFailed) {
+      return const ShowErrorWidget();
+    }
+    if (state is GetCategorySuccess) {
+      final category =
+          state.categoryEntity.data!.parentCategories;
+      return ConstrainedBox(
+        constraints: BoxConstraints(
+          minHeight: MediaQuery.of(context).size.height * 0.02,
+          maxHeight: MediaQuery.of(context).size.height * 0.25,
+        ),
+        child: SizedBox(
+          width: 100.w,
+          child: GridView.builder(
+            padding: EdgeInsets.zero,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2),
+            physics: const BouncingScrollPhysics(),
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemCount: category!.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Column(
+                children: [
+                  CategoryTileWidget(
+                      onTap: () {
+                        AppNavigation.pushNavigation(
+                          context,
+                          SpecificCategoryPage(
+                            categoryTitle:
+                                category[index].parentCategoryName ?? "Men ,Women",
+                            isGuestUser: isGuestUser,
                           ),
-                        ),
-                      );
-                    }
-                    return const Text('Something went wrong');
-                  },
-                ),
-                HeadingTextWidget(
+                        );
+                      },
+                      width: 100.w,
+                      category: category[index]),
+                ],
+              );
+            },
+          ),
+        ),
+      );
+    }
+    return const Text('Something went wrong');
+  },
+),
+
+
+
+
+
+            HeadingTextWidget(
                   text: 'Top Partners in demand',
                   onTap: () {
                     AppNavigation.pushNavigation(
@@ -329,7 +334,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   },
                 ),
                 HeadingTextWidget(
-                  text: 'Fresh Talent on Megmo',
+                  text: 'Fresh Talent on WigglyPet',
                   onTap: () {
                     AppNavigation.pushNavigation(
                       context,
@@ -415,7 +420,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 SizedBox(
                   width: 80.w,
                   child: Text(
-                      'Take a look at what Megmo partners are achieving',
+                      'Take a look at what WigglyPet partners are achieving',
                       style: TextStyle(
                           fontSize: 12, color: colorblack.withOpacity(0.5))),
                 ),
@@ -443,6 +448,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       ),
     );
   }
+  //for static testing
+
 
   ///TODO fix this
   // @override

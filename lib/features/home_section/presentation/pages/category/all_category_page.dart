@@ -79,12 +79,12 @@ class _AllCategoryPageState extends State<AllCategoryPage> {
                         text: 'Search for ‘Make up artists’',
                       ),
                       sbox,
-                      HeadingTextWidget(
+                      const HeadingTextWidget(
                           text: 'Who are you looking for?',
                           size: 22,
                           fontWeight: FontWeight.w500,
                           trailingButton: false,
-                          textColor: colorblack.withOpacity(0.7)),
+                        textColor: Color.fromRGBO(0, 0, 0, 0.7)),
                       const HeadingTextWidget(
                           text: 'Take a look at what Megmo has to offer',
                           size: 16,
@@ -108,7 +108,7 @@ class _AllCategoryPageState extends State<AllCategoryPage> {
                               label: data[index].parentCategoryName ?? "",
                               width: width * 0.25,
                               height: width * 0.25,
-                              color: colorred.withOpacity(0),
+                              color: colorred.withAlpha(0),
                               selected: _value == index,
                               isShadow: true,
                               onSelect: (string) {

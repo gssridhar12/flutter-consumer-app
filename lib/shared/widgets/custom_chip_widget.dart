@@ -24,10 +24,10 @@ class CustomChip extends StatelessWidget {
     this.margin,
     this.selected = false,
     required this.onSelect,
-    required this.image,
+
     this.fontSize,
     this.isShadow,
-    this.borderRadius,
+    this.borderRadius, required this.image,
   }) : super(key: key);
 
   @override
