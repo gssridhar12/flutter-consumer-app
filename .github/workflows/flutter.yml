@@ -25,7 +25,7 @@ jobs:
     - name: Analyze project source
       run: flutter analyze
     
-    - Flutter code format
+    - name: Flutter code format
       run: dart format
 
     - name: Run tests
