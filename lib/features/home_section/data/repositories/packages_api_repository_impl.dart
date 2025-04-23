@@ -16,7 +16,7 @@ class PackageRepositoryImpl implements PackageRepository {
       final package = await packageRemoteDataSource.getMostBookedPackages();
       log(package.message!);
 
-        if (package.data == null) {
+      if (package.data == null) {
         return const Left(ServerFailure(errorMessage: 'Server Failed'));
       }
       return Right(package);

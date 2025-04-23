@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_consumer_app/features/partner_profile/presentation/widgets/AppBarWidgetbold.dart';
 import 'package:flutter_consumer_app/features/partner_profile/presentation/widgets/BlackLuxPortfolioseeallWidget.dart';
 
-
 class MyHomePagetile extends StatefulWidget {
   const MyHomePagetile({Key? key}) : super(key: key);
 

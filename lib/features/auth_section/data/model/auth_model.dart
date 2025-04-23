@@ -44,9 +44,9 @@ class DataModel extends Data {
     return DataModel(
       id: json["id"],
       userUuid: json["user_uuid"],
-      fullName: json["full_name"]??"",
-      email: json["email"]??"",
-      password: json["password"]??"",
+      fullName: json["full_name"] ?? "",
+      email: json["email"] ?? "",
+      password: json["password"] ?? "",
       createdOn: DateTime.parse(json["created_on"]),
     );
   }

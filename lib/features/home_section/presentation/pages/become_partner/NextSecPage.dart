@@ -3,7 +3,6 @@
 // import 'package:flutter_consumer_app/features/home_section/src/presentation/pages/become_partner/NextMultySec.dart';
 // import 'package:flutter_consumer_app/features/home_section/src/presentation/widgets/AppbarWedget.dart';
 
-
 // class NextSecButtonPage extends StatefulWidget {
 //   const NextSecButtonPage({Key? key}) : super(key: key);
 

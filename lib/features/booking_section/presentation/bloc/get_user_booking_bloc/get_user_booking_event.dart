@@ -6,6 +6,7 @@ sealed class GetUserBookingEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
 class GetUserBooking extends GetUserBookingEvent {
   final String userId;
 

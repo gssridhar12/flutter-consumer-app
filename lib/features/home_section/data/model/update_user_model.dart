@@ -19,7 +19,8 @@ class UpdateUserModel extends UpdateUserEntity with _$UpdateUserModel {
     @JsonKey(name: "success_status") bool? successStatus,
   }) = _UpdateUserModel;
 
-  factory UpdateUserModel.fromJson(Map<String, dynamic> json) => _$UpdateUserModelFromJson(json);
+  factory UpdateUserModel.fromJson(Map<String, dynamic> json) =>
+      _$UpdateUserModelFromJson(json);
 }
 
 @freezed
@@ -42,7 +43,8 @@ class DataModel extends Data with _$DataModel {
     @JsonKey(name: "fcmToken") List<String>? fcmToken,
   }) = _DataModel;
 
-  factory DataModel.fromJson(Map<String, dynamic> json) => _$DataModelFromJson(json);
+  factory DataModel.fromJson(Map<String, dynamic> json) =>
+      _$DataModelFromJson(json);
 }
 
 @freezed
@@ -57,5 +59,6 @@ class UserAddressModel extends UserAddress with _$UserAddressModel {
     @JsonKey(name: "landmark") String? landmark,
   }) = _UserAddressModel;
 
-  factory UserAddressModel.fromJson(Map<String, dynamic> json) => _$UserAddressModelFromJson(json);
+  factory UserAddressModel.fromJson(Map<String, dynamic> json) =>
+      _$UserAddressModelFromJson(json);
 }

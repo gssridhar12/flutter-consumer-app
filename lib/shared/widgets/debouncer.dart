@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 
-///Deboucer that is used for delaying network calls 
+///Deboucer that is used for delaying network calls
 class Debouncer {
   final int milliseconds;
   Timer? _timer;

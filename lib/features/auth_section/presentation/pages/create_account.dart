@@ -171,9 +171,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const HomePage(
-                                
-                              ),
+                              builder: (context) => const HomePage(),
                             ),
                           );
                         }
@@ -216,8 +214,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                const HomePage(),
+                            builder: (context) => const HomePage(),
                           ));
                     },
                     child: const Center(

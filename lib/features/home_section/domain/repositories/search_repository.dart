@@ -4,6 +4,8 @@ import 'package:flutter_consumer_app/features/home_section/domain/entities/respo
 import 'package:flutter_consumer_app/features/home_section/domain/entities/response/get_package_search_entity.dart';
 
 abstract class SearchRepository {
-  Future<Either<Failure, GetPackageSearchEntity>> getPackagesWithPackageName(String keyword);
-  Future<Either<Failure, GetPartnerSearchEntity>> getPartnerWithPartnerName(String keyword);
+  Future<Either<Failure, GetPackageSearchEntity>> getPackagesWithPackageName(
+      String keyword);
+  Future<Either<Failure, GetPartnerSearchEntity>> getPartnerWithPartnerName(
+      String keyword);
 }

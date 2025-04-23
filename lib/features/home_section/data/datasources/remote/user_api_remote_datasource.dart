@@ -13,15 +13,14 @@ abstract class UserApiRemoteDataSource {
   Future<UpdateUserModel> updateUser(UpdateUserRequest request);
   Future<GetUserModel> getUser(String userId);
   Future<GetUserReviewModel> getUserReviews(String userId);
-  Future<AddPackageReviewModel> addPackageReview(AddPackageReviewRequest request);
-
+  Future<AddPackageReviewModel> addPackageReview(
+      AddPackageReviewRequest request);
 }
 
 class UserApiRemoteDataSourceImpl implements UserApiRemoteDataSource {
   final http.Client httpClient;
 
   UserApiRemoteDataSourceImpl({required this.httpClient});
-
 
   @override
   Future<UpdateUserModel> updateUser(UpdateUserRequest request) async {
@@ -43,10 +42,9 @@ class UserApiRemoteDataSourceImpl implements UserApiRemoteDataSource {
       throw const ServerFailure(errorMessage: 'Server Failed');
     }
   }
-  
+
   @override
-  Future<GetUserModel> getUser(String userId) async{
-    
+  Future<GetUserModel> getUser(String userId) async {
     var headers = {
       "Content-Type": "application/json",
     };
@@ -54,8 +52,7 @@ class UserApiRemoteDataSourceImpl implements UserApiRemoteDataSource {
       'https://partnerapi.megmo.in/partner-service/login/getUserDetails/v2/$userId',
     );
 
-    final response =
-        await http.get(url, headers: headers);
+    final response = await http.get(url, headers: headers);
     if (response.statusCode == 200) {
       final decodedBody = json.decode(response.body);
       return GetUserModel.fromJson(decodedBody);
@@ -64,16 +61,17 @@ class UserApiRemoteDataSourceImpl implements UserApiRemoteDataSource {
       throw const ServerFailure(errorMessage: 'Server Failed');
     }
   }
-  
+
   @override
   Future<GetUserReviewModel> getUserReviews(String userId) {
     // TODO: implement getUserReviews
     throw UnimplementedError();
   }
-  
+
   @override
-  Future<AddPackageReviewModel> addPackageReview(AddPackageReviewRequest request)async {
-   var requestBody = request.toJson();
+  Future<AddPackageReviewModel> addPackageReview(
+      AddPackageReviewRequest request) async {
+    var requestBody = request.toJson();
     var headers = {
       "Content-Type": "application/json",
       "calling_entity": "WEB_UI"
@@ -92,10 +90,10 @@ class UserApiRemoteDataSourceImpl implements UserApiRemoteDataSource {
       throw const ServerFailure(errorMessage: 'Server Failed');
     }
   }
-  
+
   // @override
   // Future<GetUserReviewModel> getUserReviews(String userId)async {
-      
+
   //   var headers = {
   //     "Content-Type": "application/json",
   //   };

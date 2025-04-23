@@ -6,7 +6,6 @@ abstract class ChatLocalDataSource {
   Future<void> cacheUserMessages(GetUserMessageLocalModel userMessages);
 }
 
-
 class ChatLocalDataSourceImpl implements ChatLocalDataSource {
   final Box<GetUserMessageLocalModel> box;
 

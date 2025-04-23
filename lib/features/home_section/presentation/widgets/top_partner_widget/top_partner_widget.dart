@@ -139,7 +139,7 @@ class TopPartnerCardWidget extends StatelessWidget {
                   onTap: () => AppNavigation.pushNavigation(
                       context,
                       ChatScreenCustom(
-                        partnerUuid: partner.profile.partnerUuid)),
+                          partnerUuid: partner.profile.partnerUuid)),
                 )
               ],
             ),

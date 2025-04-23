@@ -43,7 +43,6 @@ class _BookingsPageState extends State<BookingsPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return ColoredSafeArea(
       color: bggray,
       child: Scaffold(

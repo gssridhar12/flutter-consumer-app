@@ -197,7 +197,7 @@ Future<void> init() async {
   });
   //feature ---user apis
 
-  sl.registerFactory(() => UserBloc(sl(), sl(),sl()));
+  sl.registerFactory(() => UserBloc(sl(), sl(), sl()));
 
   sl.registerLazySingleton(() => UpdateUserUsecase(repository: sl()));
   sl.registerLazySingleton(() => GetUserUsecase(repository: sl()));
@@ -379,8 +379,8 @@ Future<void> init() async {
   sl.registerFactory(() => PackageLikeBloc(sl(), sl()));
 
   sl.registerFactory(
-    () => LikeCubit(addPackageLikeUseCase: sl(),getPackageLikeUseCase: sl()),
-  );   
+    () => LikeCubit(addPackageLikeUseCase: sl(), getPackageLikeUseCase: sl()),
+  );
   sl.registerLazySingleton(() => AddPackageLikeUseCase(repository: sl()));
   sl.registerLazySingleton(() => AddPartnerLikeUseCase(repository: sl()));
   sl.registerLazySingleton(() => GetPackageLikeUseCase(repository: sl()));

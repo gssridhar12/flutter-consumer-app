@@ -24,7 +24,6 @@ class PackageDetailsRemoteDataSourceImpl
     final url = Uri.parse(
       // 'https://partnerapi.megmo.in/partner-service/package/getPackageDetails/v2/89b760cc-7c3a-4c62-bfb1-ff9efa4777ee',
       'https://partnerapi.megmo.in/partner-service/package/getPackageDetails/v2/$uuid',
-
     );
     final response = await httpClient.get(
       url,

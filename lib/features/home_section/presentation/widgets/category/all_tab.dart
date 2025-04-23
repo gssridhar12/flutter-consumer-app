@@ -12,7 +12,6 @@ class AllTab extends StatelessWidget {
 
     return CustomScrollView(physics: const BouncingScrollPhysics(), slivers: [
       SliverToBoxAdapter(
-        
         child: BlocBuilder<AllPartnerBloc, AllPartnerBlocState>(
           builder: (context, state) {
             if (state is GetAllProfileFailed) {

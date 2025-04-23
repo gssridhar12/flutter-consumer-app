@@ -2,7 +2,7 @@ part of 'package_like_bloc_bloc.dart';
 
 sealed class PackageLikeBlocState extends Equatable {
   const PackageLikeBlocState();
-  
+
   @override
   List<Object> get props => [];
 }
@@ -14,8 +14,7 @@ class AddPackageLikeSuccess extends PackageLikeBlocState {
 
   const AddPackageLikeSuccess({required this.addPackageLikeEntity});
   @override
-  List<Object> get props => [addPackageLikeEntity
-  ];
+  List<Object> get props => [addPackageLikeEntity];
 }
 
 class AddPackageLikeFailed extends PackageLikeBlocState {
@@ -27,9 +26,6 @@ class AddPackageLikeLoading extends PackageLikeBlocState {
   @override
   List<Object> get props => [];
 }
-
-
-
 
 class GetPackageLikeSuccess extends PackageLikeBlocState {
   final GetPackageLikeEntity getPackageLikeEntity;

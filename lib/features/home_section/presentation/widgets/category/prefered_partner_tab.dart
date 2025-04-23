@@ -29,7 +29,8 @@ class _PreferedPartnersTabState extends State<PreferedPartnersTab>
   }
 
   List<ProfileElement> dataList = [];
-  ValueNotifier<List<ProfileElement>> datasource = ValueNotifier<List<ProfileElement>>([]);
+  ValueNotifier<List<ProfileElement>> datasource =
+      ValueNotifier<List<ProfileElement>>([]);
   // void _handleTabChange() {
   // // Perform sorting logic based on the selected tab
   // datasource.value = dataList
@@ -88,14 +89,16 @@ class _PreferedPartnersTabState extends State<PreferedPartnersTab>
                 if (index == 0) {
                   datasource.value = dataList
                       .where((element) =>
-                          element.profile.profileDetails.partnerInDemand == false)
+                          element.profile.profileDetails.partnerInDemand ==
+                          false)
                       .toList()
                       .reversed
                       .toList();
                 } else if (index == 1) {
                   datasource.value = dataList
                       .where((element) =>
-                          element.profile.profileDetails.trendingPartner == false)
+                          element.profile.profileDetails.trendingPartner ==
+                          false)
                       .toList()
                       .reversed
                       .toList();

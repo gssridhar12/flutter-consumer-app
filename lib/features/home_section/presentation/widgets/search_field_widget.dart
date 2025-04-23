@@ -42,7 +42,8 @@ class SearchFieldWidget extends StatelessWidget {
         controller: controller,
         decoration: InputDecoration(
           prefixIcon: prefixIcon,
-          contentPadding: const EdgeInsets.symmetric(vertical: 9, horizontal: 15),
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 9, horizontal: 15),
           fillColor: colorwhite,
           filled: true,
           hintText: text,

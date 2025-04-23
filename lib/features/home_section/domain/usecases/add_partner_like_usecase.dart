@@ -9,6 +9,8 @@ class AddPartnerLikeUseCase {
 
   AddPartnerLikeUseCase({required this.repository});
 
-  Future<Either<Failure, AddPartnerLikeEntity>> execute(AddPartnerLikeRequest addPartnerLikeRequest) async =>
-      await repository.addPartnerLike(addpartnerLikeRequest: addPartnerLikeRequest);
+  Future<Either<Failure, AddPartnerLikeEntity>> execute(
+          AddPartnerLikeRequest addPartnerLikeRequest) async =>
+      await repository.addPartnerLike(
+          addpartnerLikeRequest: addPartnerLikeRequest);
 }

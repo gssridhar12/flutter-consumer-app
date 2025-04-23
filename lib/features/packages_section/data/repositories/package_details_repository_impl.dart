@@ -3,7 +3,7 @@ import 'package:flutter_consumer_app/core/error/failures.dart';
 import 'package:flutter_consumer_app/features/packages_section/data/datasources/remote/package_details_remote_datasources.dart';
 import 'package:flutter_consumer_app/features/packages_section/domain/entities/package_details_entitiy.dart';
 import 'package:flutter_consumer_app/features/packages_section/domain/repositories/package_details_repository.dart';
- 
+
 class PackageDetailsRepositoryImpl implements PackageDetailsRepository {
   final PackageDetailsRemoteDataSource packageRemoteDataSource;
 

@@ -38,7 +38,7 @@ class BookingRepositoryImpl implements BookingRepository {
           await remoteDataSource.getBooking(bookingUuid: bookingUuid);
       log(booking.message.toString());
       return Right(booking);
-    } catch(e) {
+    } catch (e) {
       return const Left(ServerFailure(errorMessage: 'Server Failed'));
     }
   }
@@ -57,25 +57,26 @@ class BookingRepositoryImpl implements BookingRepository {
   }
 
   @override
-  Future<Either<Failure, GetUserBookingEntity>> getUserBooking({required String userId}) async{
-     try {
-      final booking =
-          await remoteDataSource.getUserBooking(userId: userId);
+  Future<Either<Failure, GetUserBookingEntity>> getUserBooking(
+      {required String userId}) async {
+    try {
+      final booking = await remoteDataSource.getUserBooking(userId: userId);
       log(booking.message.toString());
       return Right(booking);
-    } catch(e) {
+    } catch (e) {
       return const Left(ServerFailure(errorMessage: 'Server Failed'));
     }
   }
 
   @override
-  Future<Either<Failure, CouponEntity>> getCoupons({required String packageUuid}) async{
-      try {
+  Future<Either<Failure, CouponEntity>> getCoupons(
+      {required String packageUuid}) async {
+    try {
       final booking =
           await remoteDataSource.getCoupons(packageUuid: packageUuid);
       log(booking.message.toString());
       return Right(booking);
-    } catch(e) {
+    } catch (e) {
       return const Left(ServerFailure(errorMessage: 'Server Failed'));
     }
   }

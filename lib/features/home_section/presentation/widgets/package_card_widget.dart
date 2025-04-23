@@ -61,8 +61,11 @@ class _PackageCardWidgetState extends State<PackageCardWidget>
                   padding: const EdgeInsets.symmetric(vertical: padding),
                   child: Row(
                     children: [
-                      
-                      LikeButton(packageUuid: package.package!.packageUuid!, userId: userId,widgetType: WidgetType.homescreen,),
+                      LikeButton(
+                        packageUuid: package.package!.packageUuid!,
+                        userId: userId,
+                        widgetType: WidgetType.homescreen,
+                      ),
                       sboxW,
                       FittedBox(
                         child: Text(

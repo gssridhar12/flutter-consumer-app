@@ -20,7 +20,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   final GetUserUsecase getUserUsecase;
   final UpdateUserUsecase updateUserUsecase;
   final AddPackageReviewUsecase reviewUsecase;
-  UserBloc(this.getUserUsecase, this.updateUserUsecase, this.reviewUsecase) : super(UserInitial()) {
+  UserBloc(this.getUserUsecase, this.updateUserUsecase, this.reviewUsecase)
+      : super(UserInitial()) {
     final userId = localDb.getString('id');
     on<GetUser>(
       (event, emit) async {

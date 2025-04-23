@@ -2,7 +2,6 @@
 // import 'package:flutter_consumer_app/core/constant/constant.dart';
 // import 'package:flutter_consumer_app/features/home_section/src/presentation/pages/become_partner/BecomeAPartnerButton.dart';
 
-
 // class BecomeSuccessButtonPage extends StatefulWidget {
 //   const BecomeSuccessButtonPage({Key? key}) : super(key: key);
 

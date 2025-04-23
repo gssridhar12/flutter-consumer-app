@@ -7,7 +7,5 @@ List<PackagePackage> getBestSellerPackages(List<PackagePackage> packages) {
 }
 
 List<PackagePackage> getPromotedPackages(List<PackagePackage> packages) {
-  return packages
-      .where((product) => product.promotedPackages == true)
-      .toList();
+  return packages.where((product) => product.promotedPackages == true).toList();
 }

@@ -20,7 +20,7 @@ class SearchRepositoryImpl implements SearchRepository {
           await remoteDataSource.getPackagesWithPackageName(keyword);
       log(package.message!);
 
-      if (package.data == null || package.code=="FAILED") {
+      if (package.data == null || package.code == "FAILED") {
         return const Left(ServerFailure(errorMessage: 'Server Failed'));
       }
 
@@ -37,7 +37,7 @@ class SearchRepositoryImpl implements SearchRepository {
       final partner = await remoteDataSource.getPartnerWithPartnerName(keyword);
       log(partner.message!);
 
-       if (partner.data == null) {
+      if (partner.data == null) {
         return const Left(ServerFailure(errorMessage: 'Server Failed'));
       }
 

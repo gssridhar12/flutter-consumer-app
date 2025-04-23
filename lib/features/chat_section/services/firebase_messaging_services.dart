@@ -75,7 +75,6 @@ class FirebaseMessagingService {
     AppNavigation.pushNavigation(
         navigatorKey.currentContext!, const ChatHomePage());
     log('handling message');
-
   }
 
   final _androidChannel = const AndroidNotificationChannel(

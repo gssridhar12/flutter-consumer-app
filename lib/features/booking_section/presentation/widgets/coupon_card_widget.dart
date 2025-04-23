@@ -43,7 +43,7 @@ class _CouponCardWidgetState extends State<CouponCardWidget> {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                child: Text(widget.packageCoupon!.couponCode??"",
+                child: Text(widget.packageCoupon!.couponCode ?? "",
                     style: AppStyles.black18regular),
               ),
               Padding(
@@ -58,7 +58,7 @@ class _CouponCardWidgetState extends State<CouponCardWidget> {
                   child: DottedLine()),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                child: Text(widget.packageCoupon.couponDescription??"",
+                child: Text(widget.packageCoupon.couponDescription ?? "",
                     style: AppStyles.black16regular),
               ),
               InkWell(
@@ -78,7 +78,8 @@ class _CouponCardWidgetState extends State<CouponCardWidget> {
                   context.read<CouponCubit>().selectCoupon(
                       coupon: widget.packageCoupon,
                       isSelected: true,
-                      packageAmount: widget!.packageCoupon!.fixedAmount!.toInt());
+                      packageAmount:
+                          widget!.packageCoupon!.fixedAmount!.toInt());
                   Navigator.pop(context);
                 },
                 child: Container(

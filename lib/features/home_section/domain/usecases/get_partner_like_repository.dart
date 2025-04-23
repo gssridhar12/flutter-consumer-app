@@ -1,4 +1,3 @@
-
 import 'package:either_dart/either.dart';
 import 'package:flutter_consumer_app/core/error/failures.dart';
 import 'package:flutter_consumer_app/features/home_section/domain/entities/response/get_like_entity.dart';
@@ -9,6 +8,7 @@ class GetPartnerLikeUseCase {
 
   GetPartnerLikeUseCase({required this.repository});
 
-  Future<Either<Failure, GetPartnerLikeEntity>> execute(String partnerUUid) async =>
+  Future<Either<Failure, GetPartnerLikeEntity>> execute(
+          String partnerUUid) async =>
       await repository.getPartnerLike(parnterUuid: partnerUUid);
 }

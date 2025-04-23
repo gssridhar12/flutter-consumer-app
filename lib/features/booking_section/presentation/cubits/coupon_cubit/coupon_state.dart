@@ -21,7 +21,10 @@ class CouponAdded extends CouponCubitState {
   final PackageCoupon coupon;
   final int totalAmount;
 
-  const CouponAdded({required this.totalAmount, required this.coupon, required this.isCouponAdded});
+  const CouponAdded(
+      {required this.totalAmount,
+      required this.coupon,
+      required this.isCouponAdded});
   @override
   List<Object> get props => [isCouponAdded, coupon];
 }

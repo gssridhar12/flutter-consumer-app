@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
-
 ///Navigation Methode to use across the app
 class AppNavigation {
   static pushNavigation(BuildContext context, Widget myPage) {

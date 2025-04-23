@@ -4,7 +4,6 @@ import 'package:flutter_consumer_app/core/constant/constant.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/SuccessStorieExpandedPage.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/image_and_text_widget.dart';
 
-
 class SuccessStoryWidget extends StatelessWidget {
   const SuccessStoryWidget({super.key});
 

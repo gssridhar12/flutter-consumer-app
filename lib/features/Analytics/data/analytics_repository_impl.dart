@@ -7,12 +7,12 @@ import 'package:flutter_consumer_app/features/Analytics/domain/entities/device_i
 import 'package:mixpanel_flutter/mixpanel_flutter.dart';
 
 class MixpanelAnalyticsRepository implements AnalyticsRepository {
- final Mixpanel mixpanel;
+  final Mixpanel mixpanel;
 
   MixpanelAnalyticsRepository(this.mixpanel);
 
   void _initializeMixpanel() async {
- await Mixpanel.init('YOUR_MIXPANEL_TOKEN',trackAutomaticEvents: true);
+    await Mixpanel.init('YOUR_MIXPANEL_TOKEN', trackAutomaticEvents: true);
 
     DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
     DeviceInfo deviceInfo;
@@ -29,8 +29,10 @@ class MixpanelAnalyticsRepository implements AnalyticsRepository {
     // For example, set OS version, device model, etc.
     // _mixpanel.identify(deviceInfo.deviceIdentifier);
   }
+
   @override
-  Future<void >trackEvent(String eventName, Map<String, dynamic> properties) async {
-     mixpanel.track(eventName, properties: properties);
+  Future<void> trackEvent(
+      String eventName, Map<String, dynamic> properties) async {
+    mixpanel.track(eventName, properties: properties);
   }
 }

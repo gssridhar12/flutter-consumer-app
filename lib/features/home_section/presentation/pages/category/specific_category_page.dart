@@ -37,7 +37,6 @@ class _SpecificCategoryPageState extends State<SpecificCategoryPage>
   late TabController _tabController;
   final String? fullName = localDb.getString('fullName')!;
 
-
   @override
   void initState() {
     _tabController = TabController(length: 6, vsync: this);
@@ -58,16 +57,12 @@ class _SpecificCategoryPageState extends State<SpecificCategoryPage>
         key: scaffoldKey,
         drawer: DrawerWidget(
             scaffoldKey: scaffoldKey,
-            name: fullName != null
-                ? fullName!
-                : 'Guest',
+            name: fullName != null ? fullName! : 'Guest',
             isGuestUser: widget.isGuestUser!),
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(70),
           child: HomeAppBarWidget(
-            
             scaffoldKey: scaffoldKey,
-           
           ),
         ),
         body: NestedScrollView(

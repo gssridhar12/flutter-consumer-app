@@ -3,7 +3,6 @@
 // import 'package:flutter_consumer_app/features/home_section/src/presentation/pages/become_partner/NextSecPage.dart';
 // import 'package:flutter_consumer_app/features/home_section/src/presentation/widgets/AppbarWedget.dart';
 
-
 // class IndividualButtonPage extends StatefulWidget {
 //   const IndividualButtonPage({Key? key}) : super(key: key);
 

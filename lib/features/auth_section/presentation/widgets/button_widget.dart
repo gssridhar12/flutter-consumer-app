@@ -22,7 +22,8 @@ class ButtonWidget extends StatelessWidget {
       this.isLoading,
       this.borderRadius,
       this.buttonColor,
-      this.borderColor, this.buttonStatus});
+      this.borderColor,
+      this.buttonStatus});
 
   final String text;
   final Widget? navigation;
@@ -30,7 +31,6 @@ class ButtonWidget extends StatelessWidget {
   final Color? buttonColor;
   final Color? borderColor;
   final ButtonStatus? buttonStatus;
-
 
   final double? width;
   // final Future? onPressed;
@@ -95,7 +95,8 @@ class ButtonWidget extends StatelessWidget {
       ),
     );
   }
-   Widget _buttonState() {
+
+  Widget _buttonState() {
     switch (buttonStatus) {
       case ButtonStatus.loading:
         return CircularProgressIndicator(

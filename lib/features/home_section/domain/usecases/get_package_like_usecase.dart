@@ -8,6 +8,7 @@ class GetPackageLikeUseCase {
 
   GetPackageLikeUseCase({required this.repository});
 
-  Future<Either<Failure, GetPackageLikeEntity>> execute(String packageUuid) async =>
+  Future<Either<Failure, GetPackageLikeEntity>> execute(
+          String packageUuid) async =>
       await repository.getPackageLike(packageUuid: packageUuid);
 }

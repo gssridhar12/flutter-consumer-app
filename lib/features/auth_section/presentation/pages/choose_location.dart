@@ -94,9 +94,7 @@ class _ChooseLocationPageState extends State<ChooseLocationPage> {
                     isSelected != false
                         ? AppNavigation.pushNavigation(
                             context,
-                            const HomePage(
-                              
-                            ),
+                            const HomePage(),
                           )
                         : null;
                   },

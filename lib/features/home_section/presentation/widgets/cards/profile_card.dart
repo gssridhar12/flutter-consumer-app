@@ -55,8 +55,6 @@ class _ProfileCardState extends State<ProfileCard> {
         if (state is GetPartnerProfileSuccess) {
           final profile = state.partnerProfile.data!.profile!.profileDetails!;
 
-          
-
           return CustomContainerWidget(
             child: Column(
               children: [

@@ -10,18 +10,17 @@ sealed class PackageLikeBlocEvent extends Equatable {
 class AddPackageLike extends PackageLikeBlocEvent {
   final AddPackageLikeRequest addPackageLikeRequest;
 
- const AddPackageLike({required this.addPackageLikeRequest});
+  const AddPackageLike({required this.addPackageLikeRequest});
 
-    @override
+  @override
   List<Object> get props => [addPackageLikeRequest];
 }
-
 
 class GetPackageLike extends PackageLikeBlocEvent {
   final String userId;
 
- const GetPackageLike({required this.userId});
+  const GetPackageLike({required this.userId});
 
-    @override
+  @override
   List<Object> get props => [userId];
 }
