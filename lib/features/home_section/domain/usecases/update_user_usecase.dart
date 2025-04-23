@@ -10,6 +10,7 @@ class UpdateUserUsecase {
 
   UpdateUserUsecase({required this.repository});
 
-  Future<Either<Failure, UpdateUserEntity>> execute(UpdateUserRequest request) async =>
+  Future<Either<Failure, UpdateUserEntity>> execute(
+          UpdateUserRequest request) async =>
       await repository.updateUserDetails(request);
 }

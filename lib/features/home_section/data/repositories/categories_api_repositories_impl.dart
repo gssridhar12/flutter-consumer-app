@@ -17,7 +17,7 @@ class CategoriesApiRepositoryImpl implements CategoriesApiRepository {
     try {
       final category = await remoteDataSource.getChildCategory();
       log(category.data.toString());
-      
+
       return Right(category);
     } catch (e) {
       log(e.toString());

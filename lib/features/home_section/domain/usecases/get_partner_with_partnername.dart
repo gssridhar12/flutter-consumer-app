@@ -8,6 +8,7 @@ class GetPartnerWithPartnerName {
 
   GetPartnerWithPartnerName({required this.repository});
 
-  Future<Either<Failure, GetPartnerSearchEntity>> execute(String keyword) async =>
+  Future<Either<Failure, GetPartnerSearchEntity>> execute(
+          String keyword) async =>
       await repository.getPartnerWithPartnerName(keyword);
 }

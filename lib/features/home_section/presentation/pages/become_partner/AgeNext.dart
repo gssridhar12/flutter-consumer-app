@@ -3,7 +3,6 @@
 // import 'package:flutter_consumer_app/features/home_section/src/presentation/pages/become_partner/location.dart';
 // import 'package:flutter_consumer_app/features/home_section/src/presentation/widgets/AppbarWedget.dart';
 
-
 // class AgeButtonPage extends StatefulWidget {
 //   const AgeButtonPage({Key? key}) : super(key: key);
 

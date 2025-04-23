@@ -5,7 +5,6 @@ import 'package:flutter_consumer_app/features/home_section/presentation/widgets/
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/home_appbar_widget.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/story_view_page.dart';
 
-
 class HomeSuccessStoryExpanded extends StatelessWidget {
   const HomeSuccessStoryExpanded({super.key});
 

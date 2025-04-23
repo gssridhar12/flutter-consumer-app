@@ -19,7 +19,7 @@ class AppStyles {
     color: colorblack,
     fontWeight: regular,
   );
-   static TextStyle black18regularWithOpacity = TextStyle(
+  static TextStyle black18regularWithOpacity = TextStyle(
     fontSize: 18,
     color: colorblack.withOpacity(0.9),
     fontWeight: regular,

@@ -1,6 +1,5 @@
 import 'package:add_2_calendar/add_2_calendar.dart';
 
-
 ///To launch Google calender app to saving Events
 Event buildEvent(
     {Recurrence? recurrence,

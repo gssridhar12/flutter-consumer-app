@@ -19,9 +19,7 @@ class ReviewsTabWidget extends StatelessWidget {
       SliverToBoxAdapter(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child:
-            
-              Column(
+          child: Column(
             children: [
               sbox20,
               HeadingTextWidget(text: '${reviews.length} Reviews'),
@@ -117,25 +115,24 @@ class ReviewsTabWidget extends StatelessWidget {
               ),
               // sbox20,
             ],
-         
           ),
         ),
       ),
     ]);
   }
 }
- // RatingBar.builder(
-              //   initialRating: 3,
-              //   minRating: 1,
-              //   direction: Axis.horizontal,
-              //   allowHalfRating: true,
-              //   itemCount: 5,
-              //   itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-              //   itemBuilder: (context, _) => const Icon(
-              //     Icons.star,
-              //     color: colorred,
-              //   ),
-              //   onRatingUpdate: (rating) {
-              //     print(rating);
-              //   },
-              // ),
+// RatingBar.builder(
+//   initialRating: 3,
+//   minRating: 1,
+//   direction: Axis.horizontal,
+//   allowHalfRating: true,
+//   itemCount: 5,
+//   itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+//   itemBuilder: (context, _) => const Icon(
+//     Icons.star,
+//     color: colorred,
+//   ),
+//   onRatingUpdate: (rating) {
+//     print(rating);
+//   },
+// ),

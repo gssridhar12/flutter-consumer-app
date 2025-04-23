@@ -33,7 +33,7 @@ class PackageTabWidget extends StatelessWidget {
                     height: width * 0.22,
                     width: width * 0.22,
                     child: CustomImage(
-                      imageUrl: package.packageDetails!.packageCoverImage??"",
+                      imageUrl: package.packageDetails!.packageCoverImage ?? "",
                       borderRadius: BorderRadius.circular(12),
                     )),
               ),
@@ -44,7 +44,7 @@ class PackageTabWidget extends StatelessWidget {
                   children: [
                     sbox20,
                     Text(
-                      data.packageDetails!.packageName??"",
+                      data.packageDetails!.packageName ?? "",
                       style: const TextStyle(fontSize: 16),
                     ),
                     sbox,
@@ -73,7 +73,7 @@ class PackageTabWidget extends StatelessWidget {
                     ),
                     sbox,
                     Text(
-                      package.partnerName??"",
+                      package.partnerName ?? "",
                       style: const TextStyle(fontSize: 16),
                     ),
                   ],

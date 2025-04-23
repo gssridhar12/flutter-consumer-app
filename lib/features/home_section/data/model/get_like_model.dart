@@ -43,4 +43,3 @@ class PartnerDataModel extends PartnerData {
         isLiked: json["is_liked"],
       );
 }
-

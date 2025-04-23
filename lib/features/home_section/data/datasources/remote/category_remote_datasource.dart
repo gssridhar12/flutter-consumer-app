@@ -43,8 +43,7 @@ class CategoryRemoteDataSourceImpl implements CategoryRemoteDataSource {
     final url = Uri.parse(
         'https://partnerapi.megmo.in/partner-service/child-category/getCategoryScreen/v2');
     final responce = await httpClient.post(url,
-        headers: headers,
-        body: jsonEncode(requestBody));
+        headers: headers, body: jsonEncode(requestBody));
     if (responce.statusCode == 200) {
       return ChildCategoryModelClass.fromJson(json.decode(responce.body));
     } else {

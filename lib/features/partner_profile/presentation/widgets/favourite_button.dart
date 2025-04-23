@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -109,8 +108,7 @@ class ProfileFavoriteButtonStateWidget
                   Utils.showSnackbar('Removed from Favourties');
                   SchedulerBinding.instance.addPostFrameCallback((_) {
                     setState(() {
-                      isFavourite =
-                          !isFavourite;
+                      isFavourite = !isFavourite;
                     });
                   });
                 }

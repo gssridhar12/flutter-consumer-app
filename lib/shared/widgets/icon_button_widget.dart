@@ -5,7 +5,8 @@ class IconButtonWidget extends StatelessWidget {
   const IconButtonWidget({
     super.key,
     required this.buttonName,
-    this.onTap,  this.buttonIcon=Icons.chat,
+    this.onTap,
+    this.buttonIcon = Icons.chat,
   });
   final String buttonName;
   final IconData buttonIcon;
@@ -25,7 +26,7 @@ class IconButtonWidget extends StatelessWidget {
         onPressed: () {
           onTap!();
         },
-        icon:  Icon(buttonIcon),
+        icon: Icon(buttonIcon),
         label: Text(
           buttonName,
           style: const TextStyle(color: colorred),

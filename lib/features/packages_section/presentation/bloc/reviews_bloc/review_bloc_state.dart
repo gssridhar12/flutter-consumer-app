@@ -2,14 +2,12 @@ part of 'review_bloc_bloc.dart';
 
 sealed class PartnerReviewBlocState extends Equatable {
   const PartnerReviewBlocState();
-  
+
   @override
   List<Object> get props => [];
 }
 
 final class PartnerReviewBlocInitial extends PartnerReviewBlocState {}
-
-
 
 class GetPartnerReviewSuccess extends PartnerReviewBlocState {
   final PartnerReviewEntity reviews;

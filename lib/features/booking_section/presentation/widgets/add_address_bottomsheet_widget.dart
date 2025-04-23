@@ -18,9 +18,10 @@ import '../../../home_section/domain/entities/response/get_user_entity.dart';
 
 class AddAddressBottomSheetWidget extends StatefulWidget {
   const AddAddressBottomSheetWidget({
-    super.key, required this.userdata,
+    super.key,
+    required this.userdata,
   });
-  final GetUserEntity  userdata;
+  final GetUserEntity userdata;
 
   @override
   State<AddAddressBottomSheetWidget> createState() =>
@@ -30,7 +31,7 @@ class AddAddressBottomSheetWidget extends StatefulWidget {
 class _AddAddressBottomSheetWidgetState
     extends State<AddAddressBottomSheetWidget> {
   final formKey = GlobalKey<FormState>();
-    final userId = localDb.getString('id');
+  final userId = localDb.getString('id');
 
   late GoogleMapController mapController;
   late LatLng userLocation = const LatLng(-4.325, 15.322222);
@@ -171,11 +172,11 @@ class _AddAddressBottomSheetWidgetState
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(address.addressLine1??"",
+                          Text(address.addressLine1 ?? "",
                               style: const TextStyle(fontSize: 18)),
                           sbox,
                           Text(
-                            address.addressLine2??"",
+                            address.addressLine2 ?? "",
                             style: TextStyle(
                               fontSize: 14,
                               color: colorblack.withOpacity(0.5),
@@ -292,19 +293,27 @@ class _AddAddressBottomSheetWidgetState
                         onPressed: () {
                           BlocProvider.of<UserBloc>(context).add(UpdateUser(
                               UpdateUserRequest(
-                                  userUuid: userId??'',
+                                  userUuid: userId ?? '',
                                   updatedOn: DateTime.now(),
-                                  email: widget.userdata.data!.email??"",
-                                  firstName: widget.userdata.data!.firstName??"",
-                                  fullName: widget.userdata.data!.fullName??"",
-                                  gender: widget.userdata.data!.gender??"",
-                                  lastName: widget.userdata.data!.lastName??"",
-                                  mobileNumber: widget.userdata.data!.mobileNumber??"",
-                                  password: widget.userdata.data!.password??"",
-                                  patronLevel: widget.userdata.data!.patronLevel??0,
-                                  profileImage: widget.userdata.data!.profileImage??"",
+                                  email: widget.userdata.data!.email ?? "",
+                                  firstName:
+                                      widget.userdata.data!.firstName ?? "",
+                                  fullName:
+                                      widget.userdata.data!.fullName ?? "",
+                                  gender: widget.userdata.data!.gender ?? "",
+                                  lastName:
+                                      widget.userdata.data!.lastName ?? "",
+                                  mobileNumber:
+                                      widget.userdata.data!.mobileNumber ?? "",
+                                  password:
+                                      widget.userdata.data!.password ?? "",
+                                  patronLevel:
+                                      widget.userdata.data!.patronLevel ?? 0,
+                                  profileImage:
+                                      widget.userdata.data!.profileImage ?? "",
                                   fcmToken: widget.userdata.data!.fcmToken,
-                                  dateOfBirth:widget.userdata.data!.dateOfBirth,
+                                  dateOfBirth:
+                                      widget.userdata.data!.dateOfBirth,
                                   createdOn: widget.userdata.data!.createdOn,
                                   addressUser: AddressUser(
                                       addressType: saveAsController.text,

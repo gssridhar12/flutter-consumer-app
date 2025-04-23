@@ -29,7 +29,7 @@ class ChatBubbledd extends StatelessWidget {
           children: [
             Text(
               overflow: TextOverflow.clip,
-              message.message??'',
+              message.message ?? '',
               style: const TextStyle(
                   color: colorblack, fontSize: 16, fontWeight: FontWeight.w400),
             ),

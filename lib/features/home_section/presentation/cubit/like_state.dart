@@ -1,4 +1,3 @@
-
 import 'package:equatable/equatable.dart';
 
 // Define states for the LikeCubit
@@ -14,7 +13,6 @@ class LikeState extends Equatable {
   });
 
   factory LikeState.initial() {
-    
     return const LikeState(
       isLiked: false,
       isLoading: false,

@@ -9,6 +9,8 @@ class AddPackageLikeUseCase {
 
   AddPackageLikeUseCase({required this.repository});
 
-  Future<Either<Failure, AddPackageLikeEntity>> execute(AddPackageLikeRequest addPackageLikeRequest) async =>
-      await repository.addPackageLike(addPackageLikeRequest: addPackageLikeRequest);
+  Future<Either<Failure, AddPackageLikeEntity>> execute(
+          AddPackageLikeRequest addPackageLikeRequest) async =>
+      await repository.addPackageLike(
+          addPackageLikeRequest: addPackageLikeRequest);
 }

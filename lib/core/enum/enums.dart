@@ -1,1 +1,1 @@
-  enum Tiers { gold, silver, bron }
+enum Tiers { gold, silver, bron }

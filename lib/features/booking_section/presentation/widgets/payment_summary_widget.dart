@@ -79,7 +79,7 @@ class _PaymentSummaryTileWidgetState extends State<PaymentSummaryTileWidget> {
             PaymentSummaryListTilewidget(
               title: 'Base fare',
               trailing:
-                  'Rs ${data.packageDetails!.packageCost??0 - data.packageDetails!.transportationCost! - data.packageDetails!.extraAllowance!}',
+                  'Rs ${data.packageDetails!.packageCost ?? 0 - data.packageDetails!.transportationCost! - data.packageDetails!.extraAllowance!}',
               isBold: true,
             ),
             BlocBuilder<CouponCubit, CouponCubitState>(

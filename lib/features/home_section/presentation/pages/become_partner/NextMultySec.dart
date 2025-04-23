@@ -4,7 +4,6 @@
 // import 'package:flutter_consumer_app/features/home_section/src/presentation/pages/become_partner/NextFourForm.dart';
 // import 'package:flutter_consumer_app/features/home_section/src/presentation/widgets/AppbarWedget.dart';
 
-
 // class NextMultyThirdButtonPage extends StatefulWidget {
 //   const NextMultyThirdButtonPage({Key? key}) : super(key: key);
 

@@ -7,8 +7,12 @@ import 'package:flutter_consumer_app/features/home_section/domain/entities/respo
 import 'package:flutter_consumer_app/features/home_section/domain/entities/response/get_package_like_entity.dart';
 
 abstract class LikeRepository {
-  Future<Either<Failure, AddPackageLikeEntity>> addPackageLike({required AddPackageLikeRequest addPackageLikeRequest});
-  Future<Either<Failure, GetPackageLikeEntity>> getPackageLike({required String packageUuid});
-  Future<Either<Failure, AddPartnerLikeEntity>> addPartnerLike({required AddPartnerLikeRequest addpartnerLikeRequest});
-  Future<Either<Failure, GetPartnerLikeEntity>> getPartnerLike({required String parnterUuid});
+  Future<Either<Failure, AddPackageLikeEntity>> addPackageLike(
+      {required AddPackageLikeRequest addPackageLikeRequest});
+  Future<Either<Failure, GetPackageLikeEntity>> getPackageLike(
+      {required String packageUuid});
+  Future<Either<Failure, AddPartnerLikeEntity>> addPartnerLike(
+      {required AddPartnerLikeRequest addpartnerLikeRequest});
+  Future<Either<Failure, GetPartnerLikeEntity>> getPartnerLike(
+      {required String parnterUuid});
 }

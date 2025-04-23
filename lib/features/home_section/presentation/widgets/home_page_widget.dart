@@ -273,7 +273,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 sbox,
                 BlocBuilder<PackageBloc, PackageState>(
                   builder: (context, state) {
-                   
                     if (state is GetMostBookedPackageLoading) {
                       return SizedBox(
                         height: 38.h,
@@ -286,7 +285,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       return const ShowErrorWidget();
                     }
                     if (state is GetMostBookedPackageSuccess) {
-                    
                       return ConstrainedBox(
                         constraints: BoxConstraints(
                           minHeight: MediaQuery.of(context).size.height * 0.38,

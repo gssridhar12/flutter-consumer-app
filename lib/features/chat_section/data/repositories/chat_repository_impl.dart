@@ -13,7 +13,6 @@ import 'package:flutter_consumer_app/features/chat_section/domain/repositories/c
 class ChatRepositoryImpl implements ChatRepository {
   final ChatRemoteDataSource remoteDataSource;
   final ChatLocalDataSource localDataSource;
-  
 
   ChatRepositoryImpl(
       {required this.localDataSource, required this.remoteDataSource});
@@ -57,7 +56,6 @@ class ChatRepositoryImpl implements ChatRepository {
       }
     }
   }
-
 
   @override
   Future<Either<Failure, SentMessageEntity>> sentMessage(

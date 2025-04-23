@@ -26,6 +26,7 @@ class GetPackageReviewLoading extends PackageReviewState {
   @override
   List<Object> get props => [];
 }
+
 class NoPackageReviewsFound extends PackageReviewState {
   @override
   List<Object> get props => [];

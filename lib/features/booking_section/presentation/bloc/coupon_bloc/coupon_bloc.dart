@@ -11,8 +11,7 @@ class CouponBloc extends Bloc<CouponEvent, CouponState> {
   CouponBloc(this.useCase) : super(CouponInitial()) {
     on<GetCoupon>((event, emit) async {
       emit(const GetCouponLoading());
-      var auth = await useCase.execute(
-          packageUuid: event.packageUuid);
+      var auth = await useCase.execute(packageUuid: event.packageUuid);
       auth.fold(
         (left) {
           emit(const GetCouponFailed());

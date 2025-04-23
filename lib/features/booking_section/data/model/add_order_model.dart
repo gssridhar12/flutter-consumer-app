@@ -1,6 +1,6 @@
 import 'package:flutter_consumer_app/features/booking_section/domain/entities/response/add_order_entity.dart';
 
-class AddOrderModel extends AddOrderEntity{
+class AddOrderModel extends AddOrderEntity {
   AddOrderModel({
     required String code,
     required String message,
@@ -13,8 +13,7 @@ class AddOrderModel extends AddOrderEntity{
           successStatus: successStatus,
         );
 
-  factory AddOrderModel.fromJson(Map<String, dynamic> json) =>
-      AddOrderModel(
+  factory AddOrderModel.fromJson(Map<String, dynamic> json) => AddOrderModel(
         code: json["code"],
         message: json["message"],
         data: DataModel.fromJson(json["data"]),
@@ -114,8 +113,7 @@ class StatusLogModel extends StatusLog {
           paymentFor: paymentFor,
         );
 
-  factory StatusLogModel.fromJson(Map<String, dynamic> json) =>
-      StatusLogModel(
+  factory StatusLogModel.fromJson(Map<String, dynamic> json) => StatusLogModel(
         date: DateTime.parse(json["date"]),
         status: json["status"],
         amountPaid: json["amount_paid"],

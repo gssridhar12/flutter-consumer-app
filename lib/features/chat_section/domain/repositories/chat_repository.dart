@@ -7,7 +7,8 @@ import 'package:flutter_consumer_app/features/chat_section/domain/entities/respo
 
 abstract class ChatRepository {
   Future<Either<Failure, SentMessageEntity>> sentMessage(
-      {required SentMessageRequest sentMessageRequest,required String fcmToken});
+      {required SentMessageRequest sentMessageRequest,
+      required String fcmToken});
   Future<Either<Failure, GetUserMessageEntity>> getUserMessages(
       {required String userUuid});
   Future<Either<Failure, GetMessageEntity>> getMessage(

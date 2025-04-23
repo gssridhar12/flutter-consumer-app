@@ -9,8 +9,9 @@ part 'fresh_talent_state.dart';
 class FreshTalentBloc extends Bloc<FreshTalentEvent, FreshTalentState> {
   final GetFreshTalentOnMegmoUseCase freshTalentOnMegmo;
 
-  FreshTalentBloc({required this.freshTalentOnMegmo}) : super(FreshTalentInitial()) {
-      on<GetFreshTalentOnMegmo>(
+  FreshTalentBloc({required this.freshTalentOnMegmo})
+      : super(FreshTalentInitial()) {
+    on<GetFreshTalentOnMegmo>(
       (event, emit) async {
         emit(GetFreshTalentOnMegmoLoading());
         var partner = await freshTalentOnMegmo.execute();

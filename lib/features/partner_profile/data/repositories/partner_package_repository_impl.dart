@@ -23,8 +23,9 @@ class PartnerPackageRepositoryImpl implements PartnerPackageRepository {
   }
 
   @override
-  Future<Either<Failure, GetBucketEntity>> getBuckets({required String bucketUuid}) async{
-   try {
+  Future<Either<Failure, GetBucketEntity>> getBuckets(
+      {required String bucketUuid}) async {
+    try {
       final partnerPackage =
           await packageRemoteDataSource.getBucket(bucketUuid: bucketUuid);
       return Right(partnerPackage);

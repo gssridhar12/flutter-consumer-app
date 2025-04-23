@@ -31,8 +31,6 @@ class _UserLikedPageState extends State<UserLikedPage> {
     PackagesLikedTabWidget()
   ];
 
-  
-
   @override
   void initState() {
     context.read<PackageLikeBloc>().add(GetPackageLike(userId: userId));

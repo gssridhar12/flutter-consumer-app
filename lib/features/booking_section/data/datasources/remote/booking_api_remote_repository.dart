@@ -99,7 +99,8 @@ class BookingApiRemoteRepositoryImpl implements BookingApiRemoteRepository {
 
     final url = Uri.parse(
         'https://partnerapi.megmo.in/partner-service/booking/getUserBookings/v2/fce955b4-2fc4-4842-81ea-33ff00fba7e7');
-    final response = await httpClient.post(url, headers: headers,body: json.encode(requestBody));
+    final response = await httpClient.post(url,
+        headers: headers, body: json.encode(requestBody));
 
     if (response.statusCode == 200) {
       final decodedBody = json.decode(response.body);

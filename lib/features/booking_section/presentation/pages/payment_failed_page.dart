@@ -48,10 +48,10 @@ class PaymentFailedPage extends StatelessWidget {
               ButtonWidget(
                 onPressed: () {
                   AppNavigation.pushRepacementNavigation(
-                      context, const BookingDetailsPage(
-                    packageUuid: 'b713b5ea-bb30-4960-a8cf-0d9661d002a5'));
+                      context,
+                      const BookingDetailsPage(
+                          packageUuid: 'b713b5ea-bb30-4960-a8cf-0d9661d002a5'));
                 },
-               
                 text: 'Retry',
                 width: width,
               ),

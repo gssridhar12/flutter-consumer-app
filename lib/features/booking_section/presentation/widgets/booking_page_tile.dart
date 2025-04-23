@@ -18,7 +18,7 @@ class BookingPageTile extends StatelessWidget {
     this.isDataUpdated,
     this.isEditButton,
   });
-    final String title;
+  final String title;
   final IconData? icon;
   final bool trailingAddButton;
   final bool trailingOfferButton;

@@ -9,11 +9,10 @@ import 'package:flutter_consumer_app/features/home_section/domain/usecases/get_a
 part 'all_partner_bloc_event.dart';
 part 'all_partner_bloc_state.dart';
 
-class AllPartnerBloc
-    extends Bloc<AllPartnerBlocEvent, AllPartnerBlocState> {
+class AllPartnerBloc extends Bloc<AllPartnerBlocEvent, AllPartnerBlocState> {
   final AllPartnerUsecase usecase;
   AllPartnerBloc(this.usecase) : super(AllPartnerBlocInitial()) {
-     on<GetAllProfiles>((event, emit) async {
+    on<GetAllProfiles>((event, emit) async {
       emit(GetAllProfileLoading());
       var partner = await usecase.execute();
       partner.fold(
@@ -49,6 +48,5 @@ class AllPartnerBloc
     //     },
     //   );
     // }
-
   }
 }

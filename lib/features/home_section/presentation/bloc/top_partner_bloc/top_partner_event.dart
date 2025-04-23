@@ -6,6 +6,7 @@ sealed class TopPartnerEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
 class GetTopTopPartnerInDemant extends TopPartnerEvent {
   const GetTopTopPartnerInDemant();
 

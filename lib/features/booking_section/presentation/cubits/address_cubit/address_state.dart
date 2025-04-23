@@ -10,7 +10,7 @@ sealed class AddressCubitState extends Equatable {
 final class AddressInitial extends AddressCubitState {
   final bool isAddressAdded;
 
- const AddressInitial({required this.isAddressAdded});
+  const AddressInitial({required this.isAddressAdded});
 }
 
 class AddressAdded extends AddressCubitState {

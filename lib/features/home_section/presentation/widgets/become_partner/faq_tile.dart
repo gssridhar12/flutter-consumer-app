@@ -14,7 +14,6 @@ class QAItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      
       tilePadding: EdgeInsets.zero,
       title: title,
       children: children,

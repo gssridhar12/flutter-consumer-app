@@ -18,7 +18,7 @@ class LatestTabWidget extends StatelessWidget {
         return Padding(
             padding: const EdgeInsets.only(top: 8.0, bottom: 8, right: 8),
             child: CustomImage(
-              imageUrl: gallery[index].media![0].mediaType??"",
+              imageUrl: gallery[index].media![0].mediaType ?? "",
               borderRadius: BorderRadius.circular(10),
             ));
       },

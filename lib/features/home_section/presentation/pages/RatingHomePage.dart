@@ -3,7 +3,6 @@ import 'package:flutter_consumer_app/core/colors/colors.dart';
 import 'package:flutter_consumer_app/core/constant/constant.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/AppbarWedget.dart';
 
-
 class RatingHomePage extends StatefulWidget {
   const RatingHomePage({Key? key}) : super(key: key);
 

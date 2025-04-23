@@ -49,7 +49,7 @@ Future main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await FirebaseMessagingService().initNotifications();
   // initializeMixpanel();
- await setupHive();
+  await setupHive();
 
   await di.init();
   localDb = await SharedPreferences.getInstance();
@@ -67,8 +67,7 @@ void initializeMixpanel() async {
 
 Future<void> setupHive() async {
   await Hive.initFlutter();
-  Hive.registerAdapter(
-      GetUserMessageLocalModelAdapter());
+  Hive.registerAdapter(GetUserMessageLocalModelAdapter());
   Hive.registerAdapter(DataModelAdapter());
   Hive.registerAdapter(ClientMessageModelAdapter());
   Hive.registerAdapter(ChatMessageModelAdapter());
@@ -124,10 +123,9 @@ class MainApp extends StatelessWidget {
           designSize: const Size(375, 812),
           builder: (context, child) => AnnotatedRegion<SystemUiOverlayStyle>(
             value: const SystemUiOverlayStyle(
-              
               statusBarColor: Colors.transparent, //top status bar
-              systemNavigationBarColor: Colors
-                  .white, // navigation bar color, the one Im looking for
+              systemNavigationBarColor:
+                  Colors.white, // navigation bar color, the one Im looking for
               statusBarIconBrightness:
                   Brightness.dark, // status bar icons' color
               systemNavigationBarIconBrightness:

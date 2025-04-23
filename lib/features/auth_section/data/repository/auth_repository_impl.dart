@@ -51,8 +51,7 @@ class AuthRepositoryImpl implements AuthRepository {
         if (e is ServerFailure) {
           return Left(e);
         } else {
-          return const Left(
-              ServerFailure(errorMessage: 'SignUp Failed'));
+          return const Left(ServerFailure(errorMessage: 'SignUp Failed'));
         }
       }
     } else {

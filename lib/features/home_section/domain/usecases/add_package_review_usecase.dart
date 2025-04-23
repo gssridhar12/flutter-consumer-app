@@ -9,6 +9,7 @@ class AddPackageReviewUsecase {
 
   AddPackageReviewUsecase({required this.repository});
 
-  Future<Either<Failure, AddPackageReviewEntity>> execute(AddPackageReviewRequest addPackageLikeRequest) async =>
+  Future<Either<Failure, AddPackageReviewEntity>> execute(
+          AddPackageReviewRequest addPackageLikeRequest) async =>
       await repository.addPackageReview(request: addPackageLikeRequest);
 }

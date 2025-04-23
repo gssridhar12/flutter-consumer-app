@@ -18,7 +18,8 @@ String getUserMessageModelToJson(GetUserMessageModel data) =>
     json.encode(data.toJson());
 
 @freezed
-class GetUserMessageModel extends GetUserMessageEntity with _$GetUserMessageModel {
+class GetUserMessageModel extends GetUserMessageEntity
+    with _$GetUserMessageModel {
   const factory GetUserMessageModel({
     @JsonKey(name: "code") String? code,
     @JsonKey(name: "message") String? message,
@@ -38,7 +39,8 @@ class DataModel extends Data with _$DataModel {
     @JsonKey(name: "sendOn") DateTime? sendOn,
   }) = _DataModel;
 
-  factory DataModel.fromJson(Map<String, dynamic> json) => _$DataModelFromJson(json);
+  factory DataModel.fromJson(Map<String, dynamic> json) =>
+      _$DataModelFromJson(json);
 }
 
 @freezed

@@ -7,7 +7,6 @@ import 'package:flutter_consumer_app/features/booking_section/presentation/widge
 import 'package:flutter_consumer_app/features/booking_section/presentation/widgets/coupon_card_widget.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/search_field_widget.dart';
 
-
 class SelectCouponBottomSheetWidget extends StatefulWidget {
   const SelectCouponBottomSheetWidget({
     super.key,

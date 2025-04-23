@@ -17,7 +17,7 @@ class IconAndTextWidget extends StatelessWidget {
   final Color? color;
   final bool? isUnderline;
   final void Function()? onTap;
-  
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

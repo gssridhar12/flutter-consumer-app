@@ -2,7 +2,7 @@ part of 'partner_profile_bloc.dart';
 
 sealed class PartnerProfileState extends Equatable {
   const PartnerProfileState();
-  
+
   @override
   List<Object> get props => [];
 }

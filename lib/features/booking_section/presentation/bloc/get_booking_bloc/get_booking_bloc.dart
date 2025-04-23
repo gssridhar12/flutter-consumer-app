@@ -9,18 +9,19 @@ part 'get_booking_state.dart';
 class GetBookingBloc extends Bloc<GetBookingEvent, GetBookingState> {
   final GetBookingUseCase getBookingUseCase;
 
-  GetBookingBloc({required this.getBookingUseCase}) : super(GetBookingInitial()) {
-        on<GetBooking>((event, emit) async {
+  GetBookingBloc({required this.getBookingUseCase})
+      : super(GetBookingInitial()) {
+    on<GetBooking>((event, emit) async {
       emit(const GetBookingLoading());
-      var auth = await getBookingUseCase.execute(
-          bookingUuid: event.bookingUuid);
+      var auth =
+          await getBookingUseCase.execute(bookingUuid: event.bookingUuid);
       auth.fold(
         (left) {
           emit(const GetBookingFailed());
         },
         (right) {
           if (right.successStatus == true) {
-            emit( GetBookingSuccess(getBookingEntity: right));
+            emit(GetBookingSuccess(getBookingEntity: right));
           } else {
             emit(const GetBookingFailed());
           }

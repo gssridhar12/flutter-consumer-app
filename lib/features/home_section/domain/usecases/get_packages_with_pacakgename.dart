@@ -8,6 +8,7 @@ class GetPackagesWithPackageName {
 
   GetPackagesWithPackageName({required this.repository});
 
-  Future<Either<Failure, GetPackageSearchEntity>> execute(String keyword) async =>
+  Future<Either<Failure, GetPackageSearchEntity>> execute(
+          String keyword) async =>
       await repository.getPackagesWithPackageName(keyword);
 }

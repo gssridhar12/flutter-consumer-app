@@ -6,6 +6,7 @@ sealed class PackageEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
 class GetMostBookedPackage extends PackageEvent {
   const GetMostBookedPackage();
 

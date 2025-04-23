@@ -169,7 +169,7 @@ class LogIntoExistingAccountPage extends StatelessWidget {
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>
-                                                 ForgotPasswordPage(),
+                                                ForgotPasswordPage(),
                                           ));
                                     },
                                     child: const Text(

@@ -1,6 +1,5 @@
 part of 'location_cubit.dart';
 
-
 class LocationState extends Equatable {
   final String location;
   final bool isLoading;

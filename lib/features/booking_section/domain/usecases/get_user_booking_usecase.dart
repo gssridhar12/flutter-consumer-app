@@ -8,6 +8,7 @@ class GetUserBookingUseCase {
 
   GetUserBookingUseCase({required this.repository});
 
-  Future<Either<Failure, GetUserBookingEntity>> execute({required String userId}) async =>
+  Future<Either<Failure, GetUserBookingEntity>> execute(
+          {required String userId}) async =>
       await repository.getUserBooking(userId: userId);
 }

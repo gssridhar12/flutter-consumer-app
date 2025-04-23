@@ -27,9 +27,8 @@ class _LuxeMegmoScreenState extends State<LuxeMegmoScreen> {
               children: [
                 const Text(
                   // Corrected widget name
-               
-                      'Recording musician as well as a professional performer with 10+ years of work experience',
-               
+
+                  'Recording musician as well as a professional performer with 10+ years of work experience',
                 ),
                 sbox20,
                 // const LuxePopupWidegtPage(), // Corrected widget name
@@ -48,10 +47,7 @@ class _LuxeMegmoScreenState extends State<LuxeMegmoScreen> {
                 ),
                 const Padding(
                   padding: EdgeInsets.only(left: 13, right: 13),
-                  child: SizedBox(
-                    height: 600,
-                    child: Text('data')
-                  ),
+                  child: SizedBox(height: 600, child: Text('data')),
                 ),
 
                 sbox20,
@@ -68,10 +64,7 @@ class _LuxeMegmoScreenState extends State<LuxeMegmoScreen> {
                 ),
                 const Padding(
                   padding: EdgeInsets.only(left: 13, right: 13),
-                  child: SizedBox(
-                    height: 600,
-                    child: Text('data')
-                  ),
+                  child: SizedBox(height: 600, child: Text('data')),
                 ),
 
                 sbox20,

@@ -105,7 +105,7 @@ class _SelectAddressBottomSheetWidgetState
                       },
                     ),
                     title: Text(
-                      address[index].addressType??"",
+                      address[index].addressType ?? "",
                     ),
                     subtitle: Text(
                       '${address[index].addressLine1},${address[index].addressLine2}${address[index].city},${address[index].pinCode}',
