@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
 import 'package:flutter_consumer_app/core/constant/constant.dart';
@@ -45,8 +44,8 @@ class PackageDetailsPage extends StatefulWidget {
 class _PackageDetailsPageState extends State<PackageDetailsPage> {
   late GoogleMapController mapController;
 
-  final LatLng _center = const LatLng(37.7749, -122.4194); // Initial map center
-  final Set<Marker> _markers = {}; // Define markers here
+  final LatLng _center = const LatLng(37.7749, -122.4194);
+  final Set<Marker> _markers = {};
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
@@ -150,7 +149,7 @@ class _PackageDetailsPageState extends State<PackageDetailsPage> {
                                                 imageUrl: package
                                                         .packageDetails!
                                                         .packageGallery![index]
-                                                        .media ??
+                                                        .mediatype ??
                                                     ""));
                                       },
                                     ),
@@ -187,11 +186,23 @@ class _PackageDetailsPageState extends State<PackageDetailsPage> {
                                                 ),
                                                 sbox5,
                                                 Text(
-                                                  '${DateFormat('EEEE').format(package.packageDetails!.createdOn!)}, ${package.packageDetails!.createdOn!.day.toString()}th ${DateFormat('MMMM').format(package.packageDetails!.createdOn!)}, ${package.packageDetails!.createdOn!.year.toString()}',
+                                                  package.packageDetails
+                                                              ?.createdOn !=
+                                                          null
+                                                      ? '${DateFormat('EEEE').format(package.packageDetails!.createdOn!)}, ${package.packageDetails!.createdOn!.day}th ${DateFormat('MMMM').format(package.packageDetails!.createdOn!)}, ${package.packageDetails!.createdOn!.year}'
+                                                      : 'Date not available', // Fallback text when `createdOn` is null
                                                   style: const TextStyle(
-                                                      color: colorwhite,
-                                                      fontSize: 16),
+                                                    color: colorwhite,
+                                                    fontSize: 16,
+                                                  ),
                                                 ),
+
+                                                // Text(
+                                                //   '${DateFormat('EEEE').format(package.packageDetails!.createdOn!)}, ${package.packageDetails!.createdOn!.day.toString()}th ${DateFormat('MMMM').format(package.packageDetails!.createdOn!)}, ${package.packageDetails!.createdOn!.year.toString()}',
+                                                //   style: const TextStyle(
+                                                //       color: colorwhite,
+                                                //       fontSize: 16),
+                                                // ),
                                               ],
                                             ),
                                           ),
@@ -209,7 +220,7 @@ class _PackageDetailsPageState extends State<PackageDetailsPage> {
                                     ),
                                   ),
                                   Positioned(
-                                    right: 80,
+                                    right: 30,
                                     top: 60,
                                     child: LikeButton(
                                       packageUuid: widget.uuid,
@@ -217,13 +228,13 @@ class _PackageDetailsPageState extends State<PackageDetailsPage> {
                                       widgetType: WidgetType.packagescreen,
                                     ),
                                   ),
-                                  const Positioned(
-                                    right: 20,
-                                    top: 60,
-                                    child: ContainerIconWidget(
-                                      icon: Icons.share,
-                                    ),
-                                  ),
+                                  // const Positioned(
+                                  //   right: 20,
+                                  //   top: 60,
+                                  //   child: ContainerIconWidget(
+                                  //     icon: Icons.share,
+                                  //   ),
+                                  // ),
                                   Positioned(
                                       right: 20,
                                       bottom: 70,
@@ -275,17 +286,20 @@ class _PackageDetailsPageState extends State<PackageDetailsPage> {
                                   ],
                                 ),
                                 const Spacer(),
-                                IconButtonWidget(
-                                  buttonName: 'Chat',
-                                  onTap: () {
-                                    AppNavigation.pushNavigation(
-                                      context,
-                                      ChatScreenCustom(
-                                        partnerUuid: package
-                                            .packageDetails!.partnerUuid!,
-                                      ),
-                                    );
-                                  },
+                                SizedBox(
+                                  width: 85,
+                                  child: IconButtonWidget(
+                                    buttonName: 'Chat',
+                                    onTap: () {
+                                      AppNavigation.pushNavigation(
+                                        context,
+                                        ChatScreenCustom(
+                                          partnerUuid: package
+                                              .packageDetails!.partnerUuid!,
+                                        ),
+                                      );
+                                    },
+                                  ),
                                 ),
                               ],
                             ),
@@ -416,8 +430,7 @@ class _PackageDetailsPageState extends State<PackageDetailsPage> {
                               transformAlignment: Alignment.centerRight,
                               padding: EdgeInsets.zero,
                               margin: EdgeInsets.zero,
-                              alignment: Alignment
-                                  .centerLeft, // Aligning the container's content to the left
+                              alignment: Alignment.centerLeft,
                               child: HtmlWidget(
                                 textStyle: const TextStyle(
                                     height: 1.3,
@@ -428,10 +441,34 @@ class _PackageDetailsPageState extends State<PackageDetailsPage> {
                               ),
                             ),
                             sbox20,
-                            PackageHeadingWidget(
-                              icon: Icons.location_on_outlined,
-                              text: 'Neha will be traveling form here',
+                            BlocBuilder<PartnerProfileBloc,
+                                PartnerProfileState>(
+                              builder: (context, state) {
+                                if (state is GetPartnerProfileLoading) {
+                                  return SizedBox(
+                                    height: width * 0.72,
+                                    child: const Center(
+                                      child: CircularProgressIndicator(),
+                                    ),
+                                  );
+                                }
+                                if (state is GetPartnerProfileFailed) {
+                                  return const ShowErrorWidget();
+                                }
+                                if (state is GetPartnerProfileSuccess) {
+                                  final profileName = state.partnerProfile.data
+                                      ?.profile?.profileDetails?.profileName;
+                                  //  if(state.partnerProfile.data!=null){ final partnerReviews =
+                                  //       state.partnerProfile.data!.profileReviews;}
+                                  return PackageHeadingWidget(
+                                    icon: Icons.location_on_outlined,
+                                    text: '$profileName be traveling form here',
+                                  );
+                                }
+                                return const Text('partner profile not found');
+                              },
                             ),
+
                             sbox20,
                             SizedBox(
                               height: height * 0.25,
@@ -492,7 +529,8 @@ class _PackageDetailsPageState extends State<PackageDetailsPage> {
                               text: 'Package Reviews and Ratings',
                             ),
                             sbox20,
-                            package.packageReviews!.isNotEmpty
+                            package.packageReviews!.isNotEmpty &&
+                                    package.packageReviews == null
                                 ? SizedBox(
                                     height: height * 0.26,
                                     child: ListView.builder(
@@ -516,7 +554,7 @@ class _PackageDetailsPageState extends State<PackageDetailsPage> {
                             sbox20,
                             PackageHeadingWidget(
                               icon: Icons.location_on_outlined,
-                              text: 'Package Reviews and Ratings',
+                              text: 'Service Provided by ',
                             ),
                             sbox20,
                             BlocBuilder<PartnerProfileBloc,
@@ -592,10 +630,10 @@ class _PackageDetailsPageState extends State<PackageDetailsPage> {
                                                 ),
                                                 const Spacer(),
                                                 ButtonWidget(
-                                                  borderRadius: 30,
+                                                  borderRadius: 25,
                                                   text: "View Profile",
                                                   buttonColor: colorred,
-                                                  width: 35.w,
+                                                  width: 30.w,
                                                   color: colorwhite,
                                                   onPressed: () {
                                                     AppNavigation.pushNavigation(
@@ -717,7 +755,7 @@ class _PackageDetailsPageState extends State<PackageDetailsPage> {
                   ),
                 ),
                 Positioned(
-                  top: 820,
+                  // top: 820,
                   bottom: 0,
                   left: 0,
                   right: 0,
@@ -729,13 +767,13 @@ class _PackageDetailsPageState extends State<PackageDetailsPage> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(15.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '₹no data from api',
+                                '₹ old Package cost',
                                 style: TextStyle(
                                     color: colorblack.withOpacity(0.5),
                                     decoration: TextDecoration.lineThrough,
@@ -775,7 +813,7 @@ class _PackageDetailsPageState extends State<PackageDetailsPage> {
                             },
                             text: 'Proceed',
                             borderRadius: 30,
-                            width: width * 0.4,
+                            width: width * 0.3,
                           ),
                         )
                       ],

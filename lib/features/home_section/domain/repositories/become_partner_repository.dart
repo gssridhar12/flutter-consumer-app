@@ -4,6 +4,5 @@ import 'package:flutter_consumer_app/features/home_section/domain/entities/reque
 import 'package:flutter_consumer_app/features/home_section/domain/entities/response/become_partner_entity.dart';
 
 abstract class BecomePartnerRepository {
-  Future<Either<Failure, BecomePartnerEntity>> addLead(
-      AddLeadRequest addLeadRequest);
+  Future<Either<Failure, BecomePartnerEntity>> addLead(AddLeadRequest addLeadRequest);
 }

@@ -35,7 +35,7 @@ class _LikeButtonState extends State<LikeButton> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       likeCubit.checkIfLiked(
           packageUuid: widget.packageUuid,
-          userId: widget.userId); // Ensure this is called after widget build
+          userId: widget.userId); 
     });
   }
 

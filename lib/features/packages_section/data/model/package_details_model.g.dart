@@ -40,6 +40,8 @@ _$DataModelImpl _$$DataModelImplFromJson(Map<String, dynamic> json) =>
           ? null
           : ReviewAveragesModel.fromJson(
               json['reviewAverages'] as Map<String, dynamic>),
+      profileImage: json['ProfileImage'] as String?,
+      bookingCount: (json['bookingCount'] as num?)?.toInt(),
       partnerLocation: json['partnerLocation'] as List<dynamic>?,
     );
 
@@ -49,6 +51,8 @@ Map<String, dynamic> _$$DataModelImplToJson(_$DataModelImpl instance) =>
       'partnerName': instance.partnerName,
       'packageReviews': instance.packageReviews,
       'reviewAverages': instance.reviewAverages,
+      'ProfileImage': instance.profileImage,
+      'bookingCount': instance.bookingCount,
       'partnerLocation': instance.partnerLocation,
     };
 
@@ -66,7 +70,9 @@ _$PackageDetailsModelsImpl _$$PackageDetailsModelsImplFromJson(
       packageInclusions: json['package_inclusions'] as String?,
       packageExclusions: json['package_exclusions'] as String?,
       packageMustKnows: json['package_must_knows'] as String?,
-      serviceLocation: json['service_location'] as String?,
+      serviceLocation: (json['service_location'] as List<dynamic>?)
+          ?.map((e) => ServiceLocationModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
       status: json['status'] as String?,
       packageKeywords: (json['package_keywords'] as List<dynamic>?)
           ?.map((e) => e as String)
@@ -75,7 +81,8 @@ _$PackageDetailsModelsImpl _$$PackageDetailsModelsImplFromJson(
           ?.map((e) => e as String)
           .toList(),
       serviceTimingAvailability: json['service_timing_availability'] as String?,
-      packageCost: json['package_cost'] as int?,
+      serviceSlotDuration: json['service_slot_duration'] as String?,
+      packageCost: (json['package_cost'] as num?)?.toInt(),
       transportationCost: (json['transportation_cost'] as num?)?.toDouble(),
       extraAllowance: (json['extra_allowance'] as num?)?.toDouble(),
       couponsAndDiscounts: json['coupons_and_discounts'] as String?,
@@ -112,6 +119,7 @@ Map<String, dynamic> _$$PackageDetailsModelsImplToJson(
       'package_keywords': instance.packageKeywords,
       'package_tags': instance.packageTags,
       'service_timing_availability': instance.serviceTimingAvailability,
+      'service_slot_duration': instance.serviceSlotDuration,
       'package_cost': instance.packageCost,
       'transportation_cost': instance.transportationCost,
       'extra_allowance': instance.extraAllowance,
@@ -129,7 +137,7 @@ Map<String, dynamic> _$$PackageDetailsModelsImplToJson(
 _$PackageGalleryModelImpl _$$PackageGalleryModelImplFromJson(
         Map<String, dynamic> json) =>
     _$PackageGalleryModelImpl(
-      media: json['media'] as String?,
+      mediatype: json['media_type'] as String?,
       description: json['description'] as String?,
       assignedTo: json['assigned_to'] as List<dynamic>?,
     );
@@ -137,7 +145,7 @@ _$PackageGalleryModelImpl _$$PackageGalleryModelImplFromJson(
 Map<String, dynamic> _$$PackageGalleryModelImplToJson(
         _$PackageGalleryModelImpl instance) =>
     <String, dynamic>{
-      'media': instance.media,
+      'media_type': instance.mediatype,
       'description': instance.description,
       'assigned_to': instance.assignedTo,
     };
@@ -146,18 +154,20 @@ _$PackageReviewModelImpl _$$PackageReviewModelImplFromJson(
         Map<String, dynamic> json) =>
     _$PackageReviewModelImpl(
       fullName: json['fullName'] as String?,
+      city: json['city'] as String?,
       profileImage: json['profileImage'] as String?,
       reviewDetails: json['reviewDetails'] == null
           ? null
           : ReviewDetailsModel.fromJson(
               json['reviewDetails'] as Map<String, dynamic>),
-      patronLevel: json['patron_level'] as int?,
+      patronLevel: (json['patron_level'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$PackageReviewModelImplToJson(
         _$PackageReviewModelImpl instance) =>
     <String, dynamic>{
       'fullName': instance.fullName,
+      'city': instance.city,
       'profileImage': instance.profileImage,
       'reviewDetails': instance.reviewDetails,
       'patron_level': instance.patronLevel,
@@ -205,7 +215,7 @@ _$ReviewAveragesModelImpl _$$ReviewAveragesModelImplFromJson(
       communication: (json['Communication'] as num?)?.toDouble(),
       serviceDescribed: (json['ServiceDescribed'] as num?)?.toDouble(),
       recommended: (json['Recommended'] as num?)?.toDouble(),
-      reviewCount: json['reviewcount'] as int?,
+      reviewCount: (json['reviewcount'] as num?)?.toInt(),
       overallAverage: (json['overallAverage'] as num?)?.toDouble(),
     );
 
@@ -218,4 +228,18 @@ Map<String, dynamic> _$$ReviewAveragesModelImplToJson(
       'Recommended': instance.recommended,
       'reviewcount': instance.reviewCount,
       'overallAverage': instance.overallAverage,
+    };
+
+_$ServiceLocationModelImpl _$$ServiceLocationModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ServiceLocationModelImpl(
+      addressType: json['address_type'] as String?,
+      city: json['city'] as String?,
+    );
+
+Map<String, dynamic> _$$ServiceLocationModelImplToJson(
+        _$ServiceLocationModelImpl instance) =>
+    <String, dynamic>{
+      'address_type': instance.addressType,
+      'city': instance.city,
     };

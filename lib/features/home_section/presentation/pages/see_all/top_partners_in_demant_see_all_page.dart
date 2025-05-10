@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
 import 'package:flutter_consumer_app/core/constant/constant.dart';
-
 import 'package:flutter_consumer_app/features/home_section/presentation/bloc/category_bloc/category_bloc.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/bloc/top_partner_bloc/top_partner_bloc.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/category/all_category_page.dart';

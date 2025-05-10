@@ -1,6 +1,6 @@
 import 'package:flutter_consumer_app/features/booking_section/domain/entities/response/add_order_entity.dart';
 
-class AddOrderModel extends AddOrderEntity {
+class AddOrderModel extends AddOrderEntity{
   AddOrderModel({
     required String code,
     required String message,
@@ -13,7 +13,8 @@ class AddOrderModel extends AddOrderEntity {
           successStatus: successStatus,
         );
 
-  factory AddOrderModel.fromJson(Map<String, dynamic> json) => AddOrderModel(
+  factory AddOrderModel.fromJson(Map<String, dynamic> json) =>
+      AddOrderModel(
         code: json["code"],
         message: json["message"],
         data: DataModel.fromJson(json["data"]),
@@ -65,12 +66,12 @@ class DataModel extends Data {
         );
 
   factory DataModel.fromJson(Map<String, dynamic> json) => DataModel(
-        id: json["id"],
-        razorpayOrderId: json["razorpay_order_id"],
-        entity: json["entity"],
-        amount: json["amount"],
-        amountPaid: json["amount_paid"],
-        currency: json["currency"],
+        id: json["id"]??"",
+        razorpayOrderId: json["razorpay_order_id"]??"",
+        entity: json["entity"]??"",
+        amount: json["amount"]??0,
+        amountPaid: json["amount_paid"]??0,
+        currency: json["currency"]??"",
         receipt: json["receipt"],
         status: json["status"],
         attempts: json["attempts"],
@@ -113,7 +114,8 @@ class StatusLogModel extends StatusLog {
           paymentFor: paymentFor,
         );
 
-  factory StatusLogModel.fromJson(Map<String, dynamic> json) => StatusLogModel(
+  factory StatusLogModel.fromJson(Map<String, dynamic> json) =>
+      StatusLogModel(
         date: DateTime.parse(json["date"]),
         status: json["status"],
         amountPaid: json["amount_paid"],

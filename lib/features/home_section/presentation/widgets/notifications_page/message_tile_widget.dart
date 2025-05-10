@@ -18,6 +18,7 @@ class MessageTileWidget extends StatelessWidget {
         ],
       ),
       subtitle: Text('Hi Gargi, yes I have gone through your reqiremen.... '),
+      
     );
   }
 }

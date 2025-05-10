@@ -2,6 +2,7 @@ import 'package:either_dart/src/either.dart';
 import 'package:flutter_consumer_app/core/error/failures.dart';
 import 'package:flutter_consumer_app/features/partner_profile/data/datasources/partner_package_remote_datasource.dart';
 import 'package:flutter_consumer_app/features/partner_profile/domain/entities/get_bucket_entity.dart';
+import 'package:flutter_consumer_app/features/partner_profile/domain/entities/get_bucket_list_entity.dart';
 import 'package:flutter_consumer_app/features/partner_profile/domain/entities/partner_package_entity.dart';
 import 'package:flutter_consumer_app/features/partner_profile/domain/repositories/partner_package_repository.dart';
 
@@ -28,6 +29,18 @@ class PartnerPackageRepositoryImpl implements PartnerPackageRepository {
     try {
       final partnerPackage =
           await packageRemoteDataSource.getBucket(bucketUuid: bucketUuid);
+      return Right(partnerPackage);
+    } catch (e) {
+      throw const ServerFailure(errorMessage: 'Server Failed');
+    }
+  }
+
+  @override
+  Future<Either<Failure, GetBucketListModel>> getBucketsList(
+      {required String partnerUuid}) async {
+    try {
+      final partnerPackage =
+          await packageRemoteDataSource.getBucketList(partnerUuid: partnerUuid);
       return Right(partnerPackage);
     } catch (e) {
       throw const ServerFailure(errorMessage: 'Server Failed');

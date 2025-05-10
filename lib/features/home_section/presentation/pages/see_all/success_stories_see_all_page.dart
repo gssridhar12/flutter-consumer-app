@@ -147,7 +147,7 @@ class SucessStoriesSeeAllPageState extends State<SucessStoriesSeeAllPage> {
                     scrollDirection: Axis.horizontal,
                     itemCount: 4,
                     itemBuilder: (BuildContext context, int index) {
-                      return const SuccessStoryWidget();
+                      return const SuccessStoryWidget(headingtext: 'Near You',);
                     },
                   ),
                 ),
@@ -166,7 +166,7 @@ class SucessStoriesSeeAllPageState extends State<SucessStoriesSeeAllPage> {
                     scrollDirection: Axis.horizontal,
                     itemCount: 4,
                     itemBuilder: (BuildContext context, int index) {
-                      return const SuccessStoryWidget();
+                      return const SuccessStoryWidget(headingtext: 'Most trending',);
                     },
                   ),
                 ),
@@ -185,7 +185,7 @@ class SucessStoriesSeeAllPageState extends State<SucessStoriesSeeAllPage> {
                     scrollDirection: Axis.horizontal,
                     itemCount: 4,
                     itemBuilder: (BuildContext context, int index) {
-                      return const SuccessStoryWidget();
+                      return const SuccessStoryWidget(headingtext: 'Saved Partner',);
                     },
                   ),
                 ),

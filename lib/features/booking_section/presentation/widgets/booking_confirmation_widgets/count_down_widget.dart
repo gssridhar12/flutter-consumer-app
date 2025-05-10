@@ -24,7 +24,7 @@ class CountDownWidget extends StatelessWidget {
         height: width * 0.23,
         width: width * 0.23,
         child: CircularCountDownTimer(
-          duration: cancelDuration > 0 ? cancelDuration : 0,
+          duration:cancelDuration>0? cancelDuration:0,
           initialDuration: 0,
           controller: controller,
           width: MediaQuery.of(context).size.width / 2,

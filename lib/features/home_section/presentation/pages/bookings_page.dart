@@ -43,6 +43,7 @@ class _BookingsPageState extends State<BookingsPage> {
 
   @override
   Widget build(BuildContext context) {
+
     return ColoredSafeArea(
       color: bggray,
       child: Scaffold(
@@ -66,7 +67,7 @@ class _BookingsPageState extends State<BookingsPage> {
                     (int index) {
                       return ChoiceChip(
                         selectedColor: colorwhite,
-                        color: const MaterialStatePropertyAll(colorwhite),
+                        color: const WidgetStatePropertyAll(colorwhite),
                         backgroundColor: colorwhite,
                         label: Text(choiceChip[index],
                             style: TextStyle(

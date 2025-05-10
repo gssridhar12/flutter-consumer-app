@@ -62,6 +62,10 @@ _$BookingModelImpl _$$BookingModelImplFromJson(Map<String, dynamic> json) =>
       startDate: json['start_date'] == null
           ? null
           : DateTime.parse(json['start_date'] as String),
+      orderRescheduleDate: json['order_reschedule_date'] == null
+          ? null
+          : DateTime.parse(json['order_reschedule_date'] as String),
+      orderRescheduleReason: json['order_reschedule_reason'] as String?,
       endDate: json['end_date'] == null
           ? null
           : DateTime.parse(json['end_date'] as String),
@@ -85,6 +89,8 @@ Map<String, dynamic> _$$BookingModelImplToJson(_$BookingModelImpl instance) =>
       'user_uuid': instance.userUuid,
       'booked_on': instance.bookedOn?.toIso8601String(),
       'start_date': instance.startDate?.toIso8601String(),
+      'order_reschedule_date': instance.orderRescheduleDate?.toIso8601String(),
+      'order_reschedule_reason': instance.orderRescheduleReason,
       'end_date': instance.endDate?.toIso8601String(),
       'base_fare': instance.baseFare,
       'amount': instance.amount,

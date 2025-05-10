@@ -9,11 +9,11 @@ import 'package:flutter_consumer_app/features/packages_section/domain/usecases/g
 part 'review_bloc_event.dart';
 part 'review_bloc_state.dart';
 
-class PartnerReviewBloc
-    extends Bloc<PartnerReviewBlocEvent, PartnerReviewBlocState> {
+class PartnerReviewBloc extends Bloc<PartnerReviewBlocEvent, PartnerReviewBlocState> {
   final GetPartnerReviewsUseCase getPartnerReviewsUseCase;
-  PartnerReviewBloc(this.getPartnerReviewsUseCase)
+  PartnerReviewBloc( this.getPartnerReviewsUseCase)
       : super(PartnerReviewBlocInitial()) {
+   
     on<GetPartnerReviews>(
       (event, emit) async {
         emit(GetPartnerReviewLoading());
@@ -28,9 +28,9 @@ class PartnerReviewBloc
           },
           (reviews) {
             if (partner.isRight) {
-              if (reviews.data!.profileReviews!.isEmpty) {
-                emit(NoPartnerReviewsFound());
-              }
+                if(reviews.data!.profileReviews!.isEmpty){
+              emit(NoPartnerReviewsFound());
+            }
               emit(GetPartnerReviewSuccess(reviews: reviews));
             }
           },

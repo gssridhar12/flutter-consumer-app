@@ -2,12 +2,14 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
 import 'package:flutter_consumer_app/core/constant/constant.dart';
-import 'package:flutter_consumer_app/features/home_section/domain/entities/response/get_package_like_entity.dart';
+// import 'package:flutter_consumer_app/features/home_section/domain/entities/response/get_package_like_entity.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/like_button.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/most_booked_package_tile.dart';
 import 'package:flutter_consumer_app/main.dart';
 import 'package:flutter_consumer_app/shared/widgets/cached_image.dart';
 import 'package:flutter_consumer_app/shared/widgets/custom_container_widget.dart';
+
+import '../../../data/model/get_package_like_model.dart';
 
 class PackageCard extends StatefulWidget {
   const PackageCard({
@@ -64,7 +66,7 @@ class _PackageCardState extends State<PackageCard> {
                           borderRadius: BorderRadius.circular(10),
                           child: CustomImage(
                               imageUrl: widget.packages.package
-                                      ?.packageGallery?[index].media ??
+                                      ?.packageGallery?[index].mediaType ??
                                   ""),
                         ),
                       );
@@ -82,23 +84,23 @@ class _PackageCardState extends State<PackageCard> {
                     child: Image.asset('assets/images/preferedpartnericon.png'),
                   ),
                 ),
-                Positioned(
-                  right: 60,
-                  top: 10,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: colorwhite.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(25)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Icon(
-                        Icons.share,
-                        color: colorblack.withOpacity(0.5),
-                        size: 22,
-                      ),
-                    ),
-                  ),
-                ),
+                // Positioned(
+                //   right: 60,
+                //   top: 10,
+                //   child: Container(
+                //     decoration: BoxDecoration(
+                //         color: colorwhite.withOpacity(0.5),
+                //         borderRadius: BorderRadius.circular(25)),
+                //     child: Padding(
+                //       padding: const EdgeInsets.all(5.0),
+                //       child: Icon(
+                //         Icons.share,
+                //         color: colorblack.withOpacity(0.5),
+                //         size: 22,
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 Positioned(
                   right: 15,
                   top: 10,
@@ -166,7 +168,9 @@ class _PackageCardState extends State<PackageCard> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.packages.package!.serviceLocation ?? "",
+                          widget.packages.package!.serviceLocation![0]
+                                  .addressType ??
+                              "",
                           style: TextStyle(
                               color: colorblack.withOpacity(0.7), fontSize: 14),
                         ),

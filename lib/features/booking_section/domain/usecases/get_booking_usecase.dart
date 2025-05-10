@@ -8,7 +8,6 @@ class GetBookingUseCase {
 
   GetBookingUseCase({required this.repository});
 
-  Future<Either<Failure, GetBookingEntity>> execute(
-          {required String bookingUuid}) async =>
+  Future<Either<Failure, GetBookingEntity>> execute({required String bookingUuid}) async =>
       await repository.getBooking(bookingUuid: bookingUuid);
 }

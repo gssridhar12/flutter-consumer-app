@@ -12,9 +12,9 @@ import 'package:flutter_consumer_app/utils/snack_bar.dart';
 
 class ProfileFavoriteButtonWidget extends StatefulWidget {
   const ProfileFavoriteButtonWidget(
-      {super.key, required this.userId, required this.partnerUuid});
+      {super.key, this.userId, required this.partnerUuid});
 
-  final String userId;
+  final String? userId;
   final String partnerUuid;
 
   @override
@@ -30,14 +30,14 @@ class ProfileFavoriteButtonStateWidget
     if (partner.isEmpty) return false;
     final isLiked = partner
         .any((e) => e.profileUuid.contains(partnerUuid) && e.isLiked == true);
-    print(isLiked);
+    debugPrint(isLiked.toString());
     return isLiked;
   }
 
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      right: 80,
+      right: 30,
       top: 60,
       child: BlocBuilder<PartnerLikeBloc, PartnerLikeBlocState>(
         builder: (context, likeState) {
@@ -57,14 +57,16 @@ class ProfileFavoriteButtonStateWidget
           if (likeState is GetPartnerLikeSuccess) {
             isFavourite = checkIfLiked(
                 likeState.getPartnerLikeEntity.data, widget.partnerUuid);
-            print("After checkIfLiked: $isFavourite");
+            debugPrint("After checkIfLiked: $isFavourite");
             return ContainerIconWidget(
               onTap: () {
-                BlocProvider.of<PartnerLikeBloc>(context).add(AddPartnerLike(
-                    addPartnerLikeRequest: AddPartnerLikeRequest(
-                        userUuid: widget.userId,
-                        profileUuid: widget.partnerUuid,
-                        isLiked: !isFavourite)));
+                if (widget.userId != null && widget.userId != '') {
+                  BlocProvider.of<PartnerLikeBloc>(context).add(AddPartnerLike(
+                      addPartnerLikeRequest: AddPartnerLikeRequest(
+                          userUuid: widget.userId!,
+                          profileUuid: widget.partnerUuid,
+                          isLiked: !isFavourite)));
+                }
               },
               isFavouite: !isFavourite,
               icon: Icons.favorite,
@@ -73,11 +75,13 @@ class ProfileFavoriteButtonStateWidget
           return BlocListener<PartnerLikeBloc, PartnerLikeBlocState>(
             child: ContainerIconWidget(
               onTap: () {
-                BlocProvider.of<PartnerLikeBloc>(context).add(AddPartnerLike(
-                    addPartnerLikeRequest: AddPartnerLikeRequest(
-                        userUuid: widget.userId,
-                        profileUuid: widget.partnerUuid,
-                        isLiked: !isFavourite)));
+                if (widget.userId != null && widget.userId != '') {
+                  BlocProvider.of<PartnerLikeBloc>(context).add(AddPartnerLike(
+                      addPartnerLikeRequest: AddPartnerLikeRequest(
+                          userUuid: widget.userId!,
+                          profileUuid: widget.partnerUuid,
+                          isLiked: !isFavourite)));
+                }
               },
               isFavouite: !isFavourite,
               icon: Icons.favorite,

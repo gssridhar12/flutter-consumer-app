@@ -85,23 +85,23 @@ class TopPartnerCardWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(
-                right: 50,
-                top: 10,
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: colorwhite.withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(25)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Icon(
-                      Icons.share,
-                      color: colorblack.withOpacity(0.5),
-                      size: 18,
-                    ),
-                  ),
-                ),
-              ),
+              // Positioned(
+              //   right: 50,
+              //   top: 10,
+              //   child: Container(
+              //     decoration: BoxDecoration(
+              //         color: colorwhite.withOpacity(0.5),
+              //         borderRadius: BorderRadius.circular(25)),
+              //     child: Padding(
+              //       padding: const EdgeInsets.all(5.0),
+              //       child: Icon(
+              //         Icons.share,
+              //         color: colorblack.withOpacity(0.5),
+              //         size: 18,
+              //       ),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
           Padding(
@@ -134,12 +134,16 @@ class TopPartnerCardWidget extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                IconButtonWidget(
-                  buttonName: 'Chat',
-                  onTap: () => AppNavigation.pushNavigation(
-                      context,
-                      ChatScreenCustom(
+                SizedBox(
+                  width:76,
+                 //height: 40,
+                  child: IconButtonWidget(
+                    buttonName: 'Chat',
+                    onTap: () => AppNavigation.pushNavigation(
+                        context,
+                        ChatScreenCustom(
                           partnerUuid: partner.profile.partnerUuid)),
+                  ),
                 )
               ],
             ),

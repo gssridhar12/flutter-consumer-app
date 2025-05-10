@@ -28,12 +28,12 @@ Map<String, dynamic> _$$GetPartnerSearchModelImplToJson(
 
 _$DataModelImpl _$$DataModelImplFromJson(Map<String, dynamic> json) =>
     _$DataModelImpl(
-      count: json['count'] as int?,
+      count: (json['count'] as num?)?.toInt(),
       profiles: (json['profiles'] as List<dynamic>?)
           ?.map((e) => ProfileModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      page: json['page'] as int?,
-      size: json['size'] as int?,
+      page: (json['page'] as num?)?.toInt(),
+      size: (json['size'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$DataModelImplToJson(_$DataModelImpl instance) =>
@@ -286,7 +286,7 @@ _$ProfileDetailsModelImpl _$$ProfileDetailsModelImplFromJson(
       media: (json['media'] as List<dynamic>?)
           ?.map((e) => MediaModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      unlockCost: json['unlock_cost'] as int?,
+      unlockCost: (json['unlock_cost'] as num?)?.toInt(),
       megmoPreferredPartner: json['megmo_preferred_partner'] as bool?,
       createdOn: json['created_on'] == null
           ? null

@@ -7,8 +7,7 @@ class ContainerIconWidget extends StatelessWidget {
     this.icon,
     this.onTap,
     this.text,
-    this.isFavouite,
-    this.trueIcon,
+    this.isFavouite, this.trueIcon,
   });
   final IconData? icon;
   final IconData? trueIcon;

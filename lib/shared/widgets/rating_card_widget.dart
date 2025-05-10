@@ -41,7 +41,7 @@ class RatingCardWidget extends StatelessWidget {
                   imageUrl: packageData!.profileImage,
                   borderRadius: BorderRadius.circular(30)),
               title: Text(packageData!.fullName),
-              // subtitle: Text(packageData!.fullName),
+               subtitle: Text(packageData.city),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -60,8 +60,9 @@ class RatingCardWidget extends StatelessWidget {
                   Text(packageData!.reviewDetails.communication.toString()),
                   const Spacer(),
                   const Text(
-                      // '${packageData!.reviewDetails.createdOn.subtract(const Duration(days: 7))} week ago')
-                      '1 week ago')
+                     //  '${packageData!.reviewDetails.createdOn.subtract(const Duration(days: 7))} week ago')
+                     '1 week ago'
+                     )
                 ],
               ),
             ),

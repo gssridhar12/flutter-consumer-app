@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
 import 'package:flutter_consumer_app/core/constant/constant.dart';
 import 'package:flutter_consumer_app/features/chat_section/presentation/pages/chat_screen_custom.dart';
-import 'package:flutter_consumer_app/features/home_section/presentation/widgets/like_button.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/most_booked_package_tile.dart';
 import 'package:flutter_consumer_app/features/partner_profile/presentation/bloc/partner_profile_bloc/partner_profile_bloc.dart';
+import 'package:flutter_consumer_app/features/partner_profile/presentation/widgets/favourite_button.dart';
 import 'package:flutter_consumer_app/main.dart';
 import 'package:flutter_consumer_app/shared/widgets/cached_image.dart';
 import 'package:flutter_consumer_app/shared/widgets/custom_container_widget.dart';
@@ -38,7 +38,6 @@ class _ProfileCardState extends State<ProfileCard> {
     context
         .read<PartnerProfileBloc>()
         .add(GetPartnerProfile(widget.partnerUuid));
-
     super.initState();
   }
 
@@ -54,7 +53,6 @@ class _ProfileCardState extends State<ProfileCard> {
         }
         if (state is GetPartnerProfileSuccess) {
           final profile = state.partnerProfile.data!.profile!.profileDetails!;
-
           return CustomContainerWidget(
             child: Column(
               children: [
@@ -102,37 +100,41 @@ class _ProfileCardState extends State<ProfileCard> {
                     Positioned(
                       right: 10,
                       top: 10,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: colorwhite.withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(25)),
-                        child: Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: LikeButton(
-                            packageUuid: widget.partnerUuid,
-                            userId: userId,
-                            widgetType: WidgetType.homescreen,
-                          ),
-                        ),
-                      ),
+                      child:  ProfileFavoriteButtonWidget(
+                        userId: userId,
+                                   partnerUuid: widget.partnerUuid),
+                      // Container(
+                      //   decoration: BoxDecoration(
+                      //       color: colorwhite.withOpacity(0.5),
+                      //       borderRadius: BorderRadius.circular(25)),
+                      //   child: Padding(
+                      //     padding: const EdgeInsets.all(5.0),
+                      //     child: LikeButton(
+                      //       //packageUuid: widget.partnerUuid,
+                      //       userId: userId,
+                      //       widgetType: WidgetType.homescreen,
+                      //     ),
+                          
+                      //   ),
+                      // ),
                     ),
-                    Positioned(
-                      right: 50,
-                      top: 10,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: colorwhite.withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(25)),
-                        child: Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Icon(
-                            Icons.share,
-                            color: colorblack.withOpacity(0.5),
-                            size: 18,
-                          ),
-                        ),
-                      ),
-                    ),
+                    // Positioned(
+                    //   right: 50,
+                    //   top: 10,
+                    //   child: Container(
+                    //     decoration: BoxDecoration(
+                    //         color: colorwhite.withOpacity(0.5),
+                    //         borderRadius: BorderRadius.circular(25)),
+                    //     child: Padding(
+                    //       padding: const EdgeInsets.all(5.0),
+                    //       child: Icon(
+                    //         Icons.share,
+                    //         color: colorblack.withOpacity(0.5),
+                    //         size: 18,
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
                 Padding(
@@ -148,24 +150,26 @@ class _ProfileCardState extends State<ProfileCard> {
                               imageUrl: profile.profileCover ??
                                   ""
                                       "")),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '${profile.city}, ${profile.state}',
-                              style: TextStyle(
-                                  color: colorblack.withOpacity(0.7),
-                                  fontSize: 14),
-                            ),
-                            sbox5,
-                            Text(
-                              '₹${profile.unlockCost}',
-                              style: const TextStyle(
-                                  color: colorblack, fontSize: 16),
-                            ),
-                          ],
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '${profile.city}, ${profile.state}',
+                                style: TextStyle(
+                                    color: colorblack.withOpacity(0.7),
+                                    fontSize: 14),
+                              ),
+                              sbox5,
+                              Text(
+                                '₹${profile.unlockCost}',
+                                style: const TextStyle(
+                                    color: colorblack, fontSize: 16),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       const Spacer(),

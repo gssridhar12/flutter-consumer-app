@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+
 ///Image widget for fetching internet images using [CachedNetworkImage]
 class CustomImage extends StatelessWidget {
   final String imageUrl;

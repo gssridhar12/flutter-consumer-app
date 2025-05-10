@@ -38,7 +38,7 @@ class BecomePartnerWidget extends StatelessWidget {
                   TextStyle(fontSize: 18, color: colorblack.withOpacity(0.5)),
             ),
             sbox,
-            Row(
+             Row(
               children: [
                 ButtonWidget(
                   text: 'Become a Partner',

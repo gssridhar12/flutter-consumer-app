@@ -31,7 +31,7 @@ class PartnerRemoteDataSourceImpl implements PartnerRemoteDataSource {
         headers: headers, body: json.encode(requestBody));
     if (response.statusCode == 200) {
       final decodedBody = json.decode(response.body);
-
+    
       return TopPartnerModel.fromJson(decodedBody);
     } else {
       log('Something went wrong: ${response.statusCode}');

@@ -6,7 +6,6 @@ sealed class CouponEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
-
 class GetCoupon extends CouponEvent {
   final String packageUuid;
 

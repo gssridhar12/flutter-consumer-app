@@ -12,4 +12,17 @@ class CityImage {
     'assets/images/cities/Mumbai.svg',
     'assets/images/cities/Pune.svg',
   ];
+   static List<String> citylable = [
+  
+    'Ahmedabad',
+     'Bengaluru',
+    'Delhi NCR',
+    'Chandigarh',
+    'Chennai',
+    'Hyderabad',
+    'Kolkata',
+       'Mumbai',
+          'Pune',
+  
+  ];
 }

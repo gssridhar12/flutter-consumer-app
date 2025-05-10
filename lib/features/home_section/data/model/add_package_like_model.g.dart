@@ -79,8 +79,8 @@ _$PackageModelImpl _$$PackageModelImplFromJson(Map<String, dynamic> json) =>
           ?.map((e) => e as String)
           .toList(),
       serviceTimingAvailability: json['service_timing_availability'] as String?,
-      packageCost: json['package_cost'] as int?,
-      transportationCost: json['transportation_cost'] as int?,
+      packageCost: (json['package_cost'] as num?)?.toInt(),
+      transportationCost: (json['transportation_cost'] as num?)?.toInt(),
       couponsAndDiscounts: json['coupons_and_discounts'] as String?,
       uploadPackageAgreement: json['upload_package_agreement'] as String?,
       mostBookedPackages: json['most_booked_packages'] as bool?,

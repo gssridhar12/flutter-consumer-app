@@ -21,32 +21,26 @@ class CategoryTileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => onTap!(),
-      child: Padding(
-        padding: const EdgeInsets.only(right: 0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: CustomImage(
-                  borderRadius: BorderRadius.circular(30),
-                  imageUrl: category!.categoryIcon!,
-                  height: 6.h,
-                  width: 6.h),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          CustomImage(
+              borderRadius: BorderRadius.circular(30),
+              imageUrl: category!.categoryIcon!,
+              height: 6.h,
+              width: 6.h),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+            child: Text(
+              category!.parentCategoryName ?? "",
+              style: TextStyle(
+                  fontSize: 12,
+                  color: colorblack.withOpacity(0.5),
+                  fontWeight: FontWeight.w400),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-              child: Text(
-                category!.parentCategoryName ?? "",
-                style: TextStyle(
-                    fontSize: 12,
-                    color: colorblack.withOpacity(0.5),
-                    fontWeight: FontWeight.w400),
-              ),
-            )
-          ],
-        ),
+          )
+        ],
       ),
     );
   }

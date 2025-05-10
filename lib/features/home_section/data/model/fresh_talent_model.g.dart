@@ -28,12 +28,12 @@ Map<String, dynamic> _$$FreshTalentModelImplToJson(
 
 _$DataModelImpl _$$DataModelImplFromJson(Map<String, dynamic> json) =>
     _$DataModelImpl(
-      count: json['count'] as int?,
+      count: (json['count'] as num?)?.toInt(),
       profiles: (json['profiles'] as List<dynamic>?)
           ?.map((e) => ProfileElementModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      page: json['page'] as int?,
-      size: json['size'] as int?,
+      page: (json['page'] as num?)?.toInt(),
+      size: (json['size'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$DataModelImplToJson(_$DataModelImpl instance) =>
@@ -54,7 +54,7 @@ _$ProfileElementModelImpl _$$ProfileElementModelImplFromJson(
           ? null
           : ProfileProfileModel.fromJson(
               json['profile'] as Map<String, dynamic>),
-      megmoGigsCount: json['megmoGigsCount'] as int?,
+      megmoGigsCount: (json['megmoGigsCount'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$ProfileElementModelImplToJson(
@@ -239,7 +239,7 @@ _$PartnerLocationModelImpl _$$PartnerLocationModelImplFromJson(
       city: json['city'] as String?,
       state: json['state'] as String?,
       country: json['country'] as String?,
-      pinCode: json['pinCode'] as int?,
+      pinCode: (json['pinCode'] as num?)?.toInt(),
       landmark: json['landmark'] as String?,
       latitude: json['latitude'] as String?,
       longitude: json['longitude'] as String?,
@@ -330,7 +330,7 @@ _$ProfileDetailsModelImpl _$$ProfileDetailsModelImplFromJson(
       createdOn: json['created_on'] == null
           ? null
           : DateTime.parse(json['created_on'] as String),
-      unlockCost: json['unlock_cost'] as int?,
+      unlockCost: (json['unlock_cost'] as num?)?.toInt(),
       megmoPreferredPartner: json['megmo_preferred_partner'] as bool?,
     );
 

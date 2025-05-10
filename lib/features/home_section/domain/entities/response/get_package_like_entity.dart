@@ -45,7 +45,8 @@ class Package {
   final String? packageInclusions;
   final String? packageExclusions;
   final String? packageMustKnows;
-  final String? serviceLocation;
+  final String ? serviceLocation;
+ // final List<ServiceLocation>? serviceLocation;
   final String? status;
   final List<String>? packageKeywords;
   final List<String>? packageTags;
@@ -105,3 +106,17 @@ class PackageGallery {
     this.assignedTo,
   });
 }
+
+class ServiceLocation{
+  final String? addresstype;
+  final String? city;
+ 
+
+  ServiceLocation({
+    this.addresstype,
+    this.city,
+   
+  });
+}
+
+

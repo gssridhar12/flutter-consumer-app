@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+
 import 'package:flutter_consumer_app/core/error/failures.dart';
 import 'package:flutter_consumer_app/features/home_section/data/model/become_partner_model.dart';
 import 'package:flutter_consumer_app/features/home_section/domain/entities/request/add_lead_request.dart';
@@ -10,14 +11,14 @@ abstract class BecomePartnerRemoteDataSource {
   Future<BecomePartnerModel> addlead(AddLeadRequest addLeadRequest);
 }
 
-class BecomePartnerRemoteDataSourceImpl
-    implements BecomePartnerRemoteDataSource {
+class BecomePartnerRemoteDataSourceImpl implements BecomePartnerRemoteDataSource {
   final http.Client httpClient;
 
   BecomePartnerRemoteDataSourceImpl({required this.httpClient});
 
   @override
   Future<BecomePartnerModel> addlead(AddLeadRequest addLeadRequest) async {
+    
     var headers = {
       "Content-Type": "application/json",
     };

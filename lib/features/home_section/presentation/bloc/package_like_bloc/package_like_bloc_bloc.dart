@@ -4,9 +4,10 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_consumer_app/core/error/failures.dart';
 import 'package:flutter_consumer_app/features/home_section/domain/entities/request/add_like_request.dart';
 import 'package:flutter_consumer_app/features/home_section/domain/entities/response/add_package_like_entity.dart';
-import 'package:flutter_consumer_app/features/home_section/domain/entities/response/get_package_like_entity.dart';
 import 'package:flutter_consumer_app/features/home_section/domain/usecases/add_package_like_usecase.dart';
 import 'package:flutter_consumer_app/features/home_section/domain/usecases/get_package_like_usecase.dart';
+
+import '../../../data/model/get_package_like_model.dart';
 
 part 'package_like_bloc_event.dart';
 part 'package_like_bloc_state.dart';

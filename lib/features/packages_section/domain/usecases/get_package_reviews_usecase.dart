@@ -8,7 +8,6 @@ class GetPackageReviewsUseCase {
 
   GetPackageReviewsUseCase({required this.repository});
 
-  Future<Either<Failure, PackageReviewEntity>> execute(
-          {required String uuid}) async =>
+  Future<Either<Failure, PackageReviewEntity>> execute({required String uuid}) async =>
       await repository.getPackageReviews(uuid: uuid);
 }

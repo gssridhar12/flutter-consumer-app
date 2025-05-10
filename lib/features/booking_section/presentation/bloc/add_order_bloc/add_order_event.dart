@@ -6,7 +6,6 @@ sealed class AddOrderEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
-
 class AddOrder extends AddOrderEvent {
   final AddOrderRequest addOrderRequest;
 

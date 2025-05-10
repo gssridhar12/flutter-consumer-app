@@ -2,7 +2,7 @@ part of 'package_bloc.dart';
 
 sealed class PackageState extends Equatable {
   const PackageState();
-
+  
   @override
   List<Object> get props => [];
 }

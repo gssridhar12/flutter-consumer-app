@@ -3,8 +3,11 @@ import 'package:flutter_consumer_app/core/colors/colors.dart';
 import 'package:flutter_consumer_app/core/constant/constant.dart';
 import 'package:flutter_consumer_app/features/booking_section/presentation/widgets/booking_container_widget.dart';
 
+import '../../domain/entities/response/coupon_entity.dart';
+
 class BookingPageTile extends StatelessWidget {
-  const BookingPageTile({
+  final List<PackageCoupon> coupons = [];
+   BookingPageTile({
     super.key,
     required this.title,
     this.icon,
@@ -18,7 +21,7 @@ class BookingPageTile extends StatelessWidget {
     this.isDataUpdated,
     this.isEditButton,
   });
-  final String title;
+    final String title;
   final IconData? icon;
   final bool trailingAddButton;
   final bool trailingOfferButton;
@@ -66,7 +69,7 @@ class BookingPageTile extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              '3 offers',
+                              '${coupons.length +1} offers',
                               style: TextStyle(
                                   fontSize: 15,
                                   color: colorblack.withOpacity(0.7)),

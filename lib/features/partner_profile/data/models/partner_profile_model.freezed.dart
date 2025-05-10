@@ -2969,6 +2969,8 @@ ProfileReviewModel _$ProfileReviewModelFromJson(Map<String, dynamic> json) {
 mixin _$ProfileReviewModel {
   @JsonKey(name: "fullName")
   String? get fullName => throw _privateConstructorUsedError;
+  @JsonKey(name: "city")
+  String? get city => throw _privateConstructorUsedError;
   @JsonKey(name: "profileImage")
   String? get profileImage => throw _privateConstructorUsedError;
   @JsonKey(name: "reviewDetails")
@@ -2990,6 +2992,7 @@ abstract class $ProfileReviewModelCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "fullName") String? fullName,
+      @JsonKey(name: "city") String? city,
       @JsonKey(name: "profileImage") String? profileImage,
       @JsonKey(name: "reviewDetails") ReviewDetailsModel? reviewDetails,
       @JsonKey(name: "patron_level") int? patronLevel});
@@ -3011,6 +3014,7 @@ class _$ProfileReviewModelCopyWithImpl<$Res, $Val extends ProfileReviewModel>
   @override
   $Res call({
     Object? fullName = freezed,
+    Object? city = freezed,
     Object? profileImage = freezed,
     Object? reviewDetails = freezed,
     Object? patronLevel = freezed,
@@ -3019,6 +3023,10 @@ class _$ProfileReviewModelCopyWithImpl<$Res, $Val extends ProfileReviewModel>
       fullName: freezed == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      city: freezed == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
               as String?,
       profileImage: freezed == profileImage
           ? _value.profileImage
@@ -3058,6 +3066,7 @@ abstract class _$$ProfileReviewModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: "fullName") String? fullName,
+      @JsonKey(name: "city") String? city,
       @JsonKey(name: "profileImage") String? profileImage,
       @JsonKey(name: "reviewDetails") ReviewDetailsModel? reviewDetails,
       @JsonKey(name: "patron_level") int? patronLevel});
@@ -3078,6 +3087,7 @@ class __$$ProfileReviewModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? fullName = freezed,
+    Object? city = freezed,
     Object? profileImage = freezed,
     Object? reviewDetails = freezed,
     Object? patronLevel = freezed,
@@ -3086,6 +3096,10 @@ class __$$ProfileReviewModelImplCopyWithImpl<$Res>
       fullName: freezed == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      city: freezed == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
               as String?,
       profileImage: freezed == profileImage
           ? _value.profileImage
@@ -3108,6 +3122,7 @@ class __$$ProfileReviewModelImplCopyWithImpl<$Res>
 class _$ProfileReviewModelImpl implements _ProfileReviewModel {
   const _$ProfileReviewModelImpl(
       {@JsonKey(name: "fullName") this.fullName,
+      @JsonKey(name: "city") this.city,
       @JsonKey(name: "profileImage") this.profileImage,
       @JsonKey(name: "reviewDetails") this.reviewDetails,
       @JsonKey(name: "patron_level") this.patronLevel});
@@ -3118,6 +3133,9 @@ class _$ProfileReviewModelImpl implements _ProfileReviewModel {
   @override
   @JsonKey(name: "fullName")
   final String? fullName;
+  @override
+  @JsonKey(name: "city")
+  final String? city;
   @override
   @JsonKey(name: "profileImage")
   final String? profileImage;
@@ -3130,7 +3148,7 @@ class _$ProfileReviewModelImpl implements _ProfileReviewModel {
 
   @override
   String toString() {
-    return 'ProfileReviewModel(fullName: $fullName, profileImage: $profileImage, reviewDetails: $reviewDetails, patronLevel: $patronLevel)';
+    return 'ProfileReviewModel(fullName: $fullName, city: $city, profileImage: $profileImage, reviewDetails: $reviewDetails, patronLevel: $patronLevel)';
   }
 
   @override
@@ -3140,6 +3158,7 @@ class _$ProfileReviewModelImpl implements _ProfileReviewModel {
             other is _$ProfileReviewModelImpl &&
             (identical(other.fullName, fullName) ||
                 other.fullName == fullName) &&
+            (identical(other.city, city) || other.city == city) &&
             (identical(other.profileImage, profileImage) ||
                 other.profileImage == profileImage) &&
             (identical(other.reviewDetails, reviewDetails) ||
@@ -3151,7 +3170,7 @@ class _$ProfileReviewModelImpl implements _ProfileReviewModel {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, fullName, profileImage, reviewDetails, patronLevel);
+      runtimeType, fullName, city, profileImage, reviewDetails, patronLevel);
 
   @JsonKey(ignore: true)
   @override
@@ -3171,6 +3190,7 @@ class _$ProfileReviewModelImpl implements _ProfileReviewModel {
 abstract class _ProfileReviewModel implements ProfileReviewModel {
   const factory _ProfileReviewModel(
       {@JsonKey(name: "fullName") final String? fullName,
+      @JsonKey(name: "city") final String? city,
       @JsonKey(name: "profileImage") final String? profileImage,
       @JsonKey(name: "reviewDetails") final ReviewDetailsModel? reviewDetails,
       @JsonKey(name: "patron_level")
@@ -3182,6 +3202,9 @@ abstract class _ProfileReviewModel implements ProfileReviewModel {
   @override
   @JsonKey(name: "fullName")
   String? get fullName;
+  @override
+  @JsonKey(name: "city")
+  String? get city;
   @override
   @JsonKey(name: "profileImage")
   String? get profileImage;

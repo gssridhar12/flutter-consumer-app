@@ -9,8 +9,7 @@ class LoginApiUseCase {
 
   LoginApiUseCase({required this.authRepository});
 
-  Future<Either<Failure, AuthEntity>> execute(
-      {required LogInRequest loginRequest}) async {
-    return await authRepository.loginWithApi(logInRequest: loginRequest);
+  Future<Either<Failure, AuthEntity>> execute({required LogInRequest loginRequest}) async{
+  return await  authRepository.loginWithApi(logInRequest: loginRequest);
   }
 }

@@ -24,7 +24,7 @@ class CreateAccountwithAuth extends AuthBlocEvent {
       required this.password});
 
   @override
-  List<Object> get props => [emailOrPhoneNumber, password, fullName];
+  List<Object> get props => [emailOrPhoneNumber, password,fullName];
 }
 
 class LoginWithGoogleAuth extends AuthBlocEvent {

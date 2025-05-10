@@ -155,9 +155,11 @@ class MostBookedPackagesSeeAllPageState
                     return ListView.builder(
                       physics: const BouncingScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: state.package.data!.packages!.length,
+                      itemCount: 
+                      state.package.data!.packages!.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return MostBookedPackageCardWidget(
+                        return 
+                         MostBookedPackageCardWidget(
                           width: width,
                           entity: state.package,
                           index: index,

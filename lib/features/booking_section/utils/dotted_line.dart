@@ -12,7 +12,8 @@ class DottedLinePainter extends CustomPainter {
     final double dashSpace = 5;
     double startX = 0;
     while (startX < size.width) {
-      canvas.drawLine(Offset(startX, 0), Offset(startX + dashWidth, 0), paint);
+      canvas.drawLine(
+          Offset(startX, 0), Offset(startX + dashWidth, 0), paint);
       startX += dashWidth + dashSpace;
     }
   }
@@ -34,3 +35,4 @@ class DottedLine extends StatelessWidget {
     );
   }
 }
+

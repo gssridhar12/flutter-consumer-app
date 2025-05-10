@@ -20,6 +20,7 @@ class PackageHeadingWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Padding(
+
           padding: const EdgeInsets.only(right: 5),
           child: Icon(icon, size: 22, color: colorred),
         ),

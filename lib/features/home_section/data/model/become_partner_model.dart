@@ -96,8 +96,7 @@ class DataModel extends Data {
         city: json["city"],
         pinCode: json["pin_code"],
         eduction: json["eduction"],
-        serviceOffered:
-            List<String>.from(json["service_offered"].map((x) => x)),
+        serviceOffered: List<String>.from(json["service_offered"].map((x) => x)),
         professionalExperience: json["professional_experience"],
         termsAndConditions: json["terms_and_conditions"],
         leadStatus: json["lead_status"],

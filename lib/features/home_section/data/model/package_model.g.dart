@@ -26,9 +26,9 @@ Map<String, dynamic> _$$PackageModelImplToJson(_$PackageModelImpl instance) =>
 
 _$DataModelImpl _$$DataModelImplFromJson(Map<String, dynamic> json) =>
     _$DataModelImpl(
-      size: json['size'] as int?,
-      count: json['count'] as int?,
-      page: json['page'] as int?,
+      size: (json['size'] as num?)?.toInt(),
+      count: (json['count'] as num?)?.toInt(),
+      page: (json['page'] as num?)?.toInt(),
       packages: (json['packages'] as List<dynamic>?)
           ?.map((e) => PackageElementModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -51,8 +51,8 @@ _$PackageElementModelImpl _$$PackageElementModelImplFromJson(
           : PackagePackageModel.fromJson(
               json['package'] as Map<String, dynamic>),
       profileReviewAverage: (json['profileReviewAverage'] as num?)?.toDouble(),
-      megmoGigsCount: json['megmoGigsCount'] as int?,
-      packageBookingCount: json['packageBookingCount'] as int?,
+      megmoGigsCount: (json['megmoGigsCount'] as num?)?.toInt(),
+      packageBookingCount: (json['packageBookingCount'] as num?)?.toInt(),
       profileName: json['profileName'] as String?,
       profileImage: json['profileImage'] as String?,
     );
@@ -84,7 +84,9 @@ _$PackagePackageModelImpl _$$PackagePackageModelImplFromJson(
       packageInclusions: json['package_inclusions'] as String?,
       packageExclusions: json['package_exclusions'] as String?,
       packageMustKnows: json['package_must_knows'] as String?,
-      serviceLocation: json['service_location'] as String?,
+      serviceLocation: (json['service_location'] as List<dynamic>?)
+          ?.map((e) => ServiceLocationModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
       status: json['status'] as String?,
       packageKeywords: (json['package_keywords'] as List<dynamic>?)
           ?.map((e) => e as String)
@@ -93,7 +95,7 @@ _$PackagePackageModelImpl _$$PackagePackageModelImplFromJson(
           ?.map((e) => e as String)
           .toList(),
       serviceTimingAvailability: json['service_timing_availability'] as String?,
-      packageCost: json['package_cost'] as int?,
+      packageCost: (json['package_cost'] as num?)?.toInt(),
       transportationCost: (json['transportation_cost'] as num?)?.toDouble(),
       couponsAndDiscounts: json['coupons_and_discounts'] as String?,
       uploadPackageAgreement: json['upload_package_agreement'] as String?,
@@ -104,9 +106,15 @@ _$PackagePackageModelImpl _$$PackagePackageModelImplFromJson(
       packageGallery: (json['packageGallery'] as List<dynamic>?)
           ?.map((e) => PackageGalleryModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      selectedBuckets: (json['selected_buckets'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
+     selectedBuckets: (json['selected_buckets'] as List<dynamic>?)
+    ?.map((e) => e != null ? (e as Map<String, dynamic>)['key'] as String? : null)
+    .where((element) => element != null) // This filters out any null values
+    .cast<String>() // Ensures the list contains only Strings
+    .toList(),
+
+      // selectedBuckets: (json['selected_buckets'] as List<dynamic>?)
+      //     ?.map((e) => e as String)
+      //     .toList(),
       createdOn: json['created_on'] == null
           ? null
           : DateTime.parse(json['created_on'] as String),
@@ -150,7 +158,7 @@ Map<String, dynamic> _$$PackagePackageModelImplToJson(
 _$PackageGalleryModelImpl _$$PackageGalleryModelImplFromJson(
         Map<String, dynamic> json) =>
     _$PackageGalleryModelImpl(
-      media: json['media'] as String?,
+      mediatype: json['media_type'] as String?,
       description: json['description'] as String?,
       assignedTo: json['assigned_to'] as List<dynamic>?,
     );
@@ -158,7 +166,21 @@ _$PackageGalleryModelImpl _$$PackageGalleryModelImplFromJson(
 Map<String, dynamic> _$$PackageGalleryModelImplToJson(
         _$PackageGalleryModelImpl instance) =>
     <String, dynamic>{
-      'media': instance.media,
+      'media_type': instance.mediatype,
       'description': instance.description,
       'assigned_to': instance.assignedTo,
+    };
+
+_$ServiceLocationModelImpl _$$ServiceLocationModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ServiceLocationModelImpl(
+      addressType: json['address_type'] as String?,
+      city: json['city'] as String?,
+    );
+
+Map<String, dynamic> _$$ServiceLocationModelImplToJson(
+        _$ServiceLocationModelImpl instance) =>
+    <String, dynamic>{
+      'address_type': instance.addressType,
+      'city': instance.city,
     };

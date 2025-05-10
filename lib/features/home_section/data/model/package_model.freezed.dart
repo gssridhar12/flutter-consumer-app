@@ -813,7 +813,8 @@ mixin _$PackagePackageModel {
   @JsonKey(name: "package_must_knows")
   String? get packageMustKnows => throw _privateConstructorUsedError;
   @JsonKey(name: "service_location")
-  String? get serviceLocation => throw _privateConstructorUsedError;
+  List<ServiceLocationModel>? get serviceLocation =>
+      throw _privateConstructorUsedError;
   @JsonKey(name: "status")
   String? get status => throw _privateConstructorUsedError;
   @JsonKey(name: "package_keywords")
@@ -873,7 +874,8 @@ abstract class $PackagePackageModelCopyWith<$Res> {
       @JsonKey(name: "package_inclusions") String? packageInclusions,
       @JsonKey(name: "package_exclusions") String? packageExclusions,
       @JsonKey(name: "package_must_knows") String? packageMustKnows,
-      @JsonKey(name: "service_location") String? serviceLocation,
+      @JsonKey(name: "service_location")
+      List<ServiceLocationModel>? serviceLocation,
       @JsonKey(name: "status") String? status,
       @JsonKey(name: "package_keywords") List<String>? packageKeywords,
       @JsonKey(name: "package_tags") List<String>? packageTags,
@@ -989,7 +991,7 @@ class _$PackagePackageModelCopyWithImpl<$Res, $Val extends PackagePackageModel>
       serviceLocation: freezed == serviceLocation
           ? _value.serviceLocation
           : serviceLocation // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<ServiceLocationModel>?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -1079,7 +1081,8 @@ abstract class _$$PackagePackageModelImplCopyWith<$Res>
       @JsonKey(name: "package_inclusions") String? packageInclusions,
       @JsonKey(name: "package_exclusions") String? packageExclusions,
       @JsonKey(name: "package_must_knows") String? packageMustKnows,
-      @JsonKey(name: "service_location") String? serviceLocation,
+      @JsonKey(name: "service_location")
+      List<ServiceLocationModel>? serviceLocation,
       @JsonKey(name: "status") String? status,
       @JsonKey(name: "package_keywords") List<String>? packageKeywords,
       @JsonKey(name: "package_tags") List<String>? packageTags,
@@ -1191,9 +1194,9 @@ class __$$PackagePackageModelImplCopyWithImpl<$Res>
           : packageMustKnows // ignore: cast_nullable_to_non_nullable
               as String?,
       serviceLocation: freezed == serviceLocation
-          ? _value.serviceLocation
+          ? _value._serviceLocation
           : serviceLocation // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<ServiceLocationModel>?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -1278,7 +1281,8 @@ class _$PackagePackageModelImpl implements _PackagePackageModel {
       @JsonKey(name: "package_inclusions") this.packageInclusions,
       @JsonKey(name: "package_exclusions") this.packageExclusions,
       @JsonKey(name: "package_must_knows") this.packageMustKnows,
-      @JsonKey(name: "service_location") this.serviceLocation,
+      @JsonKey(name: "service_location")
+      final List<ServiceLocationModel>? serviceLocation,
       @JsonKey(name: "status") this.status,
       @JsonKey(name: "package_keywords") final List<String>? packageKeywords,
       @JsonKey(name: "package_tags") final List<String>? packageTags,
@@ -1297,7 +1301,8 @@ class _$PackagePackageModelImpl implements _PackagePackageModel {
       @JsonKey(name: "selected_buckets") final List<String>? selectedBuckets,
       @JsonKey(name: "created_on") this.createdOn,
       @JsonKey(name: "extra_allowance") this.extraAllowance})
-      : _packageKeywords = packageKeywords,
+      : _serviceLocation = serviceLocation,
+        _packageKeywords = packageKeywords,
         _packageTags = packageTags,
         _packageGallery = packageGallery,
         _selectedBuckets = selectedBuckets;
@@ -1341,9 +1346,17 @@ class _$PackagePackageModelImpl implements _PackagePackageModel {
   @override
   @JsonKey(name: "package_must_knows")
   final String? packageMustKnows;
+  final List<ServiceLocationModel>? _serviceLocation;
   @override
   @JsonKey(name: "service_location")
-  final String? serviceLocation;
+  List<ServiceLocationModel>? get serviceLocation {
+    final value = _serviceLocation;
+    if (value == null) return null;
+    if (_serviceLocation is EqualUnmodifiableListView) return _serviceLocation;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   @JsonKey(name: "status")
   final String? status;
@@ -1458,8 +1471,8 @@ class _$PackagePackageModelImpl implements _PackagePackageModel {
                 other.packageExclusions == packageExclusions) &&
             (identical(other.packageMustKnows, packageMustKnows) ||
                 other.packageMustKnows == packageMustKnows) &&
-            (identical(other.serviceLocation, serviceLocation) ||
-                other.serviceLocation == serviceLocation) &&
+            const DeepCollectionEquality()
+                .equals(other._serviceLocation, _serviceLocation) &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality()
                 .equals(other._packageKeywords, _packageKeywords) &&
@@ -1510,7 +1523,7 @@ class _$PackagePackageModelImpl implements _PackagePackageModel {
         packageInclusions,
         packageExclusions,
         packageMustKnows,
-        serviceLocation,
+        const DeepCollectionEquality().hash(_serviceLocation),
         status,
         const DeepCollectionEquality().hash(_packageKeywords),
         const DeepCollectionEquality().hash(_packageTags),
@@ -1558,7 +1571,8 @@ abstract class _PackagePackageModel implements PackagePackageModel {
       @JsonKey(name: "package_inclusions") final String? packageInclusions,
       @JsonKey(name: "package_exclusions") final String? packageExclusions,
       @JsonKey(name: "package_must_knows") final String? packageMustKnows,
-      @JsonKey(name: "service_location") final String? serviceLocation,
+      @JsonKey(name: "service_location")
+      final List<ServiceLocationModel>? serviceLocation,
       @JsonKey(name: "status") final String? status,
       @JsonKey(name: "package_keywords") final List<String>? packageKeywords,
       @JsonKey(name: "package_tags") final List<String>? packageTags,
@@ -1621,7 +1635,7 @@ abstract class _PackagePackageModel implements PackagePackageModel {
   String? get packageMustKnows;
   @override
   @JsonKey(name: "service_location")
-  String? get serviceLocation;
+  List<ServiceLocationModel>? get serviceLocation;
   @override
   @JsonKey(name: "status")
   String? get status;
@@ -1682,8 +1696,8 @@ PackageGalleryModel _$PackageGalleryModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PackageGalleryModel {
-  @JsonKey(name: "media")
-  String? get media => throw _privateConstructorUsedError;
+  @JsonKey(name: "media_type")
+  String? get mediatype => throw _privateConstructorUsedError;
   @JsonKey(name: "description")
   String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: "assigned_to")
@@ -1702,7 +1716,7 @@ abstract class $PackageGalleryModelCopyWith<$Res> {
       _$PackageGalleryModelCopyWithImpl<$Res, PackageGalleryModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: "media") String? media,
+      {@JsonKey(name: "media_type") String? mediatype,
       @JsonKey(name: "description") String? description,
       @JsonKey(name: "assigned_to") List<dynamic>? assignedTo});
 }
@@ -1720,14 +1734,14 @@ class _$PackageGalleryModelCopyWithImpl<$Res, $Val extends PackageGalleryModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? media = freezed,
+    Object? mediatype = freezed,
     Object? description = freezed,
     Object? assignedTo = freezed,
   }) {
     return _then(_value.copyWith(
-      media: freezed == media
-          ? _value.media
-          : media // ignore: cast_nullable_to_non_nullable
+      mediatype: freezed == mediatype
+          ? _value.mediatype
+          : mediatype // ignore: cast_nullable_to_non_nullable
               as String?,
       description: freezed == description
           ? _value.description
@@ -1750,7 +1764,7 @@ abstract class _$$PackageGalleryModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "media") String? media,
+      {@JsonKey(name: "media_type") String? mediatype,
       @JsonKey(name: "description") String? description,
       @JsonKey(name: "assigned_to") List<dynamic>? assignedTo});
 }
@@ -1766,14 +1780,14 @@ class __$$PackageGalleryModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? media = freezed,
+    Object? mediatype = freezed,
     Object? description = freezed,
     Object? assignedTo = freezed,
   }) {
     return _then(_$PackageGalleryModelImpl(
-      media: freezed == media
-          ? _value.media
-          : media // ignore: cast_nullable_to_non_nullable
+      mediatype: freezed == mediatype
+          ? _value.mediatype
+          : mediatype // ignore: cast_nullable_to_non_nullable
               as String?,
       description: freezed == description
           ? _value.description
@@ -1791,7 +1805,7 @@ class __$$PackageGalleryModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PackageGalleryModelImpl implements _PackageGalleryModel {
   const _$PackageGalleryModelImpl(
-      {@JsonKey(name: "media") this.media,
+      {@JsonKey(name: "media_type") this.mediatype,
       @JsonKey(name: "description") this.description,
       @JsonKey(name: "assigned_to") final List<dynamic>? assignedTo})
       : _assignedTo = assignedTo;
@@ -1800,8 +1814,8 @@ class _$PackageGalleryModelImpl implements _PackageGalleryModel {
       _$$PackageGalleryModelImplFromJson(json);
 
   @override
-  @JsonKey(name: "media")
-  final String? media;
+  @JsonKey(name: "media_type")
+  final String? mediatype;
   @override
   @JsonKey(name: "description")
   final String? description;
@@ -1818,7 +1832,7 @@ class _$PackageGalleryModelImpl implements _PackageGalleryModel {
 
   @override
   String toString() {
-    return 'PackageGalleryModel(media: $media, description: $description, assignedTo: $assignedTo)';
+    return 'PackageGalleryModel(mediatype: $mediatype, description: $description, assignedTo: $assignedTo)';
   }
 
   @override
@@ -1826,7 +1840,8 @@ class _$PackageGalleryModelImpl implements _PackageGalleryModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PackageGalleryModelImpl &&
-            (identical(other.media, media) || other.media == media) &&
+            (identical(other.mediatype, mediatype) ||
+                other.mediatype == mediatype) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             const DeepCollectionEquality()
@@ -1835,7 +1850,7 @@ class _$PackageGalleryModelImpl implements _PackageGalleryModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, media, description,
+  int get hashCode => Object.hash(runtimeType, mediatype, description,
       const DeepCollectionEquality().hash(_assignedTo));
 
   @JsonKey(ignore: true)
@@ -1855,7 +1870,7 @@ class _$PackageGalleryModelImpl implements _PackageGalleryModel {
 
 abstract class _PackageGalleryModel implements PackageGalleryModel {
   const factory _PackageGalleryModel(
-          {@JsonKey(name: "media") final String? media,
+          {@JsonKey(name: "media_type") final String? mediatype,
           @JsonKey(name: "description") final String? description,
           @JsonKey(name: "assigned_to") final List<dynamic>? assignedTo}) =
       _$PackageGalleryModelImpl;
@@ -1864,8 +1879,8 @@ abstract class _PackageGalleryModel implements PackageGalleryModel {
       _$PackageGalleryModelImpl.fromJson;
 
   @override
-  @JsonKey(name: "media")
-  String? get media;
+  @JsonKey(name: "media_type")
+  String? get mediatype;
   @override
   @JsonKey(name: "description")
   String? get description;
@@ -1876,4 +1891,174 @@ abstract class _PackageGalleryModel implements PackageGalleryModel {
   @JsonKey(ignore: true)
   _$$PackageGalleryModelImplCopyWith<_$PackageGalleryModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+ServiceLocationModel _$ServiceLocationModelFromJson(Map<String, dynamic> json) {
+  return _ServiceLocationModel.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ServiceLocationModel {
+  @JsonKey(name: "address_type")
+  String? get addressType => throw _privateConstructorUsedError;
+  @JsonKey(name: "city")
+  String? get city => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ServiceLocationModelCopyWith<ServiceLocationModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ServiceLocationModelCopyWith<$Res> {
+  factory $ServiceLocationModelCopyWith(ServiceLocationModel value,
+          $Res Function(ServiceLocationModel) then) =
+      _$ServiceLocationModelCopyWithImpl<$Res, ServiceLocationModel>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "address_type") String? addressType,
+      @JsonKey(name: "city") String? city});
+}
+
+/// @nodoc
+class _$ServiceLocationModelCopyWithImpl<$Res,
+        $Val extends ServiceLocationModel>
+    implements $ServiceLocationModelCopyWith<$Res> {
+  _$ServiceLocationModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? addressType = freezed,
+    Object? city = freezed,
+  }) {
+    return _then(_value.copyWith(
+      addressType: freezed == addressType
+          ? _value.addressType
+          : addressType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      city: freezed == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ServiceLocationModelImplCopyWith<$Res>
+    implements $ServiceLocationModelCopyWith<$Res> {
+  factory _$$ServiceLocationModelImplCopyWith(_$ServiceLocationModelImpl value,
+          $Res Function(_$ServiceLocationModelImpl) then) =
+      __$$ServiceLocationModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "address_type") String? addressType,
+      @JsonKey(name: "city") String? city});
+}
+
+/// @nodoc
+class __$$ServiceLocationModelImplCopyWithImpl<$Res>
+    extends _$ServiceLocationModelCopyWithImpl<$Res, _$ServiceLocationModelImpl>
+    implements _$$ServiceLocationModelImplCopyWith<$Res> {
+  __$$ServiceLocationModelImplCopyWithImpl(_$ServiceLocationModelImpl _value,
+      $Res Function(_$ServiceLocationModelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? addressType = freezed,
+    Object? city = freezed,
+  }) {
+    return _then(_$ServiceLocationModelImpl(
+      addressType: freezed == addressType
+          ? _value.addressType
+          : addressType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      city: freezed == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ServiceLocationModelImpl implements _ServiceLocationModel {
+  const _$ServiceLocationModelImpl(
+      {@JsonKey(name: "address_type") this.addressType,
+      @JsonKey(name: "city") this.city});
+
+  factory _$ServiceLocationModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ServiceLocationModelImplFromJson(json);
+
+  @override
+  @JsonKey(name: "address_type")
+  final String? addressType;
+  @override
+  @JsonKey(name: "city")
+  final String? city;
+
+  @override
+  String toString() {
+    return 'ServiceLocationModel(addressType: $addressType, city: $city)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ServiceLocationModelImpl &&
+            (identical(other.addressType, addressType) ||
+                other.addressType == addressType) &&
+            (identical(other.city, city) || other.city == city));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, addressType, city);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ServiceLocationModelImplCopyWith<_$ServiceLocationModelImpl>
+      get copyWith =>
+          __$$ServiceLocationModelImplCopyWithImpl<_$ServiceLocationModelImpl>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ServiceLocationModelImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ServiceLocationModel implements ServiceLocationModel {
+  const factory _ServiceLocationModel(
+      {@JsonKey(name: "address_type") final String? addressType,
+      @JsonKey(name: "city") final String? city}) = _$ServiceLocationModelImpl;
+
+  factory _ServiceLocationModel.fromJson(Map<String, dynamic> json) =
+      _$ServiceLocationModelImpl.fromJson;
+
+  @override
+  @JsonKey(name: "address_type")
+  String? get addressType;
+  @override
+  @JsonKey(name: "city")
+  String? get city;
+  @override
+  @JsonKey(ignore: true)
+  _$$ServiceLocationModelImplCopyWith<_$ServiceLocationModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

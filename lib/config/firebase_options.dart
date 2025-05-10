@@ -67,8 +67,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '102836287134',
     projectId: 'megmo-47094',
     storageBucket: 'megmo-47094.appspot.com',
-    iosClientId:
-        '102836287134-dn2elbp6e88e3qfjtd40fb46jaq6q5ri.apps.googleusercontent.com',
+    iosClientId: '102836287134-dn2elbp6e88e3qfjtd40fb46jaq6q5ri.apps.googleusercontent.com',
     iosBundleId: 'com.megmo.consumer',
   );
 
@@ -78,8 +77,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '102836287134',
     projectId: 'megmo-47094',
     storageBucket: 'megmo-47094.appspot.com',
-    iosClientId:
-        '102836287134-popl5466ojb6kmgimkalspjk7lv81lor.apps.googleusercontent.com',
+    iosClientId: '102836287134-popl5466ojb6kmgimkalspjk7lv81lor.apps.googleusercontent.com',
     iosBundleId: 'com.megmo.consumer.RunnerTests',
   );
 }

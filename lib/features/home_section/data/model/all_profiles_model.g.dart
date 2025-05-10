@@ -26,12 +26,12 @@ Map<String, dynamic> _$$AllProfileModelImplToJson(
 
 _$DataModelImpl _$$DataModelImplFromJson(Map<String, dynamic> json) =>
     _$DataModelImpl(
-      count: json['count'] as int,
+      count: (json['count'] as num).toInt(),
       profiles: (json['profiles'] as List<dynamic>)
           .map((e) => ProfileElementModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      page: json['page'] as int,
-      size: json['size'] as int,
+      page: (json['page'] as num).toInt(),
+      size: (json['size'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$DataModelImplToJson(_$DataModelImpl instance) =>
@@ -214,7 +214,7 @@ _$PartnerLocationModelImpl _$$PartnerLocationModelImplFromJson(
       city: json['city'] as String?,
       state: json['state'] as String?,
       country: json['country'] as String?,
-      pinCode: json['pinCode'] as int?,
+      pinCode: (json['pinCode'] as num?)?.toInt(),
       landmark: json['landmark'] as String?,
       latitude: json['latitude'] as String,
       longitude: json['longitude'] as String,
@@ -283,7 +283,7 @@ _$ProfileDetailsModelImpl _$$ProfileDetailsModelImplFromJson(
           .toList(),
       profileHeadline: json['profile_headline'] as String,
       megmoPreferredPartner: json['megmo_preferred_partner'] as bool?,
-      partnerLevel: json['partner_level'] as int?,
+      partnerLevel: (json['partner_level'] as num?)?.toInt(),
       freshTalent: json['fresh_talent'] as bool,
       partnerInDemand: json['partner_in_demand'] as bool,
       trendingPartner: json['trending_partner'] as bool,
@@ -299,7 +299,7 @@ _$ProfileDetailsModelImpl _$$ProfileDetailsModelImplFromJson(
           (json['skills'] as List<dynamic>).map((e) => e as String).toList(),
       lockeProfile: json['locke_profile'] as bool,
       currencyCode: json['currency_code'] as String,
-      unlockCost: json['unlock_cost'] as int?,
+      unlockCost: (json['unlock_cost'] as num?)?.toInt(),
       media: (json['media'] as List<dynamic>)
           .map((e) => MediaModel.fromJson(e as Map<String, dynamic>))
           .toList(),

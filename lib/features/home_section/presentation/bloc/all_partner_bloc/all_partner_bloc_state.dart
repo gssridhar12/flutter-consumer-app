@@ -2,7 +2,7 @@ part of 'all_partner_bloc_bloc.dart';
 
 sealed class AllPartnerBlocState extends Equatable {
   const AllPartnerBlocState();
-
+  
   @override
   List<Object> get props => [];
 }

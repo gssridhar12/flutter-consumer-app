@@ -128,14 +128,14 @@ class DrawerWidget extends StatelessWidget {
                     isTrailing: index == 0 ? false : true,
                     leadingIcon: iconsMainMenu[index],
                     leadingIconColor: colorred,
-                    trailingIcon: Container(
-                      width: 13.w,
-                      height: 04.h,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: colorblack.withOpacity(0.3)),
-                      child: const Center(child: Text('2')),
-                    ),
+                    // trailingIcon: Container(
+                    //   width: 13.w,
+                    //   height: 04.h,
+                    //   decoration: BoxDecoration(
+                    //       borderRadius: BorderRadius.circular(10),
+                    //       color: colorblack.withOpacity(0.3)),
+                    //   child: const Center(child: Text('2')),
+                    // ),
                   );
                 },
               ),

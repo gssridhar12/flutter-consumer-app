@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
@@ -20,7 +22,7 @@ class MostBookedPackageCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final package = entity.data!.packages![index];
+    final package = entity.data!.packages![1];
 
     return CustomContainerWidget(
         child: Column(
@@ -46,7 +48,8 @@ class MostBookedPackageCardWidget extends StatelessWidget {
                   height: width * 0.4,
                   width: width,
                   child: CustomImage(
-                    imageUrl: package.package!.packageGallery![index].media!,
+                    imageUrl:
+                        package.package!.packageGallery![index].mediatype!,
                     borderRadius: BorderRadius.circular(12),
                   ),
                 );
@@ -143,15 +146,28 @@ class MostBookedPackageCardWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      package.package!.serviceLocation!,
+                      package.package?.packageTags?[0] ?? "",
                       style: TextStyle(
-                          color: colorblack.withOpacity(0.7), fontSize: 14),
+                          fontStyle: FontStyle.italic,
+                          color: colorblack.withOpacity(0.7),
+                          fontSize: 14),
                     ),
                     sbox5,
+
                     Text(
-                      '₹${package.package!.packageCost}',
-                      style: const TextStyle(color: colorblack, fontSize: 16),
-                    ),
+                      package.package != null &&
+                              package.package!.serviceLocation != null &&
+                              package.package!.serviceLocation!.isNotEmpty
+                          ? package.package!.serviceLocation![0].addressType ??
+                              "No address available"
+                          : "No address available",
+                      style: const TextStyle(color: Colors.black, fontSize: 16),
+                    )
+
+                                    // Text(
+                                    //  package.package!.serviceLocation![0].addressType??"",
+                                    //   style: const TextStyle(color: colorblack, fontSize: 16),
+                                    // ),
                   ],
                 ),
               ),
@@ -269,6 +285,9 @@ class PackageRatingAndOrderCountWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String formattedReview = review != null && review!.isNotEmpty
+        ? double.parse(review!).toStringAsFixed(2)
+        : '0.00';
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 10),
       child: Row(
@@ -280,7 +299,7 @@ class PackageRatingAndOrderCountWidget extends StatelessWidget {
             color: colorred,
           ),
           Text(
-            review!,
+            formattedReview,
             style: const TextStyle(
                 fontSize: 16, color: colorred, fontWeight: FontWeight.w600),
           ),
@@ -322,7 +341,7 @@ class PackageRatingAndReviewCountWidget extends StatelessWidget {
           Icon(
             Icons.star,
             size: iconSize == null ? 18 : iconSize as double,
-            color: colorred,
+            color: colorblack.withOpacity(0.5),
           ),
           Text(
             review!,

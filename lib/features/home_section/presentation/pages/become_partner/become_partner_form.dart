@@ -91,7 +91,8 @@ class _BecomePartnerFormPageState extends State<BecomePartnerFormPage> {
             if (state is AddLeadSuccess) {
               if (state.partner.successStatus == true) {
                 Utils.showSnackbar('Registration Successfull');
-                AppNavigation.pushNavigation(context, const HomePage());
+                AppNavigation.pushNavigation(
+                    context, const HomePage());
               }
             }
           },

@@ -221,7 +221,7 @@ _$ProfileDetailsModelImpl _$$ProfileDetailsModelImplFromJson(
           (json['skills'] as List<dynamic>?)?.map((e) => e as String).toList(),
       lockeProfile: json['locke_profile'] as bool?,
       currencyCode: json['currency_code'] as String?,
-      unlockCost: json['unlock_cost'] as int?,
+      unlockCost: (json['unlock_cost'] as num?)?.toInt(),
       media: (json['media'] as List<dynamic>?)
           ?.map((e) => MediaModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -261,18 +261,20 @@ _$ProfileReviewModelImpl _$$ProfileReviewModelImplFromJson(
         Map<String, dynamic> json) =>
     _$ProfileReviewModelImpl(
       fullName: json['fullName'] as String?,
+      city: json['city'] as String?,
       profileImage: json['profileImage'] as String?,
       reviewDetails: json['reviewDetails'] == null
           ? null
           : ReviewDetailsModel.fromJson(
               json['reviewDetails'] as Map<String, dynamic>),
-      patronLevel: json['patron_level'] as int?,
+      patronLevel: (json['patron_level'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$ProfileReviewModelImplToJson(
         _$ProfileReviewModelImpl instance) =>
     <String, dynamic>{
       'fullName': instance.fullName,
+      'city': instance.city,
       'profileImage': instance.profileImage,
       'reviewDetails': instance.reviewDetails,
       'patron_level': instance.patronLevel,
@@ -320,7 +322,7 @@ _$ReviewAveragesModelImpl _$$ReviewAveragesModelImplFromJson(
       avgCommunication: (json['avgCommunication'] as num?)?.toDouble(),
       avgServiceDescribed: (json['avgServiceDescribed'] as num?)?.toDouble(),
       avgRecommended: (json['avgRecommended'] as num?)?.toDouble(),
-      reviewCount: json['reviewCount'] as int?,
+      reviewCount: (json['reviewCount'] as num?)?.toInt(),
       overallAverage: (json['overallAverage'] as num?)?.toDouble(),
     );
 

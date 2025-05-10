@@ -122,7 +122,7 @@ class _AllCategoryPageState extends State<AllCategoryPage> {
                                   // const SpecificCategoryPage()
                                   SpecificCategoryPage(
                                     categoryTitle:
-                                        data[index].parentCategoryName ?? "",
+                                        data[index].parentCategoryName??"",
                                     isGuestUser: widget.isGuestUser,
                                   ),
                                 );

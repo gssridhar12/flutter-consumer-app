@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
@@ -33,8 +35,9 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         if (id == null) {
           emit(IsGuestUser());
         }
-
+        var userids = "40b8f6ad-eeb2-4173-aa92-65d8f7dfc059";
         var partner = await getUserUsecase.execute(userId!);
+        // var partner = await getUserUsecase.execute(userids);
         partner.fold(
           (exception) {
             if (exception is ServerFailure) {

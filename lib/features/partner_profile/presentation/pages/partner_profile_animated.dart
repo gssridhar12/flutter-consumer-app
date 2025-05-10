@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'dart:ui';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:card_swiper/card_swiper.dart';
@@ -8,11 +10,10 @@ import 'package:flutter_consumer_app/core/constant/constant.dart';
 import 'package:flutter_consumer_app/features/chat_section/presentation/pages/chat_screen_custom.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/bloc/bloc/partner_like_bloc_bloc.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/bloc/bloc/partner_like_bloc_event.dart';
-import 'package:flutter_consumer_app/features/home_section/presentation/bloc/package_like_bloc/package_like_bloc_bloc.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/most_booked_package_tile.dart';
 import 'package:flutter_consumer_app/features/packages_section/presentation/bloc/reviews_bloc/review_bloc_bloc.dart';
 import 'package:flutter_consumer_app/features/partner_profile/presentation/bloc/partner_profile_bloc/partner_profile_bloc.dart';
-import 'package:flutter_consumer_app/features/partner_profile/presentation/widgets/about_tab_widget.dart';
+import 'package:flutter_consumer_app/features/partner_profile/presentation/widgets/About_widget/about_tab_widget.dart';
 import 'package:flutter_consumer_app/features/partner_profile/presentation/widgets/faqs_tab_widget.dart';
 import 'package:flutter_consumer_app/features/partner_profile/presentation/widgets/favourite_button.dart';
 import 'package:flutter_consumer_app/features/partner_profile/presentation/widgets/gallery_tab_widget.dart';
@@ -39,7 +40,8 @@ class _PartnerProfileAnimatedState extends State<PartnerProfileAnimated>
 
   bool isFavourite = false;
   int imageCount = 0;
-  final String userId = localDb.getString('id')!;
+    int _currentIndex = 0;
+final String userId = localDb.getString('id')??'';
 
   @override
   void initState() {
@@ -47,7 +49,10 @@ class _PartnerProfileAnimatedState extends State<PartnerProfileAnimated>
     BlocProvider.of<PartnerReviewBloc>(context)
         .add(GetPartnerReviews(widget.uuid));
     BlocProvider.of<PartnerLikeBloc>(context)
+     // .add(GetPartnerLike(partnerUuid: widget.uuid));
         .add(GetPartnerLike(partnerUuid: userId));
+        debugPrint(' uuid---> ${widget.uuid}');        
+        debugPrint('userid---> $userId');
 
     _tabController = TabController(length: 5, vsync: this);
     super.initState();
@@ -65,7 +70,8 @@ class _PartnerProfileAnimatedState extends State<PartnerProfileAnimated>
     // final height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      body: BlocBuilder<PartnerProfileBloc, PartnerProfileState>(
+      body:
+       BlocBuilder<PartnerProfileBloc, PartnerProfileState>(
         builder: (context, state) {
           if (state is GetPartnerProfileLoading) {
             return SizedBox(
@@ -75,6 +81,7 @@ class _PartnerProfileAnimatedState extends State<PartnerProfileAnimated>
               ),
             );
           }
+          
           if (state is GetPartnerProfileFailed) {
             return const Text('something went wrong');
           }
@@ -82,11 +89,13 @@ class _PartnerProfileAnimatedState extends State<PartnerProfileAnimated>
             final rating = state.partnerProfile.data!.reviewAverages;
             final reviews = state.partnerProfile.data!.profileReviews!;
             final reviewsAvarage = state.partnerProfile.data!.reviewAverages;
-
+              final package = state.partnerProfile.data!.profile;
             final profile = state.partnerProfile.data!.profile!.profileDetails;
             final gallery = state.partnerProfile.data!.profile!.gallery;
             final faq = state.partnerProfile.data!.profile!.faQs;
             final portfolio = state.partnerProfile.data!.profile!.portfolio;
+            final megmoGig = state.partnerProfile.data!.profile!.megmoGigs;
+           final imageCount = profile?.media?.length ?? 0;
 
             // final partnerAvarageRating = getAvarageRating(rating);
 
@@ -147,17 +156,21 @@ class _PartnerProfileAnimatedState extends State<PartnerProfileAnimated>
                               ),
                               const Spacer(),
                               Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: IconButtonWidget(
-                                  buttonName: 'Chat',
-                                  onTap: () {
-                                    AppNavigation.pushNavigation(
-                                        context,
-                                        const ChatScreenCustom(
-                                            showPopUp: true,
-                                            partnerUuid:
-                                                '761f5aba-26f3-4edb-a4fe-9d1ef2b68881'));
-                                  },
+                                padding: const EdgeInsets.only(right: 5),
+                                child: SizedBox(
+                                   width: 85,
+                                  child: IconButtonWidget(
+                                    buttonName: 'Chat',
+                                    onTap: () {
+                                      AppNavigation.pushNavigation(
+                                          context,
+                                        ChatScreenCustom(
+                                              showPopUp: true,
+                                              partnerUuid: package!.partnerUuid!
+                                                  //'761f5aba-26f3-4edb-a4fe-9d1ef2b68881'
+                                                  ));
+                                    },
+                                  ),
                                 ),
                               ),
                             ],
@@ -182,6 +195,11 @@ class _PartnerProfileAnimatedState extends State<PartnerProfileAnimated>
                                           size: 5,
                                           activeSize: 7),
                                     ),
+                                   onIndexChanged: (index) {
+                                        setState(() {
+                                          _currentIndex = index;
+                                        });
+                                      },
                                     // control: const SwiperControl(),
                                     itemBuilder: (context, index) {
                                       // SchedulerBinding.instance
@@ -199,7 +217,7 @@ class _PartnerProfileAnimatedState extends State<PartnerProfileAnimated>
                                               bottomRight: Radius.circular(20)),
                                           child: CustomImage(
                                             imageUrl:
-                                                profile.media?[0].mediaType ??
+                                                profile.media?[index].mediaType ??
                                                     "",
                                             fit: BoxFit.cover,
                                           ),
@@ -218,15 +236,16 @@ class _PartnerProfileAnimatedState extends State<PartnerProfileAnimated>
                                     icon: Icons.chevron_left_outlined,
                                   ),
                                 ),
-                                const Positioned(
-                                  right: 20,
-                                  top: 60,
-                                  child: ContainerIconWidget(
-                                    icon: Icons.share,
-                                  ),
-                                ),
+                                // const Positioned(
+                                //   right: 20,
+                                //   top: 60,
+                                //   child: ContainerIconWidget(
+                                //     icon: Icons.share,
+                                //   ),
+                                // ),
                                 ProfileFavoriteButtonWidget(
-                                    userId: userId, partnerUuid: widget.uuid),
+                                  userId: userId,
+                                     partnerUuid: widget.uuid),
                                 // Positioned(
                                 //   right: 80,
                                 //   top: 60,
@@ -348,11 +367,36 @@ class _PartnerProfileAnimatedState extends State<PartnerProfileAnimated>
                                       },
                                       icon: Icons.grid_view_rounded,
                                     )),
+                                        Positioned(
+                                    bottom: 70,
+                                    left: 0,
+                                    right: 0,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: List.generate(
+                                        imageCount,
+                                        (index) => Container(
+                                          margin: const EdgeInsets.symmetric(
+                                              horizontal: 4),
+                                          width: _currentIndex == index ? 7 : 5,
+                                          height:
+                                              _currentIndex == index ? 7 : 5,
+                                          decoration: BoxDecoration(
+                                            color: _currentIndex == index
+                                                ? Colors.white
+                                                : Colors.grey,
+                                            shape: BoxShape.circle,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 Positioned(
                                     left: 20,
                                     bottom: 60,
                                     child: ContainerIconWidget(
-                                      text: '${imageCount + 1} of ${3}',
+                                      text: '${_currentIndex+ 1} of $imageCount',
                                     )),
                                 Positioned(
                                   bottom: 0,
@@ -391,8 +435,9 @@ class _PartnerProfileAnimatedState extends State<PartnerProfileAnimated>
                     SliverAppBar(
                       pinned: true,
                       elevation: 0,
-                      toolbarHeight: 10,
+                      toolbarHeight: 31,
                       backgroundColor: colorwhite,
+                      automaticallyImplyLeading: false,
                       bottom: const PreferredSize(
                           preferredSize: Size.fromHeight(0),
                           child: SizedBox.shrink()),
@@ -416,7 +461,7 @@ class _PartnerProfileAnimatedState extends State<PartnerProfileAnimated>
                               color: Colors.black,
                               fontWeight: FontWeight.w500,
                             ),
-                            // Add your tabs here
+                            
                             tabs: const [
                               Tab(
                                 text: 'Packages',
@@ -446,12 +491,12 @@ class _PartnerProfileAnimatedState extends State<PartnerProfileAnimated>
                   children: [
                     PackagesTabWidget(
                         profile: profile!,
-                        uuid: state.partnerProfile.data!.profile!.partnerUuid!),
+                        uuid: state.partnerProfile.data?.profile!.partnerUuid??""),
                     portfolio != null
                         ? AboutTabWidget(
                             portfolio: portfolio,
                             about: state.partnerProfile.data!.profile!
-                                .profileDetails!.profileCoverDescription!)
+                                .profileDetails!.profileCoverDescription!, megmoGig: megmoGig!, profile: profile,)
                         : const Center(child: Text('Nothing to show here')),
                     reviewsAvarage != null
                         ? ReviewsTabWidget(
@@ -463,6 +508,7 @@ class _PartnerProfileAnimatedState extends State<PartnerProfileAnimated>
                     gallery != null
                         ? GalleryTabWidget(
                             gallery: gallery,
+                            name: profile.profileName ,
                           )
                         : const Center(child: Text('Nothing to show here'))
                   ],
@@ -473,6 +519,7 @@ class _PartnerProfileAnimatedState extends State<PartnerProfileAnimated>
           return const Text('not loading');
         },
       ),
+   
     );
   }
 }

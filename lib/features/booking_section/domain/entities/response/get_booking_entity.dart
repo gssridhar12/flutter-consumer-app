@@ -33,6 +33,8 @@ class Booking {
   final DateTime? bookedOn;
   final DateTime? startDate;
   final DateTime? endDate;
+  final DateTime? orderRescheduleDate;
+  final String? orderRescheduleReason;
   final double? baseFare;
   final double? amount;
   final BookingAddress? bookingAddress;
@@ -49,6 +51,8 @@ class Booking {
     this.bookedOn,
     this.startDate,
     this.endDate,
+    this.orderRescheduleDate,
+    this.orderRescheduleReason,
     this.baseFare,
     this.amount,
     this.bookingAddress,

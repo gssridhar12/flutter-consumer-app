@@ -6,7 +6,6 @@ sealed class PackageReviewEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
-
 class GetPackageReviews extends PackageReviewEvent {
   final String packageUuid;
   const GetPackageReviews(this.packageUuid);

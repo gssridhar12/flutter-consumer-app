@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
@@ -8,9 +10,11 @@ import 'package:flutter_consumer_app/features/packages_section/domain/entities/p
 // ignore: must_be_immutable
 class PaymentSummaryTileWidget extends StatefulWidget {
   final PackageDetailsEntity packageEntity;
+  final String Coupon;
   const PaymentSummaryTileWidget({
     super.key,
     required this.packageEntity,
+    required this.Coupon,
   });
 
   @override
@@ -19,15 +23,15 @@ class PaymentSummaryTileWidget extends StatefulWidget {
 }
 
 class _PaymentSummaryTileWidgetState extends State<PaymentSummaryTileWidget> {
-  List<String> titles = [
-    'Base fare',
-    'Promotional discount',
-    'Tax ',
-    'Transport',
-    'Sp. allowance',
-    'Membership discount',
-    'Total',
-  ];
+  // List<String> titles = [
+  //   'Base fare',
+  //   'Promotional discount',
+  //   'Tax ',
+  //   'Transport',
+  //   'Sp. allowance',
+  //   'Membership discount',
+  //   'Total',
+  // ];
   int totalAmount = 0;
   @override
   Widget build(BuildContext context) {
@@ -36,9 +40,9 @@ class _PaymentSummaryTileWidgetState extends State<PaymentSummaryTileWidget> {
     return BlocListener<CouponCubit, CouponCubitState>(
       listener: (context, state) {
         if (state is CouponAdded && state.isCouponAdded) {
-          print(state);
+          debugPrint(state.toString());
           setState(() {});
-          print(totalAmount);
+          debugPrint(totalAmount.toString());
         }
       },
       child: SingleChildScrollView(
@@ -47,29 +51,45 @@ class _PaymentSummaryTileWidgetState extends State<PaymentSummaryTileWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             sbox,
-            PaymentSummaryListTilewidget(
-              title: 'Base fare',
-              trailing: 'Rs ${data!.packageDetails!.packageCost ?? ""}',
-            ),
+            if (data!.packageDetails!.packageCost != null)
+              PaymentSummaryListTilewidget(
+                title: 'Base fare',
+                trailing: 'Rs ${data.packageDetails!.packageCost ?? ""}',
+              ),
+            if (data.packageDetails!.couponsAndDiscounts != null &&
+                double.tryParse(data.packageDetails!.couponsAndDiscounts!) !=
+                    null &&
+                double.parse(data.packageDetails!.couponsAndDiscounts!) > 0)
+              PaymentSummaryListTilewidget(
+                title: 'Promotional discount',
+                trailing: '- Rs ${data.packageDetails!.couponsAndDiscounts}',
+                trailingColor: Colors.green,
+              ),
+
+            // if (data.packageDetails!.couponsAndDiscounts != null)
             // PaymentSummaryListTilewidget(
             //   title: 'Promotional discount',
-            //   trailing: data.packageDetails.couponsAndDiscounts,
+            //   trailing: data.packageDetails!.couponsAndDiscounts.toString(),
             //   trailingColor: Colors.green,
             // ),
-            // const PaymentSummaryListTilewidget(
-            //   title: 'Tax',
-            //   trailing: 'Rs 1200',
-            // ),
-            PaymentSummaryListTilewidget(
-              title: 'Transport',
-              trailing: 'Rs ${data.packageDetails!.transportationCost}',
-              trailingColor: colorblack.withOpacity(0.5),
-            ),
-            PaymentSummaryListTilewidget(
-              title: 'Sp. allowance',
-              trailing: 'Rs ${data.packageDetails!.extraAllowance}',
-              trailingColor: colorblack.withOpacity(0.5),
-            ),
+            if (widget.Coupon != null && widget.Coupon.isNotEmpty)
+              PaymentSummaryListTilewidget(
+                title: "Coupon discount",
+                trailing: '- Rs ${widget.Coupon}',
+                trailingColor: Colors.green,
+              ),
+            if (data.packageDetails!.transportationCost != null)
+              PaymentSummaryListTilewidget(
+                title: 'Transport',
+                trailing: 'Rs ${data.packageDetails!.transportationCost}',
+                trailingColor: colorblack.withOpacity(0.5),
+              ),
+            if (data.packageDetails!.extraAllowance != null)
+              PaymentSummaryListTilewidget(
+                title: 'Sp. allowance',
+                trailing: 'Rs ${data.packageDetails!.extraAllowance}',
+                trailingColor: colorblack.withOpacity(0.5),
+              ),
             // const PaymentSummaryListTilewidget(
             //   title: 'Membership discount',
             //   trailing: '-Rs 400',
@@ -77,16 +97,23 @@ class _PaymentSummaryTileWidgetState extends State<PaymentSummaryTileWidget> {
             // ),
             const Divider(),
             PaymentSummaryListTilewidget(
-              title: 'Base fare',
+              title: 'Total',
               trailing:
-                  'Rs ${data.packageDetails!.packageCost ?? 0 - data.packageDetails!.transportationCost! - data.packageDetails!.extraAllowance!}',
+                  'Rs ${((data.packageDetails!.packageCost ?? 0) + (data.packageDetails!.transportationCost ?? 0) + (data.packageDetails!.extraAllowance ?? 0) - (double.tryParse(data.packageDetails!.couponsAndDiscounts ?? '0') ?? 0) - (double.tryParse(widget.Coupon) ?? 0)).toStringAsFixed(2)}',
               isBold: true,
             ),
+
+            // PaymentSummaryListTilewidget(
+            //   title: 'Total',
+            //   trailing:
+            //       'Rs ${data.packageDetails!.packageCost??0 + data.packageDetails!.transportationCost! + data.packageDetails!.extraAllowance!-widget.Coupon}',
+            //   isBold: true,
+            // ),
             BlocBuilder<CouponCubit, CouponCubitState>(
               builder: (context, state2) {
                 if (state2 is CouponAdded && state2.isCouponAdded) {
-                  print(state2);
-                  totalAmount -= 100;
+                  debugPrint(state2.toString());
+                  //   totalAmount -= 100;
 
                   return Container(
                     decoration: BoxDecoration(
@@ -100,7 +127,7 @@ class _PaymentSummaryTileWidgetState extends State<PaymentSummaryTileWidget> {
                           const Icon(Icons.celebration,
                               size: 16, color: Colors.green),
                           Text(
-                              'Congrats! You have saved Rs ${state2.coupon.fixedAmount} on this deal',
+                              ' Congrats! You have saved Rs ${state2.coupon.fixedAmount} on this deal',
                               style: const TextStyle(color: Colors.green)),
                         ],
                       ),

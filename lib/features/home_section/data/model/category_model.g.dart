@@ -26,9 +26,9 @@ Map<String, dynamic> _$$CategoryModelImplToJson(_$CategoryModelImpl instance) =>
 
 _$DataModelImpl _$$DataModelImplFromJson(Map<String, dynamic> json) =>
     _$DataModelImpl(
-      count: json['count'] as int?,
-      page: json['page'] as int?,
-      size: json['size'] as int?,
+      count: (json['count'] as num?)?.toInt(),
+      page: (json['page'] as num?)?.toInt(),
+      size: (json['size'] as num?)?.toInt(),
       parentCategories: (json['parentCategories'] as List<dynamic>?)
           ?.map((e) => ParentCategoryModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -61,11 +61,24 @@ _$ParentCategoryModelImpl _$$ParentCategoryModelImplFromJson(
       categoryScreen: json['category_screen'] as bool?,
       filterScreen: json['filter_screen'] as bool?,
       searchScreen: json['search_screen'] as bool?,
-      selectedChildCategories: (json['selected_child_categories']
-              as List<dynamic>?)
-          ?.map((e) =>
-              SelectedChildCategoryModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      // selectedChildCategories: (json['selected_child_categories']
+      //         as List<dynamic>?)
+      //     ?.map((e) =>
+      //         SelectedChildCategoryModel.fromJson(e as Map<String, dynamic>))
+      //     .toList(),
+      selectedChildCategories: (json['selected_child_categories'] as List<dynamic>?)
+    ?.map((e) {
+      if (e is Map<String, dynamic>) {
+        return SelectedChildCategoryModel.fromJson(e);
+      } else {
+        // // Log or handle the case where `e` is not a Map
+        // print('Unexpected type in selected_child_categories: $e');
+        // return null;
+      }
+    })
+    .whereType<SelectedChildCategoryModel>() // Remove null values if any
+    .toList(),
+
       updatedOn: json['updated_on'] == null
           ? null
           : DateTime.parse(json['updated_on'] as String),

@@ -200,6 +200,7 @@ class ImageFeedDesign extends StatelessWidget {
   }
 }
 
+
 //
 
 // class ImageFeedDesign extends StatelessWidget {

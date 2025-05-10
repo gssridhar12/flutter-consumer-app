@@ -2,13 +2,12 @@ part of 'package_details_bloc.dart';
 
 sealed class PackageDetailsState extends Equatable {
   const PackageDetailsState();
-
+  
   @override
   List<Object> get props => [];
 }
 
 final class PackageDetailsInitial extends PackageDetailsState {}
-
 class GetPackageDetailsSuccess extends PackageDetailsState {
   final PackageDetailsEntity packageDetails;
 

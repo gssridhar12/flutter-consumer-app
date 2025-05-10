@@ -44,6 +44,7 @@ class _RateAndReviewBottomSheetState extends State<RateAndReviewBottomSheet> {
 
     setState(() {
       if (_images.length + selectedImages.length > 5) {
+        
         int availableSlots = 5 - _images.length;
         _images.addAll(selectedImages.take(availableSlots));
       } else {
@@ -63,6 +64,7 @@ class _RateAndReviewBottomSheetState extends State<RateAndReviewBottomSheet> {
       ),
       itemBuilder: (BuildContext context, int index) {
         if (index == _images.length && _images.length < 5) {
+        
           return GestureDetector(
             onTap: _pickImages,
             child: Container(

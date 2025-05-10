@@ -58,7 +58,7 @@ class _RadioWidgetState extends State<RadioWidget> {
           onChanged: (value) {
             widget.onChanged!(value);
             setState(() {
-              print(value);
+              debugPrint(value);
               select = value!;
             });
           },

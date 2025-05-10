@@ -2,7 +2,6 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_consumer_app/core/error/failures.dart';
 import 'package:flutter_consumer_app/features/home_section/domain/usecases/add_partner_like_usecase.dart';
-import 'package:flutter_consumer_app/features/home_section/domain/usecases/get_package_like_usecase.dart';
 import 'package:flutter_consumer_app/features/home_section/domain/usecases/get_partner_like_repository.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/bloc/bloc/partner_like_bloc_event.dart';
 
@@ -16,6 +15,7 @@ class PartnerLikeBloc extends Bloc<PartnerLikeBlocEvent, PartnerLikeBlocState> {
     on<GetPartnerLike>((event, emit) async {
       emit(GetPartnerLikeLoading());
       var liked = await getPartnerLikeUseCase.execute(event.partnerUuid);
+      log('deepliked==>$liked');
       liked.fold(
         (exception) {
           if (exception is ServerFailure) {

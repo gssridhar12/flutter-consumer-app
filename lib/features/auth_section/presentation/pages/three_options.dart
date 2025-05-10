@@ -60,7 +60,6 @@ class ThreeOptionsPage extends StatelessWidget {
                 child: Text(
                     'By signing up, you agree to Megmo s Terms of service'),
               ))
-              //TODO add rich text to make terms of service red
 
               //        Center(
               //   child: Padding(

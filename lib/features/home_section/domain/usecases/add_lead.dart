@@ -9,7 +9,6 @@ class AddLeadUseCase {
 
   AddLeadUseCase({required this.repository});
 
-  Future<Either<Failure, BecomePartnerEntity>> exicute(
-          AddLeadRequest addLeadRequest) async =>
+  Future<Either<Failure, BecomePartnerEntity>> exicute(AddLeadRequest addLeadRequest) async =>
       await repository.addLead(addLeadRequest);
 }

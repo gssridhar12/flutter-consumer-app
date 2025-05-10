@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:flutter/material.dart';
 import 'package:flutter_consumer_app/core/error/failures.dart';
 import 'package:flutter_consumer_app/features/home_section/data/model/package_model.dart';
 import 'package:http/http.dart' as http;
@@ -15,25 +16,30 @@ class PackageRemoteDataSourceImpl implements PackageRemoteDataSource {
 
   @override
   Future<PackageModel> getMostBookedPackages() async {
-    var requestBody = {"page_number": 0, "page_size": 5};
-    var headers = {
-      "Content-Type": "application/json",
-    };
-    final url = Uri.parse(
-      'https://partnerapi.megmo.in/partner-service/package/getMostBookedPackages/v2',
-    );
-    final response = await httpClient.post(url,
-        headers: headers, body: json.encode(requestBody));
-    if (response.statusCode == 200) {
-      final decodedBody = json.decode(response.body);
+    try {
+      var requestBody = {"page_number": 0, "page_size": 5};
+      var headers = {
+        "Content-Type": "application/json",
+      };
+      final url = Uri.parse(
+        'https://partnerapi.megmo.in/partner-service/package/getMostBookedPackages/v2',
+      );
+      final response = await httpClient.post(url,
+          headers: headers, body: json.encode(requestBody));
+      if (response.statusCode == 200) {
+        final decodedBody = json.decode(response.body);
 
-      // if (decodedBody["message"] == "GET_MOST_BOOKED_PACKAGES_FAILED") {
-      //   throw const ServerFailure(errorMessage: 'Server Failed');
-      // }
-      // log(decodedBody.toString());
-      return PackageModel.fromJson(decodedBody);
-    } else {
-      log('Something went wrong: ${response.statusCode}');
+        if (decodedBody["message"] == "GET_MOST_BOOKED_PACKAGES_FAILED") {
+          throw const ServerFailure(errorMessage: 'Server Failed');
+        }
+        log(decodedBody.toString());
+        return PackageModel.fromJson(decodedBody);
+      } else {
+        log('Something went wrong: ${response.statusCode}');
+        throw const ServerFailure(errorMessage: 'Server Failed');
+      }
+    } catch (e, st) {
+      debugPrint('Get Most booked respnse :$e n/ saroj : $st');
       throw const ServerFailure(errorMessage: 'Server Failed');
     }
   }

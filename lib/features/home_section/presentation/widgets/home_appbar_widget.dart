@@ -95,7 +95,7 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
               try {
                 widget.scaffoldKey.currentState!.openDrawer();
               } catch (e) {
-                print(e);
+                debugPrint(e.toString());
               }
             },
             child: Padding(

@@ -41,7 +41,7 @@ class ChatRemoteDataSourceImpl implements ChatRemoteDataSource {
     if (response.statusCode == 200) {
       final decodedBody = json.decode(response.body);
       if (decodedBody["code"] == "FAILED") {
-        throw ServerFailure(errorMessage: decodedBody["message"]);
+        throw  ServerFailure(errorMessage: decodedBody["message"]);
       }
 
       return GetUserMessageModel.fromJson(decodedBody);

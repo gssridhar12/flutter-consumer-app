@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_consumer_app/features/chat_section/presentation/pages/chat_home.dart';
 import 'package:flutter_consumer_app/main.dart';
 import 'package:flutter_consumer_app/utils/navigation.dart';
@@ -13,14 +14,14 @@ class FirebaseMessagingService {
   Future<void> initNotifications() async {
     await _firebaseMessaging.requestPermission();
     final firebaseToken = getDeviceToken();
-    print('FIrebase MEssaging token $firebaseToken');
+    debugPrint('FIrebase MEssaging token $firebaseToken');
 
     initPushNotifications();
   }
 
   Future<String> getDeviceToken() async {
     String? token = await _firebaseMessaging.getToken();
-    print(token);
+    debugPrint(token);
     return token!;
   }
 
@@ -39,8 +40,8 @@ class FirebaseMessagingService {
     FirebaseMessaging.onMessage.listen(
       (RemoteMessage message) {
         final notification = message.notification;
-        print('Got a message whilst in the foreground!');
-        print('Message data: ${message.toString()}');
+        debugPrint('Got a message whilst in the foreground!');
+        debugPrint('Message data: ${message.toString()}');
 
         if (notification == null) return;
         _localNotification.show(
@@ -89,7 +90,7 @@ class FirebaseMessagingService {
 }
 
 Future<void> handleBackgroundMessage(RemoteMessage remoteMessage) async {
-  print('title: ${remoteMessage.notification!.title}');
-  print('body: ${remoteMessage.notification!.body}');
-  print('payload: ${remoteMessage.data}');
+  debugPrint('title: ${remoteMessage.notification!.title}');
+  debugPrint('body: ${remoteMessage.notification!.body}');
+  debugPrint('payload: ${remoteMessage.data}');
 }

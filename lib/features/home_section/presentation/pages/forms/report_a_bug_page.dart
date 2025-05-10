@@ -1,6 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
 import 'package:flutter_consumer_app/features/auth_section/presentation/widgets/button_widget.dart';
 import 'package:flutter_consumer_app/shared/widgets/colored_safearea.dart';

@@ -2,7 +2,7 @@
 
 // sealed class LocationState extends Equatable {
 //   const LocationState();
-
+  
 //   @override
 //   List<Object> get props => [];
 // }

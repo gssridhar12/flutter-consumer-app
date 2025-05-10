@@ -10,8 +10,6 @@ class SentMessageUseCase {
   SentMessageUseCase({required this.repository});
 
   Future<Either<Failure, SentMessageEntity>> execute(
-          {required SentMessageRequest addBookingRequest,
-          required String fcmToken}) async =>
-      await repository.sentMessage(
-          sentMessageRequest: addBookingRequest, fcmToken: fcmToken);
+          {required SentMessageRequest addBookingRequest,required String fcmToken}) async =>
+      await repository.sentMessage(sentMessageRequest: addBookingRequest,fcmToken: fcmToken);
 }

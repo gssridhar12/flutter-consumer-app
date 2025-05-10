@@ -15,7 +15,7 @@ class LocationCubit extends Cubit<LocationState> {
     try {
       // Check if there is a location saved in local storage
       String savedLocation = await loadLocationFromPreferences();
-
+      
       if (savedLocation != 'Unknown') {
         // If there is a saved location, use it
         emit(state.copyWith(
@@ -46,8 +46,7 @@ class LocationCubit extends Cubit<LocationState> {
       emit(state.copyWith(isLoading: false, hasError: true));
     }
   }
-
-  Future<void> fetchLocationManually() async {
+    Future<void> fetchLocationManually() async {
     emit(state.copyWith(isLoading: true, hasError: false));
     try {
       if (await _hasLocationPermission()) {
@@ -89,15 +88,12 @@ class LocationCubit extends Cubit<LocationState> {
         return false;
       }
     }
-    return permission == LocationPermission.always ||
-        permission == LocationPermission.whileInUse;
+    return permission == LocationPermission.always || permission == LocationPermission.whileInUse;
   }
 
   Future<Placemark> getUserLocation() async {
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
-    List<Placemark> placemarks =
-        await placemarkFromCoordinates(position.latitude, position.longitude);
+    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    List<Placemark> placemarks = await placemarkFromCoordinates(position.latitude, position.longitude);
     return placemarks.first;
   }
 
