@@ -25,7 +25,7 @@ class CategoryRemoteDataSourceImpl implements CategoryRemoteDataSource {
       var requestBody = {"page_number": 0, "page_size": 10};
 
     final url = Uri.parse(
-        'https://partnerapi.megmo.in/partner-service/parent-category/getSearchScreen/v2');
+        'https://api.woofurs.com/partner-service/parent-category/getSearchScreen/v2');
     final responce = await httpClient.post(url,
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +56,7 @@ class CategoryRemoteDataSourceImpl implements CategoryRemoteDataSource {
       "Content-Type": "application/json",
     };
     final url = Uri.parse(
-        'https://partnerapi.megmo.in/partner-service/child-category/getCategoryScreen/v2');
+        'https://api.woofurs.com/partner-service/child-category/getCategoryScreen/v2');
     final responce = await httpClient.post(url,
         headers: headers,
         body: jsonEncode(requestBody));

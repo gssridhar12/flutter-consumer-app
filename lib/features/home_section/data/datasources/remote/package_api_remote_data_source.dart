@@ -22,7 +22,7 @@ class PackageRemoteDataSourceImpl implements PackageRemoteDataSource {
         "Content-Type": "application/json",
       };
       final url = Uri.parse(
-        'https://partnerapi.megmo.in/partner-service/package/getMostBookedPackages/v2',
+        'https://api.woofurs.com/partner-service/package/getMostBookedPackages/v2',
       );
       final response = await httpClient.post(url,
           headers: headers, body: json.encode(requestBody));

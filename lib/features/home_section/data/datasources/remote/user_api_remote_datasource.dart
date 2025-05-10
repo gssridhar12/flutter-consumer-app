@@ -30,7 +30,7 @@ class UserApiRemoteDataSourceImpl implements UserApiRemoteDataSource {
       "Content-Type": "application/json",
     };
     final url = Uri.parse(
-      'https://partnerapi.megmo.in/partner-service/login/updateUserDetails/v2',
+      'https://api.woofurs.com/partner-service/login/updateUserDetails/v2',
     );
 
     final response =
@@ -51,7 +51,7 @@ class UserApiRemoteDataSourceImpl implements UserApiRemoteDataSource {
         "Content-Type": "application/json",
       };
       final url = Uri.parse(
-        'https://partnerapi.megmo.in/partner-service/login/getUserDetails/v2/$userId',
+        'https://api.woofurs.com/partner-service/login/getUserDetails/v2/$userId',
       );
 
       final response = await http.get(url, headers: headers);
@@ -83,7 +83,7 @@ class UserApiRemoteDataSourceImpl implements UserApiRemoteDataSource {
       "calling_entity": "WEB_UI"
     };
     final url = Uri.parse(
-      'https://partnerapi.megmo.in/partner-service/package/addPackageReview/v2',
+      'https://api.woofurs.com/partner-service/package/addPackageReview/v2',
     );
 
     final response =
@@ -104,7 +104,7 @@ class UserApiRemoteDataSourceImpl implements UserApiRemoteDataSource {
   //     "Content-Type": "application/json",
   //   };
   //   final url = Uri.parse(
-  //     'https://partnerapi.megmo.in/profile/getUserReviews/v2/7c3e5177-d233-415a-9a7c-26d4b2b1b515',
+  //     'https://api.woofurs.com/profile/getUserReviews/v2/7c3e5177-d233-415a-9a7c-26d4b2b1b515',
   //   );
 
   //   final response =

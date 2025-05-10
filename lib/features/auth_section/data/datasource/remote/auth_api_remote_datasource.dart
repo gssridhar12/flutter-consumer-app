@@ -25,7 +25,7 @@ class AuthApiRemoteDataSourceImpl implements AuthApiRemoteDataSource {
     var body = {"email": logInRequest.email, "password": logInRequest.password};
 
     final url =
-        Uri.parse('https://partnerapi.megmo.in/partner-service/login/login/v2');
+        Uri.parse('https://api.woofurs.com/partner-service/login/login/v2');
     final response =
         await httpClient.post(url, headers: headers, body: jsonEncode(body));
     final decodedBody = json.decode(response.body);
@@ -53,7 +53,7 @@ class AuthApiRemoteDataSourceImpl implements AuthApiRemoteDataSource {
     };
 
     final url = Uri.parse(
-        'https://partnerapi.megmo.in/partner-service/login/register/v2');
+        'https://api.woofurs.com/partner-service/login/register/v2');
     final response =
         await httpClient.post(url, headers: headers, body: jsonEncode(body));
     final decodedBody = json.decode(response.body);

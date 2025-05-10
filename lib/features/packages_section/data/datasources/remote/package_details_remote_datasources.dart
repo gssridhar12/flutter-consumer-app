@@ -25,8 +25,8 @@ class PackageDetailsRemoteDataSourceImpl
     };
     //TODO change package id
     final url = Uri.parse(
-      // 'https://partnerapi.megmo.in/partner-service/package/getPackageDetails/v2/89b760cc-7c3a-4c62-bfb1-ff9efa4777ee',
-      'https://partnerapi.megmo.in/partner-service/package/getPackageDetails/v2/$uuid',
+      // 'https://api.woofurs.com/partner-service/package/getPackageDetails/v2/89b760cc-7c3a-4c62-bfb1-ff9efa4777ee',
+      'https://api.woofurs.com/partner-service/package/getPackageDetails/v2/$uuid',
 
     );
     final response = await httpClient.get(

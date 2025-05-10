@@ -49,7 +49,7 @@ class BookingApiRemoteRepositoryImpl implements BookingApiRemoteRepository {
     };
 
     final url = Uri.parse(
-        'https://partnerapi.megmo.in/partner-service/booking/addBooking/v2');
+        'https://api.woofurs.com/partner-service/booking/addBooking/v2');
     final response = await httpClient.post(url,
         headers: headers, body: jsonEncode(addBookingRequest.toJson()));
     // debugPrint('response code: ${response.statusCode}');
@@ -74,7 +74,7 @@ class BookingApiRemoteRepositoryImpl implements BookingApiRemoteRepository {
     };
 
     final url = Uri.parse(
-        'https://partnerapi.megmo.in/partner-service/booking/rescheduleBooking/v2');
+        'https://api.woofurs.com/partner-service/booking/rescheduleBooking/v2');
     final response = await httpClient.post(url,
         headers: headers, body: jsonEncode(rescheduleBookingRequest.toJson()));
     debugPrint('RescheduleBooking api statusCode: ${response.statusCode}');
@@ -99,7 +99,7 @@ class BookingApiRemoteRepositoryImpl implements BookingApiRemoteRepository {
     };
 
     final url = Uri.parse(
-        'https://partnerapi.megmo.in/partner-service/booking/cancelBooking/v2');
+        'https://api.woofurs.com/partner-service/booking/cancelBooking/v2');
     final response = await httpClient.post(url,
         headers: headers, body: jsonEncode(cancelBookingRequest.toJson()));
     // debugPrint('response code: ${response.statusCode}');
@@ -123,7 +123,7 @@ class BookingApiRemoteRepositoryImpl implements BookingApiRemoteRepository {
       };
 
       final url = Uri.parse(
-          'https://partnerapi.megmo.in/partner-service/booking/getBooking/v2/$bookingUuid');
+          'https://api.woofurs.com/partner-service/booking/getBooking/v2/$bookingUuid');
       final response = await httpClient.get(url, headers: headers);
 
       if (response.statusCode == 200) {
@@ -150,7 +150,7 @@ class BookingApiRemoteRepositoryImpl implements BookingApiRemoteRepository {
       };
 
       final url = Uri.parse(
-          'https://partnerapi.megmo.in/partner-service/payment/createOrder/v2');
+          'https://api.woofurs.com/partner-service/payment/createOrder/v2');
       final response = await httpClient.post(url,
           headers: headers, body: jsonEncode(addOrderRequest.toJson()));
 
@@ -179,9 +179,9 @@ class BookingApiRemoteRepositoryImpl implements BookingApiRemoteRepository {
       };
 
       final url = Uri.parse(
-          'https://partnerapi.megmo.in/partner-service/booking/getUserBookings/v2/$userId');
+          'https://api.woofurs.com/partner-service/booking/getUserBookings/v2/$userId');
 
-      // 'https://partnerapi.megmo.in/partner-service/booking/getUserBookings/v2/6f62ab6f-869d-44e6-b892-cf1f6b491dda');
+      // 'https://api.woofurs.com/partner-service/booking/getUserBookings/v2/6f62ab6f-869d-44e6-b892-cf1f6b491dda');
       final response = await httpClient.get(url, headers: headers);
 
       if (response.statusCode == 200) {
@@ -209,9 +209,9 @@ class BookingApiRemoteRepositoryImpl implements BookingApiRemoteRepository {
       };
 
       final url = Uri.parse(
-          'https://partnerapi.megmo.in/partner-service/package/getPackageCoupons/v2/$packageUuid');
-      // "https://partnerapi.megmo.in/partner-service/package/getPackageCoupons/v2/b1bb4786-a7ba-4917-9f89-dfee4faf5170");
-      //'https://partnerapi.megmo.in/partner-service/package/getPackageCoupons/v2/89b760cc-7c3a-4c62-bfb1-ff9efa4777ee');
+          'https://api.woofurs.com/partner-service/package/getPackageCoupons/v2/$packageUuid');
+      // "https://api.woofurs.com/partner-service/package/getPackageCoupons/v2/b1bb4786-a7ba-4917-9f89-dfee4faf5170");
+      //'https://api.woofurs.com/partner-service/package/getPackageCoupons/v2/89b760cc-7c3a-4c62-bfb1-ff9efa4777ee');
       final response = await httpClient.get(url, headers: headers);
 
       if (response.statusCode == 200) {

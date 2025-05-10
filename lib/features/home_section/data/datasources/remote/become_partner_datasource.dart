@@ -23,7 +23,7 @@ class BecomePartnerRemoteDataSourceImpl implements BecomePartnerRemoteDataSource
       "Content-Type": "application/json",
     };
     final url = Uri.parse(
-      'https://partnerapi.megmo.in/partner-service/lead/v1',
+      'https://api.woofurs.com/partner-service/lead/v1',
     );
 
     final response = await httpClient.post(url,

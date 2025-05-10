@@ -465,7 +465,7 @@ class _BookingConfirmationPageState extends State<BookingConfirmationPage> {
                                           DisplayPdfViewerPage(
                                         apptitle: "Invoice",
                                         pdfUrl:
-                                            "https://partnerapi.megmo.in/partner-service/booking/generateInvoice/v2/${widget.bookingUuid}",
+                                            "https://api.woofurs.com/partner-service/booking/generateInvoice/v2/${widget.bookingUuid}",
                                       ),
                                     ),
                                   );

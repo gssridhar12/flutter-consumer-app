@@ -31,7 +31,7 @@ class LikeRemoteDataSourceImpl implements LikeRemoteDataSource {
       "Content-Type": "application/json",
     };
     final url = Uri.parse(
-      'https://partnerapi.megmo.in/partner-service/package/likePackage/v2',
+      'https://api.woofurs.com/partner-service/package/likePackage/v2',
     );
     final response = await httpClient.post(url,
         headers: headers, body: json.encode(addPackageLikeRequest.toJson()));
@@ -57,7 +57,7 @@ class LikeRemoteDataSourceImpl implements LikeRemoteDataSource {
     };
 
     final url = Uri.parse(
-      'https://partnerapi.megmo.in/partner-service/profile/likeProfile/v2',
+      'https://api.woofurs.com/partner-service/profile/likeProfile/v2',
     );
     final response = await httpClient.post(url,
         headers: headers, body: json.encode(addPartnerLikeRequest.toJson()));
@@ -80,7 +80,7 @@ class LikeRemoteDataSourceImpl implements LikeRemoteDataSource {
         "calling_entity": "web_ui",
       };
       final url = Uri.parse(
-        'https://partnerapi.megmo.in/partner-service/package/getLikedPackages/v2/$packageUuid',
+        'https://api.woofurs.com/partner-service/package/getLikedPackages/v2/$packageUuid',
       );
       final response = await httpClient.get(url, headers: headers);
       if (response.statusCode == 200) {
@@ -104,7 +104,7 @@ class LikeRemoteDataSourceImpl implements LikeRemoteDataSource {
       "calling_entity": "web_ui",
     };
     final url = Uri.parse(
-      'https://partnerapi.megmo.in/partner-service/profile/getLikes/v2/$partnerUuid',
+      'https://api.woofurs.com/partner-service/profile/getLikes/v2/$partnerUuid',
     );
     final response = await httpClient.get(url, headers: headers);
     if (response.statusCode == 200) {

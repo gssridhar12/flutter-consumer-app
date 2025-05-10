@@ -29,7 +29,7 @@ class PartnerPackageRemoteDataSourceImpl
     };
     // to test =72460397-ee6f-42bb-90f6-392364789b15
     final url = Uri.parse(
-      'https://partnerapi.megmo.in/partner-service/package/getPackages/v2/$uuid',
+      'https://api.woofurs.com/partner-service/package/getPackages/v2/$uuid',
     );
     final response = await httpClient.post(url,
         headers: headers, body: json.encode(requestBody));
@@ -52,9 +52,9 @@ class PartnerPackageRemoteDataSourceImpl
     };
     // to test =72460397-ee6f-42bb-90f6-392364789b15
     final url = Uri.parse(
-        "https://partnerapi.megmo.in/partner-service/bucket/getBucketDetails/v2/$bucketUuid"
-        // "https://partnerapi.megmo.in/partner-service/bucket/getBucketDetails/v2/641d8961-ea58-44ed-896f-65c2b4fd2c8a"
-        // 'https://partnerapi.megmo.in/partner-service/bucket/getBucketDetails/v2/$bucketUuid',
+        "https://api.woofurs.com/partner-service/bucket/getBucketDetails/v2/$bucketUuid"
+        // "https://api.woofurs.com/partner-service/bucket/getBucketDetails/v2/641d8961-ea58-44ed-896f-65c2b4fd2c8a"
+        // 'https://api.woofurs.com/partner-service/bucket/getBucketDetails/v2/$bucketUuid',
         );
     final response = await httpClient.get(url, headers: headers);
     if (response.statusCode == 200) {
@@ -78,7 +78,7 @@ class PartnerPackageRemoteDataSourceImpl
       };
       var requestBody = {"page_number": 0, "page_size": 1000};
       final url = Uri.parse(
-        "https://partnerapi.megmo.in/partner-service/bucket/getBuckets/v2/$partnerUuid",
+        "https://api.woofurs.com/partner-service/bucket/getBuckets/v2/$partnerUuid",
       );
       final response = await httpClient.post(url,
           headers: headers, body: json.encode(requestBody));
