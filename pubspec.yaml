@@ -110,7 +110,7 @@ dev_dependencies:
   flutter_launcher_icons: ^0.13.1
   freezed: ^2.4.6
 flutter_icons:
-  image_path: "icons/megmologo.png"
+  image_path: "icons/wigglyPetlogosmall.png"
   android: true
   ios: true
 

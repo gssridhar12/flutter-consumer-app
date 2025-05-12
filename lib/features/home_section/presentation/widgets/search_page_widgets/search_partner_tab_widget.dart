@@ -113,7 +113,7 @@ class SearchPartnerTabWidget extends StatelessWidget {
                                       size: 12,
                                     ),
                                     Text(
-                                      'Megmo Preferred Partner',
+                                      'Woofurs Preferred Partner',
                                       style: TextStyle(
                                           color: colorred, fontSize: 12),
                                     )

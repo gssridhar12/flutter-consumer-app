@@ -109,7 +109,7 @@
 //                   child: Padding(
 //                     padding: const EdgeInsets.all(padding20),
 //                     child: Text(
-//                       'As of now, Megmo partners offer services in these cities only. However, feel free to pick a city for exploring the app, and help Megmo grow.',
+//                       'As of now, Woofurs partners offer services in these cities only. However, feel free to pick a city for exploring the app, and help Woofurs grow.',
 //                       style: TextStyle(
 //                         fontSize: 15,
 //                         color: colorblack.withOpacity(0.5),
@@ -123,7 +123,7 @@
 //                     padding: EdgeInsets.all(padding),
 //                     child: Text(
 //                       //TODO add rich text to terms and service
-//                       'By signing up, you agree to Megmo’s Terms of service',
+//                       'By signing up, you agree to Woofurs’s Terms of service',
 //                       style: TextStyle(
 //                           color: colorblack,
 //                           decoration: TextDecoration.underline),
@@ -249,7 +249,7 @@ class _ChooseLocationPageState extends State<ChooseLocationPage> {
                 child: Padding(
                   padding: const EdgeInsets.all(padding20),
                   child: Text(
-                    'As of now, Megmo partners offer services in these cities only. However, feel free to pick a city for exploring the app, and help Megmo grow.',
+                    'As of now, Woofurs partners offer services in these cities only. However, feel free to pick a city for exploring the app, and help Woofurs grow.',
                     style: TextStyle(
                       fontSize: 15,
                       color: colorblack.withOpacity(0.5),
@@ -262,7 +262,7 @@ class _ChooseLocationPageState extends State<ChooseLocationPage> {
                 child: Padding(
                   padding: EdgeInsets.all(padding),
                   child: Text(
-                    'By signing up, you agree to Megmo’s Terms of service',
+                    'By signing up, you agree to Woofurs’s Terms of service',
                     style: TextStyle(
                         color: colorblack,
                         decoration: TextDecoration.underline),

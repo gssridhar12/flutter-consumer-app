@@ -90,7 +90,7 @@ class TopPartnersInDemantSeeAllPageState
                       textColor: colorblack.withOpacity(0.7)),
 
                   const HeadingTextWidget(
-                      text: 'Megmo’s bestselling partners this month',
+                      text: 'Woofurs’s bestselling partners this month',
                       size: 15,
                       fontWeight: FontWeight.w400,
                       trailingButton: false),

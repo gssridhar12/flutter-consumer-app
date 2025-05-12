@@ -86,7 +86,7 @@ class _AllCategoryPageState extends State<AllCategoryPage> {
                           trailingButton: false,
                           textColor: colorblack.withOpacity(0.7)),
                       const HeadingTextWidget(
-                          text: 'Take a look at what Megmo has to offer',
+                          text: 'Take a look at what Woofurs has to offer',
                           size: 16,
                           trailingButton: false),
                       GridView.builder(

@@ -83,7 +83,7 @@ class _FreshTalentOnMegmoSeeAllPageState
                     textColor: colorblack.withOpacity(0.7)),
 
                 const HeadingTextWidget(
-                    text: 'Take a look at Megmo’s latest partners',
+                    text: 'Take a look at Woofurs’s latest partners',
                     size: 15,
                     fontWeight: FontWeight.w400,
                     trailingButton: false),

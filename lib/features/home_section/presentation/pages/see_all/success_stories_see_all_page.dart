@@ -78,7 +78,7 @@ class SucessStoriesSeeAllPageState extends State<SucessStoriesSeeAllPage> {
                     textColor: colorblack.withOpacity(0.7)),
                 sbox,
                 const HeadingTextWidget(
-                    text: 'Take a look at what Megmo partners have been up to.',
+                    text: 'Take a look at what Woofurs partners have been up to.',
                     size: 16,
                     trailingButton: false),
                 sbox20,

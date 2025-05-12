@@ -221,9 +221,11 @@ class DrawerWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Megmo v0.1.0.0'),
+                    const Text('Woofurs v0.1.0.0'),
                     sbox,
-                    const Text('© 2023 Megmo Pvt. Ltd. All Rights Reserved.'),
+                    const Text('© 2025 SniffinTails Tech Pvt. Ltd.'),
+                    sbox,
+                    const Text('All Rights Reserved.'),
                   ],
                 ),
               ),

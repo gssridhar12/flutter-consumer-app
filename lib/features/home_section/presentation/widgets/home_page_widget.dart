@@ -97,7 +97,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     trailingButton: false,
                     textColor: colorred),
                 HeadingTextWidget(
-                  text: 'Welcome to Megmo!',
+                  text: 'Welcome to Woofurs!',
                   trailingButton: false,
                   size: 18,
                   textColor: colorblack.withOpacity(0.7),
@@ -388,7 +388,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   },
                 ),
                 HeadingTextWidget(
-                  text: 'Fresh Talent on Megmo',
+                  text: 'Fresh Talent on Woofurs',
                   onTap: () {
                     AppNavigation.pushNavigation(
                       context,
@@ -474,7 +474,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 SizedBox(
                   width: 80.w,
                   child: Text(
-                      'Take a look at what Megmo partners are achieving',
+                      'Take a look at what Woofurs partners are achieving',
                       style: TextStyle(
                           fontSize: 12, color: colorblack.withOpacity(0.5))),
                 ),

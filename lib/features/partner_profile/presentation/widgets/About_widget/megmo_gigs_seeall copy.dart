@@ -33,7 +33,7 @@ class Gigs_seeall_page extends StatelessWidget {
                 width: 350,
                 child:  HeadingTextWidget(
                   text:
-                   '${profile.profileName}\'s Megmo Gigs',
+                   '${profile.profileName}\'s Woofurs Gigs',
                   trailingButton: false,
                 ),
               ),
@@ -42,7 +42,7 @@ class Gigs_seeall_page extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Text(
-              "This is some of the gigs ${profile.profileName} has done through Megmo to give you a better understanding of her experience",
+              "This is some of the gigs ${profile.profileName} has done through Woofurs to give you a better understanding of her experience",
               style: TextStyle(fontSize: 16, height: 1.2),
             ),
           ),

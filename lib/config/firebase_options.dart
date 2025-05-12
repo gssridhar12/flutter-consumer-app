@@ -47,9 +47,9 @@ class DefaultFirebaseOptions {
     apiKey: 'AIzaSyAMsxS87osWPpcmKpuQp9krad_PexDMFtA',
     appId: '1:102836287134:web:64a707e7c1948ba8992d8f',
     messagingSenderId: '102836287134',
-    projectId: 'megmo-47094',
-    authDomain: 'megmo-47094.firebaseapp.com',
-    storageBucket: 'megmo-47094.appspot.com',
+    projectId: 'woofurs-47094',
+    authDomain: 'woofurs-47094.firebaseapp.com',
+    storageBucket: 'woofurs-47094.appspot.com',
     measurementId: 'G-8L00HMJ9P7',
   );
 
@@ -57,27 +57,27 @@ class DefaultFirebaseOptions {
     apiKey: 'AIzaSyAu5826huc5cTdFljvA_2pczD7n2TFtYoI',
     appId: '1:102836287134:android:a1106d01da4b84b6992d8f',
     messagingSenderId: '102836287134',
-    projectId: 'megmo-47094',
-    storageBucket: 'megmo-47094.appspot.com',
+    projectId: 'woofurs-47094',
+    storageBucket: 'woofurs-47094.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAMxYKYdXkG-IvYXoVk7XPIYGScFIcqmhY',
     appId: '1:102836287134:ios:d9ed9d6f0cf6860f992d8f',
     messagingSenderId: '102836287134',
-    projectId: 'megmo-47094',
-    storageBucket: 'megmo-47094.appspot.com',
+    projectId: 'woofurs-47094',
+    storageBucket: 'woofurs-47094.appspot.com',
     iosClientId: '102836287134-dn2elbp6e88e3qfjtd40fb46jaq6q5ri.apps.googleusercontent.com',
-    iosBundleId: 'com.megmo.consumer',
+    iosBundleId: 'com.woofurs.consumer',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyAMxYKYdXkG-IvYXoVk7XPIYGScFIcqmhY',
     appId: '1:102836287134:ios:b336c867c5beb8b0992d8f',
     messagingSenderId: '102836287134',
-    projectId: 'megmo-47094',
-    storageBucket: 'megmo-47094.appspot.com',
+    projectId: 'woofurs-47094',
+    storageBucket: 'woofurs-47094.appspot.com',
     iosClientId: '102836287134-popl5466ojb6kmgimkalspjk7lv81lor.apps.googleusercontent.com',
-    iosBundleId: 'com.megmo.consumer.RunnerTests',
+    iosBundleId: 'com.woofurs.consumer.RunnerTests',
   );
 }

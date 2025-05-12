@@ -162,7 +162,7 @@ class _Who_AreLookngForSeeallState extends State<Who_AreLookngForSeeall> {
                   trailingButton: false,
                   textColor: colorblack.withOpacity(0.7)),
               const HeadingTextWidget(
-                  text: 'Take a look at what Megmo has to offer',
+                  text: 'Take a look at what Woofurs has to offer',
                   size: 15,
                   fontWeight: FontWeight.w400,
                   textColor: Colors.black54,

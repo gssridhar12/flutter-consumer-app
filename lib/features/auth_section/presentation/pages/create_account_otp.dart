@@ -79,7 +79,7 @@ class CreateAccountOtp extends StatelessWidget {
                       text: const TextSpan(
                         children: <TextSpan>[
                           TextSpan(
-                            text: 'By signing up, you agree to Megmo ',
+                            text: 'By signing up, you agree to Woofurs ',
                             style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 13,

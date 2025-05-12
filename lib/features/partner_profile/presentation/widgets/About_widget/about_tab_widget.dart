@@ -137,7 +137,7 @@ class AboutTabWidget extends StatelessWidget {
                 ),
                 sbox20,
                 HeadingTextWidget(
-                  text: 'My Megmo Gigs',
+                  text: 'My Woofurs Gigs',
                   trailingWidget: Gigs_seeall_page(
                     megmoGig: megmoGig,
                     profile: profile,
@@ -299,7 +299,7 @@ class AboutTabWidget extends StatelessWidget {
                     ListTile(
                       leading: Icon(Icons.business_center_outlined,
                           color: Colors.red),
-                      title: Text("No. of Gigs on Megmo",
+                      title: Text("No. of Gigs on Woofurs",
                           style: TextStyle(fontSize: 12)),
                       subtitle: Text(megmoGig.length.toString(),
                           style: TextStyle(fontSize: 16, color: Colors.black)),
@@ -489,7 +489,7 @@ class AboutTabWidget extends StatelessWidget {
 //               ),
 //               sbox20,
 //               const HeadingTextWidget(
-//                 text: 'My Megmo Gigs',
+//                 text: 'My Woofurs Gigs',
 //                 trailingWidget: MyMegmoSeeAllPagetile(),
 //               ),
 //               sbox20,

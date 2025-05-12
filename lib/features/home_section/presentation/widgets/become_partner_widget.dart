@@ -27,7 +27,7 @@ class BecomePartnerWidget extends StatelessWidget {
               width: width * 0.5,
               child: const Text(
                 overflow: TextOverflow.clip,
-                'Invent yourself on Megmo',
+                'Invent yourself on Woofurs',
                 style: TextStyle(fontSize: 26, color: colorblack),
               ),
             ),
