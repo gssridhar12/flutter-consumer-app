@@ -17,6 +17,8 @@ class Data {
   final String? partnerName;
   final List<PackageReview>? packageReviews;
   final ReviewAverages? reviewAverages;
+  final String ?profileImage;
+  final int ? bookingCount;
   final List<dynamic>? partnerLocation;
 
   Data({
@@ -24,6 +26,8 @@ class Data {
     required this.partnerName,
     required this.packageReviews,
     required this.reviewAverages,
+     required this.profileImage,
+      required this.bookingCount,
     required this.partnerLocation,
   });
 }
@@ -40,11 +44,12 @@ class PackageDetails {
   final String? packageInclusions;
   final String? packageExclusions;
   final String? packageMustKnows;
-  final String? serviceLocation;
+  final List<ServiceLocation>? serviceLocation;
   final String? status;
   final List<String>? packageKeywords;
   final List<String>? packageTags;
   final String? serviceTimingAvailability;
+   final String? serviceSlotDuration;
   final int? packageCost;
   final double? transportationCost;
   final double? extraAllowance;
@@ -75,6 +80,7 @@ class PackageDetails {
     required this.packageKeywords,
     required this.packageTags,
     required this.serviceTimingAvailability,
+     required this.serviceSlotDuration,
     required this.packageCost,
     required this.transportationCost,
     required this.extraAllowance,
@@ -91,12 +97,12 @@ class PackageDetails {
 }
 
 class PackageGallery {
-  final String? media;
+  final String? mediatype;
   final String? description;
   final List<dynamic>? assignedTo;
 
   PackageGallery({
-    required this.media,
+    required this.mediatype,
     required this.description,
     required this.assignedTo,
   });
@@ -159,5 +165,14 @@ class ReviewAverages {
     required this.recommended,
     required this.reviewCount,
     required this.overallAverage,
+  });
+}
+
+class ServiceLocation {
+  final String? addressType;
+  final String? city;
+  ServiceLocation({
+    required this.addressType,
+    required this.city,
   });
 }

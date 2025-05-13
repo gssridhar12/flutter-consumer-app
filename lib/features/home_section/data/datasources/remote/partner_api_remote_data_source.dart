@@ -24,14 +24,14 @@ class PartnerRemoteDataSourceImpl implements PartnerRemoteDataSource {
       "Content-Type": "application/json",
     };
     final url = Uri.parse(
-      'https://partnerapi.megmo.in/partner-service/profile/getPartnerInDemand/v2',
+      'https://api.woofurs.com/partner-service/profile/getPartnerInDemand/v2',
     );
 
     final response = await httpClient.post(url,
         headers: headers, body: json.encode(requestBody));
     if (response.statusCode == 200) {
       final decodedBody = json.decode(response.body);
-
+    
       return TopPartnerModel.fromJson(decodedBody);
     } else {
       log('Something went wrong: ${response.statusCode}');
@@ -44,7 +44,7 @@ class PartnerRemoteDataSourceImpl implements PartnerRemoteDataSource {
     var requestBody = {"page_number": 0, "page_size": 7};
 
     final url = Uri.parse(
-        'https://partnerapi.megmo.in/partner-service/profile/getPartnerFreshTalent/v2');
+        'https://api.woofurs.com/partner-service/profile/getPartnerFreshTalent/v2');
     final response = await httpClient.post(url,
         headers: {
           "Content-Type": "application/json",
@@ -65,7 +65,7 @@ class PartnerRemoteDataSourceImpl implements PartnerRemoteDataSource {
     var requestBody = {"page_number": 0, "page_size": 4};
 
     final url = Uri.parse(
-        'https://partnerapi.megmo.in/partner-service/profile/getAllProfiles/v2');
+        'https://api.woofurs.com/partner-service/profile/getAllProfiles/v2');
     final response = await httpClient.post(url,
         headers: {
           "Content-Type": "application/json",

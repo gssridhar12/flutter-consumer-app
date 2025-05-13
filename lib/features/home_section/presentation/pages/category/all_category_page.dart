@@ -44,7 +44,7 @@ class _AllCategoryPageState extends State<AllCategoryPage> {
         key: scaffoldKey,
         drawer: DrawerWidget(
             scaffoldKey: scaffoldKey,
-            name: fullName != null ? fullName! : 'Guest',
+            name: fullName != null ? fullName! : 'Pawrent',
             isGuestUser: widget.isGuestUser!),
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(70),
@@ -76,7 +76,7 @@ class _AllCategoryPageState extends State<AllCategoryPage> {
                       SearchFieldWidget(
                         backButton: true,
                         width: width,
-                        text: 'Search for ‘Make up artists’',
+                        text: 'Search for ‘Pet Boarding’',
                       ),
                       sbox,
                       HeadingTextWidget(
@@ -86,7 +86,7 @@ class _AllCategoryPageState extends State<AllCategoryPage> {
                           trailingButton: false,
                           textColor: colorblack.withOpacity(0.7)),
                       const HeadingTextWidget(
-                          text: 'Take a look at what Megmo has to offer',
+                          text: 'Take a look at what Wigglypet has to offer',
                           size: 16,
                           trailingButton: false),
                       GridView.builder(
@@ -122,7 +122,7 @@ class _AllCategoryPageState extends State<AllCategoryPage> {
                                   // const SpecificCategoryPage()
                                   SpecificCategoryPage(
                                     categoryTitle:
-                                        data[index].parentCategoryName ?? "",
+                                        data[index].parentCategoryName??"",
                                     isGuestUser: widget.isGuestUser,
                                   ),
                                 );

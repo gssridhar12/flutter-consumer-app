@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
@@ -29,7 +31,7 @@ class CanceledPackages extends StatelessWidget {
         );
       } else if (state is GetUserBookingSuccess) {
         final packages = state.getUserBookingEntity.data!.userBookings!
-            .where((element) => element.bookingDetails!.status == 'cancelled')
+            .where((element) => element.bookingDetails!.status == 'Cancelled')
             .toList();
         return packages.isNotEmpty
             ? ListView.builder(
@@ -63,14 +65,16 @@ class CanceledPackages extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 sbox5,
-                                const Padding(
+                                Padding(
                                   padding: EdgeInsets.only(
                                     top: padding,
                                     left: padding,
                                   ),
                                   child: Text(
-                                    '',
-                                    // packages[index].package.packageName ?? '',
+                                    packages[index]
+                                        .package!
+                                        .packageName
+                                        .toString(),
                                     style: TextStyle(
                                         fontSize: 16,
                                         color: colorblack,
@@ -87,9 +91,9 @@ class CanceledPackages extends StatelessWidget {
                                         color: colorred,
                                       ),
                                       Text(
-                                        packages[index]
-                                            .packageReviewAverage
-                                            .toString(),
+                                        (packages[index].packageReviewAverage ??
+                                                0.0)
+                                            .toStringAsFixed(1),
                                         style: const TextStyle(
                                             fontSize: 15,
                                             color: colorred,
@@ -144,7 +148,10 @@ class CanceledPackages extends StatelessWidget {
                                       height: 100,
                                       width: 100,
                                       borderRadius: BorderRadius.circular(12),
-                                      imageUrl: '')),
+                                      imageUrl: packages[index]
+                                          .package!
+                                          .packageCoverImage
+                                          .toString())),
                               Positioned(
                                 top: 75,
                                 right: 15,

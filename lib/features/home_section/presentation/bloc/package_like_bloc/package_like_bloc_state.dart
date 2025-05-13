@@ -28,7 +28,8 @@ class AddPackageLikeLoading extends PackageLikeBlocState {
 }
 
 class GetPackageLikeSuccess extends PackageLikeBlocState {
-  final GetPackageLikeEntity getPackageLikeEntity;
+  // final GetPackageLikeEntity getPackageLikeEntity;
+  final GetPackageLikeModel getPackageLikeEntity;
 
   const GetPackageLikeSuccess({required this.getPackageLikeEntity});
   @override

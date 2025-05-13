@@ -13,15 +13,16 @@ part 'chat_state.dart';
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
   final GetUserMessageUseCase useCase;
   final SentMessageUseCase sentMessageUseCase;
-
+  
   ChatBloc(this.useCase, this.sentMessageUseCase) : super(ChatInitial()) {
     on<GetUserChats>((event, emit) async {
       emit(UserChatLoading());
       var auth = await useCase.execute(userUuid: event.userUuid);
       auth.fold(
         (left) {
-          if (left is ServerFailure) {
-            emit(UserChatFailed(message: left.errorMessage));
+          if(left is ServerFailure){
+          emit(UserChatFailed(message: left.errorMessage));
+
           }
         },
         (right) {
@@ -29,10 +30,9 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         },
       );
     });
-    on<SentMessage>((event, emit) async {
+     on<SentMessage>((event, emit) async {
       emit(SentMessageLoading());
-      var auth = await sentMessageUseCase.execute(
-          addBookingRequest: event.request, fcmToken: event.fcmToken);
+      var auth = await sentMessageUseCase.execute(addBookingRequest: event.request,fcmToken: event.fcmToken);
       auth.fold(
         (left) {
           emit(SentMessageFailed());

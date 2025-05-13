@@ -185,7 +185,7 @@ class _ViewProfilePageState extends State<ViewProfilePage> {
                       ),
                       sbox,
                       Text(
-                        'Your Megmo profile is an important part of every booking, Create yours to help us serve you better.',
+                        'Your Wigglypet profile is an important part of every booking, Create yours to help us serve you better.',
                         style: TextStyle(
                             fontSize: 15,
                             color: colorblack.withOpacity(0.5),

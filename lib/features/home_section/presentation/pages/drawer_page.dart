@@ -128,14 +128,14 @@ class DrawerWidget extends StatelessWidget {
                     isTrailing: index == 0 ? false : true,
                     leadingIcon: iconsMainMenu[index],
                     leadingIconColor: colorred,
-                    trailingIcon: Container(
-                      width: 13.w,
-                      height: 04.h,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: colorblack.withOpacity(0.3)),
-                      child: const Center(child: Text('2')),
-                    ),
+                    // trailingIcon: Container(
+                    //   width: 13.w,
+                    //   height: 04.h,
+                    //   decoration: BoxDecoration(
+                    //       borderRadius: BorderRadius.circular(10),
+                    //       color: colorblack.withOpacity(0.3)),
+                    //   child: const Center(child: Text('2')),
+                    // ),
                   );
                 },
               ),
@@ -221,9 +221,11 @@ class DrawerWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Megmo v0.1.0.0'),
+                    const Text('Wigglypet v0.1.0.0'),
                     sbox,
-                    const Text('© 2023 Megmo Pvt. Ltd. All Rights Reserved.'),
+                    const Text('© 2025 SniffinTails Tech Pvt. Ltd.'),
+                    sbox,
+                    const Text('All Rights Reserved.'),
                   ],
                 ),
               ),

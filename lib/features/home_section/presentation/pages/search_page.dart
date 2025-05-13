@@ -77,7 +77,7 @@ class _SearchPageState extends State<SearchPage>
                   navigation: false,
                   controller: textEditingController,
                   width: width,
-                  text: 'Search for ‘Make up artists’'),
+                  text: 'Search for ‘Pet Boarding’'),
               sbox,
               Container(
                 decoration: BoxDecoration(

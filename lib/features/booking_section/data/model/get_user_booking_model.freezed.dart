@@ -488,6 +488,8 @@ mixin _$UserBookingModel {
   int? get megmoGigsCount => throw _privateConstructorUsedError;
   @JsonKey(name: "PackageBookingCount")
   int? get packageBookingCount => throw _privateConstructorUsedError;
+  @JsonKey(name: "package")
+  PackageModel? get package => throw _privateConstructorUsedError;
   @JsonKey(name: "bookingDetails")
   BookingDetailsModel? get bookingDetails => throw _privateConstructorUsedError;
 
@@ -510,8 +512,10 @@ abstract class $UserBookingModelCopyWith<$Res> {
       @JsonKey(name: "profileImage") String? profileImage,
       @JsonKey(name: "megmoGigsCount") int? megmoGigsCount,
       @JsonKey(name: "PackageBookingCount") int? packageBookingCount,
+      @JsonKey(name: "package") PackageModel? package,
       @JsonKey(name: "bookingDetails") BookingDetailsModel? bookingDetails});
 
+  $PackageModelCopyWith<$Res>? get package;
   $BookingDetailsModelCopyWith<$Res>? get bookingDetails;
 }
 
@@ -534,6 +538,7 @@ class _$UserBookingModelCopyWithImpl<$Res, $Val extends UserBookingModel>
     Object? profileImage = freezed,
     Object? megmoGigsCount = freezed,
     Object? packageBookingCount = freezed,
+    Object? package = freezed,
     Object? bookingDetails = freezed,
   }) {
     return _then(_value.copyWith(
@@ -561,11 +566,27 @@ class _$UserBookingModelCopyWithImpl<$Res, $Val extends UserBookingModel>
           ? _value.packageBookingCount
           : packageBookingCount // ignore: cast_nullable_to_non_nullable
               as int?,
+      package: freezed == package
+          ? _value.package
+          : package // ignore: cast_nullable_to_non_nullable
+              as PackageModel?,
       bookingDetails: freezed == bookingDetails
           ? _value.bookingDetails
           : bookingDetails // ignore: cast_nullable_to_non_nullable
               as BookingDetailsModel?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PackageModelCopyWith<$Res>? get package {
+    if (_value.package == null) {
+      return null;
+    }
+
+    return $PackageModelCopyWith<$Res>(_value.package!, (value) {
+      return _then(_value.copyWith(package: value) as $Val);
+    });
   }
 
   @override
@@ -596,8 +617,11 @@ abstract class _$$UserBookingModelImplCopyWith<$Res>
       @JsonKey(name: "profileImage") String? profileImage,
       @JsonKey(name: "megmoGigsCount") int? megmoGigsCount,
       @JsonKey(name: "PackageBookingCount") int? packageBookingCount,
+      @JsonKey(name: "package") PackageModel? package,
       @JsonKey(name: "bookingDetails") BookingDetailsModel? bookingDetails});
 
+  @override
+  $PackageModelCopyWith<$Res>? get package;
   @override
   $BookingDetailsModelCopyWith<$Res>? get bookingDetails;
 }
@@ -619,6 +643,7 @@ class __$$UserBookingModelImplCopyWithImpl<$Res>
     Object? profileImage = freezed,
     Object? megmoGigsCount = freezed,
     Object? packageBookingCount = freezed,
+    Object? package = freezed,
     Object? bookingDetails = freezed,
   }) {
     return _then(_$UserBookingModelImpl(
@@ -646,6 +671,10 @@ class __$$UserBookingModelImplCopyWithImpl<$Res>
           ? _value.packageBookingCount
           : packageBookingCount // ignore: cast_nullable_to_non_nullable
               as int?,
+      package: freezed == package
+          ? _value.package
+          : package // ignore: cast_nullable_to_non_nullable
+              as PackageModel?,
       bookingDetails: freezed == bookingDetails
           ? _value.bookingDetails
           : bookingDetails // ignore: cast_nullable_to_non_nullable
@@ -664,6 +693,7 @@ class _$UserBookingModelImpl implements _UserBookingModel {
       @JsonKey(name: "profileImage") this.profileImage,
       @JsonKey(name: "megmoGigsCount") this.megmoGigsCount,
       @JsonKey(name: "PackageBookingCount") this.packageBookingCount,
+      @JsonKey(name: "package") this.package,
       @JsonKey(name: "bookingDetails") this.bookingDetails});
 
   factory _$UserBookingModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -688,12 +718,15 @@ class _$UserBookingModelImpl implements _UserBookingModel {
   @JsonKey(name: "PackageBookingCount")
   final int? packageBookingCount;
   @override
+  @JsonKey(name: "package")
+  final PackageModel? package;
+  @override
   @JsonKey(name: "bookingDetails")
   final BookingDetailsModel? bookingDetails;
 
   @override
   String toString() {
-    return 'UserBookingModel(profileName: $profileName, packageReviewAverage: $packageReviewAverage, profileReviewAverage: $profileReviewAverage, profileImage: $profileImage, megmoGigsCount: $megmoGigsCount, packageBookingCount: $packageBookingCount, bookingDetails: $bookingDetails)';
+    return 'UserBookingModel(profileName: $profileName, packageReviewAverage: $packageReviewAverage, profileReviewAverage: $profileReviewAverage, profileImage: $profileImage, megmoGigsCount: $megmoGigsCount, packageBookingCount: $packageBookingCount, package: $package, bookingDetails: $bookingDetails)';
   }
 
   @override
@@ -713,6 +746,7 @@ class _$UserBookingModelImpl implements _UserBookingModel {
                 other.megmoGigsCount == megmoGigsCount) &&
             (identical(other.packageBookingCount, packageBookingCount) ||
                 other.packageBookingCount == packageBookingCount) &&
+            (identical(other.package, package) || other.package == package) &&
             (identical(other.bookingDetails, bookingDetails) ||
                 other.bookingDetails == bookingDetails));
   }
@@ -727,6 +761,7 @@ class _$UserBookingModelImpl implements _UserBookingModel {
       profileImage,
       megmoGigsCount,
       packageBookingCount,
+      package,
       bookingDetails);
 
   @JsonKey(ignore: true)
@@ -752,6 +787,7 @@ abstract class _UserBookingModel implements UserBookingModel {
       @JsonKey(name: "profileImage") final String? profileImage,
       @JsonKey(name: "megmoGigsCount") final int? megmoGigsCount,
       @JsonKey(name: "PackageBookingCount") final int? packageBookingCount,
+      @JsonKey(name: "package") final PackageModel? package,
       @JsonKey(name: "bookingDetails")
       final BookingDetailsModel? bookingDetails}) = _$UserBookingModelImpl;
 
@@ -776,6 +812,9 @@ abstract class _UserBookingModel implements UserBookingModel {
   @override
   @JsonKey(name: "PackageBookingCount")
   int? get packageBookingCount;
+  @override
+  @JsonKey(name: "package")
+  PackageModel? get package;
   @override
   @JsonKey(name: "bookingDetails")
   BookingDetailsModel? get bookingDetails;
@@ -1678,6 +1717,250 @@ abstract class _PackagesModel implements PackagesModel {
   @JsonKey(ignore: true)
   _$$PackagesModelImplCopyWith<_$PackagesModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+PackageModel _$PackageModelFromJson(Map<String, dynamic> json) {
+  return _PackageMoPackageModeldel.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PackageModel {
+  @JsonKey(name: "id")
+  String? get id => throw _privateConstructorUsedError;
+  @JsonKey(name: "partner_uuid")
+  String? get partnerUuid => throw _privateConstructorUsedError;
+  @JsonKey(name: "package_uuid")
+  String? get packageUuid => throw _privateConstructorUsedError;
+  @JsonKey(name: "package_name")
+  String? get packageName => throw _privateConstructorUsedError;
+  @JsonKey(name: "package_cover_image")
+  String? get packageCoverImage => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PackageModelCopyWith<PackageModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PackageModelCopyWith<$Res> {
+  factory $PackageModelCopyWith(
+          PackageModel value, $Res Function(PackageModel) then) =
+      _$PackageModelCopyWithImpl<$Res, PackageModel>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "id") String? id,
+      @JsonKey(name: "partner_uuid") String? partnerUuid,
+      @JsonKey(name: "package_uuid") String? packageUuid,
+      @JsonKey(name: "package_name") String? packageName,
+      @JsonKey(name: "package_cover_image") String? packageCoverImage});
+}
+
+/// @nodoc
+class _$PackageModelCopyWithImpl<$Res, $Val extends PackageModel>
+    implements $PackageModelCopyWith<$Res> {
+  _$PackageModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? partnerUuid = freezed,
+    Object? packageUuid = freezed,
+    Object? packageName = freezed,
+    Object? packageCoverImage = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      partnerUuid: freezed == partnerUuid
+          ? _value.partnerUuid
+          : partnerUuid // ignore: cast_nullable_to_non_nullable
+              as String?,
+      packageUuid: freezed == packageUuid
+          ? _value.packageUuid
+          : packageUuid // ignore: cast_nullable_to_non_nullable
+              as String?,
+      packageName: freezed == packageName
+          ? _value.packageName
+          : packageName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      packageCoverImage: freezed == packageCoverImage
+          ? _value.packageCoverImage
+          : packageCoverImage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$PackageMoPackageModeldelImplCopyWith<$Res>
+    implements $PackageModelCopyWith<$Res> {
+  factory _$$PackageMoPackageModeldelImplCopyWith(
+          _$PackageMoPackageModeldelImpl value,
+          $Res Function(_$PackageMoPackageModeldelImpl) then) =
+      __$$PackageMoPackageModeldelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "id") String? id,
+      @JsonKey(name: "partner_uuid") String? partnerUuid,
+      @JsonKey(name: "package_uuid") String? packageUuid,
+      @JsonKey(name: "package_name") String? packageName,
+      @JsonKey(name: "package_cover_image") String? packageCoverImage});
+}
+
+/// @nodoc
+class __$$PackageMoPackageModeldelImplCopyWithImpl<$Res>
+    extends _$PackageModelCopyWithImpl<$Res, _$PackageMoPackageModeldelImpl>
+    implements _$$PackageMoPackageModeldelImplCopyWith<$Res> {
+  __$$PackageMoPackageModeldelImplCopyWithImpl(
+      _$PackageMoPackageModeldelImpl _value,
+      $Res Function(_$PackageMoPackageModeldelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? partnerUuid = freezed,
+    Object? packageUuid = freezed,
+    Object? packageName = freezed,
+    Object? packageCoverImage = freezed,
+  }) {
+    return _then(_$PackageMoPackageModeldelImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      partnerUuid: freezed == partnerUuid
+          ? _value.partnerUuid
+          : partnerUuid // ignore: cast_nullable_to_non_nullable
+              as String?,
+      packageUuid: freezed == packageUuid
+          ? _value.packageUuid
+          : packageUuid // ignore: cast_nullable_to_non_nullable
+              as String?,
+      packageName: freezed == packageName
+          ? _value.packageName
+          : packageName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      packageCoverImage: freezed == packageCoverImage
+          ? _value.packageCoverImage
+          : packageCoverImage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$PackageMoPackageModeldelImpl implements _PackageMoPackageModeldel {
+  const _$PackageMoPackageModeldelImpl(
+      {@JsonKey(name: "id") this.id,
+      @JsonKey(name: "partner_uuid") this.partnerUuid,
+      @JsonKey(name: "package_uuid") this.packageUuid,
+      @JsonKey(name: "package_name") this.packageName,
+      @JsonKey(name: "package_cover_image") this.packageCoverImage});
+
+  factory _$PackageMoPackageModeldelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PackageMoPackageModeldelImplFromJson(json);
+
+  @override
+  @JsonKey(name: "id")
+  final String? id;
+  @override
+  @JsonKey(name: "partner_uuid")
+  final String? partnerUuid;
+  @override
+  @JsonKey(name: "package_uuid")
+  final String? packageUuid;
+  @override
+  @JsonKey(name: "package_name")
+  final String? packageName;
+  @override
+  @JsonKey(name: "package_cover_image")
+  final String? packageCoverImage;
+
+  @override
+  String toString() {
+    return 'PackageModel(id: $id, partnerUuid: $partnerUuid, packageUuid: $packageUuid, packageName: $packageName, packageCoverImage: $packageCoverImage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PackageMoPackageModeldelImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.partnerUuid, partnerUuid) ||
+                other.partnerUuid == partnerUuid) &&
+            (identical(other.packageUuid, packageUuid) ||
+                other.packageUuid == packageUuid) &&
+            (identical(other.packageName, packageName) ||
+                other.packageName == packageName) &&
+            (identical(other.packageCoverImage, packageCoverImage) ||
+                other.packageCoverImage == packageCoverImage));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, partnerUuid, packageUuid,
+      packageName, packageCoverImage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PackageMoPackageModeldelImplCopyWith<_$PackageMoPackageModeldelImpl>
+      get copyWith => __$$PackageMoPackageModeldelImplCopyWithImpl<
+          _$PackageMoPackageModeldelImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PackageMoPackageModeldelImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PackageMoPackageModeldel implements PackageModel {
+  const factory _PackageMoPackageModeldel(
+      {@JsonKey(name: "id") final String? id,
+      @JsonKey(name: "partner_uuid") final String? partnerUuid,
+      @JsonKey(name: "package_uuid") final String? packageUuid,
+      @JsonKey(name: "package_name") final String? packageName,
+      @JsonKey(name: "package_cover_image")
+      final String? packageCoverImage}) = _$PackageMoPackageModeldelImpl;
+
+  factory _PackageMoPackageModeldel.fromJson(Map<String, dynamic> json) =
+      _$PackageMoPackageModeldelImpl.fromJson;
+
+  @override
+  @JsonKey(name: "id")
+  String? get id;
+  @override
+  @JsonKey(name: "partner_uuid")
+  String? get partnerUuid;
+  @override
+  @JsonKey(name: "package_uuid")
+  String? get packageUuid;
+  @override
+  @JsonKey(name: "package_name")
+  String? get packageName;
+  @override
+  @JsonKey(name: "package_cover_image")
+  String? get packageCoverImage;
+  @override
+  @JsonKey(ignore: true)
+  _$$PackageMoPackageModeldelImplCopyWith<_$PackageMoPackageModeldelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 StatusLogModel _$StatusLogModelFromJson(Map<String, dynamic> json) {

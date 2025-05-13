@@ -1,6 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_consumer_app/shared/widgets/secondary_appbar_widget.dart';
 
 class KnowledgeBasePage extends StatelessWidget {

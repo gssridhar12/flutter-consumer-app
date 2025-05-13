@@ -2,13 +2,12 @@ part of 'bucket_bloc.dart';
 
 sealed class BucketState extends Equatable {
   const BucketState();
-
+  
   @override
   List<Object> get props => [];
 }
 
 final class BucketInitial extends BucketState {}
-
 class GetBucketSuccess extends BucketState {
   final GetBucketEntity bucket;
 

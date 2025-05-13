@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_consumer_app/features/home_section/domain/entities/response/fresh_talent_entity.dart';
 import 'package:flutter_consumer_app/features/home_section/domain/usecases/get_fresh_talent_on_megmo.dart';
 
@@ -18,8 +19,7 @@ class FreshTalentBloc extends Bloc<FreshTalentEvent, FreshTalentState> {
         partner.fold(
           (exception) {
             if (partner.isLeft) {
-              print(exception.toString());
-
+              debugPrint(exception.toString());
               emit(GetFreshTalentOnMegmoFailed());
             }
           },

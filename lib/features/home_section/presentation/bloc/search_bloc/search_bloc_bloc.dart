@@ -14,8 +14,7 @@ part 'search_bloc_state.dart';
 class SearchBloc extends Bloc<SearchBlocEvent, SearchBlocState> {
   final GetSearchPackageUseCase getSearchPackageUseCase;
   final GetSearchPartnerUseCase getSearchPartnerUseCase;
-  SearchBloc(this.getSearchPackageUseCase, this.getSearchPartnerUseCase)
-      : super(SearchBlocInitial()) {
+  SearchBloc(this.getSearchPackageUseCase, this.getSearchPartnerUseCase) : super(SearchBlocInitial()) {
     on<GetSearchPackage>((event, emit) async {
       emit(GetSearchPackageLoading());
       var partner = await getSearchPackageUseCase.execute(event.keyword);
@@ -29,6 +28,7 @@ class SearchBloc extends Bloc<SearchBlocEvent, SearchBlocState> {
           }
         },
         (package) {
+          
           emit(GetSearchPackageSuccess(package: package));
         },
       );

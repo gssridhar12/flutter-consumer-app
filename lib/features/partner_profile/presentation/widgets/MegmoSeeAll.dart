@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_consumer_app/features/partner_profile/presentation/widgets/AppBarWidgetbold.dart';
 import 'package:flutter_consumer_app/features/partner_profile/presentation/widgets/BlackMegmoSeeALlWidget.dart';
 
+
+
 class MyMegmoSeeAllPagetile extends StatefulWidget {
   const MyMegmoSeeAllPagetile({
     Key? key,

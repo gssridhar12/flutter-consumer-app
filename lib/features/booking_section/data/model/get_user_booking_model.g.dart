@@ -28,12 +28,12 @@ Map<String, dynamic> _$$GetUserBookingModelImplToJson(
 
 _$DataModelImpl _$$DataModelImplFromJson(Map<String, dynamic> json) =>
     _$DataModelImpl(
-      size: json['size'] as int?,
+      size: (json['size'] as num?)?.toInt(),
       userBookings: (json['userBookings'] as List<dynamic>?)
           ?.map((e) => UserBookingModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      count: json['count'] as int?,
-      page: json['page'] as int?,
+      count: (json['count'] as num?)?.toInt(),
+      page: (json['page'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$DataModelImplToJson(_$DataModelImpl instance) =>
@@ -51,8 +51,11 @@ _$UserBookingModelImpl _$$UserBookingModelImplFromJson(
       packageReviewAverage: (json['packageReviewAverage'] as num?)?.toDouble(),
       profileReviewAverage: (json['profileReviewAverage'] as num?)?.toDouble(),
       profileImage: json['profileImage'] as String?,
-      megmoGigsCount: json['megmoGigsCount'] as int?,
-      packageBookingCount: json['PackageBookingCount'] as int?,
+      megmoGigsCount: (json['megmoGigsCount'] as num?)?.toInt(),
+      packageBookingCount: (json['PackageBookingCount'] as num?)?.toInt(),
+      package: json['package'] == null
+          ? null
+          : PackageModel.fromJson(json['package'] as Map<String, dynamic>),
       bookingDetails: json['bookingDetails'] == null
           ? null
           : BookingDetailsModel.fromJson(
@@ -68,6 +71,7 @@ Map<String, dynamic> _$$UserBookingModelImplToJson(
       'profileImage': instance.profileImage,
       'megmoGigsCount': instance.megmoGigsCount,
       'PackageBookingCount': instance.packageBookingCount,
+      'package': instance.package,
       'bookingDetails': instance.bookingDetails,
     };
 
@@ -150,6 +154,26 @@ Map<String, dynamic> _$$PackagesModelImplToJson(_$PackagesModelImpl instance) =>
       'id': instance.id,
       'partner_uuid': instance.partnerUuid,
       'package_uuid': instance.packageUuid,
+    };
+
+_$PackageMoPackageModeldelImpl _$$PackageMoPackageModeldelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PackageMoPackageModeldelImpl(
+      id: json['id'] as String?,
+      partnerUuid: json['partner_uuid'] as String?,
+      packageUuid: json['package_uuid'] as String?,
+      packageName: json['package_name'] as String?,
+      packageCoverImage: json['package_cover_image'] as String?,
+    );
+
+Map<String, dynamic> _$$PackageMoPackageModeldelImplToJson(
+        _$PackageMoPackageModeldelImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'partner_uuid': instance.partnerUuid,
+      'package_uuid': instance.packageUuid,
+      'package_name': instance.packageName,
+      'package_cover_image': instance.packageCoverImage,
     };
 
 _$StatusLogModelImpl _$$StatusLogModelImplFromJson(Map<String, dynamic> json) =>

@@ -1,5 +1,6 @@
+// ignore_for_file: unnecessary_string_interpolations
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
 import 'package:flutter_consumer_app/core/constant/constant.dart';
@@ -43,6 +44,7 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
   bool isCouponAdded = false;
   bool isTermsAgreed = false;
   bool isAgreed = false;
+  double totalAmounts = 0;
 
   late AddBookingRequest addBookingRequest = AddBookingRequest(
       userId: '',
@@ -51,13 +53,14 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
         partnerUuid: '',
         packageUuid: '',
       ),
-      bookingAddress: BookingAddress(address: "", landmark: "", saveAs: "Home"),
+      bookingAddress: BookingAddress(address: "", landmark: "", saveAs: ""),
       startDate: DateTime.now(),
       endDate: DateTime.now(),
+      //createdOn:,
       baseFare: 0,
       amount: 0,
       discount: 0,
-      bookingSource: "APP");
+      bookingSource: "App");
 
   @override
   void initState() {
@@ -66,7 +69,6 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
         .read<PackageDetailsBloc>()
         .add(GetPackageDetails(widget.packageUuid));
     BlocProvider.of<UserBloc>(context).add(const GetUser());
-
     super.initState();
   }
 
@@ -83,7 +85,7 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
         isAgreed = false;
       });
     }
-
+    debugPrint('isAgreed ===> $isAgreed');
     return ColoredSafeArea(
       color: bggray,
       child: Scaffold(
@@ -123,6 +125,7 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
                         partnerUuid: data.packageDetails!.partnerUuid!,
                         packageUuid: data.packageDetails!.packageUuid!,
                       );
+                      final packagedetails1 = state.packageDetails;
                       return Column(
                         children: [
                           sbox20,
@@ -131,12 +134,20 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
                             isTopCurved: true,
                             title: 'Package',
                             icon: Icons.book_outlined,
-                            bottomWidget: PackageTileWidget(
-                                package: state.packageDetails),
+                            bottomWidget:
+                                PackageTileWidget(package: packagedetails1),
                           ),
                           BlocBuilder<AddressCubit, AddressCubitState>(
                             builder: (context, addrstate) {
                               if (addrstate is AddressAdded) {
+                                addBookingRequest.bookingAddress!.landmark =
+                                    addrstate.address.landmark ?? "";
+                                addBookingRequest.bookingAddress!.saveAs =
+                                    addrstate.address.addressType ?? "";
+                                addBookingRequest.bookingAddress!.address =
+                                    '${addrstate.address.addressLine1 ?? ""},${addrstate.address.addressLine2 ?? ""},${addrstate.address.city ?? ""},${addrstate.address.state ?? ""},${addrstate.address.pinCode ?? ""}';
+                                // debugPrint(
+                                //     'AddressAdded => ${addBookingRequest.toJson()}');
                                 return BookingPageTile(
                                     isEditButton: true,
                                     isBorder: false,
@@ -145,6 +156,8 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
                                     trailingAddButton: true,
                                     isDataUpdated: addrstate.isAddressAdded,
                                     onTap: () {
+                                      debugPrint(
+                                          'ontap address:${addBookingRequest.toJson()}');
                                       showModalBottomSheet(
                                         isScrollControlled: true,
                                         shape: const RoundedRectangleBorder(
@@ -155,7 +168,9 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
                                                 topRight: Radius.circular(20))),
                                         context: context,
                                         builder: (context) {
-                                          return const SelectAddressBottomSheetWidget();
+                                          return SelectAddressBottomSheetWidget(
+                                            package: packagedetails1,
+                                          );
                                         },
                                       );
                                     },
@@ -180,7 +195,7 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
                                                 sbox,
                                                 Text(
                                                     // '${selectedAddress.addressLine1},${selectedAddress.addressLine2},${selectedAddress.city},${selectedAddress.pinCode}',
-                                                    '${addrstate.address.addressLine1},${addrstate.address.addressLine2},${addrstate.address.city},${addrstate.address.pinCode}',
+                                                    '${addrstate.address.addressLine1},${addrstate.address.addressLine2},${addrstate.address.city},${addrstate.address.state},${addrstate.address.pinCode}',
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.w500,
@@ -209,7 +224,9 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
                                             topRight: Radius.circular(20))),
                                     context: context,
                                     builder: (context) {
-                                      return const SelectAddressBottomSheetWidget();
+                                      return SelectAddressBottomSheetWidget(
+                                        package: packagedetails1,
+                                      );
                                     },
                                   );
                                 },
@@ -219,6 +236,9 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
                           BlocBuilder<SelectDateCubit, SelectDateState>(
                             builder: (context, state) {
                               if (state is DateAdded && state.isDateAdded) {
+                                addBookingRequest.startDate = state.date;
+                                addBookingRequest.endDate = state.endDate;
+                                //  print('start-date==>${state.date} & end date ==>${state.endDate.toString()}');
                                 return BookingPageTile(
                                     isBorder: false,
                                     title: 'Date & Time',
@@ -236,7 +256,9 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
                                                 topRight: Radius.circular(20))),
                                         context: context,
                                         builder: (context) {
-                                          return const SelectDateAndTimeBottomsheet();
+                                          return SelectDateAndTimeBottomsheet(
+                                            package: packagedetails1,
+                                          );
                                         },
                                       );
                                     },
@@ -280,16 +302,35 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
                                                             fontSize: 16)),
                                                     sboxW5,
                                                     sboxW5,
-                                                    Text(
-                                                        DateFormat('h:mm a')
-                                                            .format(state.date),
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            fontSize: 14,
-                                                            color: colorblack
-                                                                .withOpacity(
-                                                                    0.7))),
+                                                    Row(
+                                                      children: [
+                                                        Text(
+                                                            DateFormat('h:mm a')
+                                                                .format(
+                                                                    state.date),
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                fontSize: 14,
+                                                                color: colorblack
+                                                                    .withOpacity(
+                                                                        0.7))),
+                                                        const Text(" - "),
+                                                        Text(
+                                                            DateFormat('h:mm a')
+                                                                .format(state
+                                                                    .endDate),
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                fontSize: 14,
+                                                                color: colorblack
+                                                                    .withOpacity(
+                                                                        0.7)))
+                                                      ],
+                                                    ),
                                                   ],
                                                 ),
                                               ],
@@ -315,7 +356,9 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
                                     ),
                                     context: context,
                                     builder: (context) {
-                                      return const SelectDateAndTimeBottomsheet();
+                                      return SelectDateAndTimeBottomsheet(
+                                        package: packagedetails1,
+                                      );
                                     },
                                   );
                                 },
@@ -324,128 +367,295 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
                           ),
                           BlocBuilder<CouponCubit, CouponCubitState>(
                             builder: (context, couponState) {
+                              String couponAmount =
+                                  ''; // Default value if no coupon is added
+
                               if (couponState is CouponAdded &&
                                   couponState.isCouponAdded) {
-                                return BookingPageTile(
-                                  isBorder: false,
-                                  title: couponState.coupon.couponCode ?? "",
-                                  icon: Icons.percent,
-                                  trailingOfferButton: false,
-                                  bottomWidget: couponState.isCouponAdded
-                                      ? Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 2, vertical: 10),
-                                          child: Column(
-                                            children: [
-                                              Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                      'Rs.${couponState.coupon.fixedAmount.toString()}',
+                                couponAmount = couponState.coupon.fixedAmount
+                                    .toString(); // Set coupon amount when added
+                                var currentAmount =
+                                    '${((data.packageDetails!.packageCost ?? 0) + (data.packageDetails!.transportationCost ?? 0) + (data.packageDetails!.extraAllowance ?? 0) - (double.tryParse(data.packageDetails!.couponsAndDiscounts ?? '0') ?? 0) - (double.tryParse(couponAmount) ?? 0)).toStringAsFixed(2)}';
+                                totalAmounts =
+                                    double.tryParse(currentAmount) ?? 0;
+                                debugPrint('totalAmounts=>$totalAmounts');
+                                return Column(
+                                  children: [
+                                    BookingPageTile(
+                                      isBorder: false,
+                                      title:
+                                          couponState.coupon.couponCode ?? "",
+                                      icon: Icons.percent,
+                                      trailingOfferButton: false,
+                                      bottomWidget: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 2, vertical: 10),
+                                        child: Column(
+                                          children: [
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text('Rs.$couponAmount',
+                                                    style: TextStyle(
+                                                        color: colorblack
+                                                            .withOpacity(0.5),
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontSize: 16)),
+                                                sboxW5,
+                                                sboxW5,
+                                                Text('coupon savings',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontSize: 14,
+                                                        color: colorblack
+                                                            .withOpacity(0.7))),
+                                                const Spacer(),
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    context
+                                                        .read<CouponCubit>()
+                                                        .selectCoupon(
+                                                            isSelected: false,
+                                                            coupon: couponState
+                                                                .coupon,
+                                                            packageAmount: 0);
+                                                  },
+                                                  child: Text('Remove',
                                                       style: TextStyle(
                                                           color: colorblack
                                                               .withOpacity(0.5),
                                                           fontWeight:
-                                                              FontWeight.w600,
-                                                          fontSize: 16)),
-                                                  sboxW5,
-                                                  sboxW5,
-                                                  Text('coupon savings',
-                                                      style: TextStyle(
-                                                          fontWeight:
                                                               FontWeight.w500,
-                                                          fontSize: 14,
-                                                          color: colorblack
-                                                              .withOpacity(
-                                                                  0.7))),
-                                                  const Spacer(),
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      context
-                                                          .read<CouponCubit>()
-                                                          .selectCoupon(
-                                                              isSelected: false,
-                                                              coupon:
-                                                                  couponState
-                                                                      .coupon,
-                                                              packageAmount: 0);
-                                                    },
-                                                    child: Text('Cancel',
-                                                        style: TextStyle(
-                                                            color: colorblack
-                                                                .withOpacity(
-                                                                    0.5),
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            fontSize: 16)),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        )
-                                      : const SizedBox.shrink(),
-                                  onTap: () {
-                                    showModalBottomSheet(
-                                      isScrollControlled: true,
-                                      shape: const RoundedRectangleBorder(
-                                          side: BorderSide(color: Colors.white),
-                                          borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(20),
-                                              topRight: Radius.circular(20))),
-                                      context: context,
-                                      builder: (context) {
-                                        return SelectCouponBottomSheetWidget(
-                                          packageAmount: state
-                                              .packageDetails
-                                              .data!
-                                              .packageDetails!
-                                              .packageCost!
-                                              .toInt(),
-                                          packageUuid: widget.packageUuid,
+                                                          decoration:
+                                                              TextDecoration
+                                                                  .underline,
+                                                          fontSize: 16)),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      onTap: () {
+                                        showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          shape: const RoundedRectangleBorder(
+                                              side: BorderSide(
+                                                  color: Colors.white),
+                                              borderRadius: BorderRadius.only(
+                                                  topLeft: Radius.circular(20),
+                                                  topRight:
+                                                      Radius.circular(20))),
+                                          context: context,
+                                          builder: (context) {
+                                            return SelectCouponBottomSheetWidget(
+                                              packageAmount: state
+                                                  .packageDetails
+                                                  .data!
+                                                  .packageDetails!
+                                                  .packageCost!
+                                                  .toInt(),
+                                              packageUuid: widget.packageUuid,
+                                            );
+                                          },
                                         );
                                       },
-                                    );
-                                  },
+                                    ),
+                                    BookingPageTile(
+                                      isBorder: false,
+                                      title: 'Payment Summary',
+                                      icon: Icons.local_offer_outlined,
+                                      bottomWidget: PaymentSummaryTileWidget(
+                                        packageEntity: state.packageDetails,
+                                        Coupon:
+                                            couponAmount, // Pass the coupon amount here
+                                      ),
+                                    ),
+                                  ],
                                 );
                               }
-                              return BookingPageTile(
-                                isBorder: false,
-                                title: 'Coupons and offers',
-                                icon: Icons.percent,
-                                trailingOfferButton: true,
-                                onTap: () {
-                                  showModalBottomSheet(
-                                    isScrollControlled: true,
-                                    shape: const RoundedRectangleBorder(
-                                        side: BorderSide(color: Colors.white),
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(20),
-                                            topRight: Radius.circular(20))),
-                                    context: context,
-                                    builder: (context) {
-                                      return SelectCouponBottomSheetWidget(
-                                        packageAmount: state.packageDetails
-                                            .data!.packageDetails!.packageCost!
-                                            .toInt(),
-                                        packageUuid: widget.packageUuid,
+                              var currentAmount =
+                                  '${((data.packageDetails!.packageCost ?? 0) + (data.packageDetails!.transportationCost ?? 0) + (data.packageDetails!.extraAllowance ?? 0) - (double.tryParse(data.packageDetails!.couponsAndDiscounts ?? '0') ?? 0) - (double.tryParse(couponAmount) ?? 0)).toStringAsFixed(2)}';
+                              totalAmounts =
+                                  double.tryParse(currentAmount) ?? 0;
+                              debugPrint('totalAmounts=>$totalAmounts');
+                              // If no coupon is added, show the default BookingPageTile
+                              return Column(
+                                children: [
+                                  BookingPageTile(
+                                    isBorder: false,
+                                    title: 'Coupons and offers',
+                                    icon: Icons.percent,
+                                    trailingOfferButton: true,
+                                    onTap: () {
+                                      showModalBottomSheet(
+                                        isScrollControlled: true,
+                                        shape: const RoundedRectangleBorder(
+                                            side:
+                                                BorderSide(color: Colors.white),
+                                            borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(20),
+                                                topRight: Radius.circular(20))),
+                                        context: context,
+                                        builder: (context) {
+                                          return SelectCouponBottomSheetWidget(
+                                            packageAmount: state
+                                                .packageDetails
+                                                .data!
+                                                .packageDetails!
+                                                .packageCost!
+                                                .toInt(),
+                                            packageUuid: widget.packageUuid,
+                                          );
+                                        },
                                       );
                                     },
-                                  );
-                                },
+                                  ),
+                                  BookingPageTile(
+                                    isBorder: false,
+                                    title: 'Payment Summary',
+                                    icon: Icons.local_offer_outlined,
+                                    bottomWidget: PaymentSummaryTileWidget(
+                                      packageEntity: state.packageDetails,
+                                      Coupon: '', // No coupon applied
+                                    ),
+                                  ),
+                                ],
                               );
                             },
                           ),
-                          BookingPageTile(
-                            isBorder: false,
-                            title: 'Payment Summary',
-                            icon: Icons.local_offer_outlined,
-                            bottomWidget: PaymentSummaryTileWidget(
-                                packageEntity: state.packageDetails),
-                          ),
+
+                          // BlocBuilder<CouponCubit, CouponCubitState>(
+                          //   builder: (context, couponState) {
+                          //      String couponAmount = '';
+                          //     if (couponState is CouponAdded &&
+                          //         couponState.isCouponAdded) {
+                          //       return BookingPageTile(
+                          //         isBorder: false,
+                          //         title: couponState.coupon.couponCode ?? "",
+                          //         icon: Icons.percent,
+                          //         trailingOfferButton: false,
+                          //         bottomWidget: couponState.isCouponAdded
+                          //             ? Padding(
+                          //                 padding: const EdgeInsets.symmetric(
+                          //                     horizontal: 2, vertical: 10),
+                          //                 child: Column(
+                          //                   children: [
+                          //                     Row(
+                          //                       crossAxisAlignment:
+                          //                           CrossAxisAlignment.center,
+                          //                       mainAxisAlignment:
+                          //                           MainAxisAlignment.center,
+                          //                       children: [
+                          //                         Text(
+                          //                             'Rs.${couponState.coupon.fixedAmount.toString()}',
+                          //                             style: TextStyle(
+                          //                                 color: colorblack
+                          //                                     .withOpacity(0.5),
+                          //                                 fontWeight:
+                          //                                     FontWeight.w600,
+                          //                                 fontSize: 16)),
+                          //                         sboxW5,
+                          //                         sboxW5,
+                          //                         Text('coupon savings',
+                          //                             style: TextStyle(
+                          //                                 fontWeight:
+                          //                                     FontWeight.w500,
+                          //                                 fontSize: 14,
+                          //                                 color: colorblack
+                          //                                     .withOpacity(
+                          //                                         0.7))),
+                          //                         const Spacer(),
+                          //                         GestureDetector(
+                          //                           onTap: () {
+                          //                             context
+                          //                                 .read<CouponCubit>()
+                          //                                 .selectCoupon(
+                          //                                     isSelected: false,
+                          //                                     coupon:
+                          //                                         couponState
+                          //                                             .coupon,
+                          //                                     packageAmount: 0);
+                          //                           },
+                          //                           child: Text('Cancel',
+                          //                               style: TextStyle(
+                          //                                   color: colorblack
+                          //                                       .withOpacity(
+                          //                                           0.5),
+                          //                                   fontWeight:
+                          //                                       FontWeight.w500,
+                          //                                   fontSize: 16)),
+                          //                         ),
+                          //                       ],
+                          //                     ),
+                          //                   ],
+                          //                 ),
+                          //               )
+                          //             : const SizedBox.shrink(),
+                          //         onTap: () {
+                          //           showModalBottomSheet(
+                          //             isScrollControlled: true,
+                          //             shape: const RoundedRectangleBorder(
+                          //                 side: BorderSide(color: Colors.white),
+                          //                 borderRadius: BorderRadius.only(
+                          //                     topLeft: Radius.circular(20),
+                          //                     topRight: Radius.circular(20))),
+                          //             context: context,
+                          //             builder: (context) {
+                          //               return SelectCouponBottomSheetWidget(
+                          //                 packageAmount: state
+                          //                     .packageDetails
+                          //                     .data!
+                          //                     .packageDetails!
+                          //                     .packageCost!
+                          //                     .toInt(),
+                          //                 packageUuid: widget.packageUuid,
+                          //               );
+                          //             },
+                          //           );
+                          //         },
+                          //       );
+                          //     }
+                          //     return BookingPageTile(
+                          //       isBorder: false,
+                          //       title: 'Coupons and offers',
+                          //       icon: Icons.percent,
+                          //       trailingOfferButton: true,
+                          //       onTap: () {
+                          //         showModalBottomSheet(
+                          //           isScrollControlled: true,
+                          //           shape: const RoundedRectangleBorder(
+                          //               side: BorderSide(color: Colors.white),
+                          //               borderRadius: BorderRadius.only(
+                          //                   topLeft: Radius.circular(20),
+                          //                   topRight: Radius.circular(20))),
+                          //           context: context,
+                          //           builder: (context) {
+                          //             return SelectCouponBottomSheetWidget(
+                          //               packageAmount: state.packageDetails
+                          //                   .data!.packageDetails!.packageCost!
+                          //                   .toInt(),
+                          //               packageUuid: widget.packageUuid,
+                          //             );
+                          //           },
+                          //         );
+                          //       },
+                          //     );
+                          //   },
+                          // ),
+                          // BookingPageTile(
+                          //   isBorder: false,
+                          //   title: 'Payment Summary',
+                          //   icon: Icons.local_offer_outlined,
+                          //   bottomWidget: PaymentSummaryTileWidget(
+                          //       packageEntity: state.packageDetails, Coupon:couponAmount ,),
+                          // ),
+
                           BookingPageTile(
                             trailingIcon: Icons.arrow_forward_ios_outlined,
                             title: 'Service Agreement',
@@ -464,7 +674,11 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
                                 ),
                                 context: context,
                                 builder: (context) {
-                                  return const ServiceAgreementBottomSheetWidget();
+                                  return ServiceAgreementBottomSheetWidget(
+                                    Agreementurl: data
+                                        .packageDetails!.uploadPackageAgreement
+                                        .toString(),
+                                  );
                                 },
                               ).then((value) {
                                 setState(() {
@@ -496,22 +710,24 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
             BlocListener<AddBookingBloc, AddBookingState>(
               listener: (context, state) {
                 if (state is AddBookingSuccess) {
+                  debugPrint('----AddBookingSuccess-----');
                   isAgreed != false
                       ? AppNavigation.pushNavigation(
                           context,
                           ProceedToPaymentPage(
-                              packageCost:
-                                  state.bookingEntity.data!.amount ?? 0,
+                              packageUuid: widget.packageUuid,
+                              packageCost: totalAmounts,
                               bookingUuid:
-                                  state.bookingEntity.data!.bookingUuid!))
+                                  state.bookingEntity.data!.bookingUuid!
+                              //'08a022a7-a57d-47ab-ba19-86e56fa1de66'
+                              ))
                       : null;
-                  bookingButton(
-                      100.w, context, state.bookingEntity.data!.bookingUuid!);
                 }
               },
               child: BlocBuilder<AddBookingBloc, AddBookingState>(
                 builder: (context, state) {
                   if (state is AddBookingLoading) {
+                    debugPrint('----AddBookingLoading-----');
                     return const SizedBox(
                       // height: 100.w * 0.72,
                       child: Center(
@@ -519,14 +735,28 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
                       ),
                     );
                   } else if (state is AddBookingFailed) {
+                    debugPrint('----AddBookingFailed-----');
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const PaymentFailedPage(),
+                          builder: (context) => PaymentFailedPage(
+                            packageUuid: widget.packageUuid,
+                          ),
                         ));
                   }
+                  // else if (state is AddBookingSuccess) {
 
-                  return bookingButton(100.w, context, '');
+                  //   return bookingButton(
+                  //     100.w,
+                  //     context,
+                  //     state.bookingEntity.data!.bookingUuid!,
+                  //     // state.bookingEntity.data!.baseFare!.toDouble(),
+                  //     totalAmounts,
+                  //   );
+                  // }
+                  debugPrint('----AddBookingOther-----');
+                  // return const SizedBox();
+                  return bookingButton(100.w, context, '', totalAmounts);
                 },
               ),
             ),
@@ -536,8 +766,8 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
     );
   }
 
-  Positioned bookingButton(
-      double width, BuildContext context, String bookingUuid) {
+  Positioned bookingButton(double width, BuildContext context,
+      String bookingUuid, double packageCost) {
     return Positioned(
       bottom: 0,
       right: 0,
@@ -608,22 +838,17 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
                     color: isAgreed != true ? colorgrey : colorred,
                     // navigation: isAgreed != false
                     //     ? ProceedToPaymentPage(
-                    //         bookingUuid: bookingUuid,
+                    //         bookingUuid: bookingUuid, packageCost: packageCost,
                     //       )
                     //     : null,
                     onPressed: () {
+                      debugPrint('onpresssed-isAgreed ===> $isAgreed');
+                      addBookingRequest.amount = totalAmounts.toInt();
+
                       if (isAgreed) {
                         context.read<AddBookingBloc>().add(
                             AddBooking(addBookingRequest: addBookingRequest));
                       }
-                      isAgreed != false
-                          ? AppNavigation.pushNavigation(
-                              context,
-                              const ProceedToPaymentPage(
-                                  packageCost: 1200,
-                                  bookingUuid:
-                                      '08a022a7-a57d-47ab-ba19-86e56fa1de66'))
-                          : null;
                     },
                   ),
                 ),

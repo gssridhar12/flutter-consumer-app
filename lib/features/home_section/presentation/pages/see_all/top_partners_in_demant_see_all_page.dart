@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
 import 'package:flutter_consumer_app/core/constant/constant.dart';
-
 import 'package:flutter_consumer_app/features/home_section/presentation/bloc/category_bloc/category_bloc.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/bloc/top_partner_bloc/top_partner_bloc.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/category/all_category_page.dart';
@@ -60,7 +59,7 @@ class TopPartnersInDemantSeeAllPageState
           key: scaffoldKey,
           drawer: DrawerWidget(
               scaffoldKey: scaffoldKey,
-              name: fullName != null ? fullName! : 'Guest',
+              name: fullName != null ? fullName! : 'Pawrent',
               isGuestUser: widget.isGuestUser!),
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(70),
@@ -79,7 +78,7 @@ class TopPartnersInDemantSeeAllPageState
                   SearchFieldWidget(
                     backButton: true,
                     width: width,
-                    text: 'Search for ‘Make up artists’',
+                    text: 'Search for ‘Pet Boarding’',
                   ),
                   sbox20,
 
@@ -91,7 +90,7 @@ class TopPartnersInDemantSeeAllPageState
                       textColor: colorblack.withOpacity(0.7)),
 
                   const HeadingTextWidget(
-                      text: 'Megmo’s bestselling partners this month',
+                      text: 'Wigglypet’s bestselling partners this month',
                       size: 15,
                       fontWeight: FontWeight.w400,
                       trailingButton: false),

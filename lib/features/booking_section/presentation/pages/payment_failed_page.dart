@@ -9,7 +9,8 @@ import 'package:flutter_consumer_app/shared/widgets/secondary_appbar_widget.dart
 import 'package:flutter_consumer_app/utils/navigation.dart';
 
 class PaymentFailedPage extends StatelessWidget {
-  const PaymentFailedPage({super.key});
+  final String packageUuid;
+  const PaymentFailedPage({super.key, required this.packageUuid});
 
   @override
   Widget build(BuildContext context) {
@@ -45,13 +46,14 @@ class PaymentFailedPage extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                   )),
               sbox20,
+              //Text(packageUuid),
               ButtonWidget(
                 onPressed: () {
                   AppNavigation.pushRepacementNavigation(
-                      context,
-                      const BookingDetailsPage(
-                          packageUuid: 'b713b5ea-bb30-4960-a8cf-0d9661d002a5'));
+                      context, BookingDetailsPage(
+                    packageUuid: packageUuid));
                 },
+               
                 text: 'Retry',
                 width: width,
               ),

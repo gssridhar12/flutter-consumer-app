@@ -50,8 +50,7 @@ class TopPartnerCardCard extends StatelessWidget {
                     width: width,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(
-                        'assets/images/sliderimage.png',
+                      child: Image.network(profile.profileImage,
                         fit: BoxFit.cover,
                       ),
                     ),

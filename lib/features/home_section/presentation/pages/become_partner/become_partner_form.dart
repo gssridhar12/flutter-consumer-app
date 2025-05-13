@@ -91,7 +91,8 @@ class _BecomePartnerFormPageState extends State<BecomePartnerFormPage> {
             if (state is AddLeadSuccess) {
               if (state.partner.successStatus == true) {
                 Utils.showSnackbar('Registration Successfull');
-                AppNavigation.pushNavigation(context, const HomePage());
+                AppNavigation.pushNavigation(
+                    context, const HomePage());
               }
             }
           },
@@ -302,7 +303,7 @@ class _BecomePartnerFormPageState extends State<BecomePartnerFormPage> {
                   sbox,
                   TextFieldWidget(
                     textEditingController: serviceOfferedController,
-                    labelText: 'What service do you want to offer on Megmo?',
+                    labelText: 'What service do you want to offer on Wigglypet?',
                     textInputAction: TextInputAction.next,
                     textInputType: TextInputType.name,
                     autofillHints: const [AutofillHints.name],

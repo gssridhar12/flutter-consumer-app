@@ -4,12 +4,16 @@ import 'package:flutter_consumer_app/core/error/failures.dart';
 import 'package:flutter_consumer_app/features/booking_section/data/datasources/remote/booking_api_remote_repository.dart';
 import 'package:flutter_consumer_app/features/booking_section/domain/entities/request/add_booking_request.dart';
 import 'package:flutter_consumer_app/features/booking_section/domain/entities/request/add_order_request.dart';
+import 'package:flutter_consumer_app/features/booking_section/domain/entities/request/reschedule_booking_request.dart';
 import 'package:flutter_consumer_app/features/booking_section/domain/entities/response/add_booking_entity.dart';
 import 'package:flutter_consumer_app/features/booking_section/domain/entities/response/add_order_entity.dart';
 import 'package:flutter_consumer_app/features/booking_section/domain/entities/response/coupon_entity.dart';
 import 'package:flutter_consumer_app/features/booking_section/domain/entities/response/get_booking_entity.dart';
 import 'package:flutter_consumer_app/features/booking_section/domain/entities/response/get_user_booking_entity.dart';
+import 'package:flutter_consumer_app/features/booking_section/domain/entities/response/reschedule_time_model.dart';
 import 'package:flutter_consumer_app/features/booking_section/domain/repositories/booking_repositories.dart';
+import '../../domain/entities/request/cancel_booking_request.dart';
+import '../../domain/entities/response/cancel_booking_entity.dart';
 
 class BookingRepositoryImpl implements BookingRepository {
   final BookingApiRemoteRepository remoteDataSource;
@@ -36,7 +40,34 @@ class BookingRepositoryImpl implements BookingRepository {
     try {
       final booking =
           await remoteDataSource.getBooking(bookingUuid: bookingUuid);
-      log(booking.message.toString());
+      log("getBooking = ${booking.message})");
+      return Right(booking);
+    } catch (e) {
+      return const Left(ServerFailure(errorMessage: 'Server Failed'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, RescheduleModel>> rescheduleBooking(
+      {required RescheduleBookingRequest rescheduleBookingRequest}) async {
+    try {
+      final booking = await remoteDataSource.rescheduleBooking(
+          rescheduleBookingRequest: rescheduleBookingRequest);
+      log("rescheduleBookingRequest = ${booking.message})");
+      return Right(booking);
+    } catch (e) {
+      return const Left(ServerFailure(errorMessage: 'Server Failed'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, CancelBookingEntity>> cancelBooking({
+    required CancelBookingRequest cancelBookingRequest,
+  }) async {
+    try {
+      final booking = await remoteDataSource.cancelBooking(
+          cancelBookingRequest: cancelBookingRequest);
+      log("cancelBooking = ${booking.message})");
       return Right(booking);
     } catch (e) {
       return const Left(ServerFailure(errorMessage: 'Server Failed'));

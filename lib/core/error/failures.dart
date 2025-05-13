@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 
-abstract class Failure extends Equatable {
+abstract class Failure extends Equatable{
   const Failure([List properties = const <dynamic>[]]) : super();
 }
-
 ///server Failure
 //Can be used when trying to fetch data from backend
 ///
+
 
 class ConnectionFailure extends Failure {
   final String errorMessage = 'Connection to the server failed';

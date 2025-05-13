@@ -2,13 +2,12 @@ part of 'partner_package_bloc.dart';
 
 sealed class PartnerPackageState extends Equatable {
   const PartnerPackageState();
-
+  
   @override
   List<Object> get props => [];
 }
 
 final class PartnerPackageInitial extends PartnerPackageState {}
-
 class GetPartnerPackageSuccess extends PartnerPackageState {
   final PartnerPackageEntity package;
 

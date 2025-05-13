@@ -1,1 +1,1 @@
-class UserReviewEntity {}
+class UserReviewEntity{}

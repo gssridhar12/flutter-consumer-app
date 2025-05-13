@@ -106,7 +106,7 @@ class AboutTabWidget extends StatelessWidget {
               ),
               sbox20,
               const HeadingTextWidget(
-                text: 'My Megmo Gigs',
+                text: 'My Wigglypet Gigs',
                 trailingWidget: MyMegmoSeeAllPagetile(),
               ),
               sbox20,

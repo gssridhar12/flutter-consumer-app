@@ -13,10 +13,14 @@ import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 class ProceedToPaymentPage extends StatefulWidget {
   const ProceedToPaymentPage(
-      {super.key, required this.bookingUuid, required this.packageCost});
-
+      {super.key,
+      required this.bookingUuid,
+      required this.packageCost,
+      required this.packageUuid});
+  final String packageUuid;
   final String bookingUuid;
   final double packageCost;
+
 
   @override
   State<ProceedToPaymentPage> createState() => _ProceedToPaymentPageState();
@@ -29,9 +33,10 @@ class _ProceedToPaymentPageState extends State<ProceedToPaymentPage> {
     var options = {
       'key': 'rzp_test_bY8aYSo8V8FGAl',
       'amount': widget.packageCost * 100,
-      'name': '',
-      'description': 'asdfasdf',
-      'prefill': {'contact': '', 'email': ''}
+      'bookingUuid': widget.bookingUuid,
+      'name': 'saroj singh',
+      'description': 'Hsr',
+      'prefill': {'contact': '7488212629', 'email': 'saroj@gmail.com'}
     };
 
     try {
@@ -43,7 +48,17 @@ class _ProceedToPaymentPageState extends State<ProceedToPaymentPage> {
 
   void handlePaymentSuccess(PaymentSuccessResponse response) {
     try {
-      print(response.toString());
+      String transactionId = response.paymentId!;
+
+      // Payment method or mode of payment
+      //String paymentMethod = response.method!;
+
+      debugPrint("Transaction ID: $transactionId");
+      // print("Payment Method: $paymentMethod");
+      debugPrint("Booking UUID: ${widget.bookingUuid}");
+      debugPrint('payment responce : ${response.data}');
+      debugPrint('payment responce : ${response.paymentId}');
+      //  print("saroj ==${widget.bookingUuid}");
       context.read<AddOrderBloc>().add(AddOrder(
           addOrderRequest: AddOrderRequest(
               amount: widget.packageCost.toInt(),
@@ -56,18 +71,24 @@ class _ProceedToPaymentPageState extends State<ProceedToPaymentPage> {
           context,
           PaymentSuccessPage(
             bookingUuid: widget.bookingUuid,
+            transactionId: transactionId,
           ));
-    } catch (e) {
+    } catch (e, st) {
+      debugPrint('payment gateway internal for success $e \n saroj error $st');
       log(e.toString());
     }
   }
 
   void handlePaymentOnError(PaymentFailureResponse response) {
     try {
-      print(response.message);
+      debugPrint(response.message);
       AppNavigation.pushAndRemoveUntilNavigation(
-          context, const PaymentFailedPage());
-    } catch (e) {
+          context,
+          PaymentFailedPage(
+            packageUuid: widget.packageUuid,
+          ));
+    } catch (e, st) {
+      debugPrint('payment gateway internal for failure $e \n saroj error $st');
       log(e.toString());
     }
   }
@@ -78,7 +99,8 @@ class _ProceedToPaymentPageState extends State<ProceedToPaymentPage> {
   void initState() {
     try {
       openCheckout();
-    } catch (e) {
+    } catch (e, st) {
+      debugPrint('opencheckout $e \n saroj opencheckout $st');
       log(e.toString());
     }
 

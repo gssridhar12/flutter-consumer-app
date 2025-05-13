@@ -1,1 +1,1 @@
-class GetMessageEntity {}
+class GetMessageEntity{}

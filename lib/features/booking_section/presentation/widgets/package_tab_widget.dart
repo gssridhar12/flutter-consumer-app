@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
 import 'package:flutter_consumer_app/core/constant/constant.dart';
@@ -55,15 +57,25 @@ class PackageTabWidget extends StatelessWidget {
                           size: 16,
                           color: colorred,
                         ),
+                        // Text(
+                        //   package.reviewAverages!.overallAverage!.toStringAsFixed(2),
+                        //   style: const TextStyle(
+                        //       fontSize: 14,
+                        //       color: colorred,
+                        //       fontWeight: FontWeight.w500),
+                        // ),
                         Text(
-                          package.reviewAverages!.overallAverage.toString(),
+                          package.reviewAverages?.overallAverage != null
+                              ? package.reviewAverages!.overallAverage!
+                                  .toStringAsFixed(2)
+                              : 'No reviews',
                           style: const TextStyle(
                               fontSize: 14,
                               color: colorred,
                               fontWeight: FontWeight.w500),
                         ),
                         Text(
-                          '(201 bookings)',
+                          '(${package.reviewAverages!.reviewCount.toString()} bookings)',
                           style: TextStyle(
                               fontSize: 14,
                               color: colorblack.withOpacity(0.5),
@@ -72,9 +84,24 @@ class PackageTabWidget extends StatelessWidget {
                       ],
                     ),
                     sbox,
-                    Text(
-                      package.partnerName ?? "",
-                      style: const TextStyle(fontSize: 16),
+                    SizedBox(
+                      width: width - 185,
+                      child: Row(
+                        children: [
+                          Text(
+                            package.partnerName ?? "",
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                          Spacer(),
+                          IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.arrow_forward_ios_outlined,
+                                color: Colors.grey,
+                                size: 18,
+                              ))
+                        ],
+                      ),
                     ),
                   ],
                 ),

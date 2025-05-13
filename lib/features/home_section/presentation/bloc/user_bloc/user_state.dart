@@ -2,7 +2,7 @@ part of 'user_bloc.dart';
 
 sealed class UserState extends Equatable {
   const UserState();
-
+  
   @override
   List<Object> get props => [];
 }
@@ -26,7 +26,6 @@ class UpdateUserLoading extends UserState {
   @override
   List<Object> get props => [];
 }
-
 class GetUserSuccess extends UserState {
   final GetUserEntity user;
 
@@ -44,12 +43,10 @@ class GetUserLoading extends UserState {
   @override
   List<Object> get props => [];
 }
-
 class IsGuestUser extends UserState {
   @override
   List<Object> get props => [];
 }
-
 class AddPackageReviewSuccess extends UserState {
   final AddPackageReviewEntity review;
 

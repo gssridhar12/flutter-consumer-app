@@ -2,7 +2,7 @@ part of 'get_user_booking_bloc.dart';
 
 sealed class GetUserBookingState extends Equatable {
   const GetUserBookingState();
-
+  
   @override
   List<Object> get props => [];
 }

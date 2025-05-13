@@ -51,7 +51,7 @@ class MostBookedPackagesSeeAllPageState
             scaffoldKey: scaffoldKey,
             name: widget.userModel != null
                 ? widget.userModel!.data!.fullName!
-                : 'Guest',
+                : 'Pawrent',
             isGuestUser: widget.isGuestUser!),
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(70),
@@ -70,7 +70,7 @@ class MostBookedPackagesSeeAllPageState
                 SearchFieldWidget(
                   backButton: true,
                   width: width,
-                  text: 'Search for ‘Make up artists’',
+                  text: 'Search for ‘Pet Boarding’',
                 ),
                 sbox20,
 
@@ -155,9 +155,11 @@ class MostBookedPackagesSeeAllPageState
                     return ListView.builder(
                       physics: const BouncingScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: state.package.data!.packages!.length,
+                      itemCount: 
+                      state.package.data!.packages!.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return MostBookedPackageCardWidget(
+                        return 
+                         MostBookedPackageCardWidget(
                           width: width,
                           entity: state.package,
                           index: index,

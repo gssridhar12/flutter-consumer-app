@@ -303,7 +303,7 @@ class BecomeAPartner extends StatelessWidget {
               children: [
                 SizedBox(
                   width: width * 0.6,
-                  child: const Text('Join our growing Megmo',
+                  child: const Text('Join our growing Wigglypet',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           overflow: TextOverflow.clip,
@@ -324,7 +324,7 @@ class BecomeAPartner extends StatelessWidget {
                 SizedBox(
                   width: width * 0.8,
                   child: Text(
-                      'Join our thriving talent community to provide your professional services, connect with clients, and receive payments securely on Megmos trusted platform',
+                      'Join our thriving talent community to provide your professional services, connect with clients, and receive payments securely on Wigglypet's trusted platform',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: colorblack.withOpacity(0.7),
@@ -396,25 +396,25 @@ class BecomeAPartner extends StatelessWidget {
             HappyCustomerLeftImageWidget(
                 width: width,
                 image: 'assets/images/becomepartber23(1).png',
-                title: '“Found the perfect gym trainer for myself on Megmo.”',
+                title: '“Found the perfect gym trainer for myself on Wigglypet.”',
                 subtitle: 'Jacob Colesman, London'),
             HappyCustomerRightImageWidget(
                 width: width,
                 image: 'assets/images/becomepartber23(2).png',
                 title:
-                    '“Recently wedded, I found the best makeup artist for myself on Megmo.”',
+                    '“Recently wedded, I found the best makeup artist for myself on Wigglypet.”',
                 subtitle: 'Celia John, Washington'),
             HappyCustomerLeftImageWidget(
                 width: width,
                 image: 'assets/images/becomepartber23(3).png',
                 title:
-                    '“Singing was always my passion, but school left no time. Found a great at-home vocal coach on Megmo with flexible hours.”',
+                    '“Singing was always my passion, but school left no time. Found a great at-home vocal coach on Wigglypet with flexible hours.”',
                 subtitle: 'Riya Shetty, India'),
             HappyCustomerRightImageWidget(
                 width: width,
                 image: 'assets/images/becomepartber23(4).png',
                 title:
-                    '“I just adopted the cutest poodle, but work makes it difficult to train him. Easily found a professional dog trainer on Megmo.”',
+                    '“I just adopted the cutest poodle, but work makes it difficult to train him. Easily found a professional dog trainer on Wigglypet.”',
                 subtitle: 'John Doe, Perth'),
             sbox20,
             sbox20,

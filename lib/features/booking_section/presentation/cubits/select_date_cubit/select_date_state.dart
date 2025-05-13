@@ -12,15 +12,17 @@ final class SelectDateInitial extends SelectDateState {
 
   SelectDateInitial({required this.isCouponAdded});
 
-  @override
+    @override
   List<Object> get props => [isCouponAdded];
-}
 
+}
 class DateAdded extends SelectDateState {
   final bool isDateAdded;
-  final DateTime date;
+  final DateTime date;  
+  final DateTime endDate;
 
-  const DateAdded({required this.date, required this.isDateAdded});
+
+  const DateAdded({required this.date, required this.isDateAdded,required this.endDate});
   @override
-  List<Object> get props => [isDateAdded, date];
+  List<Object> get props => [isDateAdded,date,endDate];
 }

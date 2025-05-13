@@ -5,9 +5,11 @@ import 'package:flutter_consumer_app/features/booking_section/data/repositories/
 import 'package:flutter_consumer_app/features/booking_section/domain/repositories/booking_repositories.dart';
 import 'package:flutter_consumer_app/features/booking_section/domain/usecases/add_booking_usecase.dart';
 import 'package:flutter_consumer_app/features/booking_section/domain/usecases/add_order_usecase.dart';
+import 'package:flutter_consumer_app/features/booking_section/domain/usecases/cancel_booking_usecase.dart';
 import 'package:flutter_consumer_app/features/booking_section/domain/usecases/get_booking_usecase.dart';
 import 'package:flutter_consumer_app/features/booking_section/domain/usecases/get_coupon_usecase.dart';
 import 'package:flutter_consumer_app/features/booking_section/domain/usecases/get_user_booking_usecase.dart';
+import 'package:flutter_consumer_app/features/booking_section/domain/usecases/reschedule_booking_usecase.dart';
 import 'package:flutter_consumer_app/features/booking_section/presentation/bloc/add_booking_bloc/add_booking_bloc.dart';
 import 'package:flutter_consumer_app/features/booking_section/presentation/bloc/add_order_bloc/add_order_bloc.dart';
 import 'package:flutter_consumer_app/features/booking_section/presentation/bloc/coupon_bloc/coupon_bloc.dart';
@@ -52,7 +54,6 @@ import 'package:flutter_consumer_app/features/home_section/presentation/bloc/sea
 import 'package:flutter_consumer_app/features/home_section/presentation/bloc/user_bloc/user_bloc.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/cubit/cubit/location_cubit.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/cubit/like_cubit.dart';
-import 'package:flutter_consumer_app/features/home_section/presentation/widgets/location_choice_chip.dart';
 import 'package:flutter_consumer_app/features/network/data/repository/network_repository_impl.dart';
 import 'package:flutter_consumer_app/features/network/domain/repository/network_repository.dart';
 import 'package:flutter_consumer_app/features/network/presentation/bloc/network_bloc.dart';
@@ -108,6 +109,10 @@ import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+
+import 'features/booking_section/presentation/bloc/cancel_booking/cancel_booking_bloc.dart';
+import 'features/booking_section/presentation/bloc/reschedule_booking_bloc/reschedule_booking_bloc.dart';
+import 'features/partner_profile/presentation/bloc/get_bucket_list_bloc.dart/bucket_list_bloc.dart';
 
 final sl = GetIt.instance;
 Future<void> init() async {
@@ -269,8 +274,10 @@ Future<void> init() async {
   //feature ---partner package
   sl.registerFactory(() => PartnerPackageBloc(sl()));
   sl.registerFactory(() => BucketBloc(sl()));
+  sl.registerFactory(() => BucketListBloc(sl()));
   sl.registerLazySingleton(() => GetPartnerPackagesUseCase(repository: sl()));
   sl.registerLazySingleton(() => GetBucketUsecase(repository: sl()));
+  sl.registerLazySingleton(() => GetBucketListUsecase(repository: sl()));
   sl.registerLazySingleton<PartnerPackageRepository>(
       () => PartnerPackageRepositoryImpl(packageRemoteDataSource: sl()));
   sl.registerLazySingleton<PartnerPackageRemoteDataSource>(
@@ -331,9 +338,19 @@ Future<void> init() async {
   sl.registerFactory(() => GetUserBookingBloc(sl()));
   sl.registerLazySingleton(() => GetBookingUseCase(repository: sl()));
   sl.registerLazySingleton(() => GetUserBookingUseCase(repository: sl()));
+  //--reschedule booking--
+  sl.registerFactory(
+      () => RescheduleBookingBloc(rescheduleBookingUseCase: sl()));
+  sl.registerLazySingleton(() => RescheduleBookingUseCase(repository: sl()));
+
+  //--cancel booking--
+  sl.registerFactory(() => CancelBookingBloc(cancelBookingUseCase: sl()));
+  sl.registerLazySingleton(() => CancelBookingUseCase(repository: sl()));
 
   sl.allReady().then((_) {
     sl<GetBookingUseCase>();
+    sl<CancelBookingUseCase>();
+    sl<RescheduleBookingUseCase>();
     sl<BookingRepository>();
     sl<BookingApiRemoteRepository>();
     sl<http.Client>();

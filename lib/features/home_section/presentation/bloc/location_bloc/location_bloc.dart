@@ -18,6 +18,7 @@
 //         Placemark placemark = await getAddressFromLatLong(
 //             LatLng(position.latitude, position.longitude));
 
+      
 //         emit(GetUserLocationSuccess(placemark: placemark));
 //       } on Exception catch (e) {
 //         emit(GetUserLocationFailed());

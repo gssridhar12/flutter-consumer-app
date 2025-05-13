@@ -31,7 +31,7 @@ class HomeAppBarWidget extends StatefulWidget {
 
 class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
   final bool? isGuestUser = localDb.getBool('isGuestUser') ?? true;
-  final String fullName = localDb.getString('fullName') ?? "Guest";
+  final String fullName = localDb.getString('fullName') ?? "Pawrent";
 
   @override
   void initState() {
@@ -95,7 +95,7 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
               try {
                 widget.scaffoldKey.currentState!.openDrawer();
               } catch (e) {
-                print(e);
+                debugPrint(e.toString());
               }
             },
             child: Padding(

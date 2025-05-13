@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
+import 'package:flutter_consumer_app/features/home_section/presentation/bloc/package_like_bloc/package_like_bloc_bloc.dart';
 // import 'package:flutter_consumer_app/features/home_section/src/domain/entities/response/get_like_entity.dart';
 // import 'package:flutter_consumer_app/features/home_section/src/domain/entities/response/get_package_like_entity.dart';
-import 'package:flutter_consumer_app/features/home_section/presentation/bloc/package_like_bloc/package_like_bloc_bloc.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/cards/package_card.dart';
 import 'package:flutter_consumer_app/main.dart';
 import 'package:flutter_consumer_app/shared/widgets/error_widget.dart';

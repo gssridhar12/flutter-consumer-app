@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
-import 'package:flutter_consumer_app/core/constant/constant.dart';
+import 'package:flutter_consumer_app/core/constant/constant.dart'; 
 import 'package:flutter_consumer_app/features/home_section/presentation/bloc/fresh_talent_bloc/fresh_talent_bloc.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/bloc/package_bloc/package_bloc.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/bloc/top_partner_bloc/top_partner_bloc.dart';
@@ -12,6 +12,7 @@ import 'package:flutter_consumer_app/features/home_section/presentation/pages/se
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/see_all/most_booked_packages_see_all_page.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/see_all/success_stories_see_all_page.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/see_all/top_partners_in_demant_see_all_page.dart';
+import 'package:flutter_consumer_app/features/home_section/presentation/widgets/Who%20_are_lookng_for_seeall.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/become_partner_widget.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/category_tile_widget.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/heading_text_widget.dart';
@@ -43,7 +44,7 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   final bool isGuestUser = localDb.getBool('isGuestUser')!;
-  final String? fullName = localDb.getString('fullName') ?? "Guest";
+  final String? fullName = localDb.getString('fullName') ?? "Pawrent";
 
   @override
   void initState() {
@@ -68,7 +69,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         key: scaffoldKey,
         drawer: DrawerWidget(
             scaffoldKey: scaffoldKey,
-            name: fullName ?? 'Guest',
+            name: fullName ?? 'Pawrent',
             isGuestUser: isGuestUser),
         backgroundColor: bggray,
         appBar: PreferredSize(
@@ -87,16 +88,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 sbox,
                 SearchFieldWidget(
                   width: 100.w,
-                  text: 'Search for ‘Make up artists’',
+                  text: 'Search for ‘Pet Boarding’',
                 ),
                 HeadingTextWidget(
                     fontWeight: FontWeight.w400,
-                    text: fullName != null ? 'Hii $fullName,' : 'Hii Guest,',
+                    text: fullName != null ? 'Hii $fullName,' : 'Hii Pawrent,',
                     size: 22,
                     trailingButton: false,
                     textColor: colorred),
                 HeadingTextWidget(
-                  text: 'Welcome to Megmo!',
+                  text: 'Welcome to Wigglypet!',
                   trailingButton: false,
                   size: 18,
                   textColor: colorblack.withOpacity(0.7),
@@ -104,78 +105,140 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 sbox,
                 RewardsCardWidget(
                     name: fullName ?? '', isGuestUser: isGuestUser),
-                const HeadingTextWidget(
+                HeadingTextWidget(
                   text: 'Who are you looking for?',
-                  trailingButton: false,
-                ),
-                BlocBuilder<CategoryBloc, CategoryState>(
-                  builder: (context, state) {
-                    if (state is GetCategoryLoading) {
-                      return SizedBox(
-                        height: 30.h,
-                        child: const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                      );
-                    }
-                    if (state is GetCategoryFailed) {
-                      return const ShowErrorWidget();
-                    }
-                    if (state is GetCategorySuccess) {
-                      final category =
-                          state.categoryEntity.data!.parentCategories;
-                      return ConstrainedBox(
-                        constraints: BoxConstraints(
-                          minHeight: MediaQuery.of(context).size.height * 0.02,
-                          maxHeight: MediaQuery.of(context).size.height * 0.25,
-                        ),
-                        child: SizedBox(
-                          // height: 22.h,
-                          width: 100.w,
-                          child: GridView.builder(
-                            padding: EdgeInsets.zero,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2),
-                            physics: const BouncingScrollPhysics(),
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            itemCount: category!.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Column(
-                                children: [
-                                  CategoryTileWidget(
-                                      onTap: () {
-                                        AppNavigation.pushNavigation(
-                                          context,
-                                          SpecificCategoryPage(
-                                            categoryTitle: category[index]
-                                                    .parentCategoryName ??
-                                                "",
-                                            isGuestUser: isGuestUser,
-                                          ),
-                                        );
-                                      },
-                                      width: 100.w,
-                                      category: category[index]),
-                                ],
-                              );
-                            },
-                          ),
-                        ),
-                      );
-                    }
-                    return const Text('Something went wrong');
+                  trailingButton: true,
+                  onTap: () {
+                    AppNavigation.pushNavigation(
+                        context, Who_AreLookngForSeeall());
                   },
                 ),
+                SizedBox(
+                  height: 200,
+                  child: BlocBuilder<CategoryBloc, CategoryState>(
+                    builder: (context, state) {
+                      if (state is GetCategoryLoading) {
+                        return SizedBox(
+                          height: 30.h,
+                          child: const Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        );
+                      }
+                      if (state is GetCategoryFailed) {
+                        return const Text('something went wrong');
+                      }
+                      if (state is GetCategorySuccess) {
+                        final category =
+                            state.categoryEntity.data!.parentCategories;
+                        return SizedBox(
+                            // height: 21.h,
+                            width: 100.w,
+                            child: GridView.builder(
+                              padding: EdgeInsets.zero,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 2),
+                              physics: const BouncingScrollPhysics(),
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              itemCount: category!.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Column(
+                                  children: [
+                                    CategoryTileWidget(
+                                        onTap: () {
+                                          AppNavigation.pushNavigation(
+                                            context,
+                                            SpecificCategoryPage(
+                                              categoryTitle: category[index]
+                                                      .parentCategoryName ??
+                                                  "",
+                                              isGuestUser: isGuestUser,
+                                            ),
+                                          );
+                                        },
+                                        width: 100.w,
+                                        category: category[index]),
+                                  ],
+                                );
+                              },
+                            ));
+                      }
+                      return const Text('Something went wrong');
+                    },
+                  ),
+                ),
+                // BlocBuilder<CategoryBloc, CategoryState>(
+                //   builder: (context, state) {
+                //     if (state is GetCategoryLoading) {
+                //       return SizedBox(
+                //         height: 30.h,
+                //         child: const Center(
+                //           child: CircularProgressIndicator(),
+                //         ),
+                //       );
+                //     }
+                //     if (state is GetCategoryFailed) {
+                //       return const ShowErrorWidget();
+                //     }
+                //     if (state is GetCategorySuccess) {
+                //       final category =
+                //           state.categoryEntity.data!.parentCategories;
+                //       return ConstrainedBox(
+                //         constraints: BoxConstraints(
+                //           minHeight: MediaQuery.of(context).size.height * 0.02,
+                //           maxHeight: MediaQuery.of(context).size.height * 0.25,
+                //         ),
+                //         child:
+                //         SizedBox(
+                //           // height: 22.h,
+
+                //           width: 100.w,
+                //           child: GridView.builder(
+                //             padding: EdgeInsets.zero,
+                //             gridDelegate:
+                //                 const SliverGridDelegateWithFixedCrossAxisCount(
+                //                     crossAxisCount: 2),
+                //             physics: const BouncingScrollPhysics(),
+                //             shrinkWrap: true,
+                //             scrollDirection: Axis.horizontal,
+                //             itemCount: category!.length,
+                //             itemBuilder: (BuildContext context, int index) {
+                //               return Column(
+                //                 children: [
+                //                   CategoryTileWidget(
+                //                       onTap: () {
+                //                         AppNavigation.pushNavigation(
+                //                           context,
+                //                           SpecificCategoryPage(
+                //                             categoryTitle: category[index]
+                //                                     .parentCategoryName ??
+                //                                 "",
+                //                             isGuestUser: isGuestUser,
+                //                           ),
+                //                         );
+                //                       },
+                //                       width: 100.w,
+                //                       category: category[index]),
+                //                 ],
+                //               );
+                //             },
+                //           ),
+                //         ),
+                //       );
+                //     }
+                //     return const Text('Something went wrong');
+                //   },
+                // ),
+               
                 HeadingTextWidget(
                   text: 'Top Partners in demand',
                   onTap: () {
                     AppNavigation.pushNavigation(
                       context,
                       TopPartnersInDemantSeeAllPage(
-                        isGuestUser: isGuestUser,
-                      ),
+                        isGuestUser: isGuestUser),
                     );
                   },
                 ),
@@ -190,15 +253,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       );
                     }
                     if (state is GetTopPartnerInDemantFailed) {
-                      return const ShowErrorWidget();
+                      return const Text('something went wrong');
                     }
                     if (state is GetTopPartnerInDemantSuccess) {
-                      return ConstrainedBox(
-                        constraints: BoxConstraints(
-                          minHeight: MediaQuery.of(context).size.height * 0.25,
-                          maxHeight: MediaQuery.of(context).size.height * 0.35,
-                        ),
+                      return Padding(
+                        padding: const EdgeInsets.only(left: padding),
                         child: SizedBox(
+                          height: 34.h,
                           width: 100.w,
                           child: ListView.builder(
                             addAutomaticKeepAlives: true,
@@ -210,15 +271,31 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               return Row(
                                 children: [
                                   ///Checks if partner is a luxe profile or not
-                                  state.partner.data!.profiles![index].profile!
-                                              .profileDetails!.lockeProfile ==
-                                          true
-                                      ? PartnerTileWidget(
+                                  // state.partner.data!.profiles![index].profile!
+                                  //             .profileDetails!.lockeProfile ==
+                                  //         true
+                                     // ?
+                                      //  PartnerTileLuxeWidget(
+                                      //     index: index,
+                                      //     partnerEntity: state.partner,
+                                      //     isGuestUser: isGuestUser,
+                                      //     onTap: () {
+                                      //       Navigator.push(
+                                      //         context,
+                                      //         MaterialPageRoute(
+                                      //           builder: (context) =>
+                                      //               const LuxeMegmoScreen(),
+                                      //         ),
+                                      //       );
+                                      //     },
+                                      //   )
+                                      // : 
+                                      PartnerTileWidget(
                                           index: index,
                                           partnerEntity: state.partner,
                                           isGuestUser: isGuestUser,
                                           onTap: () {
-                                            // if (isGuestUser != false) {
+                                            //if (isGuestUser != false) {
                                             AppNavigation.pushNavigation(
                                                 context,
                                                 PartnerProfileAnimated(
@@ -228,27 +305,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         .profiles![index]
                                                         .profile!
                                                         .partnerUuid!));
-                                            // } else {
-                                            //   AppNavigation.pushNavigation(
-                                            //       context,
-                                            //       const ThreeOptionsPage());
-                                            // }
+                                      //       // } else {
+                                      //       //   AppNavigation.pushNavigation(
+                                      //       //       context,
+                                      //       //       const ThreeOptionsPage());
+                                      //       // }
                                           },
                                         )
-                                      : PartnerTileLuxeWidget(
-                                          index: index,
-                                          partnerEntity: state.partner,
-                                          isGuestUser: isGuestUser,
-                                          onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const LuxeMegmoScreen(),
-                                              ),
-                                            );
-                                          },
-                                        ),
                                 ],
                               );
                             },
@@ -299,11 +362,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             scrollDirection: Axis.horizontal,
                             itemCount: state.package.data!.packages!.length,
                             itemBuilder: (BuildContext context, int index) {
-                              final package =
-                                  state.package.data!.packages![index].package!;
+                              final package =state.package.data!.packages![index].package!;
                               return PackageCardWidget(
-                                key: ValueKey(package
-                                    .packageUuid), // Provide a unique key
+                                key: ValueKey(package.packageUuid),
                                 packageUuid: package.packageUuid!,
                                 uuid: package.partnerUuid!,
                                 index: index,
@@ -327,7 +388,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   },
                 ),
                 HeadingTextWidget(
-                  text: 'Fresh Talent on Megmo',
+                  text: 'Fresh Talent on Wigglypet',
                   onTap: () {
                     AppNavigation.pushNavigation(
                       context,
@@ -397,40 +458,42 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     return const Text('nothing loaded');
                   },
                 ),
-                sbox,
-                HeadingTextWidget(
-                  onTap: () {
-                    AppNavigation.pushNavigation(
-                      context,
-                      SucessStoriesSeeAllPage(
-                        isGuestUser: isGuestUser,
-                      ),
-                    );
-                  },
-                  text: 'Success Stories',
-                ),
-                sbox,
-                SizedBox(
-                  width: 80.w,
-                  child: Text(
-                      'Take a look at what Megmo partners are achieving',
-                      style: TextStyle(
-                          fontSize: 12, color: colorblack.withOpacity(0.5))),
-                ),
-                sbox20,
-                SizedBox(
-                  height: 50.h,
-                  width: 100.w,
-                  child: ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 4,
-                    itemBuilder: (BuildContext context, int index) {
-                      return const SuccessStoryWidget();
-                    },
-                  ),
-                ),
+                // sbox,
+                // HeadingTextWidget(
+                //   onTap: () {
+                //     AppNavigation.pushNavigation(
+                //       context,
+                //       SucessStoriesSeeAllPage(
+                //         isGuestUser: isGuestUser,
+                //       ),
+                //     );
+                //   },
+                //   text: 'Success Stories',
+                // ),
+                // sbox,
+                // SizedBox(
+                //   width: 80.w,
+                //   child: Text(
+                //       'Take a look at what Woofurs partners are achieving',
+                //       style: TextStyle(
+                //           fontSize: 12, color: colorblack.withOpacity(0.5))),
+                // ),
+                // sbox20,
+                // SizedBox(
+                //   height: 50.h,
+                //   width: 100.w,
+                //   child: ListView.builder(
+                //     physics: const BouncingScrollPhysics(),
+                //     shrinkWrap: true,
+                //     scrollDirection: Axis.horizontal,
+                //     itemCount: 4,
+                //     itemBuilder: (BuildContext context, int index) {
+                //       return const SuccessStoryWidget(
+                //         headingtext: 'Near You',
+                //       );
+                //     },
+                //   ),
+                // ),
                 sbox20,
                 BecomePartnerWidget(width: 100.w),
                 sbox20,
@@ -441,8 +504,4 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       ),
     );
   }
-
-  ///TODO fix this
-  // @override
-  // bool get wantKeepAlive => true;
 }

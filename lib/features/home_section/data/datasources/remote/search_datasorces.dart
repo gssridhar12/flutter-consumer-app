@@ -23,7 +23,7 @@ class SearchDataSourceImpl implements SearchDataSource {
       "Content-Type": "application/json",
     };
     final url = Uri.parse(
-      'https://partnerapi.megmo.in/partner-service/package/getPackageByPackageName/v2/$keyword',
+      'https://api.woofurs.com/partner-service/package/getPackageByPackageName/v2/$keyword',
     );
     final response = await httpClient.post(url,
         headers: headers, body: json.encode(requestBody));
@@ -46,7 +46,7 @@ class SearchDataSourceImpl implements SearchDataSource {
       "Content-Type": "application/json",
     };
     final url = Uri.parse(
-      'https://partnerapi.megmo.in/partner-service/profile/getPartnerByProfileName/v2/$keyword',
+      'https://api.woofurs.com/partner-service/profile/getPartnerByProfileName/v2/$keyword',
     );
     final response = await httpClient.post(
       url,

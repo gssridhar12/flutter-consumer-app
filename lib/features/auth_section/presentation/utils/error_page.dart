@@ -6,9 +6,8 @@ class ErrorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Center(
-        child: Text('something went wrong'),
-      ),
+      body: const Center(child: 
+      Text('something went wrong'),),
     );
   }
 }

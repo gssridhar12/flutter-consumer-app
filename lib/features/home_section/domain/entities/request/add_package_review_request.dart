@@ -4,37 +4,34 @@
 
 import 'dart:convert';
 
-AddPackageReviewRequest addPackageReviewRequestFromJson(String str) =>
-    AddPackageReviewRequest.fromJson(json.decode(str));
+AddPackageReviewRequest addPackageReviewRequestFromJson(String str) => AddPackageReviewRequest.fromJson(json.decode(str));
 
-String addPackageReviewRequestToJson(AddPackageReviewRequest data) =>
-    json.encode(data.toJson());
+String addPackageReviewRequestToJson(AddPackageReviewRequest data) => json.encode(data.toJson());
 
 class AddPackageReviewRequest {
-  final String? packageUuid;
-  final String? userUuid;
-  final double? communication;
-  final double? serviceDescribed;
-  final double? recommended;
-  final String? source;
-  final int? partnerLevel;
-  final String? review;
-  final List<String>? media;
+    final String? packageUuid;
+    final String? userUuid;
+    final double? communication;
+    final double? serviceDescribed;
+    final double? recommended;
+    final String? source;
+    final int? partnerLevel;
+    final String? review;
+    final List<String>? media;
 
-  AddPackageReviewRequest({
-    this.packageUuid,
-    this.userUuid,
-    this.communication,
-    this.serviceDescribed,
-    this.recommended,
-    this.source,
-    this.partnerLevel,
-    this.review,
-    this.media,
-  });
+    AddPackageReviewRequest({
+        this.packageUuid,
+        this.userUuid,
+        this.communication,
+        this.serviceDescribed,
+        this.recommended,
+        this.source,
+        this.partnerLevel,
+        this.review,
+        this.media,
+    });
 
-  factory AddPackageReviewRequest.fromJson(Map<String, dynamic> json) =>
-      AddPackageReviewRequest(
+    factory AddPackageReviewRequest.fromJson(Map<String, dynamic> json) => AddPackageReviewRequest(
         packageUuid: json["package_uuid"],
         userUuid: json["user_uuid"],
         communication: json["communication"],
@@ -43,12 +40,10 @@ class AddPackageReviewRequest {
         source: json["source"],
         partnerLevel: json["partner_level"],
         review: json["review"],
-        media: json["media"] == null
-            ? []
-            : List<String>.from(json["media"]!.map((x) => x)),
-      );
+        media: json["media"] == null ? [] : List<String>.from(json["media"]!.map((x) => x)),
+    );
 
-  Map<String, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => {
         "package_uuid": packageUuid,
         "user_uuid": userUuid,
         "communication": communication,
@@ -58,5 +53,5 @@ class AddPackageReviewRequest {
         "partner_level": partnerLevel,
         "review": review,
         "media": media == null ? [] : List<dynamic>.from(media!.map((x) => x)),
-      };
+    };
 }

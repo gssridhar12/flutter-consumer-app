@@ -12,9 +12,13 @@ import 'package:flutter_consumer_app/features/home_section/domain/entities/respo
 
 import 'package:flutter_consumer_app/features/home_section/presentation/bloc/user_bloc/user_bloc.dart';
 
+import '../../../packages_section/domain/entities/package_details_entitiy.dart';
+
 class SelectAddressBottomSheetWidget extends StatefulWidget {
+  final PackageDetailsEntity package;
   const SelectAddressBottomSheetWidget({
     super.key,
+    required this.package,
   });
 
   @override
@@ -55,9 +59,10 @@ class _SelectAddressBottomSheetWidgetState
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             sbox20,
-            const BottomSheetIconandTitleWidget(
+            BottomSheetIconandTitleWidget(
               icon: Icons.location_on_outlined,
-              title: 'Where should Neha arrive?',
+              title:
+                  'Where should ${widget.package.data!.partnerName}  arrive? ',
             ),
             sbox20,
             Padding(
@@ -80,7 +85,8 @@ class _SelectAddressBottomSheetWidgetState
                     address.add(state.user.data!.userAddress!);
                     addressesAdded = true;
                     selectedAddress = address[selectedRadio!];
-                    log(state.user.data!.userAddress.toString());
+                    // debugPrint('selectedAddress:$selectedAddress');
+                    log("selectedAddress:${state.user.data!.userAddress}");
                   });
                 }
               },
@@ -99,7 +105,7 @@ class _SelectAddressBottomSheetWidgetState
                           () {
                             selectedRadio = value;
                             selectedAddress = address[index];
-                            print(selectedAddress!.addressLine1);
+                            debugPrint(selectedAddress!.addressLine1);
                           },
                         );
                       },
@@ -116,7 +122,7 @@ class _SelectAddressBottomSheetWidgetState
               ),
             ),
             const Divider(),
-            const Divider(),
+            // const Divider(),
             GestureDetector(
               onTap: () {
                 showModalBottomSheet(

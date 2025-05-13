@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -57,7 +59,7 @@ class _SpecificCategoryPageState extends State<SpecificCategoryPage>
         key: scaffoldKey,
         drawer: DrawerWidget(
             scaffoldKey: scaffoldKey,
-            name: fullName != null ? fullName! : 'Guest',
+            name: fullName != null ? fullName! : 'Pawrent',
             isGuestUser: widget.isGuestUser!),
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(70),
@@ -91,7 +93,7 @@ class _SpecificCategoryPageState extends State<SpecificCategoryPage>
                             text: 'Search for packages and Partners here',
                           ),
                         ),
-                        sbox,
+                        //sbox,
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20.0),
                           child: HeadingTextWidget(
@@ -177,9 +179,9 @@ class _SpecificCategoryPageState extends State<SpecificCategoryPage>
               physics: const BouncingScrollPhysics(),
               controller: _tabController,
               children: [
-                AllTab(
-                  categoryTitle: widget.categoryTitle,
-                ),
+                AllTab(categoryTitle: ""
+                  //widget.categoryTitle,
+                    ),
                 const TierTab(),
                 // AllTab(),
                 const LevelTab(),

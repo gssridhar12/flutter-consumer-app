@@ -7,6 +7,7 @@ import 'package:flutter_consumer_app/features/auth_section/presentation/bloc/aut
 import 'package:flutter_consumer_app/features/auth_section/presentation/cubit/button_cubit/button_cubit.dart';
 import 'package:flutter_consumer_app/features/booking_section/presentation/bloc/add_booking_bloc/add_booking_bloc.dart';
 import 'package:flutter_consumer_app/features/booking_section/presentation/bloc/add_order_bloc/add_order_bloc.dart';
+import 'package:flutter_consumer_app/features/booking_section/presentation/bloc/cancel_booking/cancel_booking_bloc.dart';
 import 'package:flutter_consumer_app/features/booking_section/presentation/bloc/coupon_bloc/coupon_bloc.dart';
 import 'package:flutter_consumer_app/features/booking_section/presentation/bloc/get_booking_bloc/get_booking_bloc.dart';
 import 'package:flutter_consumer_app/features/booking_section/presentation/bloc/get_user_booking_bloc/get_user_booking_bloc.dart';
@@ -41,7 +42,9 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mixpanel_flutter/mixpanel_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
+import 'features/booking_section/presentation/bloc/reschedule_booking_bloc/reschedule_booking_bloc.dart';
 import 'features/home_section/presentation/bloc/user_bloc/user_bloc.dart';
+import 'features/partner_profile/presentation/bloc/get_bucket_list_bloc.dart/bucket_list_bloc.dart';
 import 'injection_container.dart' as di;
 
 Future main() async {
@@ -90,9 +93,12 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (context) => di.sl<PartnerProfileBloc>()),
         BlocProvider(create: (context) => di.sl<PartnerPackageBloc>()),
         BlocProvider(create: (context) => di.sl<BucketBloc>()),
+        BlocProvider(create: (context) => di.sl<BucketListBloc>()),
         BlocProvider(create: (context) => di.sl<PackageDetailsBloc>()),
         BlocProvider(create: (context) => di.sl<AddBookingBloc>()),
         BlocProvider(create: (context) => di.sl<GetBookingBloc>()),
+        BlocProvider(create: (context) => di.sl<CancelBookingBloc>()),
+        BlocProvider(create: (context) => di.sl<RescheduleBookingBloc>()),
         BlocProvider(create: (context) => di.sl<AddOrderBloc>()),
         BlocProvider(create: (context) => di.sl<BecomePartnerBloc>()),
         BlocProvider(create: (context) => di.sl<SearchBloc>()),
@@ -118,18 +124,16 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (_) => di.sl<LikeCubit>()),
         BlocProvider(create: (context) => ButtonCubit()),
       ],
+      
       child: Sizer(builder: (context, orientation, deviceType) {
         return ScreenUtilInit(
           designSize: const Size(375, 812),
           builder: (context, child) => AnnotatedRegion<SystemUiOverlayStyle>(
             value: const SystemUiOverlayStyle(
-              statusBarColor: Colors.transparent, //top status bar
-              systemNavigationBarColor:
-                  Colors.white, // navigation bar color, the one Im looking for
-              statusBarIconBrightness:
-                  Brightness.dark, // status bar icons' color
-              systemNavigationBarIconBrightness:
-                  Brightness.dark, //navigation bar icons' color
+              statusBarColor: Colors.transparent,
+              systemNavigationBarColor: Colors.white,
+              statusBarIconBrightness: Brightness.dark,
+              systemNavigationBarIconBrightness: Brightness.dark,
             ),
             child: MaterialApp(
               builder: (context, child) {

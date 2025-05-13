@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
 
+
 ///devider widget to use in signin and signup pages
 class DividerWidget extends StatelessWidget {
   const DividerWidget({

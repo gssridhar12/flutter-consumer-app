@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
 import 'package:flutter_consumer_app/core/constant/constant.dart';
@@ -5,14 +7,15 @@ import 'package:flutter_consumer_app/features/home_section/presentation/widgets/
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/image_and_text_widget.dart';
 
 class SuccessStoryWidget extends StatelessWidget {
-  const SuccessStoryWidget({super.key});
+    final String? headingtext;
+  const SuccessStoryWidget({super.key, this.headingtext});
 
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
 
     return Padding(
-      padding: const EdgeInsets.only(right: padding),
+      padding: const EdgeInsets.only(right: padding, left: padding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -22,12 +25,14 @@ class SuccessStoryWidget extends StatelessWidget {
               width: width * 0.65,
               child: Stack(children: [
                 GestureDetector(
-                  onTap: () {
+                  onTap: () { 
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                const HomeSuccessStoryExpanded()));
+                             PageViewExample(headingtext: headingtext,)
+                               // HomeSuccessStoryExpanded()
+                                ));
                   },
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
@@ -46,7 +51,7 @@ class SuccessStoryWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         CustomImageAndTextWidget(
-                            width: width,
+                            width: MediaQuery.of(context).size.width,
                             image: 'assets/images/image 91.png',
                             text: 'Nancy King'),
                         sbox5,

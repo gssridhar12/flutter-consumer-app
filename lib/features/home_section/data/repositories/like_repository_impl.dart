@@ -6,9 +6,10 @@ import 'package:flutter_consumer_app/features/home_section/domain/entities/reque
 import 'package:flutter_consumer_app/features/home_section/domain/entities/response/add_like_entity.dart';
 import 'package:flutter_consumer_app/features/home_section/domain/entities/response/add_package_like_entity.dart';
 import 'package:flutter_consumer_app/features/home_section/domain/entities/response/get_like_entity.dart';
-import 'package:flutter_consumer_app/features/home_section/domain/entities/response/get_package_like_entity.dart';
 
 import 'package:flutter_consumer_app/features/home_section/domain/repositories/like_repository.dart';
+
+import '../model/get_package_like_model.dart';
 
 class LikeRepositoryImpl implements LikeRepository {
   final LikeRemoteDataSource likeRemoteDataSource;
@@ -44,7 +45,7 @@ class LikeRepositoryImpl implements LikeRepository {
   }
 
   @override
-  Future<Either<Failure, GetPackageLikeEntity>> getPackageLike(
+  Future<Either<Failure, GetPackageLikeModel>> getPackageLike(
       {required String packageUuid}) async {
     try {
       final like = await likeRemoteDataSource.getPackageLike(packageUuid);

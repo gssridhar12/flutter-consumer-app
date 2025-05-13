@@ -27,7 +27,7 @@ class BecomePartnerWidget extends StatelessWidget {
               width: width * 0.5,
               child: const Text(
                 overflow: TextOverflow.clip,
-                'Invent yourself on Megmo',
+                'Invent yourself on Wigglypet',
                 style: TextStyle(fontSize: 26, color: colorblack),
               ),
             ),
@@ -38,7 +38,7 @@ class BecomePartnerWidget extends StatelessWidget {
                   TextStyle(fontSize: 18, color: colorblack.withOpacity(0.5)),
             ),
             sbox,
-            Row(
+             Row(
               children: [
                 ButtonWidget(
                   text: 'Become a Partner',

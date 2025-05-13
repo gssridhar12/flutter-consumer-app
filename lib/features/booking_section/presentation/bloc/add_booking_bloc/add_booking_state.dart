@@ -10,6 +10,7 @@ sealed class AddBookingState extends Equatable {
 final class AddBookingInitial extends AddBookingState {}
 
 class AddBookingFailed extends AddBookingState {
+  
   const AddBookingFailed();
 
   @override

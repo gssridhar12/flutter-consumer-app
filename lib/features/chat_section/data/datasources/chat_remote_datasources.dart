@@ -35,13 +35,13 @@ class ChatRemoteDataSourceImpl implements ChatRemoteDataSource {
     };
 
     final url = Uri.parse(
-        'https://partnerapi.megmo.in/partner-service/chats/getUserMessages/v2/$userUuid');
+        'https://api.woofurs.com/partner-service/chats/getUserMessages/v2/$userUuid');
     final response = await httpClient.get(url, headers: headers);
 
     if (response.statusCode == 200) {
       final decodedBody = json.decode(response.body);
       if (decodedBody["code"] == "FAILED") {
-        throw ServerFailure(errorMessage: decodedBody["message"]);
+        throw  ServerFailure(errorMessage: decodedBody["message"]);
       }
 
       return GetUserMessageModel.fromJson(decodedBody);
@@ -61,7 +61,7 @@ class ChatRemoteDataSourceImpl implements ChatRemoteDataSource {
     };
 
     final url = Uri.parse(
-        'https://partnerapi.megmo.in/partner-service/chats/sendMassage/v2');
+        'https://api.woofurs.com/partner-service/chats/sendMassage/v2');
     final response = await httpClient.post(url,
         headers: headers, body: sentMessageRequestToJson(sentMessageRequest));
     log(sentMessageRequestToJson(sentMessageRequest));

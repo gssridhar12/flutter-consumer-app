@@ -17,6 +17,7 @@ class Data {
   final Profile? profile;
   final List<dynamic>? serviceTypes;
   final ReviewAverages? reviewAverages;
+  // ignore: unnecessary_question_mark
   final dynamic? subscriptionTier;
 
   Data({
@@ -136,20 +137,20 @@ class ProfileDetails {
   final String? profileCover;
   final String? profileCoverDescription;
   final List<dynamic>? parentServiceOffered;
-  final String? profileHeadline;
+  final String ?profileHeadline;
   final bool? freshTalent;
   final bool? partnerInDemand;
   final bool? trendingPartner;
-  final String? partnerInformation;
+  final String ?partnerInformation;
   final List<String>? languages;
-  final String? city;
-  final String? state;
-  final String? country;
-  final String? education;
-  final String? certification;
+  final String ?city;
+  final String ?state;
+  final String ?country;
+  final String ?education;
+  final String ?certification;
   final List<String>? skills;
   final bool? lockeProfile;
-  final String? currencyCode;
+  final String ?currencyCode;
   final int? unlockCost;
   final List<Media>? media;
   final DateTime? createdOn;
@@ -182,12 +183,16 @@ class ProfileDetails {
 
 class ProfileReview {
   final String? fullName;
+   final String? city;
   final String? profileImage;
   final ReviewDetails? reviewDetails;
   final int? patronLevel;
+  
 
-  ProfileReview({
+  ProfileReview(
+        {
     required this.fullName,
+    required  this.city,
     required this.profileImage,
     required this.reviewDetails,
     required this.patronLevel,

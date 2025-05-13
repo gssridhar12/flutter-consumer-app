@@ -1,12 +1,11 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
 import 'package:flutter_consumer_app/core/constant/constant.dart';
 
 class SearchPageHeadingwidget extends StatelessWidget {
   const SearchPageHeadingwidget({
-    super.key,
-    required this.title,
-    required this.icon,
+    super.key, required this.title, required this.icon,
   });
   final String title;
   final IconData icon;

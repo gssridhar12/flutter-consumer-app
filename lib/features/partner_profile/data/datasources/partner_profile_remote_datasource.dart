@@ -22,8 +22,8 @@ class PartnerProfileRemoteDataSourceImpl
       "Content-Type": "application/json",
     };
     final url = Uri.parse(
-      // 'https://partnerapi.megmo.in/partner-service/profile/getPartnerProfile/v2/72460397-ee6f-42bb-90f6-392364789b15',
-      'https://partnerapi.megmo.in/partner-service/profile/getPartnerProfile/v2/$partnerUuid',
+      // 'https://api.woofurs.com/partner-service/profile/getPartnerProfile/v2/72460397-ee6f-42bb-90f6-392364789b15',
+      'https://api.woofurs.com/partner-service/profile/getPartnerProfile/v2/$partnerUuid',
     );
 
     final response = await httpClient.get(url, headers: headers);

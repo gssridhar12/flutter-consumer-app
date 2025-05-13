@@ -82,7 +82,7 @@ class _AskAQuestionPageState extends State<AskAQuestionPage> {
                   ),
                 ),
                 OptionSelectionWidget(
-                  text: 'Receive Answers in Megmo Chat',
+                  text: 'Receive Answers in Wigglypet Chat',
                   optionNumber: option1,
                   onChanged: (check) {
                     check = !check;

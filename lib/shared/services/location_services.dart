@@ -61,7 +61,6 @@ Future<Position> determinePosition() async {
   // continue accessing the position of the device.
   return await Geolocator.getCurrentPosition();
 }
-
 ///This function is used for fetching location with lat long of the device and returns a [Placemark] object
 Future<Placemark> getUserLocation() async {
   Position position = await determinePosition();

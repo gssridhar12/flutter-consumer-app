@@ -4,6 +4,7 @@
 // import 'package:flutter_consumer_app/features/home_section/src/presentation/pages/become_partner/FormBecomeButton.dart';
 // import 'package:flutter_consumer_app/features/home_section/src/presentation/widgets/AppbarWedget.dart';
 
+
 // class BecomeApartnerButtonPage extends StatefulWidget {
 //   const BecomeApartnerButtonPage({Key? key}) : super(key: key);
 
@@ -54,7 +55,7 @@
 //                         ),
 //                       ),
 //                       TextSpan(
-//                         text: ' through Megmo?',
+//                         text: ' through Wigglypet?',
 //                         style: TextStyle(
 //                           color: colorblack,
 //                           fontSize: 32,

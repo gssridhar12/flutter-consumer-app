@@ -53,10 +53,10 @@ class RewardsCardWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          const Padding(
+                         Padding(
                             padding: EdgeInsets.all(padding),
                             child: Initicon(
-                              text: "Muhammed Bilal",
+                              text: name,
                             ),
                           ),
                           Padding(

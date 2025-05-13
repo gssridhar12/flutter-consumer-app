@@ -52,6 +52,9 @@ class BookingConfirmationPageTile extends StatelessWidget {
           ),
           sbox5,
           CustomContainerWidget(
+            onTap: () {
+              
+            },
               child: Padding(
             padding: const EdgeInsets.all(padding),
             child: bottomWidget,

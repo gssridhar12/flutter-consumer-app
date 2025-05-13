@@ -47,11 +47,11 @@ class ButtonWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: SizedBox(
-        height: width1 * 0.12,
+        height: width1 * 0.10,
         width: width,
         child: ElevatedButton(
             style: ButtonStyle(
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
                   side: borderColor != null
                       ? BorderSide(color: borderColor!)
@@ -60,7 +60,7 @@ class ButtonWidget extends StatelessWidget {
                       borderRadius != null ? borderRadius! : 10),
                 ),
               ),
-              backgroundColor: MaterialStatePropertyAll<Color>(
+              backgroundColor: WidgetStatePropertyAll<Color>(
                   color != null ? color! : colorred),
             ),
             onPressed: () {
@@ -104,7 +104,7 @@ class ButtonWidget extends StatelessWidget {
           strokeWidth: 4,
         );
       case ButtonStatus.error:
-        return Icon(
+        return const Icon(
           Icons.error_outline_outlined,
           color: colorred,
         );
@@ -114,7 +114,7 @@ class ButtonWidget extends StatelessWidget {
           text,
           style: TextStyle(
             color: buttonColor ?? colorwhite,
-            fontSize: 18,
+            fontSize: 16,
             fontWeight: FontWeight.w500,
           ),
         );

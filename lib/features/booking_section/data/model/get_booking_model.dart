@@ -42,6 +42,8 @@ class BookingModel extends Booking with _$BookingModel {
     @JsonKey(name: "user_uuid") String? userUuid,
     @JsonKey(name: "booked_on") DateTime? bookedOn,
     @JsonKey(name: "start_date") DateTime? startDate,
+    @JsonKey(name: "order_reschedule_date") DateTime? orderRescheduleDate,
+    @JsonKey(name: "order_reschedule_reason") String? orderRescheduleReason,
     @JsonKey(name: "end_date") DateTime? endDate,
     @JsonKey(name: "base_fare") double? baseFare,
     @JsonKey(name: "amount") double? amount,

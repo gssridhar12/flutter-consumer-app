@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_consumer_app/core/error/failures.dart';
 import 'package:flutter_consumer_app/features/home_section/data/model/add_partner_like_model.dart';
 import 'package:flutter_consumer_app/features/home_section/data/model/add_package_like_model.dart';
@@ -30,7 +31,7 @@ class LikeRemoteDataSourceImpl implements LikeRemoteDataSource {
       "Content-Type": "application/json",
     };
     final url = Uri.parse(
-      'https://partnerapi.megmo.in/partner-service/package/likePackage/v2',
+      'https://api.woofurs.com/partner-service/package/likePackage/v2',
     );
     final response = await httpClient.post(url,
         headers: headers, body: json.encode(addPackageLikeRequest.toJson()));
@@ -54,14 +55,15 @@ class LikeRemoteDataSourceImpl implements LikeRemoteDataSource {
     var headers = {
       "Content-Type": "application/json",
     };
+
     final url = Uri.parse(
-      'https://partnerapi.megmo.in/partner-service/profile/likeProfile/v2',
+      'https://api.woofurs.com/partner-service/profile/likeProfile/v2',
     );
     final response = await httpClient.post(url,
         headers: headers, body: json.encode(addPartnerLikeRequest.toJson()));
     if (response.statusCode == 200) {
       final decodedBody = json.decode(response.body);
-      // log(decodedBody.toString());
+      log(decodedBody.toString());
       return AddPartnerLikeModel.fromJson(decodedBody);
     } else {
       log('Something went wrong: ${response.statusCode}');
@@ -71,20 +73,26 @@ class LikeRemoteDataSourceImpl implements LikeRemoteDataSource {
 
   @override
   Future<GetPackageLikeModel> getPackageLike(String packageUuid) async {
-    var headers = {
-      "Content-Type": "application/json",
-      "calling_entity": "web_ui",
-    };
-    final url = Uri.parse(
-      'https://partnerapi.megmo.in/partner-service/package/getLikedPackages/v2/$packageUuid',
-    );
-    final response = await httpClient.get(url, headers: headers);
-    if (response.statusCode == 200) {
-      final decodedBody = json.decode(response.body);
-      // log(decodedBody.toString());
-      return GetPackageLikeModel.fromJson(decodedBody);
-    } else {
-      log('Something went wrong: ${response.statusCode}');
+    try {
+      debugPrint('getPackageLike-packageUuid:$packageUuid');
+      var headers = {
+        "Content-Type": "application/json",
+        "calling_entity": "web_ui",
+      };
+      final url = Uri.parse(
+        'https://api.woofurs.com/partner-service/package/getLikedPackages/v2/$packageUuid',
+      );
+      final response = await httpClient.get(url, headers: headers);
+      if (response.statusCode == 200) {
+        final decodedBody = json.decode(response.body);
+        log(decodedBody.toString());
+        return GetPackageLikeModel.fromJson(decodedBody);
+      } else {
+        log('Something went wrong: ${response.statusCode}');
+        throw const ServerFailure(errorMessage: 'Server Failed');
+      }
+    } catch (e, st) {
+      debugPrint('getPackageLike Exception : $e StackTrace : $st');
       throw const ServerFailure(errorMessage: 'Server Failed');
     }
   }
@@ -96,7 +104,7 @@ class LikeRemoteDataSourceImpl implements LikeRemoteDataSource {
       "calling_entity": "web_ui",
     };
     final url = Uri.parse(
-      'https://partnerapi.megmo.in/partner-service/profile/getLikes/v2/$partnerUuid',
+      'https://api.woofurs.com/partner-service/profile/getLikes/v2/$partnerUuid',
     );
     final response = await httpClient.get(url, headers: headers);
     if (response.statusCode == 200) {

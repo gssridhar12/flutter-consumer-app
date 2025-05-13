@@ -95,22 +95,22 @@ class _SocialLinksWidgetState extends State<SocialLinksWidget> {
                 ),
               ),
             ),
-            sboxW,
-            Container(
-              width: 8.h,
-              height: 7.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: colorblack.withOpacity(0.5)),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Image.asset(
-                  'assets/images/apple.png',
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ),
+             sboxW,
+            // Container(
+            //   width: 8.h,
+            //   height: 7.h,
+            //   decoration: BoxDecoration(
+            //     borderRadius: BorderRadius.circular(12),
+            //     border: Border.all(color: colorblack.withOpacity(0.5)),
+            //   ),
+            //   child: Padding(
+            //     padding: const EdgeInsets.all(15.0),
+            //     child: Image.asset(
+            //       'assets/images/apple.png',
+            //       fit: BoxFit.contain,
+            //     ),
+            //   ),
+            // ),
             sboxW,
             Container(
               width: 8.h,

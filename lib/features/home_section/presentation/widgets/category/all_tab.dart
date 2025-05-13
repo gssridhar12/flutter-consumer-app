@@ -24,7 +24,7 @@ class AllTab extends StatelessWidget {
                       .profile.profileDetails.parentServiceOffered
                       .any((service) => service.contains(categoryTitle)))
                   .toList();
-              print(data.toString());
+              debugPrint(data.toString());
               return Column(
                 children: [
                   ListView.builder(

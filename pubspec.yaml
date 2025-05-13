@@ -5,6 +5,7 @@ version: 0.1.1
 
 environment:
   sdk: '>=3.0.6 <4.0.0'
+  # 3.24.0 
 
 dependencies:
   flutter:
@@ -26,7 +27,8 @@ dependencies:
   intl: ^0.18.1
   # chips_choice: ^3.0.1
   image_picker: ^1.0.4
-  multi_image_picker: ^4.7.14
+  multi_image_picker_plus: ^0.0.5
+  # multi_image_picker: ^4.7.14
   file_picker: ^5.5.0
   share_whatsapp: ^1.0.2
   # share: ^2.0.1
@@ -78,9 +80,14 @@ dependencies:
   percent_indicator: ^4.2.3
   # flutter_profile_picture: ^2.0.0
   firebase_messaging: ^14.7.10
-  flutter_local_notifications: ^16.3.2
+  flutter_local_notifications: ^18.0.1
+
+
+
+  
   flutter_initicon: ^3.0.0+1
-  flutter_widget_from_html: ^0.14.11
+  flutter_widget_from_html: 
+  # flutter_widget_from_html: ^0.14.11
   freezed_annotation: ^2.4.1
   page_transition: ^2.1.0
   flutter_screenutil: ^5.9.3
@@ -88,6 +95,10 @@ dependencies:
   hive_generator: ^2.0.1
   encrypt: ^5.0.3
   flutter_xlider: ^3.5.0
+  flutter_html: ^3.0.0-beta.2
+  syncfusion_flutter_pdfviewer:
+  # syncfusion_flutter_pdfviewer: ^26.1.41
+  # syncfusion_flutter_pdfviewer: ^27.1.55
 
   
 dev_dependencies:
@@ -99,7 +110,7 @@ dev_dependencies:
   flutter_launcher_icons: ^0.13.1
   freezed: ^2.4.6
 flutter_icons:
-  image_path: "icons/megmologo.png"
+  image_path: "icons/wigglyPetlogosmall.png"
   android: true
   ios: true
 
@@ -110,6 +121,7 @@ flutter:
     - assets/images/
     - assets/images/tier_images/
     - assets/images/cities/
+    - assets/photos/
   fonts:
     - family: JosefinSans
       fonts:

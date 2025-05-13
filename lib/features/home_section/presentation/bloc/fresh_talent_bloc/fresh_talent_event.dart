@@ -6,7 +6,6 @@ sealed class FreshTalentEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
-
 class GetFreshTalentOnMegmo extends FreshTalentEvent {
   const GetFreshTalentOnMegmo();
 

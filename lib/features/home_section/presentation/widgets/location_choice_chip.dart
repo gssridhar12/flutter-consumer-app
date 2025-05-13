@@ -2,19 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
 import 'package:flutter_consumer_app/core/images/images.dart';
 import 'package:flutter_consumer_app/shared/widgets/custom_chip_widget.dart';
+import 'package:flutter_consumer_app/config/city.dart';
 
 int tag = 1;
-List<String> cityName = [
-  'Ahamedbad',
-  'Bengaluru',
-  'Chandigarh',
-  'Chennai',
-  'Delhi',
-  'Hyderabad',
-  'Kolkata',
-  'Mumbai',
-  'Pune',
-];
+List<String> cityName = cityNames;
 bool isSelected = true;
 
 class LocationChoiceChip extends StatefulWidget {

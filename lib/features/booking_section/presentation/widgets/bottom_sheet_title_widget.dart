@@ -12,17 +12,15 @@ class BottomSheetIconandTitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: padding),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Icon(icon, size: 22),
-          sboxW5,
-          Text(title, style: const TextStyle(fontSize: 20)),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Icon(icon, size: 22),
+        sboxW5,
+        Text(title, style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w600),overflow: TextOverflow.ellipsis, // Handle text overflow
+            maxLines: 1,),
+      ],
     );
   }
 }

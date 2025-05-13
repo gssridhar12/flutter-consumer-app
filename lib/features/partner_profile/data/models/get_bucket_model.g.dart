@@ -109,7 +109,7 @@ _$SelectedPackageModelImpl _$$SelectedPackageModelImplFromJson(
           ?.map((e) => e as String)
           .toList(),
       serviceTimingAvailability: json['service_timing_availability'] as String?,
-      packageCost: json['package_cost'] as int?,
+      packageCost: (json['package_cost'] as num?)?.toInt(),
       transportationCost: (json['transportation_cost'] as num?)?.toDouble(),
       extraAllowance: (json['extra_allowance'] as num?)?.toDouble(),
       couponsAndDiscounts: json['coupons_and_discounts'] as String?,
@@ -178,7 +178,7 @@ _$PackageReviewAvgModelImpl _$$PackageReviewAvgModelImplFromJson(
         Map<String, dynamic> json) =>
     _$PackageReviewAvgModelImpl(
       packageReviewAverage: (json['packageReviewAverage'] as num?)?.toDouble(),
-      reviewCount: json['reviewCount'] as int?,
+      reviewCount: (json['reviewCount'] as num?)?.toInt(),
       packageUuid: json['packageUuid'] as String?,
     );
 

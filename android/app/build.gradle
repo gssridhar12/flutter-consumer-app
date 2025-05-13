@@ -29,10 +29,8 @@ if (keystorePropertiesFile.exists()) {
    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
 
-
-
 android {
-    namespace "com.megmo.consumer"
+    namespace "com.woofurs.consumer"
     compileSdkVersion 34
     ndkVersion flutter.ndkVersion
 
@@ -51,13 +49,13 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.megmo.consumer"
+        applicationId "com.woofurs.consumer"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion 23
         targetSdkVersion 33
-        versionCode 5
-        versionName "1.0.5"
+        versionCode 4
+        versionName "1.0.4"
     }
 
    signingConfigs {
@@ -81,6 +79,8 @@ android {
 flutter {
     source '../..'
 }
+
+def kotlin_version = "1.6.0" // Add this line to define the Kotlin version
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

@@ -28,9 +28,9 @@ Map<String, dynamic> _$$PartnerPackageModelImplToJson(
 
 _$DataModelImpl _$$DataModelImplFromJson(Map<String, dynamic> json) =>
     _$DataModelImpl(
-      count: json['count'] as int?,
-      page: json['page'] as int?,
-      size: json['size'] as int?,
+      count: (json['count'] as num?)?.toInt(),
+      page: (json['page'] as num?)?.toInt(),
+      size: (json['size'] as num?)?.toInt(),
       packages: (json['packages'] as List<dynamic>?)
           ?.map((e) => PackageElementModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -93,7 +93,7 @@ _$PackagePackageModelImpl _$$PackagePackageModelImplFromJson(
           ?.map((e) => e as String)
           .toList(),
       serviceTimingAvailability: json['service_timing_availability'] as String?,
-      packageCost: json['package_cost'] as int?,
+      packageCost: (json['package_cost'] as num?)?.toInt(),
       transportationCost: (json['transportation_cost'] as num?)?.toDouble(),
       extraAllowance: (json['extra_allowance'] as num?)?.toDouble(),
       couponsAndDiscounts: json['coupons_and_discounts'] as String?,

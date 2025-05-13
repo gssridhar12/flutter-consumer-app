@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
 import 'package:flutter_consumer_app/core/constant/constant.dart';
 
+
 class TitleAndSubtitleWidget extends StatelessWidget {
   const TitleAndSubtitleWidget({
     super.key,

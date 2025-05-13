@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
+// ignore: unused_import
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomChip extends StatelessWidget {
@@ -70,9 +71,10 @@ class CustomChip extends StatelessWidget {
           alignment: Alignment.center,
           children: <Widget>[
             Positioned(
+              
               // left: 9,
               // right: 9,
-              bottom: 2,
+              bottom: 5,
               child: Text(
                 label,
                 // maxLines: 1,
@@ -83,7 +85,11 @@ class CustomChip extends StatelessWidget {
                 ),
               ),
             ),
-            SvgPicture.asset(image),
+          // Image.asset(image)
+            SizedBox(
+              // height: 80,
+              // width: 80,
+              child: SvgPicture.asset(image)),
           ],
         ),
       ),

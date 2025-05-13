@@ -470,6 +470,10 @@ mixin _$BookingModel {
   DateTime? get bookedOn => throw _privateConstructorUsedError;
   @JsonKey(name: "start_date")
   DateTime? get startDate => throw _privateConstructorUsedError;
+  @JsonKey(name: "order_reschedule_date")
+  DateTime? get orderRescheduleDate => throw _privateConstructorUsedError;
+  @JsonKey(name: "order_reschedule_reason")
+  String? get orderRescheduleReason => throw _privateConstructorUsedError;
   @JsonKey(name: "end_date")
   DateTime? get endDate => throw _privateConstructorUsedError;
   @JsonKey(name: "base_fare")
@@ -503,6 +507,8 @@ abstract class $BookingModelCopyWith<$Res> {
       @JsonKey(name: "user_uuid") String? userUuid,
       @JsonKey(name: "booked_on") DateTime? bookedOn,
       @JsonKey(name: "start_date") DateTime? startDate,
+      @JsonKey(name: "order_reschedule_date") DateTime? orderRescheduleDate,
+      @JsonKey(name: "order_reschedule_reason") String? orderRescheduleReason,
       @JsonKey(name: "end_date") DateTime? endDate,
       @JsonKey(name: "base_fare") double? baseFare,
       @JsonKey(name: "amount") double? amount,
@@ -535,6 +541,8 @@ class _$BookingModelCopyWithImpl<$Res, $Val extends BookingModel>
     Object? userUuid = freezed,
     Object? bookedOn = freezed,
     Object? startDate = freezed,
+    Object? orderRescheduleDate = freezed,
+    Object? orderRescheduleReason = freezed,
     Object? endDate = freezed,
     Object? baseFare = freezed,
     Object? amount = freezed,
@@ -578,6 +586,14 @@ class _$BookingModelCopyWithImpl<$Res, $Val extends BookingModel>
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      orderRescheduleDate: freezed == orderRescheduleDate
+          ? _value.orderRescheduleDate
+          : orderRescheduleDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      orderRescheduleReason: freezed == orderRescheduleReason
+          ? _value.orderRescheduleReason
+          : orderRescheduleReason // ignore: cast_nullable_to_non_nullable
+              as String?,
       endDate: freezed == endDate
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
@@ -644,6 +660,8 @@ abstract class _$$BookingModelImplCopyWith<$Res>
       @JsonKey(name: "user_uuid") String? userUuid,
       @JsonKey(name: "booked_on") DateTime? bookedOn,
       @JsonKey(name: "start_date") DateTime? startDate,
+      @JsonKey(name: "order_reschedule_date") DateTime? orderRescheduleDate,
+      @JsonKey(name: "order_reschedule_reason") String? orderRescheduleReason,
       @JsonKey(name: "end_date") DateTime? endDate,
       @JsonKey(name: "base_fare") double? baseFare,
       @JsonKey(name: "amount") double? amount,
@@ -676,6 +694,8 @@ class __$$BookingModelImplCopyWithImpl<$Res>
     Object? userUuid = freezed,
     Object? bookedOn = freezed,
     Object? startDate = freezed,
+    Object? orderRescheduleDate = freezed,
+    Object? orderRescheduleReason = freezed,
     Object? endDate = freezed,
     Object? baseFare = freezed,
     Object? amount = freezed,
@@ -719,6 +739,14 @@ class __$$BookingModelImplCopyWithImpl<$Res>
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      orderRescheduleDate: freezed == orderRescheduleDate
+          ? _value.orderRescheduleDate
+          : orderRescheduleDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      orderRescheduleReason: freezed == orderRescheduleReason
+          ? _value.orderRescheduleReason
+          : orderRescheduleReason // ignore: cast_nullable_to_non_nullable
+              as String?,
       endDate: freezed == endDate
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
@@ -756,6 +784,8 @@ class _$BookingModelImpl implements _BookingModel {
       @JsonKey(name: "user_uuid") this.userUuid,
       @JsonKey(name: "booked_on") this.bookedOn,
       @JsonKey(name: "start_date") this.startDate,
+      @JsonKey(name: "order_reschedule_date") this.orderRescheduleDate,
+      @JsonKey(name: "order_reschedule_reason") this.orderRescheduleReason,
       @JsonKey(name: "end_date") this.endDate,
       @JsonKey(name: "base_fare") this.baseFare,
       @JsonKey(name: "amount") this.amount,
@@ -802,6 +832,12 @@ class _$BookingModelImpl implements _BookingModel {
   @JsonKey(name: "start_date")
   final DateTime? startDate;
   @override
+  @JsonKey(name: "order_reschedule_date")
+  final DateTime? orderRescheduleDate;
+  @override
+  @JsonKey(name: "order_reschedule_reason")
+  final String? orderRescheduleReason;
+  @override
   @JsonKey(name: "end_date")
   final DateTime? endDate;
   @override
@@ -819,7 +855,7 @@ class _$BookingModelImpl implements _BookingModel {
 
   @override
   String toString() {
-    return 'BookingModel(id: $id, packages: $packages, discount: $discount, status: $status, statusLogs: $statusLogs, bookingUuid: $bookingUuid, userUuid: $userUuid, bookedOn: $bookedOn, startDate: $startDate, endDate: $endDate, baseFare: $baseFare, amount: $amount, bookingAddress: $bookingAddress, bookingSource: $bookingSource)';
+    return 'BookingModel(id: $id, packages: $packages, discount: $discount, status: $status, statusLogs: $statusLogs, bookingUuid: $bookingUuid, userUuid: $userUuid, bookedOn: $bookedOn, startDate: $startDate, orderRescheduleDate: $orderRescheduleDate, orderRescheduleReason: $orderRescheduleReason, endDate: $endDate, baseFare: $baseFare, amount: $amount, bookingAddress: $bookingAddress, bookingSource: $bookingSource)';
   }
 
   @override
@@ -843,6 +879,10 @@ class _$BookingModelImpl implements _BookingModel {
                 other.bookedOn == bookedOn) &&
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
+            (identical(other.orderRescheduleDate, orderRescheduleDate) ||
+                other.orderRescheduleDate == orderRescheduleDate) &&
+            (identical(other.orderRescheduleReason, orderRescheduleReason) ||
+                other.orderRescheduleReason == orderRescheduleReason) &&
             (identical(other.endDate, endDate) || other.endDate == endDate) &&
             (identical(other.baseFare, baseFare) ||
                 other.baseFare == baseFare) &&
@@ -866,6 +906,8 @@ class _$BookingModelImpl implements _BookingModel {
       userUuid,
       bookedOn,
       startDate,
+      orderRescheduleDate,
+      orderRescheduleReason,
       endDate,
       baseFare,
       amount,
@@ -897,6 +939,10 @@ abstract class _BookingModel implements BookingModel {
           @JsonKey(name: "user_uuid") final String? userUuid,
           @JsonKey(name: "booked_on") final DateTime? bookedOn,
           @JsonKey(name: "start_date") final DateTime? startDate,
+          @JsonKey(name: "order_reschedule_date")
+          final DateTime? orderRescheduleDate,
+          @JsonKey(name: "order_reschedule_reason")
+          final String? orderRescheduleReason,
           @JsonKey(name: "end_date") final DateTime? endDate,
           @JsonKey(name: "base_fare") final double? baseFare,
           @JsonKey(name: "amount") final double? amount,
@@ -935,6 +981,12 @@ abstract class _BookingModel implements BookingModel {
   @override
   @JsonKey(name: "start_date")
   DateTime? get startDate;
+  @override
+  @JsonKey(name: "order_reschedule_date")
+  DateTime? get orderRescheduleDate;
+  @override
+  @JsonKey(name: "order_reschedule_reason")
+  String? get orderRescheduleReason;
   @override
   @JsonKey(name: "end_date")
   DateTime? get endDate;

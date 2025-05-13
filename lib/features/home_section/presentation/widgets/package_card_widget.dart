@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
 import 'package:flutter_consumer_app/core/constant/constant.dart';
@@ -7,9 +8,9 @@ import 'package:flutter_consumer_app/features/home_section/presentation/widgets/
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/most_booked_package_tile.dart';
 import 'package:flutter_consumer_app/features/partner_profile/presentation/pages/partner_profile_animated.dart';
 import 'package:flutter_consumer_app/main.dart';
+import 'package:flutter_consumer_app/shared/widgets/bulleted_text_widget.dart';
 import 'package:flutter_consumer_app/shared/widgets/cached_image.dart';
 import 'package:flutter_consumer_app/utils/navigation.dart';
-import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:sizer/sizer.dart';
 
 class PackageCardWidget extends StatefulWidget {
@@ -61,11 +62,9 @@ class _PackageCardWidgetState extends State<PackageCardWidget>
                   padding: const EdgeInsets.symmetric(vertical: padding),
                   child: Row(
                     children: [
-                      LikeButton(
-                        packageUuid: package.package!.packageUuid!,
-                        userId: userId,
-                        widgetType: WidgetType.homescreen,
-                      ),
+                      
+                      LikeButton(packageUuid: package.package!.packageUuid!, userId: userId,widgetType: WidgetType.homescreen,),
+                      
                       sboxW,
                       FittedBox(
                         child: Text(
@@ -97,7 +96,7 @@ class _PackageCardWidgetState extends State<PackageCardWidget>
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(
+                          Flexible(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,6 +110,31 @@ class _PackageCardWidgetState extends State<PackageCardWidget>
                                                 .toStringAsFixed(1))
                                             .toString()
                                         : "Not Rated"),
+                                         BulletedTextWidget(
+                                    fontSize: 14,
+                                    width: 100.w,
+                               
+                                    text: package.package?.packageInclusions ??
+                                        "", // Ensure no null value
+                                  ),
+                                  // Container(
+                            //   // transform:
+                            //   //     Matrix4.translationValues(-23.0, 0.0, 0.0),
+                            //   transformAlignment: Alignment.centerRight,
+                            //   padding: EdgeInsets.zero,
+                            //   margin: EdgeInsets.zero,
+                            //   alignment: Alignment
+                            //       .centerLeft, // Aligning the container's content to the left
+                            //   child: HtmlWidget(
+                            //     textStyle: const TextStyle(
+                            //         height: 1.3,
+                            //         fontSize: 14,
+                            //         overflow: TextOverflow.ellipsis),
+                            //     package.package?.packageInclusions??"",
+                            //     // '<ul><li><strong>Duration : </strong>1 hour</li><li><strong>Equipment : </strong>Icluded</li></ul>',
+                            //   ),
+                            // ),
+
                                 // ListView.builder(
                                 //   physics: const NeverScrollableScrollPhysics(),
                                 //   padding: const EdgeInsets.symmetric(
@@ -134,23 +158,24 @@ class _PackageCardWidgetState extends State<PackageCardWidget>
                                 //     );
                                 //   },
                                 // ),
-                                Container(
-                                  transform:
-                                      Matrix4.translationValues(15.0, 0.0, 0.0),
-                                  transformAlignment: Alignment.centerRight,
-                                  padding: EdgeInsets.zero,
-                                  margin: EdgeInsets.zero,
-                                  alignment: Alignment
-                                      .centerLeft, // Aligning the container's content to the left
-                                  child: HtmlWidget(
-                                    textStyle: const TextStyle(
-                                        fontSize: 14,
-                                        wordSpacing: 15,
-                                        overflow: TextOverflow.ellipsis),
-                                    package.package!.packageDescription!,
-                                    // '<ul><li><strong>Duration : </strong>1 hour</li><li><strong>Equipment : </strong>Icluded</li></ul>',
-                                  ),
-                                ),
+                                // Container(
+                                //   transform:
+                                //       Matrix4.translationValues(15.0, 0.0, 0.0),
+                                //   transformAlignment: Alignment.centerRight,
+                                //   padding: EdgeInsets.zero,
+                                //   margin: EdgeInsets.zero,
+                                //   alignment: Alignment
+                                //       .centerLeft, // Aligning the container's content to the left
+                                //   child: HtmlWidget(
+                                //     textStyle: const TextStyle(
+                                //         fontSize: 14,
+                                //         wordSpacing: 15,
+                                //         overflow: TextOverflow.ellipsis),
+                                //     package.package!.packageDescription!,
+                                //     // '<ul><li><strong>Duration : </strong>1 hour</li><li><strong>Equipment : </strong>Icluded</li></ul>',
+                                //   ),
+                                // ),
+                                
                               ],
                             ),
                           ),
@@ -185,7 +210,7 @@ class _PackageCardWidgetState extends State<PackageCardWidget>
                                             color: colorblack.withOpacity(0.1),
                                           )
                                         ],
-                                        borderRadius: BorderRadius.circular(12),
+                                        borderRadius: BorderRadius.circular(6),
                                         color: colorwhite),
                                     child: Center(
                                       child: widget.isGuestUser != true
@@ -230,23 +255,41 @@ class _PackageCardWidgetState extends State<PackageCardWidget>
                           //     );
                           //   },
                           // ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              children: [
-                                ContainerChipWidget(
-                                    text: package.package!.packageKeywords!
-                                            .isNotEmpty
-                                        ? package.package!.packageKeywords![0]
-                                        : "Not Found"),
-                                ContainerChipWidget(
-                                    text: package.package!.packageKeywords!
-                                            .isNotEmpty
-                                        ? package.package!.packageKeywords![0]
-                                        : "Not Found"),
-                              ],
-                            ),
-                          ),
+                          // Padding(
+                          //   padding: const EdgeInsets.all(8.0),
+                          //   child: Row(
+                          //     children: [
+                          //       ContainerChipWidget(
+                          //           text: package.package!.packageKeywords!
+                          //                   .isNotEmpty
+                          //               ? package.package!.packageKeywords![0]
+                          //               : "Not Found"),
+                          //       ContainerChipWidget(
+                          //           text: package.package!.packageKeywords!
+                          //                   .isNotEmpty
+                          //               ? package.package!.packageKeywords![0]
+                          //               : "Not Found"),
+                          //     ],
+                          //   ),
+                          // ),
+                          Wrap(
+                                alignment: WrapAlignment.start,
+                                spacing: 8.0,
+                                runSpacing: 4.0,
+                                children: List.generate(
+                                  package.package!.packageTags!.length,
+                                  (index) {
+                                    return ContainerChipWidget(
+                                      //width: widget.width,
+                                      text: package
+                                              .package!.packageTags!.isNotEmpty
+                                          ? package.package!.packageTags![
+                                              index] 
+                                          : "Not Found",
+                                    );
+                                  },
+                                ),
+                              )
                         ],
                       ),
                     ],

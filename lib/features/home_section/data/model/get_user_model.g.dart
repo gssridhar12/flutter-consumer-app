@@ -28,7 +28,7 @@ _$DataModelImpl _$$DataModelImplFromJson(Map<String, dynamic> json) =>
     _$DataModelImpl(
       id: json['id'] as String?,
       userUuid: json['user_uuid'] as String?,
-      patronLevel: json['patron_level'] as int?,
+      patronLevel: (json['patron_level'] as num?)?.toInt(),
       profileImage: json['profile_image'] as String?,
       firstName: json['first_name'] as String?,
       lastName: json['last_name'] as String?,
@@ -83,7 +83,7 @@ _$UserAddressModelImpl _$$UserAddressModelImplFromJson(
       addressLine2: json['address_line2'] as String?,
       city: json['city'] as String?,
       state: json['state'] as String?,
-      pinCode: json['pinCode'] as int?,
+      pinCode: (json['pinCode'] as num?)?.toInt(),
       landmark: json['landmark'] as String?,
     );
 

@@ -53,7 +53,7 @@ class _FreshTalentOnMegmoSeeAllPageState
             scaffoldKey: scaffoldKey,
             name: widget.userModel != null
                 ? widget.userModel!.data!.fullName!
-                : 'Guest',
+                : 'Pawrent',
             isGuestUser: widget.isGuestUser!),
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(70),
@@ -72,7 +72,7 @@ class _FreshTalentOnMegmoSeeAllPageState
                 SearchFieldWidget(
                   backButton: true,
                   width: width,
-                  text: 'Search for ‘Make up artists’',
+                  text: 'Search for ‘Pet Boarding’',
                 ),
                 sbox20,
                 HeadingTextWidget(
@@ -83,7 +83,7 @@ class _FreshTalentOnMegmoSeeAllPageState
                     textColor: colorblack.withOpacity(0.7)),
 
                 const HeadingTextWidget(
-                    text: 'Take a look at Megmo’s latest partners',
+                    text: 'Take a look at Wigglypet’s latest partners',
                     size: 15,
                     fontWeight: FontWeight.w400,
                     trailingButton: false),

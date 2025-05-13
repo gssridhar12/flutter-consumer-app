@@ -28,9 +28,9 @@ Map<String, dynamic> _$$GetPackageSearchModelImplToJson(
 
 _$DataModelImpl _$$DataModelImplFromJson(Map<String, dynamic> json) =>
     _$DataModelImpl(
-      count: json['count'] as int?,
-      page: json['page'] as int?,
-      size: json['size'] as int?,
+      count: (json['count'] as num?)?.toInt(),
+      page: (json['page'] as num?)?.toInt(),
+      size: (json['size'] as num?)?.toInt(),
       packages: (json['packages'] as List<dynamic>?)
           ?.map((e) => PackageModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -66,7 +66,7 @@ _$PackageModelImpl _$$PackageModelImplFromJson(Map<String, dynamic> json) =>
           ?.map((e) => e as String)
           .toList(),
       serviceTimingAvailability: json['service_timing_availability'] as String?,
-      packageCost: json['package_cost'] as int?,
+      packageCost: (json['package_cost'] as num?)?.toInt(),
       transportationCost: (json['transportation_cost'] as num?)?.toDouble(),
       couponsAndDiscounts: json['coupons_and_discounts'] as String?,
       uploadPackageAgreement: json['upload_package_agreement'] as String?,

@@ -48,7 +48,7 @@ class LoginOrSignUpPage extends StatelessWidget {
                   child: Padding(
                 padding: EdgeInsets.all(padding),
                 child: Text(
-                    'By signing up, you agree to Megmo s Terms of service'),
+                    'By signing up, you agree to Wigglypet s Terms of service'),
               ))
               //TODO add rich text to make terms of service red
 
@@ -58,7 +58,7 @@ class LoginOrSignUpPage extends StatelessWidget {
               // child: RichText(
               //     text: TextSpan(
               //         text:
-              //             'By signing up, you agree to Megmo s Terms of service',
+              //             'By signing up, you agree to Wigglypet s Terms of service',
               //         style: DefaultTextStyle.of(context).style,
               //         children: const [
               //       TextSpan(

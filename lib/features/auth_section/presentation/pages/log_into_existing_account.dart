@@ -124,7 +124,7 @@ class LogIntoExistingAccountPage extends StatelessWidget {
                               onEditingComplete: () =>
                                   FocusScope.of(context).unfocus(),
                               obscureText: true,
-                              labelText: 'Megmo Passowrd',
+                              labelText: 'Wigglypet Passowrd',
                               textInputAction: TextInputAction.done,
                               textInputType: TextInputType.visiblePassword,
                               textEditingController: passwordController,
@@ -169,7 +169,7 @@ class LogIntoExistingAccountPage extends StatelessWidget {
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>
-                                                ForgotPasswordPage(),
+                                                 ForgotPasswordPage(),
                                           ));
                                     },
                                     child: const Text(
@@ -230,7 +230,7 @@ class LogIntoExistingAccountPage extends StatelessWidget {
                             const Center(
                               child: Text(
                                 //TODO add rich text to terms and service
-                                'By signing up, you agree to Megmo’s Terms of service',
+                                'By signing up, you agree to Wigglypet’s Terms of service',
                                 style: TextStyle(
                                     color: colorblack,
                                     decoration: TextDecoration.underline),

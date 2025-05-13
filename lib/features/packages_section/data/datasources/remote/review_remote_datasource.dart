@@ -23,7 +23,7 @@ class ReviewDataSourceImpl implements ReviewDataSource {
     };
 
     final url = Uri.parse(
-      'https://partnerapi.megmo.in/partner-service/profile/getProfileReviews/v2/$uuid',
+      'https://api.woofurs.com/partner-service/profile/getProfileReviews/v2/$uuid',
     );
     final response = await httpClient.post(url,
         headers: headers, body: json.encode(requestBody));
@@ -47,7 +47,7 @@ class ReviewDataSourceImpl implements ReviewDataSource {
     };
 
     final url = Uri.parse(
-      'https://partnerapi.megmo.in/partner-service/package/getPackageReviews/v2/$uuid',
+      'https://api.woofurs.com/partner-service/package/getPackageReviews/v2/$uuid',
     );
     final response = await httpClient.post(url,
         headers: headers, body: json.encode(requestBody));

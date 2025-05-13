@@ -9,6 +9,7 @@ sealed class CategoryState extends Equatable {
 
 final class CategoryInitial extends CategoryState {}
 
+
 class GetCategorySuccess extends CategoryState {
   final CategoryEntity categoryEntity;
 

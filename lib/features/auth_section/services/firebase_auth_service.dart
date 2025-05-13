@@ -41,7 +41,6 @@ class FirebaseAuthentication {
       throw Exception(e.message);
     }
   }
-
   ///Logout function for Google auth
   static Future<void> logoutWithGoogle() async {
     try {

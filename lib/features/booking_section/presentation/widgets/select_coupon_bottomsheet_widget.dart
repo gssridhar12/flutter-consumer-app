@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_consumer_app/core/constant/constant.dart';
@@ -6,6 +8,7 @@ import 'package:flutter_consumer_app/features/booking_section/presentation/bloc/
 import 'package:flutter_consumer_app/features/booking_section/presentation/widgets/bottom_sheet_title_widget.dart';
 import 'package:flutter_consumer_app/features/booking_section/presentation/widgets/coupon_card_widget.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/search_field_widget.dart';
+
 
 class SelectCouponBottomSheetWidget extends StatefulWidget {
   const SelectCouponBottomSheetWidget({
@@ -48,61 +51,66 @@ class _SelectCouponBottomSheetWidgetState
           padding: const EdgeInsets.symmetric(
             horizontal: padding,
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              sbox20,
-              const BottomSheetIconandTitleWidget(
-                icon: Icons.percent,
-                title: 'Apply Coupon',
-              ),
-              sbox20,
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: SearchFieldWidget(
-                  isDense: true,
-                  width: width,
-                  text: 'Enter Coupon Code',
+          child: Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                sbox20,
+                const BottomSheetIconandTitleWidget(
+                  icon: Icons.percent,
+                  title: 'Apply Coupon',
                 ),
-              ),
-              const Divider(),
-              BlocListener<CouponBloc, CouponState>(
-                listener: (context, state) {
-                  if (state is GetCouponSuccess) {
-                    setState(() {
-                      coupons
-                          .addAll(state.getCouponEntity.data!.packageCoupons!);
-                      coupon = coupons[selectedRadio!];
-                    });
-                  }
-                },
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 2,
-                  itemBuilder: (BuildContext buildContext, int index) {
-                    return CouponCardWidget(
-                      packageCoupon: coupon!,
-                    );
+                sbox20,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: SearchFieldWidget(
+                    isDense: true,
+                    width: width,
+                    text: 'Enter Coupon Code',
+                  ),
+                ),
+                const Divider(),
+                BlocListener<CouponBloc, CouponState>(
+                  listener: (context, state) {
+                    if (state is GetCouponSuccess) {
+                      setState(() {
+                        coupons
+                            .addAll(state.getCouponEntity.data!.packageCoupons!);
+                        coupon = coupons[selectedRadio!];
+                      });
+                    }
                   },
+                  child: Flexible(
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: coupons.length,
+                      itemBuilder: (BuildContext buildContext, int index) {
+                        return 
+                        CouponCardWidget(
+                          packageCoupon: coupons[index], packageAmount: widget.packageAmount,
+                        );
+                      },
+                    ),
+                  ),
                 ),
-              ),
-              // const Divider(),
-              // const Spacer(),
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(horizontal: 10),
-              //   child: ButtonWidget(
-              //     text: 'Select Coupon',
-              //     width: width,
-              //     onPressed: () {
-              //       context.read<CouponCubit>().selectCoupon(
-              //           coupon: coupon!,
-              //           isSelected: true,
-              //           packageAmount: widget.packageAmount);
-              //       Navigator.pop(context, coupon);
-              //     },
-              //   ),
-              // )
-            ],
+                // const Divider(),
+                // const Spacer(),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 10),
+                //   child: ButtonWidget(
+                //     text: 'Select Coupon',
+                //     width: width,
+                //     onPressed: () {
+                //       context.read<CouponCubit>().selectCoupon(
+                //           coupon: coupon!,
+                //           isSelected: true,
+                //           packageAmount: widget.packageAmount);
+                //       Navigator.pop(context, coupon);
+                //     },
+                //   ),
+                // )
+              ],
+            ),
           ),
         ),
       ),

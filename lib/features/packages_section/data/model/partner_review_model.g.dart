@@ -28,9 +28,9 @@ Map<String, dynamic> _$$PartnerReviewModelImplToJson(
 
 _$DataModelImpl _$$DataModelImplFromJson(Map<String, dynamic> json) =>
     _$DataModelImpl(
-      count: json['count'] as int?,
-      page: json['page'] as int?,
-      size: json['size'] as int?,
+      count: (json['count'] as num?)?.toInt(),
+      page: (json['page'] as num?)?.toInt(),
+      size: (json['size'] as num?)?.toInt(),
       profileReviews: (json['profileReviews'] as List<dynamic>?)
           ?.map((e) => ProfileReviewModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -53,7 +53,7 @@ _$ProfileReviewModelImpl _$$ProfileReviewModelImplFromJson(
           ? null
           : ReviewDetailsModel.fromJson(
               json['reviewDetails'] as Map<String, dynamic>),
-      patronLevel: json['patron_level'] as int?,
+      patronLevel: (json['patron_level'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$ProfileReviewModelImplToJson(
@@ -72,9 +72,9 @@ _$ReviewDetailsModelImpl _$$ReviewDetailsModelImplFromJson(
       userUuid: json['user_uuid'] as String?,
       partnerUuid: json['partner_uuid'] as String?,
       reviewUuid: json['review_uuid'] as String?,
-      communication: json['communication'] as int?,
-      serviceDescribed: json['service_described'] as int?,
-      recommended: json['recommended'] as int?,
+      communication: (json['communication'] as num?)?.toInt(),
+      serviceDescribed: (json['service_described'] as num?)?.toInt(),
+      recommended: (json['recommended'] as num?)?.toInt(),
       source: json['source'] as String?,
       review: json['review'] as String?,
       media:

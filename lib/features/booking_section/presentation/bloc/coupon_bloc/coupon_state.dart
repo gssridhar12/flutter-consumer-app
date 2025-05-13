@@ -2,7 +2,7 @@ part of 'coupon_bloc.dart';
 
 sealed class CouponState extends Equatable {
   const CouponState();
-
+  
   @override
   List<Object> get props => [];
 }
@@ -23,7 +23,6 @@ class GetCouponLoading extends CouponState {
   @override
   List<Object> get props => [];
 }
-
 class GetCouponFailed extends CouponState {
   const GetCouponFailed();
 
