@@ -31,7 +31,7 @@ class ChatRemoteDataSourceImpl implements ChatRemoteDataSource {
       {required String userUuid}) async {
     var headers = {
       "Content-Type": "application/json",
-      "calling_entity": "WEB_UI"
+      "calling-entity": "WEB_UI"
     };
 
     final url = Uri.parse(
@@ -55,7 +55,7 @@ class ChatRemoteDataSourceImpl implements ChatRemoteDataSource {
       {required SentMessageRequest sentMessageRequest,
       required String fcmToken}) async {
     var headers = {
-      "calling_entity": "WEB_UI",
+      "calling-entity": "WEB_UI",
       "Content-Type": "application/json",
       "token": fcmToken
     };

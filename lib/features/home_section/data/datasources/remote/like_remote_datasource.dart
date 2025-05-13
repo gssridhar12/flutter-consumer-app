@@ -77,7 +77,7 @@ class LikeRemoteDataSourceImpl implements LikeRemoteDataSource {
       debugPrint('getPackageLike-packageUuid:$packageUuid');
       var headers = {
         "Content-Type": "application/json",
-        "calling_entity": "web_ui",
+        "calling-entity": "web_ui",
       };
       final url = Uri.parse(
         'https://api.woofurs.com/partner-service/package/getLikedPackages/v2/$packageUuid',
@@ -101,7 +101,7 @@ class LikeRemoteDataSourceImpl implements LikeRemoteDataSource {
   Future<GetPartnerLikeModel> getPartnerLike(String partnerUuid) async {
     var headers = {
       "Content-Type": "application/json",
-      "calling_entity": "web_ui",
+      "calling-entity": "web_ui",
     };
     final url = Uri.parse(
       'https://api.woofurs.com/partner-service/profile/getLikes/v2/$partnerUuid',
