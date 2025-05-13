@@ -58,7 +58,7 @@ class _LuxeMegmoScreenState extends State<LuxeMegmoScreen> {
                 const Padding(
                   padding: EdgeInsets.only(left: 20, right: 22),
                   child: HeadingTextWidget(
-                    text: "Neha's Woofurs Gigs",
+                    text: "Neha's Wigglypet Gigs",
                     textColor: colorwhite,
                     trailingButton: true,
                   ),

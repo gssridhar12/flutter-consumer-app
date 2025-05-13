@@ -59,7 +59,7 @@ class _SpecificCategoryPageState extends State<SpecificCategoryPage>
         key: scaffoldKey,
         drawer: DrawerWidget(
             scaffoldKey: scaffoldKey,
-            name: fullName != null ? fullName! : 'Guest',
+            name: fullName != null ? fullName! : 'Pawrent',
             isGuestUser: widget.isGuestUser!),
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(70),

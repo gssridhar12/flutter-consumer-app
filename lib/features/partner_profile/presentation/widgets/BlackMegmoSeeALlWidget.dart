@@ -26,7 +26,7 @@ class _MyHomePageState extends State<LuxBlackMegmoSeeAllPagetile> {
           padding: EdgeInsets.only(left: 0, right: 24),
           child: TextWidget(
               text:
-                  "This is some of the gigs Neha has done through Woofurs so that you can get a better understanding of their experience."),
+                  "This is some of the gigs Neha has done through Wigglypet so that you can get a better understanding of their experience."),
         ),
         Expanded(
           child: GestureDetector(

@@ -73,7 +73,7 @@ void showTermsAndConditionsDialog(BuildContext context) {
                             children: [
                               TextSpan(
                                 text:
-                                    'To ensure your security and uphold our user agreement, we strongly recommend that you exclusively contact and process payments through Woofurs. Our Payment Protection guarantees a secure transaction experience.\n\nPaying or contacting professionals outside of Woofurs is in direct violation of our user agreement. We will not be held accountable for services availed outside of the Woofurs platform.\n\nTo proceed, please acknowledge that you have read and understand Megmos policies by ticking the box below:\n\n',
+                                    'To ensure your security and uphold our user agreement, we strongly recommend that you exclusively contact and process payments through Wigglypet. Our Payment Protection guarantees a secure transaction experience.\n\nPaying or contacting professionals outside of Wigglypet is in direct violation of our user agreement. We will not be held accountable for services availed outside of the Wigglypet platform.\n\nTo proceed, please acknowledge that you have read and understand Wigglypet’s policies by ticking the box below:\n\n',
                                 style: TextStyle(
                                   color: Colors.black.withOpacity(0.7),
                                   fontSize: 14,
@@ -110,7 +110,7 @@ void showTermsAndConditionsDialog(BuildContext context) {
                                 ),
                               ),
                               const TextSpan(
-                                text: 'I understand Megmos policies.\n',
+                                text: 'I understand Wigglypet’s policies.\n',
                                 style: TextStyle(
                                   color: Color(0xFFFF0000),
                                   fontSize: 14,
@@ -131,7 +131,7 @@ void showTermsAndConditionsDialog(BuildContext context) {
                               ),
                               TextSpan(
                                 text:
-                                    'Thank you for choosing Woofurs. Your safety is our priority.',
+                                    'Thank you for choosing Wigglypet. Your safety is our priority.',
                                 style: TextStyle(
                                   color: Colors.black.withOpacity(0.7),
                                   fontSize: 14,

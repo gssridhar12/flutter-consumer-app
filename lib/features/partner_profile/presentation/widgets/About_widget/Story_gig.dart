@@ -31,7 +31,7 @@ class _MyHomePageState extends State<Storty_list> {
           child: Column(
             children: [
                AppBarWidgetPrimary(
-            text: '${widget.profile.profileName} Woofurs Gigs',
+            text: '${widget.profile.profileName} Wigglypet Gigs',
           ),
               Expanded(
                 child: ListView.builder(

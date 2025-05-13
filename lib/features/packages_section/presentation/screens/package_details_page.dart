@@ -661,7 +661,7 @@ class _PackageDetailsPageState extends State<PackageDetailsPage> {
                                                     Icon(Icons.stars_outlined,
                                                         color: colorwhite),
                                                     Text(
-                                                      'Woofurs Preferred Partner',
+                                                      'Wigglypet Preferred Partner',
                                                       style: TextStyle(
                                                           color: colorwhite),
                                                     )
@@ -674,7 +674,7 @@ class _PackageDetailsPageState extends State<PackageDetailsPage> {
                                               children: [
                                                 TextContainerWidget(
                                                     text:
-                                                        'Woofurs Preferred Partner',
+                                                        'Wigglypet Preferred Partner',
                                                     color: colorwhite),
                                                 TextContainerWidget(
                                                     text: 'Door step service',

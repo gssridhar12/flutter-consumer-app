@@ -81,7 +81,7 @@ class _PackagesTabWidgetState extends State<PackagesTabWidget> {
                     children: [
                       Icon(Icons.stars_outlined, color: colorred),
                       Text(
-                        'Woofurs Preferred Partner',
+                        'Wigglypet Preferred Partner',
                         style: TextStyle(color: colorred),
                       )
                     ],
