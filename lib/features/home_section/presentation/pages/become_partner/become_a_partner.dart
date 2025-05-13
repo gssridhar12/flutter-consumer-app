@@ -324,7 +324,7 @@ class BecomeAPartner extends StatelessWidget {
                 SizedBox(
                   width: width * 0.8,
                   child: Text(
-                      'Join our thriving talent community to provide your professional services, connect with clients, and receive payments securely on Wigglypet's trusted platform',
+                      'Join our thriving talent community to provide your professional services, connect with clients, and receive payments securely on Wigglypet’s trusted platform',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: colorblack.withOpacity(0.7),
