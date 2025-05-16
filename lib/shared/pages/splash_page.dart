@@ -51,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 120), () {
+    Timer(const Duration(seconds: 2), () {
       BlocProvider.of<NetworkCubit>(context).checkConnectivity();
     });
   }
@@ -110,7 +110,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: Image.asset(
-                      'icons/wigglyPetlogo.png',
+                      'assets/images/icons/wigglyPetlogo.png',
                       height: 40,
                     ),
                   ),
@@ -176,7 +176,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                     children: [
                       TextSpan(
-                        text: 'Woofurs ',
+                        text: 'Wigglypet ',
                         style: TextStyle(
                           color: Colors.orangeAccent,
                           fontWeight: FontWeight.bold,

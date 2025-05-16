@@ -10,6 +10,10 @@ import 'package:flutter_consumer_app/features/home_section/presentation/pages/lo
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/notifications_bottomsheet.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/settings_page.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/user_liked_page.dart';
+import 'package:flutter_consumer_app/features/home_section/presentation/pages/view_profile_page.dart';
+
+import '../../features/home_section/presentation/pages/home_page.dart';
+import '../../features/home_section/presentation/pages/search_page.dart';
 // import 'package:flutter_consumer_app/features/rating/presentation/pages/WalletePage.dart';
 
 List<String> titlesMainMenu = [
@@ -75,6 +79,10 @@ List<Widget> navigationPagesThirdMenu = [
   const ReportABugPage(),
   const KnowledgeBasePage(),
 ];
+
+
+
+
 Future<void> showCalendarsModalBottom(BuildContext context) async {
   WidgetsBinding.instance.addPostFrameCallback((_) {
     showModalBottomSheet(

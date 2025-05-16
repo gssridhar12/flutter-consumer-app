@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
-import 'package:flutter_consumer_app/core/constant/constant.dart'; 
+import 'package:flutter_consumer_app/core/constant/constant.dart';
+import 'package:flutter_consumer_app/core/constant/list_tile.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/bloc/fresh_talent_bloc/fresh_talent_bloc.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/bloc/package_bloc/package_bloc.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/bloc/top_partner_bloc/top_partner_bloc.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/category/specific_category_page.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/drawer_page.dart';
+import 'package:flutter_consumer_app/features/home_section/presentation/pages/edit_profile_page.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/luxe/LuxeMegmoPage.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/see_all/fresh_talent_on_megmo_see_all_page.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/see_all/most_booked_packages_see_all_page.dart';
@@ -20,18 +22,25 @@ import 'package:flutter_consumer_app/features/home_section/presentation/widgets/
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/package_card_widget.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/partner_tile_widget.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/partner_tile_widget_luxe.dart';
-import 'package:flutter_consumer_app/features/home_section/presentation/widgets/rewards_card_widget.dart';
+import 'package:flutter_consumer_app/features/home_section/presentation/widgets/my_companion_widget.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/search_field_widget.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/succes_story_tile_widget.dart';
 import 'package:flutter_consumer_app/features/packages_section/presentation/screens/package_details_page.dart';
 import 'package:flutter_consumer_app/features/partner_profile/presentation/pages/partner_profile_animated.dart';
 import 'package:flutter_consumer_app/main.dart';
+
 import 'package:flutter_consumer_app/shared/widgets/colored_safearea.dart';
 import 'package:flutter_consumer_app/shared/widgets/error_widget.dart';
 import 'package:flutter_consumer_app/utils/navigation.dart';
 import 'package:sizer/sizer.dart';
 
+
 import '../bloc/category_bloc/category_bloc.dart';
+import '../pages/bookings_page.dart';
+import '../pages/home_page.dart';
+import '../pages/search_page.dart';
+import '../pages/view_profile_page.dart';
+import 'BottomNavbarWidget.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({
@@ -40,10 +49,63 @@ class HomePageWidget extends StatefulWidget {
 
   @override
   State<HomePageWidget> createState() => _HomePageWidgetState();
+
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
+
+  int _selectedIndex = 0;
+  final List<Widget> _list = [
+    HomeScrollContent(),
+    SearchPage(),
+    BookingsPage(),
+    ViewProfilePage(),
+
+  ];
+
+  void _onNavTap(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+
+    return ColoredSafeArea(
+
+      color: bggray,
+      child: Scaffold(
+          key: scaffoldKey,
+
+          backgroundColor: bggray,
+          appBar: PreferredSize(
+            preferredSize: const Size.fromHeight(70),
+            child: HomeAppBarWidget(scaffoldKey: scaffoldKey),
+          ),
+          body: _list[_selectedIndex],
+
+          bottomNavigationBar: BottomNavBar(
+            currentIndex: _selectedIndex,
+            onTap: _onNavTap,
+          )
+      ),
+    );
+  }
+}
+
+
+class HomeScrollContent extends StatefulWidget {
+  @override
+  State<HomeScrollContent> createState() => _HomeScrollContentState();
+}
+
+class _HomeScrollContentState extends State<HomeScrollContent> {
   final bool isGuestUser = localDb.getBool('isGuestUser')!;
+
   final String? fullName = localDb.getString('fullName') ?? "Pawrent";
 
   @override
@@ -59,54 +121,26 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+    return SingleChildScrollView(
 
-    return ColoredSafeArea(
-      color: bggray,
-      child: Scaffold(
-        key: scaffoldKey,
-        drawer: DrawerWidget(
-          scaffoldKey: scaffoldKey,
-          name: fullName ?? 'Pawrent',
-          isGuestUser: isGuestUser,
-        ),
-        backgroundColor: bggray,
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(70),
-          child: HomeAppBarWidget(scaffoldKey: scaffoldKey),
-        ),
-        body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: padding20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                sbox,
-                SearchFieldWidget(
-                  width: 100.w,
-                  text: 'Search for ‘Pet Boarding’',
-                ),
-                SizedBox(height: 12),
+              children: <Widget>[
+                sbox20,
                 HeadingTextWidget(
-                  fontWeight: FontWeight.w400,
-                  text: fullName != null ? 'Hii $fullName,' : 'Hii Pawrent,',
-                  size: 22,
-                  trailingButton: false,
-                  textColor: colorred,
-                ),
-                SizedBox(height: 4),
-                HeadingTextWidget(
-                  text: 'Welcome to Wigglypet!',
-                  trailingButton: false,
-                  size: 18,
-                  textColor: colorblack.withOpacity(0.7),
+                    text: 'My Companion'
                 ),
                 sbox,
-                RewardsCardWidget(
-                  name: fullName ?? '',
-                  isGuestUser: isGuestUser,
-                ),
+                const CompanionSection(),
+
+
+
+
+
+
                 SizedBox(height: 24),
                 HeadingTextWidget(
                   text: 'Who are you looking for?',
@@ -163,8 +197,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       return const Text('Something went wrong');
                     },
                   ),
-                ),
-                SizedBox(height: 24),
+                ) ,
                 HeadingTextWidget(
                   text: 'Top Partners in demand',
                   onTap: () {
@@ -330,11 +363,21 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 SizedBox(height: 32),
                 BecomePartnerWidget(width: 100.w),
                 SizedBox(height: 32),
+
+
+
               ],
-            ),
+
+            )
           ),
-        ),
-      ),
-    );
+          );
+
+
+
+
+
+
   }
 }
+
+
