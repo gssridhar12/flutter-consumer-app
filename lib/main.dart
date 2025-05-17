@@ -144,7 +144,7 @@ class MainApp extends StatelessWidget {
                 fontFamily: 'JosefinSans',
               ),
               debugShowCheckedModeBanner: false,
-              home: const SplashScreen(),
+              home: const SplashPage(),
               routes: {'/chatHome': (context) => const ChatHomePage()},
             ),
           ),
