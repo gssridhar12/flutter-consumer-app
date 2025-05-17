@@ -103,8 +103,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   textColor: colorblack.withOpacity(0.7),
                 ),
                 sbox,
-                RewardsCardWidget(
-                    name: fullName ?? '', isGuestUser: isGuestUser),
+                // RewardsCardWidget(
+                //     name: fullName ?? '', isGuestUser: isGuestUser),
                 HeadingTextWidget(
                   text: 'Who are you looking for?',
                   trailingButton: true,
@@ -387,17 +387,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     return const Text('packages Data Api Failed');
                   },
                 ),
-                HeadingTextWidget(
-                  text: 'Fresh Talent on Wigglypet',
-                  onTap: () {
-                    AppNavigation.pushNavigation(
-                      context,
-                      FreshTalentOnMegmoSeeAllPage(
-                        isGuestUser: isGuestUser,
-                      ),
-                    );
-                  },
-                ),
+                // HeadingTextWidget(
+                //   text: 'Fresh Talent on Wigglypet',
+                //   onTap: () {
+                //     AppNavigation.pushNavigation(
+                //       context,
+                //       FreshTalentOnMegmoSeeAllPage(
+                //         isGuestUser: isGuestUser,
+                //       ),
+                //     );
+                //   },
+                // ),
                 sbox,
                 BlocBuilder<FreshTalentBloc, FreshTalentState>(
                   builder: (context, state) {
