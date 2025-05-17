@@ -48,7 +48,7 @@ class SucessStoriesSeeAllPageState extends State<SucessStoriesSeeAllPage> {
             scaffoldKey: scaffoldKey,
             name: widget.userModel != null
                 ? widget.userModel!.data!.fullName!
-                : 'Guest',
+                : 'Pawrent',
             isGuestUser: widget.isGuestUser!),
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(70),
@@ -67,7 +67,7 @@ class SucessStoriesSeeAllPageState extends State<SucessStoriesSeeAllPage> {
                 SearchFieldWidget(
                   backButton: true,
                   width: width,
-                  text: 'Search for ‘Make up artists’',
+                  text: 'Search for ‘Pet Boarding’',
                 ),
                 sbox20,
                 HeadingTextWidget(
@@ -78,7 +78,7 @@ class SucessStoriesSeeAllPageState extends State<SucessStoriesSeeAllPage> {
                     textColor: colorblack.withOpacity(0.7)),
                 sbox,
                 const HeadingTextWidget(
-                    text: 'Take a look at what Woofurs partners have been up to.',
+                    text: 'Take a look at what Wigglypet partners have been up to.',
                     size: 16,
                     trailingButton: false),
                 sbox20,

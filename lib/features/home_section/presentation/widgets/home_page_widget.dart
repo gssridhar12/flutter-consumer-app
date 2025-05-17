@@ -44,7 +44,7 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   final bool isGuestUser = localDb.getBool('isGuestUser')!;
-  final String? fullName = localDb.getString('fullName') ?? "Guest";
+  final String? fullName = localDb.getString('fullName') ?? "Pawrent";
 
   @override
   void initState() {
@@ -69,7 +69,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         key: scaffoldKey,
         drawer: DrawerWidget(
             scaffoldKey: scaffoldKey,
-            name: fullName ?? 'Guest',
+            name: fullName ?? 'Pawrent',
             isGuestUser: isGuestUser),
         backgroundColor: bggray,
         appBar: PreferredSize(
@@ -88,16 +88,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 sbox,
                 SearchFieldWidget(
                   width: 100.w,
-                  text: 'Search for ‘Make up artists’',
+                  text: 'Search for ‘Pet Boarding’',
                 ),
                 HeadingTextWidget(
                     fontWeight: FontWeight.w400,
-                    text: fullName != null ? 'Hii $fullName,' : 'Hii Guest,',
+                    text: fullName != null ? 'Hii $fullName,' : 'Hii Pawrent,',
                     size: 22,
                     trailingButton: false,
                     textColor: colorred),
                 HeadingTextWidget(
-                  text: 'Welcome to Woofurs!',
+                  text: 'Welcome to Wigglypet!',
                   trailingButton: false,
                   size: 18,
                   textColor: colorblack.withOpacity(0.7),
@@ -388,7 +388,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   },
                 ),
                 HeadingTextWidget(
-                  text: 'Fresh Talent on Woofurs',
+                  text: 'Fresh Talent on Wigglypet',
                   onTap: () {
                     AppNavigation.pushNavigation(
                       context,
@@ -458,42 +458,42 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     return const Text('nothing loaded');
                   },
                 ),
-                sbox,
-                HeadingTextWidget(
-                  onTap: () {
-                    AppNavigation.pushNavigation(
-                      context,
-                      SucessStoriesSeeAllPage(
-                        isGuestUser: isGuestUser,
-                      ),
-                    );
-                  },
-                  text: 'Success Stories',
-                ),
-                sbox,
-                SizedBox(
-                  width: 80.w,
-                  child: Text(
-                      'Take a look at what Woofurs partners are achieving',
-                      style: TextStyle(
-                          fontSize: 12, color: colorblack.withOpacity(0.5))),
-                ),
-                sbox20,
-                SizedBox(
-                  height: 50.h,
-                  width: 100.w,
-                  child: ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 4,
-                    itemBuilder: (BuildContext context, int index) {
-                      return const SuccessStoryWidget(
-                        headingtext: 'Near You',
-                      );
-                    },
-                  ),
-                ),
+                // sbox,
+                // HeadingTextWidget(
+                //   onTap: () {
+                //     AppNavigation.pushNavigation(
+                //       context,
+                //       SucessStoriesSeeAllPage(
+                //         isGuestUser: isGuestUser,
+                //       ),
+                //     );
+                //   },
+                //   text: 'Success Stories',
+                // ),
+                // sbox,
+                // SizedBox(
+                //   width: 80.w,
+                //   child: Text(
+                //       'Take a look at what Woofurs partners are achieving',
+                //       style: TextStyle(
+                //           fontSize: 12, color: colorblack.withOpacity(0.5))),
+                // ),
+                // sbox20,
+                // SizedBox(
+                //   height: 50.h,
+                //   width: 100.w,
+                //   child: ListView.builder(
+                //     physics: const BouncingScrollPhysics(),
+                //     shrinkWrap: true,
+                //     scrollDirection: Axis.horizontal,
+                //     itemCount: 4,
+                //     itemBuilder: (BuildContext context, int index) {
+                //       return const SuccessStoryWidget(
+                //         headingtext: 'Near You',
+                //       );
+                //     },
+                //   ),
+                // ),
                 sbox20,
                 BecomePartnerWidget(width: 100.w),
                 sbox20,

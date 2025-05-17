@@ -303,7 +303,7 @@ class _BecomePartnerFormPageState extends State<BecomePartnerFormPage> {
                   sbox,
                   TextFieldWidget(
                     textEditingController: serviceOfferedController,
-                    labelText: 'What service do you want to offer on Woofurs?',
+                    labelText: 'What service do you want to offer on Wigglypet?',
                     textInputAction: TextInputAction.next,
                     textInputType: TextInputType.name,
                     autofillHints: const [AutofillHints.name],

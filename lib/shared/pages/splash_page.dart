@@ -127,7 +127,7 @@ class _SplashPageState extends State<SplashPage>
                         const Padding(
                           padding: EdgeInsets.symmetric(horizontal: padding20),
                           child: Text(
-                            'Woofurs',
+                            'Wigglypet',
                             style: TextStyle(
                                 color: colorwhite,
                                 fontSize: 40,

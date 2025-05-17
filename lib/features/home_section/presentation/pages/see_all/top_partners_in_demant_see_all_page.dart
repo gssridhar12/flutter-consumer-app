@@ -59,7 +59,7 @@ class TopPartnersInDemantSeeAllPageState
           key: scaffoldKey,
           drawer: DrawerWidget(
               scaffoldKey: scaffoldKey,
-              name: fullName != null ? fullName! : 'Guest',
+              name: fullName != null ? fullName! : 'Pawrent',
               isGuestUser: widget.isGuestUser!),
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(70),
@@ -78,7 +78,7 @@ class TopPartnersInDemantSeeAllPageState
                   SearchFieldWidget(
                     backButton: true,
                     width: width,
-                    text: 'Search for ‘Make up artists’',
+                    text: 'Search for ‘Pet Boarding’',
                   ),
                   sbox20,
 
@@ -90,7 +90,7 @@ class TopPartnersInDemantSeeAllPageState
                       textColor: colorblack.withOpacity(0.7)),
 
                   const HeadingTextWidget(
-                      text: 'Woofurs’s bestselling partners this month',
+                      text: 'Wigglypet’s bestselling partners this month',
                       size: 15,
                       fontWeight: FontWeight.w400,
                       trailingButton: false),

@@ -198,7 +198,7 @@ class _PreferedPartnersTabState extends State<PreferedPartnersTab>
                       sbox,
                       const Text(
                         textAlign: TextAlign.center,
-                        'Show fresh talent\n on Woofurs',
+                        'Show fresh talent\n on Wigglypet',
                         style: TextStyle(
                             color: colorblack,
                             fontSize: 14,
@@ -455,7 +455,7 @@ class _PreferedPartnersTabState extends State<PreferedPartnersTab>
 //                       sbox,
 //                       const Text(
 //                         textAlign: TextAlign.center,
-//                         'Show fresh talent\n on Woofurs',
+//                         'Show fresh talent\n on Wigglypet',
 //                         style: TextStyle(
 //                             color: colorblack,
 //                             fontSize: 14,

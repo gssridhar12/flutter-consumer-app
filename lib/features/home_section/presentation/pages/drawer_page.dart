@@ -221,7 +221,7 @@ class DrawerWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Woofurs v0.1.0.0'),
+                    const Text('Wigglypet v0.1.0.0'),
                     sbox,
                     const Text('© 2025 SniffinTails Tech Pvt. Ltd.'),
                     sbox,

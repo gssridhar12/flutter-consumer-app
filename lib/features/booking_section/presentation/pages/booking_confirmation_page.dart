@@ -808,7 +808,7 @@ class _BookingConfirmationPageState extends State<BookingConfirmationPage> {
                                 ),
                                 sboxW5,
                                 const Text(
-                                  'Chat with a Woofurs Executive',
+                                  'Chat with a Wigglypet Executive',
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 16,

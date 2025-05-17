@@ -20,7 +20,7 @@ class _Who_AreLookngForSeeallState extends State<Who_AreLookngForSeeall> {
 
   final bool isGuestUser = localDb.getBool('isGuestUser')!;
 
-  final String? fullName = localDb.getString('fullName') ?? "Guest";
+  final String? fullName = localDb.getString('fullName') ?? "Pawrent";
 
   void handleCardTap(String category) {
     switch (category) {
@@ -136,7 +136,7 @@ class _Who_AreLookngForSeeallState extends State<Who_AreLookngForSeeall> {
         key: scaffoldKey,
         drawer: DrawerWidget(
             scaffoldKey: scaffoldKey,
-            name: fullName != null ? fullName! : 'Guest',
+            name: fullName != null ? fullName! : 'Pawrent',
             isGuestUser: isGuestUser),
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(70),
@@ -152,7 +152,7 @@ class _Who_AreLookngForSeeallState extends State<Who_AreLookngForSeeall> {
               SearchFieldWidget(
                 backButton: true,
                 width: width,
-                text: 'Search for ‘Make up artists’',
+                text: 'Search for ‘Pet Boarding’',
               ),
               SizedBox(height: 15),
               HeadingTextWidget(
@@ -162,7 +162,7 @@ class _Who_AreLookngForSeeallState extends State<Who_AreLookngForSeeall> {
                   trailingButton: false,
                   textColor: colorblack.withOpacity(0.7)),
               const HeadingTextWidget(
-                  text: 'Take a look at what Woofurs has to offer',
+                  text: 'Take a look at what Wigglypet has to offer',
                   size: 15,
                   fontWeight: FontWeight.w400,
                   textColor: Colors.black54,

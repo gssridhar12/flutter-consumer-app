@@ -55,7 +55,7 @@
 //                         ),
 //                       ),
 //                       TextSpan(
-//                         text: ' through Woofurs?',
+//                         text: ' through Wigglypet?',
 //                         style: TextStyle(
 //                           color: colorblack,
 //                           fontSize: 32,
