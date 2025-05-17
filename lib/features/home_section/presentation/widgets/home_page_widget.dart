@@ -134,6 +134,7 @@ class _HomeScrollContentState extends State<HomeScrollContent> {
                     text: 'My Companion'
                 ),
                 sbox,
+
                 const CompanionSection(),
 
 
@@ -142,6 +143,7 @@ class _HomeScrollContentState extends State<HomeScrollContent> {
 
 
                 SizedBox(height: 24),
+
                 HeadingTextWidget(
                   text: 'Who are you looking for?',
                   trailingButton: true,
@@ -299,6 +301,7 @@ class _HomeScrollContentState extends State<HomeScrollContent> {
                     return const Text('packages Data Api Failed');
                   },
                 ),
+
                 SizedBox(height: 24),
                 HeadingTextWidget(
                   text: 'Fresh Talent on Wigglypet',
@@ -310,6 +313,9 @@ class _HomeScrollContentState extends State<HomeScrollContent> {
                   },
                 ),
                 SizedBox(height: 14),
+
+                sbox,
+
                 BlocBuilder<FreshTalentBloc, FreshTalentState>(
                   builder: (context, state) {
                     if (state is GetFreshTalentOnMegmoLoading) {
