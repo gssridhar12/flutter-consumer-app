@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
 import 'package:flutter_consumer_app/core/constant/constant.dart';
+import 'package:flutter_consumer_app/core/constant/list_tile.dart';
+
 import 'package:flutter_consumer_app/features/auth_section/presentation/widgets/appbar_widget.dart';
 import 'package:flutter_consumer_app/features/auth_section/presentation/widgets/button_widget.dart';
 import 'package:flutter_consumer_app/features/auth_section/presentation/widgets/text_and_subtitle_widget.dart';
@@ -19,11 +21,7 @@ class ChooseLocationPage extends StatefulWidget {
 class _ChooseLocationPageState extends State<ChooseLocationPage> {
   List<int> selectedIndices = [];
 
-  List<Map<String, String>> options = [
-    {'name': 'Mumbai', 'icon': 'assets/images/cities/Mumbai.svg'},
-    {'name': 'Bengaluru', 'icon': 'assets/images/cities/bangalore.svg'},
-    {'name': 'Pune', 'icon': 'assets/images/cities/Pune.svg'},
-  ];
+List<Map<String, String>> options = Cities().options;
 
   @override
   Widget build(BuildContext context) {

@@ -14,6 +14,7 @@ import 'package:flutter_consumer_app/features/home_section/presentation/pages/vi
 
 import '../../features/home_section/presentation/pages/home_page.dart';
 import '../../features/home_section/presentation/pages/search_page.dart';
+import '../../features/home_section/presentation/widgets/home_page_widget.dart';
 // import 'package:flutter_consumer_app/features/rating/presentation/pages/WalletePage.dart';
 
 List<String> titlesMainMenu = [
@@ -73,31 +74,81 @@ List<Widget> navigationPagesSecondMenu = [
   const LocationPage(),
 ];
 
-List<Widget> navigationPagesThirdMenu = [
-  const AskAQuestionPage(),
-  const SuggestAFeaturePage(),
-  const ReportABugPage(),
-  const KnowledgeBasePage(),
-];
 
+//  const List<String> cityNames = [
+//    'Ahmedabad',
+//    'Bengaluru',
+//    'Chandigarh',
+//    'Chennai',
+//    'Delhi',
+//    'Hyderabad',
+//    'Kolkata',
+//    'Mumbai',
+//    'Pune',
+//  ];
+class BottomNavbarWidgets{
+  static List<Widget> list = [
+    HomeScrollContent(),
+    const SearchPage(),
+    const BookingsPage(),
+    const ViewProfilePage(),
 
-
-
-Future<void> showCalendarsModalBottom(BuildContext context) async {
-  WidgetsBinding.instance.addPostFrameCallback((_) {
-    showModalBottomSheet(
-      isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-        side: BorderSide(color: Colors.white),
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
-        ),
-      ),
-      context: context,
-      builder: (context) {
-        return const NotificationsBottomSheetWidget();
-      },
-    );
-  });
+  ];
 }
+
+class Cities {
+  static const List<String> cityNames = [
+    'Bengaluru',
+
+  ];
+  static const List<String> cities = [
+    'assets/images/cities/bangalore.svg',
+  ];
+
+  // static const List<String> cities = [
+  //   'assets/images/cities/Ahmedabad.svg',
+  //   'assets/images/cities/bangalore.svg',
+  //   'assets/images/cities/Chandigarh.svg',
+  //   'assets/images/cities/chennai.svg',
+  //   'assets/images/cities/Delhi.svg',
+  //   'assets/images/cities/Hyderabad.svg',
+  //   'assets/images/cities/Kolkata.svg',
+  //   'assets/images/cities/Mumbai.svg',
+  //   'assets/images/cities/Pune.svg',
+  // ];
+  static List<String> citylable = cityNames;
+
+  List<Map<String, String>> options = [
+    // {'name': 'Mumbai', 'icon': 'assets/images/cities/Mumbai.svg'},
+    {'name': 'Bengaluru', 'icon': 'assets/images/cities/bangalore.svg'}
+    // {'name': 'Pune', 'icon': 'assets/images/cities/Pune.svg'},
+  ];
+}
+  List<Widget> navigationPagesThirdMenu = [
+    const AskAQuestionPage(),
+    const SuggestAFeaturePage(),
+    const ReportABugPage(),
+    const KnowledgeBasePage(),
+  ];
+
+
+
+  Future<void> showCalendarsModalBottom(BuildContext context) async {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      showModalBottomSheet(
+        isScrollControlled: true,
+        shape: const RoundedRectangleBorder(
+          side: BorderSide(color: Colors.white),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+        ),
+        context: context,
+        builder: (context) {
+          return const NotificationsBottomSheetWidget();
+        },
+      );
+    });
+  }
+

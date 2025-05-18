@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
-import 'package:flutter_consumer_app/core/images/images.dart';
+
 import 'package:flutter_consumer_app/shared/widgets/custom_chip_widget.dart';
-import 'package:flutter_consumer_app/config/city.dart';
+
+
+import '../../../../core/constant/list_tile.dart';
 
 int tag = 1;
-List<String> cityName = cityNames;
+List<String> cityName = Cities.cityNames;
 bool isSelected = true;
 
 class LocationChoiceChip extends StatefulWidget {
@@ -48,7 +50,7 @@ class _LocationChoiceChipState extends State<LocationChoiceChip> {
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 4,
       ),
-      itemCount: CityImage.cities.length,
+      itemCount: Cities.cities.length,
       shrinkWrap: true,
       itemBuilder: (BuildContext context, int index) {
         return CustomChip(
@@ -67,7 +69,7 @@ class _LocationChoiceChipState extends State<LocationChoiceChip> {
               widget.onSelect(cityName[_value!]);
             });
           },
-          image: CityImage.cities[index],
+          image: Cities.cities[index],
         );
       },
     );
