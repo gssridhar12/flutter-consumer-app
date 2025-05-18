@@ -172,6 +172,7 @@ class BookingApiRemoteRepositoryImpl implements BookingApiRemoteRepository {
   @override
   Future<GetUserBookingModel> getUserBooking({required String userId}) async {
     try {
+      var requestBody = {"page_number": 0, "page_size": 10};
       log('getuserbooking-userUuid:$userId');
       var headers = {
         "Content-Type": "application/json",
@@ -182,7 +183,7 @@ class BookingApiRemoteRepositoryImpl implements BookingApiRemoteRepository {
           'https://api.woofurs.com/partner-service/booking/getUserBookings/v2/$userId');
 
       // 'https://api.woofurs.com/partner-service/booking/getUserBookings/v2/6f62ab6f-869d-44e6-b892-cf1f6b491dda');
-      final response = await httpClient.post(url, headers: headers);
+      final response = await httpClient.post(url, headers: headers, body: jsonEncode(requestBody));
 
       if (response.statusCode == 200) {
         final decodedBody = json.decode(response.body);
