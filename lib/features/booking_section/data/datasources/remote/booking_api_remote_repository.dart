@@ -45,7 +45,7 @@ class BookingApiRemoteRepositoryImpl implements BookingApiRemoteRepository {
     debugPrint('AddBookingModel Data: $data');
     var headers = {
       "Content-Type": "application/json",
-      "calling_entity": "WEB_UI"
+      "calling-entity": "WEB_UI"
     };
 
     final url = Uri.parse(
@@ -70,7 +70,7 @@ class BookingApiRemoteRepositoryImpl implements BookingApiRemoteRepository {
     debugPrint('RescheduleBooking JsonBody: $data');
     var headers = {
       "Content-Type": "application/json",
-      // "calling_entity": "WEB_UI"
+      // "calling-entity": "WEB_UI"
     };
 
     final url = Uri.parse(
@@ -95,7 +95,7 @@ class BookingApiRemoteRepositoryImpl implements BookingApiRemoteRepository {
     debugPrint('cancelBookingModel Data: $data');
     var headers = {
       "Content-Type": "application/json",
-      "calling_entity": "WEB_UI"
+      "calling-entity": "WEB_UI"
     };
 
     final url = Uri.parse(
@@ -119,7 +119,7 @@ class BookingApiRemoteRepositoryImpl implements BookingApiRemoteRepository {
       log('getbooking-bookingUuid:$bookingUuid');
       var headers = {
         "Content-Type": "application/json",
-        "calling_entity": "WEB_UI"
+        "calling-entity": "WEB_UI"
       };
 
       final url = Uri.parse(
@@ -146,7 +146,7 @@ class BookingApiRemoteRepositoryImpl implements BookingApiRemoteRepository {
     try {
       var headers = {
         "Content-Type": "application/json",
-        "calling_entity": "WEB_UI"
+        "calling-entity": "WEB_UI"
       };
 
       final url = Uri.parse(
@@ -172,17 +172,18 @@ class BookingApiRemoteRepositoryImpl implements BookingApiRemoteRepository {
   @override
   Future<GetUserBookingModel> getUserBooking({required String userId}) async {
     try {
+      var requestBody = {"page_number": 0, "page_size": 10};
       log('getuserbooking-userUuid:$userId');
       var headers = {
         "Content-Type": "application/json",
-        "calling_entity": "WEB_UI"
+        "calling-entity": "WEB_UI"
       };
 
       final url = Uri.parse(
           'https://api.woofurs.com/partner-service/booking/getUserBookings/v2/$userId');
 
       // 'https://api.woofurs.com/partner-service/booking/getUserBookings/v2/6f62ab6f-869d-44e6-b892-cf1f6b491dda');
-      final response = await httpClient.get(url, headers: headers);
+      final response = await httpClient.post(url, headers: headers, body: jsonEncode(requestBody));
 
       if (response.statusCode == 200) {
         final decodedBody = json.decode(response.body);
@@ -205,7 +206,7 @@ class BookingApiRemoteRepositoryImpl implements BookingApiRemoteRepository {
     try {
       var headers = {
         "Content-Type": "application/json",
-        "calling_entity": "WEB_UI"
+        "calling-entity": "WEB_UI"
       };
 
       final url = Uri.parse(

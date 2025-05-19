@@ -20,7 +20,7 @@ class AuthApiRemoteDataSourceImpl implements AuthApiRemoteDataSource {
   Future<AuthModel> loginWithApi({required LogInRequest logInRequest}) async {
     var headers = {
       "Content-Type": "application/json",
-      "calling_entity": "WEB_UI"
+      "calling-entity": "WEB_UI"
     };
     var body = {"email": logInRequest.email, "password": logInRequest.password};
 
@@ -44,7 +44,7 @@ class AuthApiRemoteDataSourceImpl implements AuthApiRemoteDataSource {
       {required SignUpRequest signUpRequest}) async {
     var headers = {
       "Content-Type": "application/json",
-      "calling_entity": "WEB_UI"
+      "calling-entity": "WEB_UI"
     };
     var body = {
       "full_name": signUpRequest.fullName,

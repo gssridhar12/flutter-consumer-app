@@ -15,7 +15,7 @@ class AuthApiService {
 
     var headers = {
       "Content-Type": "application/json",
-      "calling_entity": "WEB_UI"
+      "calling-entity": "WEB_UI"
     };
 
     try {
@@ -50,7 +50,7 @@ class AuthApiService {
 
     var headers = {
       "Content-Type": "application/json",
-      "calling_entity": "WEB_UI"
+      "calling-entity": "WEB_UI"
     };
 
     try {

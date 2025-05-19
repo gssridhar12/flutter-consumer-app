@@ -80,7 +80,7 @@ class UserApiRemoteDataSourceImpl implements UserApiRemoteDataSource {
     var requestBody = request.toJson();
     var headers = {
       "Content-Type": "application/json",
-      "calling_entity": "WEB_UI"
+      "calling-entity": "WEB_UI"
     };
     final url = Uri.parse(
       'https://api.woofurs.com/partner-service/package/addPackageReview/v2',
