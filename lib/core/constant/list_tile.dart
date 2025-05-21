@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_consumer_app/features/chat_section/presentation/pages/chat_home.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/RatingHomePage.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/bookings_page.dart';
+import 'package:flutter_consumer_app/features/home_section/presentation/pages/drawer_page.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/forms/ask_a_question_page.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/forms/knowledge_base_page.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/forms/report_a_bug_page.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/forms/suggest_a_feature_page.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/location_page.dart';
+import 'package:flutter_consumer_app/features/home_section/presentation/pages/menu_page.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/notifications_bottomsheet.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/settings_page.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/user_liked_page.dart';
@@ -15,6 +17,7 @@ import 'package:flutter_consumer_app/features/home_section/presentation/pages/vi
 import '../../features/home_section/presentation/pages/home_page.dart';
 import '../../features/home_section/presentation/pages/search_page.dart';
 import '../../features/home_section/presentation/widgets/home_page_widget.dart';
+import '../../main.dart';
 // import 'package:flutter_consumer_app/features/rating/presentation/pages/WalletePage.dart';
 
 List<String> titlesMainMenu = [
@@ -87,11 +90,16 @@ List<Widget> navigationPagesSecondMenu = [
 //    'Pune',
 //  ];
 class BottomNavbarWidgets{
+  static GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  final bool isGuestUser = localDb.getBool('isGuestUser')!;
+
+  final String? fullName = localDb.getString('fullName') ?? "Pawrent";
   static List<Widget> list = [
     HomeScrollContent(),
     const SearchPage(),
     const BookingsPage(),
-    const ViewProfilePage(),
+    const ProfilePage()
+
 
   ];
 }

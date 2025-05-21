@@ -2,9 +2,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_consumer_app/core/colors/colors.dart';
 import 'package:flutter_consumer_app/core/constant/constant.dart';
+import 'package:flutter_consumer_app/core/constant/list_tile.dart';
 import 'package:flutter_consumer_app/features/auth_section/presentation/pages/login_or_signup_page.dart';
 import 'package:flutter_consumer_app/features/auth_section/presentation/pages/three_options.dart';
-import 'package:flutter_consumer_app/core/constant/list_tile.dart';
+
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/become_partner/become_a_partner.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/pages/view_profile_page.dart';
 import 'package:flutter_consumer_app/features/home_section/presentation/widgets/drawer_list_tile_widget.dart';
@@ -12,6 +13,7 @@ import 'package:flutter_consumer_app/utils/navigation.dart';
 import 'package:flutter_initicon/flutter_initicon.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
+
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({
@@ -102,43 +104,43 @@ class DrawerWidget extends StatelessWidget {
                   )
                 ],
               ),
-              const Divider(
-                thickness: 1,
-              ),
-              sbox,
-              //location,my bookings, my notification,my chats, my wallet, my ratings
-              ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: 6,
-                itemBuilder: (context, index) {
-                  return DrawerListTileWidget(
-                    isEnabled: !isGuestUser,
-                    ontap: () {
-                      if (index == 2) {
-                        showCalendarsModalBottom(context);
-                      } else {
-                        var navigationPage = navigationPagesMainMenu[index];
-                        if (navigationPage != null) {
-                          AppNavigation.pushNavigation(context, navigationPage);
-                        }
-                      }
-                    },
-                    title: titlesMainMenu[index],
-                    isTrailing: index == 0 ? false : true,
-                    leadingIcon: iconsMainMenu[index],
-                    leadingIconColor: colorred,
-                    // trailingIcon: Container(
-                    //   width: 13.w,
-                    //   height: 04.h,
-                    //   decoration: BoxDecoration(
-                    //       borderRadius: BorderRadius.circular(10),
-                    //       color: colorblack.withOpacity(0.3)),
-                    //   child: const Center(child: Text('2')),
-                    // ),
-                  );
-                },
-              ),
+              // const Divider(
+              //   thickness: 1,
+              // ),
+              // sbox,
+              // //location,my bookings, my notification,my chats, my wallet, my ratings
+              // ListView.builder(
+              //   physics: const NeverScrollableScrollPhysics(),
+              //   shrinkWrap: true,
+              //   itemCount: 6,
+              //   itemBuilder: (context, index) {
+              //     return DrawerListTileWidget(
+              //       isEnabled: !isGuestUser,
+              //       ontap: () {
+              //         if (index == 2) {
+              //           //showCalendarsModalBottom(context);
+              //         } else {
+              //           var navigationPage = navigationPagesMainMenu[index];
+              //           if (navigationPage != null) {
+              //             AppNavigation.pushNavigation(context, navigationPage);
+              //           }
+              //         }
+              //       },
+              //       title: titlesMainMenu[index],
+              //       isTrailing: index == 0 ? false : true,
+              //       leadingIcon: iconsMainMenu[index],
+              //       leadingIconColor: colorred,
+              //       // trailingIcon: Container(
+              //       //   width: 13.w,
+              //       //   height: 04.h,
+              //       //   decoration: BoxDecoration(
+              //       //       borderRadius: BorderRadius.circular(10),
+              //       //       color: colorblack.withOpacity(0.3)),
+              //       //   child: const Center(child: Text('2')),
+              //       // ),
+              //     );
+              //   },
+              // ),
               sbox,
               Center(
                 child: GestureDetector(

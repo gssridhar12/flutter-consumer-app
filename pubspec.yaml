@@ -123,6 +123,7 @@ flutter:
     - assets/images/cities/
     - assets/photos/
     - assets/images/services/
+    - assets/images/icons/
   fonts:
     - family: JosefinSans
       fonts:

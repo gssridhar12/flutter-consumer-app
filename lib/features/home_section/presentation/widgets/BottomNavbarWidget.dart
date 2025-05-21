@@ -3,11 +3,17 @@ import 'package:flutter/material.dart';
 class BottomNavBar extends StatefulWidget {
   final int currentIndex;
   final Function(int) onTap;
+  final GlobalKey<ScaffoldState> scaffoldKey; // Add scaffoldKey
+  final String userName; // Add user name
+  final bool isGuestUser;
 
   const BottomNavBar({
     super.key,
     required this.currentIndex,
     required this.onTap,
+    required this.scaffoldKey,
+    required this.userName,
+    required this.isGuestUser,
   });
 
   @override
@@ -24,7 +30,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
       ),
       child: BottomNavigationBar(
         currentIndex: widget.currentIndex,
-        onTap: widget.onTap,
+        onTap: (index) {
+            widget.onTap(index); // Normal navigation for other items
+
+        },
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
         selectedItemColor: Color(0xFF3D3B95), // Purple active
@@ -47,7 +56,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_outline),
-            label: 'Profile',
+            label: 'Menu',
           ),
         ],
       ),
