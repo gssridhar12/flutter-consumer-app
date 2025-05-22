@@ -86,7 +86,7 @@ dependencies:
 
   
   flutter_initicon: ^3.0.0+1
-  flutter_widget_from_html: 
+  flutter_widget_from_html: ^0.14.11
   # flutter_widget_from_html: ^0.14.11
   freezed_annotation: ^2.4.1
   page_transition: ^2.1.0
@@ -122,6 +122,8 @@ flutter:
     - assets/images/tier_images/
     - assets/images/cities/
     - assets/photos/
+    - assets/images/services/
+    - assets/images/icons/
   fonts:
     - family: JosefinSans
       fonts:
