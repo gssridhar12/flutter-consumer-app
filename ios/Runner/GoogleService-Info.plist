@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>102836287134-0t41h1h1791l43dos0lf0buu2fvh8d8m.apps.googleusercontent.com</string>
+	<string>184993598208-f94j5e8bckn8rcdqej8ne98cq8k38qno.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.102836287134-0t41h1h1791l43dos0lf0buu2fvh8d8m</string>
+	<string>com.googleusercontent.apps.184993598208-f94j5e8bckn8rcdqej8ne98cq8k38qno</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAMxYKYdXkG-IvYXoVk7XPIYGScFIcqmhY</string>
+	<string>AIzaSyBK3lA_FJmkOtwk7HvOcVT6baQjp1vhMzs</string>
 	<key>GCM_SENDER_ID</key>
-	<string>102836287134</string>
+	<string>184993598208</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.woofurs.consumer</string>
+	<string>com.test11.consumer</string>
 	<key>PROJECT_ID</key>
-	<string>woofurs-47094</string>
+	<string>wigglypet-app</string>
 	<key>STORAGE_BUCKET</key>
-	<string>woofurs-47094.appspot.com</string>
+	<string>wigglypet-app.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:102836287134:ios:fb1ceb76732582b5992d8f</string>
+	<string>1:184993598208:ios:b3331bb2df7927407641e5</string>
 </dict>
 </plist>

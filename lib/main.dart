@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_consumer_app/config/firebase_options.dart';
+import 'package:flutter_consumer_app/firebase_options.dart';
 import 'package:flutter_consumer_app/features/auth_section/presentation/bloc/auth_bloc.dart';
 import 'package:flutter_consumer_app/features/auth_section/presentation/cubit/button_cubit/button_cubit.dart';
 import 'package:flutter_consumer_app/features/booking_section/presentation/bloc/add_booking_bloc/add_booking_bloc.dart';

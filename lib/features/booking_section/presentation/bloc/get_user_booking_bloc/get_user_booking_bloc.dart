@@ -18,11 +18,11 @@ class GetUserBookingBloc
           emit(const GetUserBookingFailed());
         },
         (right) {
-          if (right.successStatus == true) {
-            emit(GetUserBookingSuccess(getUserBookingEntity: right));
-          } else {
-            emit(const GetUserBookingFailed());
-          }
+          // if (right.successStatus == true) {
+          emit(GetUserBookingSuccess(getUserBookingEntity: right));
+          // } else {
+            // emit(const GetUserBookingFailed());
+          // }
         },
       );
     });
