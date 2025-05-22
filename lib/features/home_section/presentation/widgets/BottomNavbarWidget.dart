@@ -3,17 +3,12 @@ import 'package:flutter/material.dart';
 class BottomNavBar extends StatefulWidget {
   final int currentIndex;
   final Function(int) onTap;
-  final GlobalKey<ScaffoldState> scaffoldKey; // Add scaffoldKey
-  final String userName; // Add user name
-  final bool isGuestUser;
 
   const BottomNavBar({
     super.key,
     required this.currentIndex,
     required this.onTap,
-    required this.scaffoldKey,
-    required this.userName,
-    required this.isGuestUser,
+
   });
 
   @override

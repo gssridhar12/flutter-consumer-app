@@ -90,10 +90,7 @@ List<Widget> navigationPagesSecondMenu = [
 //    'Pune',
 //  ];
 class BottomNavbarWidgets{
-  static GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  final bool isGuestUser = localDb.getBool('isGuestUser')!;
 
-  final String? fullName = localDb.getString('fullName') ?? "Pawrent";
   static List<Widget> list = [
     HomeScrollContent(),
     const SearchPage(),
