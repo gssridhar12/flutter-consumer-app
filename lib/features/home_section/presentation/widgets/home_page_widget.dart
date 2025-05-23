@@ -88,7 +88,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 sbox,
                 SearchFieldWidget(
                   width: 100.w,
-                  text: 'Search for ‘Pet Boarding’',
+                  text: 'Search for \'Pet Boarding\'',
                 ),
                 HeadingTextWidget(
                     fontWeight: FontWeight.w400,
@@ -348,6 +348,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       return const ShowErrorWidget();
                     }
                     if (state is GetMostBookedPackageSuccess) {
+                      if (state.package.data?.packages == null || state.package.data!.packages!.isEmpty) {
+                         return const SizedBox.shrink();
+                      }
                       return ConstrainedBox(
                         constraints: BoxConstraints(
                           minHeight: MediaQuery.of(context).size.height * 0.38,
