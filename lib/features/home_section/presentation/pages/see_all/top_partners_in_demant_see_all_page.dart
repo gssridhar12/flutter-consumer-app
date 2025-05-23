@@ -30,7 +30,7 @@ class TopPartnersInDemantSeeAllPageState
     extends State<TopPartnersInDemantSeeAllPage> with TickerProviderStateMixin {
   // AnimationController animationController =AnimationController(vsync: );
 
-  final String? fullName = localDb.getString('fullName')!;
+  final String? fullName = localDb.getString('fullName');
 
   @override
   void initState() {
@@ -59,8 +59,8 @@ class TopPartnersInDemantSeeAllPageState
           key: scaffoldKey,
           drawer: DrawerWidget(
               scaffoldKey: scaffoldKey,
-              name: fullName != null ? fullName! : 'Pawrent',
-              isGuestUser: widget.isGuestUser!),
+              name: fullName ?? 'Pawrent',
+              isGuestUser: widget.isGuestUser ?? false),
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(70),
             child: HomeAppBarWidget(
@@ -90,7 +90,7 @@ class TopPartnersInDemantSeeAllPageState
                       textColor: colorblack.withOpacity(0.7)),
 
                   const HeadingTextWidget(
-                      text: 'Wigglypet’s bestselling partners this month',
+                      text: "Wigglypet's bestselling partners this month",
                       size: 15,
                       fontWeight: FontWeight.w400,
                       trailingButton: false),
@@ -163,8 +163,11 @@ class TopPartnersInDemantSeeAllPageState
                         return ListView.builder(
                           physics: const BouncingScrollPhysics(),
                           shrinkWrap: true,
-                          itemCount: state.partner.data!.profiles!.length,
+                          itemCount: state.partner.data?.profiles?.length ?? 0,
                           itemBuilder: (BuildContext context, int index) {
+                            if (state.partner.data?.profiles == null) {
+                              return const SizedBox.shrink();
+                            }
                             return TopPartnerCardCard(
                               width: width,
                               entity: state.partner.data!.profiles,

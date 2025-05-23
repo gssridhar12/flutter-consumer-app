@@ -31,14 +31,17 @@ class PartnerRepositoryImpl implements PartnerRepository {
   Future<Either<Failure, TopPartnerEntity>> getTopPartnerInDemant() async {
     try {
       final partner = await partnerRemoteDatasource.getTopPartnersInDemant();
-      log(partner.message!);
-      if (partner.data == null) {
-        return const Left(ServerFailure(errorMessage: 'Server Failed'));
+      log('Top partners response: ${partner.message}');
+      
+      if (partner.data == null || partner.data?.profiles == null) {
+        log('Top partners data is null');
+        return const Left(ServerFailure(errorMessage: 'No partners data available'));
       }
+      
       return Right(partner);
     } catch (e) {
-      log('error is $e');
-      return const Left(ServerFailure(errorMessage: 'Server Failed'));
+      log('Error fetching top partners: $e');
+      return const Left(ServerFailure(errorMessage: 'Failed to fetch top partners'));
     }
   }
 
